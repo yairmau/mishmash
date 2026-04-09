@@ -5,22 +5,39 @@ project:
 book:
   title: "mishmash"
   author: "Yair Mau"
-  # date: "4/9/2026"
+  repo-url: https://github.com/yairmau/mishmash/
   chapters:
     - index.qmd
-    - intro.qmd
-    - summary.qmd
-    - references.qmd
-
-bibliography: references.bib
+    - part: "active inference"
+      chapters:
+        - intro.qmd
+    - part: "thermodynamics"
+      chapters:
+        - summary.qmd
+    - part: "differential geometry"
+      chapters:
+        - references.qmd
+  sidebar:
+    collapse-level: 2
+    tools:
+      - icon: house-fill
+        href: https://yairmau.com/
+    # logo: archive/logo.png
+  search: true
 
 format:
   html:
     theme:
-      - cosmo
-      - brand
-  # pdf:
-  #   documentclass: scrreprt
-
-
-
+      - flatly
+      - custom.scss
+    fontsize: 1.2em
+    highlight-style: kate-custom.theme #kate #solarized # kate # tango # breeze # ayu # monokai # breezedark # espresso
+    include-in-header:
+      - includes.html
+    code-line-numbers: true
+    code-tools:
+      source: repo  # https://quarto.org/docs/output-formats/html-code.html#code-tools
+    callout-icon: false
+    fig-align: center
+    # the default MathJax rendering option yields ugly results, use katex
+    html-math-method: katex
