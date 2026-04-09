@@ -6,6 +6,7 @@ book:
   title: "mishmash"
   author: "Yair Mau"
   repo-url: https://github.com/yairmau/mishmash/
+  favicon: archive/logo.png
   chapters:
     - index.qmd
     - part: "active inference"
@@ -22,7 +23,7 @@ book:
     tools:
       - icon: house-fill
         href: https://yairmau.com/
-    # logo: archive/logo.png
+    logo: archive/logo.png
   search: true
 
 format:
