@@ -9,15 +9,18 @@ book:
   favicon: archive/logo.png
   chapters:
     - index.qmd
+    - part: "causal inference"
+      chapters:
+        - intro-causal-inference.qmd
     - part: "active inference"
       chapters:
-        - intro.qmd
+        - intro-active-inference.qmd
     - part: "thermodynamics"
       chapters:
-        - summary.qmd
+        - intro-thermodynamics.qmd
     - part: "differential geometry"
       chapters:
-        - references.qmd
+        - intro-differential-geometry.qmd
   sidebar:
     collapse-level: 2
     tools:

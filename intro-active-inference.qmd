@@ -1,0 +1,3 @@
+# introduction to active inference
+
+{{< iconify lucide construction >}} this page is under construction {{< iconify lucide construction >}}

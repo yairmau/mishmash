@@ -4,31 +4,53 @@
     "href": "index.html",
     "title": "mishmash",
     "section": "",
-    "text": "Preface\nThis is a Quarto book.  \nTo learn more about Quarto books visit https://quarto.org/docs/books.",
+    "text": "1 About\nThis is where I put stuff I learn about. If any of these topics becomes developed enough, it might get its own webpage. For now, these are my half-baked thoughts and learning notes about subjects I’m interested in.",
     "crumbs": [
-      "Preface"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>About</span>"
     ]
   },
   {
-    "objectID": "intro.html",
-    "href": "intro.html",
-    "title": "1  Introduction",
+    "objectID": "intro-causal-inference.html",
+    "href": "intro-causal-inference.html",
+    "title": "2  introduction to causal inference",
     "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee @knuth84 for additional discussion of literate programming.",
+    "text": "this page is under construction",
+    "crumbs": [
+      "causal inference",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>introduction to causal inference</span>"
+    ]
+  },
+  {
+    "objectID": "intro-active-inference.html",
+    "href": "intro-active-inference.html",
+    "title": "3  introduction to active inference",
+    "section": "",
+    "text": "this page is under construction",
     "crumbs": [
       "active inference",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>introduction to active inference</span>"
     ]
   },
   {
-    "objectID": "summary.html",
-    "href": "summary.html",
-    "title": "2  Summary",
+    "objectID": "intro-thermodynamics.html",
+    "href": "intro-thermodynamics.html",
+    "title": "4  intro to thermodynamics",
     "section": "",
-    "text": "In summary, this book has no content whatsoever.",
+    "text": "this page is under construction",
     "crumbs": [
       "thermodynamics",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>intro to thermodynamics</span>"
+    ]
+  },
+  {
+    "objectID": "intro-differential-geometry.html",
+    "href": "intro-differential-geometry.html",
+    "title": "5  intro to differential geometry",
+    "section": "",
+    "text": "this page is under construction",
+    "crumbs": [
+      "differential geometry",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>intro to differential geometry</span>"
     ]
   }
 ]
