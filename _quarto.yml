@@ -22,7 +22,7 @@ book:
       chapters:
         - intro-differential-geometry.qmd
   sidebar:
-    collapse-level: 2
+    collapse-level: 1
     tools:
       - icon: house-fill
         href: https://yairmau.com/
