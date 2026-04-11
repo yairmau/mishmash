@@ -1,0 +1,28 @@
+/* Target only the shapes inside the nodes for the white background */
+.node .label-container, 
+.node circle, 
+.node rect, 
+.node polygon, 
+.node path.outline {
+  fill: white !important;
+  stroke: #333 !important;
+}
+
+/* Ensure arrowheads remain visible (usually black/dark grey) */
+marker path {
+  fill: #333 !important;
+  stroke: #333 !important;
+}
+
+/* Your custom class for conditioned nodes */
+.conditioned circle, 
+.conditioned rect, 
+.conditioned [class^="label-container"] {
+  stroke-width: 4px !important;
+  stroke: black !important;
+}
+
+
+.node circle {
+  r: 1.5em !important; /* Increases the radius directly */
+}

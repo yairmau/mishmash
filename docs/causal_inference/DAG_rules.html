@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Yair Mau">
 
-<title>mishmash</title>
+<title>3&nbsp; DAG rules – mishmash</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -24,28 +23,64 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./causal_inference/intro-causal-inference.html" rel="next">
-<link href="./archive/logo.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e3574cce5e3fde4ed97df547c7360872.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-75d35b8b933727816098ee1d621b2fac.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../intro-active-inference.html" rel="next">
+<link href="../causal_inference/intro-causal-inference.html" rel="prev">
+<link href="../archive/logo.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e3574cce5e3fde4ed97df547c7360872.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-75d35b8b933727816098ee1d621b2fac.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -76,8 +111,55 @@ ul.task-list li input[type="checkbox"] {
 <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css"> -->
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../mermaid_custom_DAG3.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light">
@@ -89,7 +171,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">About</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../causal_inference/intro-causal-inference.html">causal inference</a></li><li class="breadcrumb-item"><a href="../causal_inference/DAG_rules.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">DAG rules</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -103,12 +185,12 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./archive/logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="./archive/logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../archive/logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../archive/logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">mishmash</a> 
+      <a href="../">mishmash</a> 
         <div class="sidebar-tools-main">
     <a href="https://yairmau.com/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-house-fill"></i></a>
     <a href="https://github.com/yairmau/mishmash/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
@@ -124,28 +206,28 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">About</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">causal inference</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./causal_inference/intro-causal-inference.html" class="sidebar-item-text sidebar-link">
+  <a href="../causal_inference/intro-causal-inference.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">introduction to causal inference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./causal_inference/DAG_rules.html" class="sidebar-item-text sidebar-link">
+  <a href="../causal_inference/DAG_rules.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">DAG rules</span></span></a>
   </div>
 </li>
@@ -162,7 +244,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro-active-inference.html" class="sidebar-item-text sidebar-link">
+  <a href="../intro-active-inference.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">introduction to active inference</span></span></a>
   </div>
 </li>
@@ -179,7 +261,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro-thermodynamics.html" class="sidebar-item-text sidebar-link">
+  <a href="../intro-thermodynamics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">intro to thermodynamics</span></span></a>
   </div>
 </li>
@@ -196,7 +278,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro-differential-geometry.html" class="sidebar-item-text sidebar-link">
+  <a href="../intro-differential-geometry.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">intro to differential geometry</span></span></a>
   </div>
 </li>
@@ -212,28 +294,29 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#about" id="toc-about" class="nav-link active" data-scroll-target="#about"><span class="header-section-number">1</span> About</a></li>
+  <li><a href="#kinds-of-junctions" id="toc-kinds-of-junctions" class="nav-link active" data-scroll-target="#kinds-of-junctions"><span class="header-section-number">3.1</span> 3 kinds of junctions</a>
+  <ul class="collapse">
+  <li><a href="#the-chain-mediation" id="toc-the-chain-mediation" class="nav-link" data-scroll-target="#the-chain-mediation"><span class="header-section-number">3.1.1</span> the chain (mediation)</a></li>
+  <li><a href="#the-fork-confounding" id="toc-the-fork-confounding" class="nav-link" data-scroll-target="#the-fork-confounding"><span class="header-section-number">3.1.2</span> the fork (confounding)</a></li>
+  <li><a href="#the-collider-selection-bias" id="toc-the-collider-selection-bias" class="nav-link" data-scroll-target="#the-collider-selection-bias"><span class="header-section-number">3.1.3</span> the collider (selection bias)</a></li>
+  <li><a href="#the-descendant-of-a-collider" id="toc-the-descendant-of-a-collider" class="nav-link" data-scroll-target="#the-descendant-of-a-collider"><span class="header-section-number">3.1.4</span> the descendant of a collider</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">3.2</span> summary</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../causal_inference/intro-causal-inference.html">causal inference</a></li><li class="breadcrumb-item"><a href="../causal_inference/DAG_rules.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">DAG rules</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">mishmash</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/yairmau/mishmash/blob/main/index.qmd"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">DAG rules</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button" data-quarto-source-url="https://github.com/yairmau/mishmash/blob/main/causal_inference/DAG_rules.ipynb">View Source</a></li></ul></div></div>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Yair Mau </p>
-          </div>
-  </div>
     
   
     
@@ -244,9 +327,282 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="about" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> About</h1>
-<p>This is where I put stuff I learn about. If any of these topics becomes developed enough, it might get its own webpage. For now, these are my half-baked thoughts and learning notes about subjects I’m interested in.</p>
+<section id="kinds-of-junctions" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="kinds-of-junctions"><span class="header-section-number">3.1</span> 3 kinds of junctions</h2>
+<p>Directed Acyclic Graphs (DAGs) encode the causal information between random variables. Writing <span class="math inline">A\rightarrow B</span> means A has a direct causal influence on B. The absence of an arrow encodes an assumption of no direct causal effect.</p>
+<section id="the-chain-mediation" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="the-chain-mediation"><span class="header-section-number">3.1.1</span> the chain (mediation)</h3>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph LR
+    A[A] --&gt; B["B&lt;br&gt;mechanism"] --&gt; C[C]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>An example by Pearl:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph LR
+    A[fire] --&gt; B[smoke] --&gt; C[alarm]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<ul>
+<li>The fire by itself does not set off an alarm, so there is no arrow between them.</li>
+<li>The fire does not set off an alarm through another mechanism, such as heat, so there are no other arrows that leave out of fire.</li>
+</ul>
+<p>The mediator B “screens off” information about A from C, and vice versa.</p>
+<ul>
+<li>If we know the value of “smoke”, learning about “fire” does not give us any reason to raise or lower our belief in “alarm”.</li>
+</ul>
+<p>Say that we have a table with 3 columns: fire, smoke, alarm. Each row is a data point, where 0 denotes “no” and 1 denotes “yes”. So <span class="math inline">(0,0,0)</span> means that there was no fire, no smoke, and no alarm.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>fire</th>
+<th>smoke</th>
+<th>alarm</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>etc</td>
+<td>etc</td>
+<td>etc</td>
+</tr>
+</tbody>
+</table>
+<p>The table above describes a world where everytime when there’s a fire, there’s smoke, and smoke always sets off the alarm.</p>
+<p>We can only look at the row where smoke equals 1. This is called <strong>conditioning on a variable</strong>. We will denote conditioning by shading the variable gray:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph LR
+    A[fire] --&gt; B[smoke]:::conditioned --&gt; C[alarm]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>In this perfect world, if we only look at the rows where smoke=1, we will expect to have alarm=1 every time, regardless whether fire=0 or fire=1.</p>
+<p>We might have a faulty alarm system, one that fails to respond correctly to smoke 5 percent of the time. In that case, if we look only at the rows where smoke=1 (i.e., we condition on smoke), we will find that the probability that alarm=1 is 95%, regardless whether fire=0 or fire=1.</p>
+<p>Conditioning on the mechanism/mediator B screened off the flow of information between A and C. Whenever we have a chain, conditioning on a variable closes off the flow of information.</p>
+</section>
+<section id="the-fork-confounding" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="the-fork-confounding"><span class="header-section-number">3.1.2</span> the fork (confounding)</h3>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+    B["B&lt;br&gt;confounding"] --&gt; A[A]
+    B --&gt; C[C]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>The confounder B makes A and C statistically correlated even though there is no direct causal link between them.</p>
+<p>An example from Pearl:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+    B["age of child&lt;br&gt;(confounding)"] --&gt; A[shoe size]
+    B --&gt; C[reading ability]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Children with larger shoe sizes tend to read at a higher level. But this relationship is not one of cause and effect. Giving a child larger shoes won’t make them read better. Instead, both variables are explained by a third, age. Older children have larger shoes, and they also are more advanced readers.</p>
+<p>We can eliminate this correlation by conditioning on the child’s age.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+    B["age of child&lt;br&gt;(confounding)"]:::conditioned --&gt; A[shoe size]
+    B --&gt; C[reading ability]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Imagine we have a table with three columns: age, shoe size, and reading ability. Conditioning for age means that we only select rows that have the same value of age. In that case, there won’t be any correlation between shoe size and reading ability. We then say that A and C are conditionally independent, given B. We can express that mathematically as <span class="math inline">A \perp C \mid B</span>. This last expression can be written more explicitly as:</p>
+<p><span class="math display">
+P(A,C \mid B) = P(A \mid B)\cdot P(C \mid B).
+</span></p>
+<p>To get an intuition of why beauty and talent become negatively correlated once we condition on the person being chosen to be on a movie, see the graphs below.</p>
+<div id="96a0b091" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>import libraries</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="c575f676" class="cell" data-execution_count="13">
+<details class="code-fold">
+<summary>generate data</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>rng <span class="op">=</span> np.random.RandomState(<span class="dv">1</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a>N<span class="op">=</span><span class="dv">70</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>x <span class="op">=</span> rng.uniform(size<span class="op">=</span>N)</span>
+<span id="cb2-4"><a href="#cb2-4"></a>y <span class="op">=</span> rng.uniform(size<span class="op">=</span>N)</span>
+<span id="cb2-5"><a href="#cb2-5"></a>cond_x <span class="op">=</span> x <span class="op">&gt;</span> <span class="fl">0.5</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>cond_y <span class="op">=</span> y <span class="op">&gt;</span> <span class="fl">0.5</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>x2 <span class="op">=</span> x[cond_x <span class="op">|</span> cond_y]</span>
+<span id="cb2-8"><a href="#cb2-8"></a>y2 <span class="op">=</span> y[cond_x <span class="op">|</span> cond_y]</span>
+<span id="cb2-9"><a href="#cb2-9"></a>x3 <span class="op">=</span> x[<span class="op">~</span>cond_x <span class="op">&amp;</span> <span class="op">~</span>cond_y]</span>
+<span id="cb2-10"><a href="#cb2-10"></a>y3 <span class="op">=</span> y[<span class="op">~</span>cond_x <span class="op">&amp;</span> <span class="op">~</span>cond_y]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="e9cf4e0e" class="cell" data-execution_count="21">
+<details class="code-fold">
+<summary>plot</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">3</span>), sharex<span class="op">=</span><span class="va">True</span>, sharey<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a>ax[<span class="dv">0</span>].scatter(x, y)</span>
+<span id="cb3-3"><a href="#cb3-3"></a>ax[<span class="dv">1</span>].scatter(x2, y2, color<span class="op">=</span><span class="st">"C0"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4"></a>ax[<span class="dv">1</span>].scatter(x3, y3, color<span class="op">=</span><span class="st">"C0"</span>, alpha<span class="op">=</span><span class="fl">0.2</span>)</span>
+<span id="cb3-5"><a href="#cb3-5"></a>ax[<span class="dv">0</span>].<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">"beauty (B)"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6"></a>          ylabel<span class="op">=</span><span class="st">"talent (T)"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7"></a>          title<span class="op">=</span><span class="st">"B &amp; T are independent"</span>)</span>
+<span id="cb3-8"><a href="#cb3-8"></a>ax[<span class="dv">1</span>].<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">"beauty (B)"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9"></a>          title<span class="op">=</span><span class="st">"B &amp; T are negatively correlated</span><span class="ch">\n</span><span class="st">conditional on being hired"</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="DAG_rules_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="the-collider-selection-bias" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="the-collider-selection-bias"><span class="header-section-number">3.1.3</span> the collider (selection bias)</h3>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+    A[A] --&gt; B["B&lt;br&gt;(collider)"]
+    C[C] --&gt; B
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>An example from Pearl. Big Hollywood movie actors are chosen either because of their beauty or because of their talent.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+    A[beauty] --&gt; B["actor being chosen&lt;br&gt;(collider)"]
+    C[talent] --&gt; B
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>In the general population, beauty and talent are completely uncorrelated. The fact that we know an actor was chosen to star in a Hollywood movie makes these traits correlated for that actor. Think about it: Hollywood can choose an actor who is good looking, talented, or both, but <strong>never</strong> neither. This selection bias introduces a negative correlation between beauty and talent, once casting is controlled for. If I learn that a given actor is super talented, this information increases my credance that they are ugly.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+    A[beauty] --&gt; B["actor being chosen&lt;br&gt;(collider)"]:::conditioned
+    C[talent] --&gt; B
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>In the previous two junctions, the information flow was blocked once we conditioned on the relevant variable. Here it’s the opposite! When the collider variable B is not conditioned for, A and C are uncorrelated. In our example, that is to say that beauty and talent are uncorrelated in the general population. Once B is controlled for, then A and C will be correlated.</p>
+</section>
+<section id="the-descendant-of-a-collider" class="level3" data-number="3.1.4">
+<h3 data-number="3.1.4" class="anchored" data-anchor-id="the-descendant-of-a-collider"><span class="header-section-number">3.1.4</span> the descendant of a collider</h3>
+<p>This demonstrates the trickier rule: conditioning on <span class="math inline">D</span> (a descendant of <span class="math inline">B</span>) also opens the path between <span class="math inline">A</span> and <span class="math inline">C</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+    A[A] --&gt; B["B&lt;br&gt;(collider)"] --&gt; D[D]
+    C[C] --&gt; B
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Example from Pearl.</p>
+<p>The grass outside may become wet either because of the rain or because the sprinklers were turned on. In general, there is no correlation whatsoever between the timing of rainfall events and the opening of sprinklers.</p>
+<p>If I look outside and see the grass wet, that information introduces a correlation between the probability that it rained and the probability that the sprinklers were on. So far so good, this is the classic collider story.</p>
+<p>If I haven’t looked at the grass, but instead I see my child entering the house with muddy shoes, that information will also introduce a correlation between rainfall and sprinklers. The muddy shoes are evidence that the grass is (or was) wet, even if I did not observe it directly. In that sense, observing a consequence of the wet grass plays a similar role to observing the wet grass itself.</p>
+<p><strong>More generally, conditioning on a collider or on any of its descendants opens the path.</strong></p>
+</section>
+</section>
+<section id="summary" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="summary"><span class="header-section-number">3.2</span> summary</h2>
+<ul>
+<li><p>chain <span class="math inline">A \rightarrow B \rightarrow C</span>:<br>
+The path between A and C is “open” by default, but conditioning on B blocks it.</p></li>
+<li><p>fork <span class="math inline">A \leftarrow B \rightarrow C</span>:<br>
+The path between A and C is “open” by default, but conditioning on B blocks it.</p></li>
+<li><p>collider <span class="math inline">A \rightarrow B \leftarrow C</span>:<br>
+The path between A and C is <strong>“blocked”</strong> by default, but conditioning on B opens it.<br>
+Conditioning on any descendant of the collider also opens the path.</p></li>
+</ul>
 
 
 </section>
@@ -705,10 +1061,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../causal_inference/intro-causal-inference.html" class="pagination-link" aria-label="introduction to causal inference">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">introduction to causal inference</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./causal_inference/intro-causal-inference.html" class="pagination-link" aria-label="introduction to causal inference">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">introduction to causal inference</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../intro-active-inference.html" class="pagination-link" aria-label="introduction to active inference">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">introduction to active inference</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -1,0 +1,46 @@
+/* Target all rectangular node shapes */
+.node rect, 
+.node .label-container {
+    fill: white !important;
+    stroke: #333 !important;
+    stroke-width: 1.5px !important;
+}
+
+/* Ensure arrowheads stay dark and visible */
+marker path, 
+.marker {
+    fill: #333 !important;
+    stroke: #333 !important;
+}
+
+/* Class for conditioned nodes (thick border) */
+.conditioned rect, 
+.conditioned .label-container {
+    stroke-width: 4px !important;
+    stroke: black !important;
+}
+
+/* 1. Target the actual lines with high specificity */
+.mermaid .edgePath .path, 
+.mermaid .flowchart-link,
+path.external-link,
+.edge-thickness-normal {
+  stroke-width: 2.5px !important;
+  stroke: #333 !important;
+}
+
+/* 2. Scale the arrowheads properly */
+.mermaid marker {
+  transform: scale(30) !important;
+}
+
+/* 3. Force the arrowhead fill */
+.mermaid marker path {
+  fill: #333 !important;
+  stroke: none !important;
+}
+
+/* 4. Fix for potential 'disappearing' arrows due to scaling */
+svg {
+  overflow: visible !important;
+}

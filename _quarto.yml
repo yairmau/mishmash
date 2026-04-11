@@ -11,7 +11,8 @@ book:
     - index.qmd
     - part: "causal inference"
       chapters:
-        - intro-causal-inference.qmd
+        - causal_inference/intro-causal-inference.qmd
+        - causal_inference/DAG_rules.ipynb
     - part: "active inference"
       chapters:
         - intro-active-inference.qmd
