@@ -6,3 +6,4 @@ Main sources:
 
 * Parr, T., Pezzulo, G., & Friston, K. J. (2022). Active inference: the free energy principle in mind, brain, and behavior. MIT Press.
 * Mann, S. F., Pain, R., & Kirchhoff, M. D. (2022). Free energy: A user’s guide. Biology & Philosophy, 37(4), 33.
+* Smith, R., Friston, K. J., & Whyte, C. J. (2022). A step-by-step tutorial on active inference and its application to empirical data. Journal of mathematical psychology, 107, 102632.
