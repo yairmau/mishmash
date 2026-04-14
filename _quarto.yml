@@ -15,7 +15,7 @@ book:
         - causal_inference/DAG_rules.ipynb
     - part: "active inference"
       chapters:
-        - intro-active-inference.qmd
+        - active_inference/intro-active-inference.qmd
     - part: "thermodynamics"
       chapters:
         - intro-thermodynamics.qmd

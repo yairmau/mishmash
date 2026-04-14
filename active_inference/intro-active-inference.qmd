@@ -1,0 +1,8 @@
+# introduction to active inference
+
+{{< iconify lucide construction >}} this page is under construction {{< iconify lucide construction >}}
+
+Main sources:
+
+* Parr, T., Pezzulo, G., & Friston, K. J. (2022). Active inference: the free energy principle in mind, brain, and behavior. MIT Press.
+* Mann, S. F., Pain, R., & Kirchhoff, M. D. (2022). Free energy: A user’s guide. Biology & Philosophy, 37(4), 33.

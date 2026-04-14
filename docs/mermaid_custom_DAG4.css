@@ -1,0 +1,48 @@
+/* all nodes */
+.node rect,
+.node path,
+.node polygon {
+  fill: white !important;
+  stroke: #333 !important;
+  stroke-width: 1.5px !important;
+}
+
+/* conditioned nodes in handDrawn mode: inner rough fill/hachure */
+.node.conditioned path:first-of-type,
+.conditioned path:first-of-type {
+  fill: #d9d9d9 !important;
+  stroke: #fce5ae !important;   /* light orange hatch */
+  stroke-width: 4px !important;
+}
+
+/* conditioned nodes in handDrawn mode: outer border */
+.node.conditioned path:last-of-type,
+.conditioned path:last-of-type {
+  fill: none !important;
+  stroke: #f5b211 !important;   /* dark orange border */
+  stroke-width: 2px !important;
+}
+
+/* normal rectangular conditioned nodes */
+.conditioned > rect {
+  fill: #d9d9d9 !important;
+  stroke: #1f4e79 !important;
+  stroke-width: 2px !important;
+}
+
+/* edges */
+.edgePath .path,
+.flowchart-link {
+  stroke: #333 !important;
+  stroke-width: 2px !important;
+}
+
+/* dashed = closed */
+.edgePath.dashed .path {
+  stroke-dasharray: 5 5 !important;
+}
+
+/* arrowheads */
+marker path {
+  fill: #333 !important;
+}

@@ -68,7 +68,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../intro-active-inference.html" rel="next">
+<link href="../active_inference/intro-active-inference.html" rel="next">
 <link href="../causal_inference/intro-causal-inference.html" rel="prev">
 <link href="../archive/logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
@@ -159,7 +159,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../mermaid_custom_DAG3.css">
+<link rel="stylesheet" href="../mermaid_custom_DAG4.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light">
@@ -244,7 +244,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../intro-active-inference.html" class="sidebar-item-text sidebar-link">
+  <a href="../active_inference/intro-active-inference.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">introduction to active inference</span></span></a>
   </div>
 </li>
@@ -337,8 +337,9 @@ window.Quarto = {
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
-    A[A] --&gt; B["B&lt;br&gt;mechanism"] --&gt; C[C]
+<pre class="mermaid mermaid-js">%%{init: {'flowchart': {'curve': 'linear'}, 'themeVariables': {}, 'look': 'handDrawn'}}%%
+graph LR
+    A["A"] --&gt; B["B&lt;br&gt;mechanism"] --&gt; C["C"]
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -351,7 +352,8 @@ window.Quarto = {
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
+<pre class="mermaid mermaid-js">%%{init: {'flowchart': {'curve': 'linear'}, 'themeVariables': {}, 'look': 'handDrawn'}}%%
+graph LR
     A[fire] --&gt; B[smoke] --&gt; C[alarm]
 </pre>
 </div>
@@ -405,13 +407,14 @@ window.Quarto = {
 </tbody>
 </table>
 <p>The table above describes a world where everytime when there’s a fire, there’s smoke, and smoke always sets off the alarm.</p>
-<p>We can only look at the row where smoke equals 1. This is called <strong>conditioning on a variable</strong>. We will denote conditioning by shading the variable gray:</p>
+<p>We can only look at the row where smoke equals 1. This is called <strong>conditioning on a variable</strong>. We will denote conditioning by shading the variable orange:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
+<pre class="mermaid mermaid-js">%%{init: {'flowchart': {'curve': 'linear'}, 'themeVariables': {}, 'look': 'handDrawn'}}%%
+graph LR
     A[fire] --&gt; B[smoke]:::conditioned --&gt; C[alarm]
 </pre>
 </div>
@@ -430,7 +433,8 @@ window.Quarto = {
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph TD
+<pre class="mermaid mermaid-js">%%{init: {'flowchart': {'curve': 'linear'}, 'themeVariables': {}, 'look': 'handDrawn'}}%%
+graph TD
     B["B&lt;br&gt;confounding"] --&gt; A[A]
     B --&gt; C[C]
 </pre>
@@ -446,7 +450,8 @@ window.Quarto = {
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph TD
+<pre class="mermaid mermaid-js">%%{init: {'flowchart': {'curve': 'linear'}, 'themeVariables': {}, 'look': 'handDrawn'}}%%
+graph TD
     B["age of child&lt;br&gt;(confounding)"] --&gt; A[shoe size]
     B --&gt; C[reading ability]
 </pre>
@@ -462,7 +467,8 @@ window.Quarto = {
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph TD
+<pre class="mermaid mermaid-js">%%{init: {'flowchart': {'curve': 'linear'}, 'themeVariables': {}, 'look': 'handDrawn'}}%%
+graph TD
     B["age of child&lt;br&gt;(confounding)"]:::conditioned --&gt; A[shoe size]
     B --&gt; C[reading ability]
 </pre>
@@ -483,7 +489,8 @@ P(A,C \mid B) = P(A \mid B)\cdot P(C \mid B).
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph TD
+<pre class="mermaid mermaid-js">%%{init: {'flowchart': {'curve': 'linear'}, 'themeVariables': {}, 'look': 'handDrawn'}}%%
+graph TD
     A[A] --&gt; B["B&lt;br&gt;(collider)"]
     C[C] --&gt; B
 </pre>
@@ -498,7 +505,8 @@ P(A,C \mid B) = P(A \mid B)\cdot P(C \mid B).
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph TD
+<pre class="mermaid mermaid-js">%%{init: {'flowchart': {'curve': 'linear'}, 'themeVariables': {}, 'look': 'handDrawn'}}%%
+graph TD
     A[beauty] --&gt; B["actor being chosen&lt;br&gt;(collider)"]
     C[talent] --&gt; B
 </pre>
@@ -513,7 +521,8 @@ P(A,C \mid B) = P(A \mid B)\cdot P(C \mid B).
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph TD
+<pre class="mermaid mermaid-js">%%{init: {'flowchart': {'curve': 'linear'}, 'themeVariables': {}, 'look': 'handDrawn'}}%%
+graph TD
     A[beauty] --&gt; B["actor being chosen&lt;br&gt;(collider)"]:::conditioned
     C[talent] --&gt; B
 </pre>
@@ -576,7 +585,8 @@ P(A,C \mid B) = P(A \mid B)\cdot P(C \mid B).
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph TD
+<pre class="mermaid mermaid-js">%%{init: {'flowchart': {'curve': 'linear'}, 'themeVariables': {}, 'look': 'handDrawn'}}%%
+graph TD
     A[A] --&gt; B["B&lt;br&gt;(collider)"] --&gt; D[D]
     C[C] --&gt; B
 </pre>
@@ -1067,7 +1077,7 @@ Conditioning on any descendant of the collider also opens the path.</p></li>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../intro-active-inference.html" class="pagination-link" aria-label="introduction to active inference">
+      <a href="../active_inference/intro-active-inference.html" class="pagination-link" aria-label="introduction to active inference">
         <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">introduction to active inference</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
