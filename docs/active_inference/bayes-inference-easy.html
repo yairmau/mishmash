@@ -306,9 +306,9 @@ window.Quarto = {
 <h2 data-number="5.1" class="anchored" data-anchor-id="definitions"><span class="header-section-number">5.1</span> definitions</h2>
 <ul>
 <li><strong>generative process:</strong> This is the outside reality, with all its complexity. Here it is the prairie, the vegetation, the wind, the fox, the birds, etc.</li>
-<li><strong>external state <span class="math inline">x^\star</span>:</strong> This is the ground truth the mouse would love to know, but it doesn’t have access to. Here it is the presence or absence of the fox in the vicinity of the mouse burrow.</li>
-<li><strong>hidden state <span class="math inline">x</span>:</strong> This is what the mouse is modeling in its head. That’s a terrible name, since <span class="math inline">x</span> represents something the mouse believes in, and from its own point of view this is not hidden at all, but that’s what this is called by everyone. <span class="math inline">x</span> is the internal state or internal representation of <span class="math inline">x^\star</span>. Here, <span class="math inline">P(x)</span> is the mouse’s belief regarding the probability of the fox’s presence: <span class="math inline">P(x=0,x=1)</span>, where <span class="math inline">x=0</span> means that the fox is absent, and <span class="math inline">x=1</span> that it is present.</li>
-<li><strong>sensory outcome <span class="math inline">y</span>:</strong> This is what the mouse observes from the world. Here, <span class="math inline">y</span> is the strength of the fox’s smell, it can be either strong or faint.</li>
+<li><strong>external state <span class="math inline">x^\star</span>:</strong> This is the ground truth the mouse would love to know, but doesn’t have access to. Here it is the presence or absence of the fox in the vicinity of the burrow.</li>
+<li><strong>hidden state <span class="math inline">x</span>:</strong> This is what the mouse is modeling in its head. That’s a terrible name, since <span class="math inline">x</span> represents something the mouse believes in, and from its own point of view this is not hidden at all. Alas, that’s what this is called by everyone. <span class="math inline">x</span> is the internal state or internal representation of <span class="math inline">x^\star</span>. Here, <span class="math inline">P(x)</span> is the mouse’s belief regarding the probability of the fox’s presence: <span class="math inline">P(x=0,x=1)</span>, where <span class="math inline">x=0</span> means that the fox is absent, and <span class="math inline">x=1</span> that it is present.</li>
+<li><strong>sensory outcome <span class="math inline">y</span>:</strong> This is what the mouse observes from the world. Here, <span class="math inline">y</span> is the strength of the fox’s smell, it can be either strong <span class="math inline">(y=1)</span> or faint <span class="math inline">(y=0)</span>.</li>
 </ul>
 </section>
 <section id="bayes-rule" class="level2" data-number="5.2">
@@ -347,12 +347,12 @@ P(x=0) \\ P(x=1)
 </thead>
 <tbody>
 <tr class="odd">
-<td><span class="math inline">y=0</span> (faint smell)</td>
+<td><strong><span class="math inline">y=0</span> (faint smell)</strong></td>
 <td>0.7</td>
 <td>0.1 (false negative)</td>
 </tr>
 <tr class="even">
-<td><span class="math inline">y=1</span> (strong smell)</td>
+<td><strong><span class="math inline">y=1</span> (strong smell)</strong></td>
 <td>0.3 (false positive)</td>
 <td>0.9</td>
 </tr>
@@ -369,6 +369,7 @@ P(y=1\mid x)=
 \end{bmatrix}.
 </span></p>
 <p>When we observe <span class="math inline">y=1</span>, we extract the corresponding row from the <span class="math inline">A</span> matrix and treat it as a vector of likelihoods for each possible state of <span class="math inline">x</span>.</p>
+<p>Attention: while the elements of the prior vector <span class="math inline">P(x)</span> sum to 1, the elements of the likelihood vector <span class="math inline">P(y=1\mid x)</span> do not sum to 1. This is because the likelihood is not a probability distribution over <span class="math inline">x</span>, but rather a conditional probability distribution over <span class="math inline">y</span> given <span class="math inline">x</span>. The likelihood tells us how likely it is to observe <span class="math inline">y=1</span> for each possible value of <span class="math inline">x</span>, but it does not tell us how likely each value of <span class="math inline">x</span> is.</p>
 <p>The numerator of Bayes’ rule is the product of the likelihood and the prior, which gives us:</p>
 <p><span class="math display">
 P(y=1\mid x)P(x) =
@@ -382,7 +383,7 @@ P(y=1\mid x)P(x) =
 \begin{bmatrix}0.294 \\ 0.018
 \end{bmatrix}.
 </span></p>
-<p>Here we didn’t use matrix multiplication, but rather element-wise multiplication, which is also called the Hadamard product.</p>
+<p>Here we didn’t use matrix (or vector) multiplication, but rather element-wise multiplication, which is also called the Hadamard product.</p>
 </section>
 <section id="evidence" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="evidence"><span class="header-section-number">5.4</span> evidence</h2>
@@ -423,6 +424,33 @@ P(x\mid y=1) =
 \end{bmatrix}.
 </span></p>
 <p>Now, after receiving the strong smell, the mouse’s belief that the fox is present has been updated from 50% to a 75% chance. A single piece of sensory evidence can have a very different impact on the mouse’s belief depending on its prior belief!</p>
+<p>Another interesting point is what would the mouse believe if it received a faint smell (<span class="math inline">y=0</span>) instead of a strong smell (assuming the first prior, where the probability of the fox being present is 2%). In that case, the likelihood would be:</p>
+<p><span class="math display">
+P(y=0\mid x) =
+\begin{bmatrix}0.7 \\ 0.1
+\end{bmatrix}.
+</span></p>
+<p>The numerator of Bayes’ rule would be: <span class="math display">
+P(y=0\mid x)P(x) =
+\begin{bmatrix}0.7 \\ 0.1
+\end{bmatrix}
+\odot
+\begin{bmatrix}0.98 \\ 0.02
+\end{bmatrix} =
+\begin{bmatrix}0.686 \\ 0.002
+\end{bmatrix}.
+</span></p>
+<p>The evidence would be: <span class="math display">
+P(y=0) = 0.686 + 0.002 = 0.688.
+</span></p>
+<p>The posterior would be: <span class="math display">
+P(x\mid y=0) =
+\frac{\begin{bmatrix}0.686 \\ 0.002
+\end{bmatrix}}{0.688} =
+\begin{bmatrix}0.9971 \\ 0.0029
+\end{bmatrix}.
+</span></p>
+<p>Maybe it was already obvious to you, but I’ll still make this point explicitly. A strong smell (<span class="math inline">y=1</span>) increases the mouse’s belief in the presence of the fox, from 2% to 5.77%, an increase of 3.77 percentage points. On the other hand, a faint smell (<span class="math inline">y=0</span>) decreases it from 2% to 0.29%, a decrease of 1.71 percentage points. There couldn’t be a symmetry between the two cases, because we could never go below 0% or above 100%. The strong smell is more informative than the faint smell, because it has a higher likelihood of being observed when the fox is present.</p>
 <p>At the beginning, I called this an easy case of Bayesian inference. As we will see in the next chapter, it is rare to have the luxury of being able to solve the inference problem in closed form using Bayes’ rule. In most cases, we will have to use approximate inference methods, which are more computationally efficient but less accurate.</p>
 
 
