@@ -17,6 +17,7 @@ book:
       chapters:
         - active_inference/intro-active-inference.qmd
         - active_inference/bayes-inference-easy.ipynb
+        - active_inference/bayes-inference-intractable.ipynb
         - active_inference/simplex.ipynb
     - part: "thermodynamics"
       chapters:

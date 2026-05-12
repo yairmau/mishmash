@@ -142,36 +142,91 @@
     ]
   },
   {
+    "objectID": "active_inference/bayes-inference-intractable.html",
+    "href": "active_inference/bayes-inference-intractable.html",
+    "title": "6  intractable bayesian inference",
+    "section": "",
+    "text": "6.1 moving to continuous states\nIn the previous section, we solved a simple 2x2 grid where the mouse only had to worry about whether a fox was present or absent. While that was a great starting point, the real world is rarely that discrete. To move toward a more realistic model, we must consider the world as a continuous space.\nImagine that the mouse is no longer just asking “is there a fox?” but is instead trying to estimate the distance of the fox from the burrow.\nIn this scenario, the mouse’s generative model is no longer a simple table. It is a continuous joint probability density function (PDF), p(x, y). This function maps how likely a specific smell intensity y is, given a specific distance x, weighted by how likely the mouse thinks that distance was in the first place (the prior).\nShow the code\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom scipy.stats import gamma\nfrom matplotlib.colors import PowerNorm\n\n# 1. Setup the axes\nx = np.linspace(0.1, 12, 300) \ny = np.linspace(0, 15, 300)   \nX, Y = np.meshgrid(x, y)\n\n# 2. Define the Generative Model\nprior_pdf = np.exp(-0.2 * x) \nprior_pdf /= prior_pdf.sum()  \n\nk = 1 + 5 * np.exp(-0.5 * x) \nmean_y = 15 * np.exp(-0.4 * x)\ntheta = mean_y / k\nlikelihood_pdf = gamma.pdf(Y, a=k, scale=theta)\n\n# 3. Compute Joint PDF\njoint_pdf = likelihood_pdf * prior_pdf\n\n# 4. Marginal Likelihood (Evidence)\nevidence_y = np.sum(joint_pdf, axis=1)\n\n# 5. Inference for a specific observation (y=4.0)\nobs_y_val = 4.0\ny_idx = np.argmin(np.abs(y - obs_y_val))\nnumerator_slice = joint_pdf[y_idx, :]\nevidence_scalar = evidence_y[y_idx]\nposterior_pdf = numerator_slice / evidence_scalar \n\n# 6. Calculate Centers of Mass (Expected Values)\n# E[x] = sum(x * p(x)) / sum(p(x)) -- since they are normalized, the denominator is 1\ncom_prior = np.sum(x * prior_pdf)\ncom_posterior = np.sum(x * posterior_pdf)\n\n# 7. Plotting\nfig = plt.figure(figsize=(12, 10))\ngs = fig.add_gridspec(2, 2, width_ratios=[4, 1], height_ratios=[4, 2], hspace=0.1, wspace=0.05)\n\n# Top Left: Joint PDF\nax_main = fig.add_subplot(gs[0, 0])\nim = ax_main.pcolormesh(X, Y, joint_pdf, shading='auto', cmap='viridis', norm=PowerNorm(gamma=0.3))\nax_main.axhline(obs_y_val, color='white', linestyle='--', alpha=0.8, label=f'Observation: smell $y={obs_y_val}$')\nax_main.set_ylabel('Smell Intensity (y)')\nax_main.set_title('Joint PDF: $p(x, y)$')\nax_main.legend()\n\n# Top Right: Evidence Sidebar\nax_evid = fig.add_subplot(gs[0, 1], sharey=ax_main)\nax_evid.plot(evidence_y, y, color='teal', lw=2)\nax_evid.fill_betweenx(y, 0, evidence_y, color='teal', alpha=0.3)\nax_evid.set_xlabel('Evidence $p(y)$')\nax_evid.set(ylim=(0, 15),\n            xlim=(0, evidence_y.max() * 1.2)\n)\ny4_idx = np.argmin(np.abs(y - 4.0))\nax_evid.plot(evidence_y[y4_idx], y[y4_idx], 'ko', label=f'Evidence at $y={obs_y_val}$')\nax_evid.text(evidence_y[y4_idx] + evidence_y.max()*0.1, y[y4_idx], f'p(y=4.0)={evidence_y[y4_idx]:.2f}', va='center', ha='left', fontsize=10)\nplt.setp(ax_evid.get_yticklabels(), visible=False)\n\n# Bottom: Prior vs Posterior with Centers of Mass\nax_inf = fig.add_subplot(gs[1, 0], sharex=ax_main)\nax_inf.plot(x, prior_pdf, color='gray', linestyle='-', lw=2, label='Prior $p(x)$')\nax_inf.plot(x, posterior_pdf, color='crimson', lw=2.5, label='Posterior $p(x|y)$')\nax_inf.fill_between(x, 0, posterior_pdf, color='crimson', alpha=0.1)\n\nax_inf.text(7, 0.003, r\"prior, $p(x)$\", color='gray', fontsize=12, ha='center')\nax_inf.text(5.5, 0.006, r\"posterior, $p(x|y)$\", color='crimson', fontsize=12, ha='center')\nax_inf.text(com_prior, 0.001, r\" $E[p(x)]$\", color='gray', fontsize=12, ha='left')\nax_inf.text(com_posterior, 0.001, r\"$E[p(x|y)]$  \", color='crimson', fontsize=12, ha='right')\n# Add Vertical Lines for Centers of Mass\nx_com_prior_idx = np.argmin(np.abs(x - com_prior))\nx_com_posterior_idx = np.argmin(np.abs(x - com_posterior))\nax_inf.plot([x[x_com_prior_idx]]*2, [0, prior_pdf[x_com_prior_idx]], '--', color='gray', label=f'Prior Mean: {com_prior:.2f}')\nax_inf.plot([x[x_com_posterior_idx]]*2, [0, posterior_pdf[x_com_posterior_idx]], '--', color='crimson', label=f'Posterior Mean: {com_posterior:.2f}')\n# ax_inf.axvline(com_prior, color='gray', linestyle='--', alpha=0.6, label=f'Prior Mean: {com_prior:.2f}')\n# ax_inf.axvline(com_posterior, color='crimson', linestyle='--', alpha=0.8, label=f'Posterior Mean: {com_posterior:.2f}')\n\nax_inf.set_xlabel('Distance (x)')\nax_inf.set_ylabel('Probability Density')\nax_inf.set_title('Inference: Updating Beliefs and Point Estimates', y=0.88)\nax_inf.set(xlim=(0, 12),\n           ylim=(0, max(prior_pdf.max(), posterior_pdf.max()) * 1.2)\n           )\n\nax_main.text(0.03, 0.97, r\"a\", transform=ax_main.transAxes,\n         horizontalalignment='left', verticalalignment='top',\n         fontweight=\"bold\", color=\"white\", fontsize=18)\nax_evid.text(0.06, 0.97, r\"b\", transform=ax_evid.transAxes,\n         horizontalalignment='left', verticalalignment='top',\n         fontweight=\"bold\", color=\"black\", fontsize=18)\nax_inf.text(0.03, 0.97, r\"c\", transform=ax_inf.transAxes,\n         horizontalalignment='left', verticalalignment='top',\n         fontweight=\"bold\", color=\"black\", fontsize=18)\n\nplt.show()\nAssume that the mouse started with a prior probability density for the fox’s distance as shown by the gray curve in panel c. The expected value (center of mass) of this prior is 3.87 (in standard mouse units). The mouse then receives a sensory observation of y=4.0. The mouse uses its internal generative model to figure out what this means. The generative model is the joint PDF shown in panel a, which encodes the likelihood of observing different scent intensities at different distances, multiplied by the prior belief about those distances. By slicing through this joint PDF at the observed scent intensity of y=4.0 (gray dashed line), the mouse can find the numerator of Bayes’ rule, p(x, y=4.0). To get the posterior, the mouse needs to normalize this slice by the evidence p(y=4.0). The full curve for the evidence p(y) is shown in panel b, and it can be calculated by integrating the joint PDF over all distances x, that is, integrating over the horizontal axis of panel a. This integral gives us the marginal probability of observing that scent intensity, regardless of the distance. The value of the evidence at y=4.0 is shown as a black dot in panel b, and it equals 0.07. This value is the denominator in Bayes’ rule. Finally, the mouse divides the slice of the joint PDF at y=4.0 by this evidence value to get the posterior PDF over distances given the observed scent intensity. This is the red curve in panel c. The center of mass of the posterior is 2.89, which is closer than the prior mean of 3.87, indicating that after sniffing a smell intensity of 4.0, the mouse now things that the fox is likely closer than it previously thought.\nEasy, right?",
+    "crumbs": [
+      "active inference",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>intractable bayesian inference</span>"
+    ]
+  },
+  {
+    "objectID": "active_inference/bayes-inference-intractable.html#moving-to-continuous-states",
+    "href": "active_inference/bayes-inference-intractable.html#moving-to-continuous-states",
+    "title": "6  intractable bayesian inference",
+    "section": "",
+    "text": "External state x^\\star: The physical, objective distance of the fox (e.g., 100 meters).\nHidden state x: The mouse’s internal representation of that distance.\nSensory outcome y: The continuous intensity of the fox’s scent reaching the mouse’s nose.",
+    "crumbs": [
+      "active inference",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>intractable bayesian inference</span>"
+    ]
+  },
+  {
+    "objectID": "active_inference/bayes-inference-intractable.html#the-problem-of-degeneracy",
+    "href": "active_inference/bayes-inference-intractable.html#the-problem-of-degeneracy",
+    "title": "6  intractable bayesian inference",
+    "section": "6.2 the problem of degeneracy",
+    "text": "6.2 the problem of degeneracy\nAt first glance, this seems like a “simple enough” upgrade to the example from the previous section. If the mouse gets a smell intensity of y=4, it can just look at the corresponding “slice” of the joint PDF and find the most likely distance. In our Python “cartoon,” this is a trivial numerical task.\nHowever, real-world sensory data is degenerate. This means that a single sensory input (a faint smell) could be caused by many different configurations of the world.\n\nThe fox is far away on a breezy day.\nThe fox is very close, but the wind is blowing the scent away from the burrow.\nThe fox is medium-distance, but the mouse has a stuffed nose (sensor noise).\n\nIf the mouse only models “distance”, its likelihood mapping p(y|x) must be extremely “blurry” to account for all that wind-related uncertainty. A blurry model is a dangerous model; it leads to high-variance guesses that could get the mouse eaten.",
+    "crumbs": [
+      "active inference",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>intractable bayesian inference</span>"
+    ]
+  },
+  {
+    "objectID": "active_inference/bayes-inference-intractable.html#the-curse-of-dimensionality",
+    "href": "active_inference/bayes-inference-intractable.html#the-curse-of-dimensionality",
+    "title": "6  intractable bayesian inference",
+    "section": "6.3 the curse of dimensionality",
+    "text": "6.3 the curse of dimensionality\nTo gain precision, the mouse must expand its hidden state x into a high-dimensional vector. It must model not just distance, but also wind velocity, wind direction, and turbulence, not to speak of the fox’s behavior and the possibility that there are multiple foxes. These are “nuisance variables”—the mouse doesn’t care about the wind for its own sake, but it must infer the state of the wind to “de-noise” the smell of the fox.\nAs we add these necessary dimensions (distance, angle, velocity, wind speed, turbulence, humidity, etc.), our “easy” Bayesian solution falls apart:\n\nThe Integral Problem: To find the evidence p(y), the mouse must now integrate over all these dimensions simultaneously.\n\np(y) = \\int \\int \\int \\dots \\int p(y|x_1, x_2, \\dots, x_n) p(x_1, x_2, \\dots, x_n) dx_1 dx_2 \\dots dx_n\n\nComputational Collapse: If we used the same 300-point grid from our Python script for 10 dimensions, we would need 300^{10} calculations. That is roughly 5 \\times 10^{24} operations—far more than any biological brain can compute in the split second needed to escape a predator.",
+    "crumbs": [
+      "active inference",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>intractable bayesian inference</span>"
+    ]
+  },
+  {
+    "objectID": "active_inference/bayes-inference-intractable.html#the-need-for-a-shortcut",
+    "href": "active_inference/bayes-inference-intractable.html#the-need-for-a-shortcut",
+    "title": "6  intractable bayesian inference",
+    "section": "6.4 the need for a shortcut",
+    "text": "6.4 the need for a shortcut\nThis is the “Statistical Inverse Problem” in its true form. Exact Bayesian inference is mathematically beautiful but biologically impossible in complex environments. The mouse cannot solve the integral to find the exact “Evidence.”\nInstead of trying to calculate that impossible integral, the brain uses a mathematical shortcut called Variational Inference. It turns a “calculus problem” (integration) into an “optimization problem.” The mouse creates a “guess” distribution q(x) and simply moves that guess until it fits the incoming data, bypassing the need to ever solve the high-dimensional integral of the evidence.",
+    "crumbs": [
+      "active inference",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>intractable bayesian inference</span>"
+    ]
+  },
+  {
     "objectID": "active_inference/simplex.html",
     "href": "active_inference/simplex.html",
-    "title": "6  simplex",
+    "title": "7  simplex",
     "section": "",
     "text": "import libraries\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom matplotlib.patches import FancyArrowPatch\nfrom mpl_toolkits.mplot3d import proj3d\nfrom mpl_toolkits.mplot3d.art3d import Poly3DCollection\n%matplotlib widget\n\n\n\n\nplot simplex\n# --- Custom class for 3D arrows ---\nclass Arrow3D(FancyArrowPatch):\n    def __init__(self, xs, ys, zs, *args, **kwargs):\n        super().__init__((0, 0), (0, 0), *args, **kwargs)\n        self._verts3d = xs, ys, zs\n\n    def do_3d_projection(self, renderer=None):\n        xs3d, ys3d, zs3d = self._verts3d\n        xs, ys, zs = proj3d.proj_transform(xs3d, ys3d, zs3d, self.axes.M)\n        self.set_positions((xs[0], ys[0]), (xs[1], ys[1]))\n        return np.min(zs)\n\n    def draw(self, renderer):\n        xs3d, ys3d, zs3d = self._verts3d\n        xs, ys, zs = proj3d.proj_transform(xs3d, ys3d, zs3d, self.axes.M)\n        self.set_positions((xs[0], ys[0]), (xs[1], ys[1]))\n        super().draw(renderer)\n\n# --- Styles ---\narrow_prop = dict(mutation_scale=15, arrowstyle='-|&gt;', color='black', linewidth=1.5, shrinkA=0, shrinkB=0)\nlabel_font = {'fontsize': 12, 'fontweight': 'bold'}\ndelta_font = {'fontsize': 14, 'color': 'blue'}\n\nfig = plt.figure(figsize=(8, 3), tight_layout=True)\nfig.subplots_adjust(wspace=0)\n\n# ------------------------------------------\n# Delta_0 (0-Simplex)\n# ------------------------------------------\nax0 = fig.add_subplot(131)\nax0.scatter(1, 0, color='black', s=80, zorder=3)\nax0.add_patch(FancyArrowPatch((0, 0), (1.6, 0), **arrow_prop))\n\n# Labels\nax0.text(1.65, 0, r'$x_0$', **label_font)\nax0.text(0.9, 0.2, r'$\\Delta_0$', **delta_font)\n\nax0.set_xlim(-0.1, 2.5); ax0.set_ylim(-0.5, 1)\nax0.set_aspect('equal'); ax0.axis('off')\n\n# ------------------------------------------\n# Delta_1 (1-Simplex)\n# ------------------------------------------\nax1 = fig.add_subplot(132)\nv_2d = np.eye(2)\nax1.plot([1, 0], [0, 1], color=\"black\", linewidth=2, zorder=2, alpha=0.7)\n# ax1.fill_between([0, 1], [1, 0], alpha=0.3, color='gray')\n\nax1.add_patch(FancyArrowPatch((0, 0), (1.6, 0), **arrow_prop)) # x0\nax1.add_patch(FancyArrowPatch((0, 0), (0, 1.6), **arrow_prop)) # x1\n\n# Labels\nax1.text(1.65, 0, r'$x_0$', **label_font)\nax1.text(0, 1.65, r'$x_1$', **label_font)\nax1.text(0.5, 0.6, r'$\\Delta_1$', **delta_font)\n\nax1.set_xlim(-0.5, 2.5); ax1.set_ylim(-0.5, 2.5)\nax1.set_aspect('equal'); ax1.axis('off')\n\n# ------------------------------------------\n# Delta_2 (2-Simplex)\n# ------------------------------------------\nax2 = fig.add_subplot(133, projection='3d')\nx = np.eye(3)\n\n# Simplex\ntriangle = np.array([x[0], x[1], x[2], x[0]])\nax2.plot(*triangle.T, color=\"black\", linewidth=2)\nax2.add_collection3d(Poly3DCollection([[x[0], x[1], x[2]]], alpha=0.3, color=\"gray\"))\n\n# Axes\nax2.add_artist(Arrow3D([0, 1.6], [0, 0], [0, 0], **arrow_prop))\nax2.add_artist(Arrow3D([0, 0], [0, 1.6], [0, 0], **arrow_prop))\nax2.add_artist(Arrow3D([0, 0], [0, 0], [0, 1.6], **arrow_prop))\n\n# Labels (using 3D coordinates)\nax2.text(1.7, 0, 0, r'$x_0$', **label_font)\nax2.text(0, 1.7, 0, r'$x_1$', **label_font)\nax2.text(0, 0, 1.7, r'$x_2$', **label_font)\nax2.text(0.4, 0.4, 0.7, r'$\\Delta_2$', **delta_font)\n\nax2.set_xlim(0, 1.7); ax2.set_ylim(0, 1.7); ax2.set_zlim(0, 1.7)\nax2.set_box_aspect([1, 1, 1])\nax2.view_init(elev=20, azim=-20)\nax2.set_axis_off()\n\nplt.show()",
     "crumbs": [
       "active inference",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>simplex</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>simplex</span>"
     ]
   },
   {
     "objectID": "intro-thermodynamics.html",
     "href": "intro-thermodynamics.html",
-    "title": "7  intro to thermodynamics",
+    "title": "8  intro to thermodynamics",
     "section": "",
     "text": "this page is under construction",
     "crumbs": [
       "thermodynamics",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>intro to thermodynamics</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>intro to thermodynamics</span>"
     ]
   },
   {
     "objectID": "intro-differential-geometry.html",
     "href": "intro-differential-geometry.html",
-    "title": "8  intro to differential geometry",
+    "title": "9  intro to differential geometry",
     "section": "",
     "text": "this page is under construction",
     "crumbs": [
       "differential geometry",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>intro to differential geometry</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>intro to differential geometry</span>"
     ]
   }
 ]
