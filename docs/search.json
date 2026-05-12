@@ -65,25 +65,113 @@
     ]
   },
   {
+    "objectID": "active_inference/bayes-inference-easy.html",
+    "href": "active_inference/bayes-inference-easy.html",
+    "title": "5  easy bayesian inference",
+    "section": "",
+    "text": "5.1 definitions\nA hungry mouse is inside its burrow and must decide what to do next. It can stay hidden, go outside to forage, or perhaps first gather more information by peeking or listening. The problem is that the mouse does not know the true state of the world: a fox may be nearby, or it may not. Instead, the mouse receives uncertain sensory cues, such as smell, a shadow, a sound, or movement in the grass. These cues are informative but imperfect. A shadow might mean danger, or it might be harmless.\nThe mouse therefore has two linked tasks. First, it must infer the hidden state: how likely is it that a fox is present? Second, it must choose an action. Foraging may lead to food, but it may also be dangerous. Hiding is safer but leaves the mouse hungry. Active inference frames this as choosing actions that reduce uncertainty while leading to preferred outcomes.\nIn this first example, we will set the stage, by fully solving an easy case of Bayesian inference.",
+    "crumbs": [
+      "active inference",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>easy bayesian inference</span>"
+    ]
+  },
+  {
+    "objectID": "active_inference/bayes-inference-easy.html#definitions",
+    "href": "active_inference/bayes-inference-easy.html#definitions",
+    "title": "5  easy bayesian inference",
+    "section": "",
+    "text": "generative process: This is the outside reality, with all its complexity. Here it is the prairie, the vegetation, the wind, the fox, the birds, etc.\nexternal state x^\\star: This is the ground truth the mouse would love to know, but it doesn’t have access to. Here it is the presence or absence of the fox in the vicinity of the mouse burrow.\nhidden state x: This is what the mouse is modeling in its head. That’s a terrible name, since x represents something the mouse believes in, and from its own point of view this is not hidden at all, but that’s what this is called by everyone. x is the internal state or internal representation of x^\\star. Here, P(x) is the mouse’s belief regarding the probability of the fox’s presence: P(x=0,x=1), where x=0 means that the fox is absent, and x=1 that it is present.\nsensory outcome y: This is what the mouse observes from the world. Here, y is the strength of the fox’s smell, it can be either strong or faint.",
+    "crumbs": [
+      "active inference",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>easy bayesian inference</span>"
+    ]
+  },
+  {
+    "objectID": "active_inference/bayes-inference-easy.html#bayes-rule",
+    "href": "active_inference/bayes-inference-easy.html#bayes-rule",
+    "title": "5  easy bayesian inference",
+    "section": "5.2 Bayes’ rule",
+    "text": "5.2 Bayes’ rule\nWe will use Bayes’ rule to solve the inference problem:\n\nP(x\\mid y) = \\frac{P(y\\mid x)P(x)}{P(y)} = \\frac{\\text{likelihood} \\times \\text{prior}}{\\text{evidence}}",
+    "crumbs": [
+      "active inference",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>easy bayesian inference</span>"
+    ]
+  },
+  {
+    "objectID": "active_inference/bayes-inference-easy.html#prior-and-likelihood",
+    "href": "active_inference/bayes-inference-easy.html#prior-and-likelihood",
+    "title": "5  easy bayesian inference",
+    "section": "5.3 prior and likelihood",
+    "text": "5.3 prior and likelihood\nIt’s daytime, and the mouse believes that the fox must be in its den sleeping. The prior will be\n\nP(x)=\n\\begin{bmatrix}\nP(x=0) \\\\ P(x=1)\n\\end{bmatrix}=\n\\begin{bmatrix}\n0.98 \\\\ 0.02\n\\end{bmatrix}.\n\nThe numbers above mean that the mouse believes that there is a 98% chance that the fox is absent, and a 2% chance that it is present. This is the mouse’s belief before it receives any sensory information. Later on we will call this prior vector D.\nThe mouse’s past experience has taught it the likelihood that it will sense a strong or faint fox smell in the case that the fox is absent or present. Mathematically, the likelihood is written as P(y\\mid x). We can write this as a matrix, where the columns correspond to the hidden state x and the rows to the sensory outcome y:\n\n\n\n\n\n\n\n\n\nx=0 (fox absent)\nx=1 (fox present)\n\n\n\n\ny=0 (faint smell)\n0.7\n0.1 (false negative)\n\n\ny=1 (strong smell)\n0.3 (false positive)\n0.9\n\n\n\nThe false positive rate of 0.3 means that even when the fox is absent, there is a 30% chance that the mouse will receive a strong smell, maybe because of the lingering scent of a fox that passed by earlier, or because of the smell of a skunk. The false negative rate of 0.1 means that even when the fox is present, there is a 10% chance that the mouse will receive a faint smell, maybe because the wind is blowing in the opposite direction.\nIn a later chapter we will call this likelihood matrix A.\nBoth the prior and the likelihood are part of the mouse’s internal model of the world. Together, they are the mouse’s generative model. They are not necessarily true, but they are what the mouse believes to be true.\nLet’s say that in a given day, the mouse receives a strong smell. This corresponds to the second row of the likelihood matrix above, where y=1. The likelihood of receiving a strong smell given the hidden state is then:\n\nP(y=1\\mid x)=\n\\begin{bmatrix}\n0.3 \\\\ 0.9\n\\end{bmatrix}.\n\nWhen we observe y=1, we extract the corresponding row from the A matrix and treat it as a vector of likelihoods for each possible state of x.\nThe numerator of Bayes’ rule is the product of the likelihood and the prior, which gives us:\n\nP(y=1\\mid x)P(x) =\n\\begin{bmatrix}\n0.3 \\\\ 0.9\n\\end{bmatrix}\n\\odot\n\\begin{bmatrix}\n0.98 \\\\ 0.02\n\\end{bmatrix} =\n\\begin{bmatrix}0.294 \\\\ 0.018\n\\end{bmatrix}.\n\nHere we didn’t use matrix multiplication, but rather element-wise multiplication, which is also called the Hadamard product.",
+    "crumbs": [
+      "active inference",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>easy bayesian inference</span>"
+    ]
+  },
+  {
+    "objectID": "active_inference/bayes-inference-easy.html#evidence",
+    "href": "active_inference/bayes-inference-easy.html#evidence",
+    "title": "5  easy bayesian inference",
+    "section": "5.4 evidence",
+    "text": "5.4 evidence\nThe evidence is also called the marginal likelihood, and it is the probability of observing the sensory outcome y=1 (in this case) under the mouse’s model. It is computed by marginalizing over the hidden state x:\n\nP(y=1) = \\sum_x P(y=1\\mid x)P(x).\n\nThis expression makes it obvious that the evidence is the sum of the numerator of Bayes’ rule across all possible hidden states. In our case, we have:\n\nP(y=1) = 0.294 + 0.018 = 0.312.",
+    "crumbs": [
+      "active inference",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>easy bayesian inference</span>"
+    ]
+  },
+  {
+    "objectID": "active_inference/bayes-inference-easy.html#posterior",
+    "href": "active_inference/bayes-inference-easy.html#posterior",
+    "title": "5  easy bayesian inference",
+    "section": "5.5 posterior",
+    "text": "5.5 posterior\nFinally, we can compute the posterior distribution over the hidden state x given the sensory outcome y=1 (strong smell) using Bayes’ rule:\n\nP(x\\mid y=1) = \\frac{P(y=1\\mid x)P(x)}{P(y=1)} =\n\\frac{\\begin{bmatrix}0.294 \\\\ 0.018\n\\end{bmatrix}}{0.312} =\n\\begin{bmatrix}0.9423 \\\\ 0.0577\n\\end{bmatrix}.",
+    "crumbs": [
+      "active inference",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>easy bayesian inference</span>"
+    ]
+  },
+  {
+    "objectID": "active_inference/bayes-inference-easy.html#discussion",
+    "href": "active_inference/bayes-inference-easy.html#discussion",
+    "title": "5  easy bayesian inference",
+    "section": "5.6 discussion",
+    "text": "5.6 discussion\nInitially, the mouse believed that there was only a 2% chance that the fox was present. After receiving the strong smell, the mouse’s belief has been updated to a 5.77% chance that the fox is present. The strong smell has increased the mouse’s belief in the presence of the fox, but it is still more likely that the fox is absent.\nWhat if the mouse’s prior belief was different? For example, if the mouse believed that there was a 50% chance that the fox was present, then the posterior would be:\n\nP(x\\mid y=1) =\n\\frac{\\begin{bmatrix}0.3 \\\\ 0.9\n\\end{bmatrix}\n\\odot\n\\begin{bmatrix}0.5 \\\\ 0.5\n\\end{bmatrix}}{0.6} =\n\\frac{\\begin{bmatrix}0.15 \\\\ 0.45\n\\end{bmatrix}}{0.6} =\n\\begin{bmatrix}0.25 \\\\ 0.75\n\\end{bmatrix}.\n\nNow, after receiving the strong smell, the mouse’s belief that the fox is present has been updated from 50% to a 75% chance. A single piece of sensory evidence can have a very different impact on the mouse’s belief depending on its prior belief!\nAt the beginning, I called this an easy case of Bayesian inference. As we will see in the next chapter, it is rare to have the luxury of being able to solve the inference problem in closed form using Bayes’ rule. In most cases, we will have to use approximate inference methods, which are more computationally efficient but less accurate.",
+    "crumbs": [
+      "active inference",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>easy bayesian inference</span>"
+    ]
+  },
+  {
+    "objectID": "active_inference/simplex.html",
+    "href": "active_inference/simplex.html",
+    "title": "6  simplex",
+    "section": "",
+    "text": "import libraries\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom matplotlib.patches import FancyArrowPatch\nfrom mpl_toolkits.mplot3d import proj3d\nfrom mpl_toolkits.mplot3d.art3d import Poly3DCollection\n%matplotlib widget\n\n\n\n\nplot simplex\n# --- Custom class for 3D arrows ---\nclass Arrow3D(FancyArrowPatch):\n    def __init__(self, xs, ys, zs, *args, **kwargs):\n        super().__init__((0, 0), (0, 0), *args, **kwargs)\n        self._verts3d = xs, ys, zs\n\n    def do_3d_projection(self, renderer=None):\n        xs3d, ys3d, zs3d = self._verts3d\n        xs, ys, zs = proj3d.proj_transform(xs3d, ys3d, zs3d, self.axes.M)\n        self.set_positions((xs[0], ys[0]), (xs[1], ys[1]))\n        return np.min(zs)\n\n    def draw(self, renderer):\n        xs3d, ys3d, zs3d = self._verts3d\n        xs, ys, zs = proj3d.proj_transform(xs3d, ys3d, zs3d, self.axes.M)\n        self.set_positions((xs[0], ys[0]), (xs[1], ys[1]))\n        super().draw(renderer)\n\n# --- Styles ---\narrow_prop = dict(mutation_scale=15, arrowstyle='-|&gt;', color='black', linewidth=1.5, shrinkA=0, shrinkB=0)\nlabel_font = {'fontsize': 12, 'fontweight': 'bold'}\ndelta_font = {'fontsize': 14, 'color': 'blue'}\n\nfig = plt.figure(figsize=(8, 3), tight_layout=True)\nfig.subplots_adjust(wspace=0)\n\n# ------------------------------------------\n# Delta_0 (0-Simplex)\n# ------------------------------------------\nax0 = fig.add_subplot(131)\nax0.scatter(1, 0, color='black', s=80, zorder=3)\nax0.add_patch(FancyArrowPatch((0, 0), (1.6, 0), **arrow_prop))\n\n# Labels\nax0.text(1.65, 0, r'$x_0$', **label_font)\nax0.text(0.9, 0.2, r'$\\Delta_0$', **delta_font)\n\nax0.set_xlim(-0.1, 2.5); ax0.set_ylim(-0.5, 1)\nax0.set_aspect('equal'); ax0.axis('off')\n\n# ------------------------------------------\n# Delta_1 (1-Simplex)\n# ------------------------------------------\nax1 = fig.add_subplot(132)\nv_2d = np.eye(2)\nax1.plot([1, 0], [0, 1], color=\"black\", linewidth=2, zorder=2, alpha=0.7)\n# ax1.fill_between([0, 1], [1, 0], alpha=0.3, color='gray')\n\nax1.add_patch(FancyArrowPatch((0, 0), (1.6, 0), **arrow_prop)) # x0\nax1.add_patch(FancyArrowPatch((0, 0), (0, 1.6), **arrow_prop)) # x1\n\n# Labels\nax1.text(1.65, 0, r'$x_0$', **label_font)\nax1.text(0, 1.65, r'$x_1$', **label_font)\nax1.text(0.5, 0.6, r'$\\Delta_1$', **delta_font)\n\nax1.set_xlim(-0.5, 2.5); ax1.set_ylim(-0.5, 2.5)\nax1.set_aspect('equal'); ax1.axis('off')\n\n# ------------------------------------------\n# Delta_2 (2-Simplex)\n# ------------------------------------------\nax2 = fig.add_subplot(133, projection='3d')\nx = np.eye(3)\n\n# Simplex\ntriangle = np.array([x[0], x[1], x[2], x[0]])\nax2.plot(*triangle.T, color=\"black\", linewidth=2)\nax2.add_collection3d(Poly3DCollection([[x[0], x[1], x[2]]], alpha=0.3, color=\"gray\"))\n\n# Axes\nax2.add_artist(Arrow3D([0, 1.6], [0, 0], [0, 0], **arrow_prop))\nax2.add_artist(Arrow3D([0, 0], [0, 1.6], [0, 0], **arrow_prop))\nax2.add_artist(Arrow3D([0, 0], [0, 0], [0, 1.6], **arrow_prop))\n\n# Labels (using 3D coordinates)\nax2.text(1.7, 0, 0, r'$x_0$', **label_font)\nax2.text(0, 1.7, 0, r'$x_1$', **label_font)\nax2.text(0, 0, 1.7, r'$x_2$', **label_font)\nax2.text(0.4, 0.4, 0.7, r'$\\Delta_2$', **delta_font)\n\nax2.set_xlim(0, 1.7); ax2.set_ylim(0, 1.7); ax2.set_zlim(0, 1.7)\nax2.set_box_aspect([1, 1, 1])\nax2.view_init(elev=20, azim=-20)\nax2.set_axis_off()\n\nplt.show()",
+    "crumbs": [
+      "active inference",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>simplex</span>"
+    ]
+  },
+  {
     "objectID": "intro-thermodynamics.html",
     "href": "intro-thermodynamics.html",
-    "title": "5  intro to thermodynamics",
+    "title": "7  intro to thermodynamics",
     "section": "",
     "text": "this page is under construction",
     "crumbs": [
       "thermodynamics",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>intro to thermodynamics</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>intro to thermodynamics</span>"
     ]
   },
   {
     "objectID": "intro-differential-geometry.html",
     "href": "intro-differential-geometry.html",
-    "title": "6  intro to differential geometry",
+    "title": "8  intro to differential geometry",
     "section": "",
     "text": "this page is under construction",
     "crumbs": [
       "differential geometry",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>intro to differential geometry</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>intro to differential geometry</span>"
     ]
   }
 ]
