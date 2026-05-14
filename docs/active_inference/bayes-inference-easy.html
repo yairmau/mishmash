@@ -456,7 +456,11 @@ P(x\mid y=0) =
 \begin{bmatrix}0.9971 \\ 0.0029
 \end{bmatrix}.
 </span></p>
-<p>Maybe it was already obvious to you, but I’ll still make this point explicitly. A strong smell (<span class="math inline">y=1</span>) increases the mouse’s belief in the presence of the fox, from 2% to 5.77%, an increase of 3.77 percentage points. On the other hand, a faint smell (<span class="math inline">y=0</span>) decreases it from 2% to 0.29%, a decrease of 1.71 percentage points. There couldn’t be a symmetry between the two cases, because we could never go below 0% or above 100%. The strong smell is more informative than the faint smell, because it has a higher likelihood of being observed when the fox is present.</p>
+<p>A strong smell increases the posterior probability of fox presence by more percentage points than a faint smell decreases it: strong smell increases it by 3.77 percentage points, while a faint smell decreases it by 1.71 percentage points. This is partly because the prior probability was already very low. A better measure of the evidential force of an observation is the likelihood ratio. In this example, a strong smell multiplies the odds of fox presence by 3, while a faint smell multiplies them by 0.1/0.7, strongly pushing belief away from fox presence. Let’s see why:</p>
+<p><span class="math display">\begin{align*}
+\text{strong: likelihood ratio} &amp;= \frac{P(y=1\mid x=1)}{P(y=1\mid x=0)} = \frac{0.9}{0.3} = 3 \\
+\text{faint: likelihood ratio} &amp;= \frac{P(y=0\mid x=1)}{P(y=0\mid x=0)} = \frac{0.1}{0.7} \approx 0.143.
+\end{align*}</span></p>
 <p>At the beginning, I called this an easy case of Bayesian inference. As we will see in the next chapter, it is rare to have the luxury of being able to solve the inference problem in closed form using Bayes’ rule. In most cases, we will have to use approximate inference methods, which are more computationally efficient but less accurate.</p>
 
 

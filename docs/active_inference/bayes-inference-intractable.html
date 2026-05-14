@@ -310,8 +310,9 @@ window.Quarto = {
   <ul>
   <li><a href="#moving-to-continuous-states" id="toc-moving-to-continuous-states" class="nav-link active" data-scroll-target="#moving-to-continuous-states"><span class="header-section-number">6.1</span> moving to continuous states</a></li>
   <li><a href="#the-problem-of-degeneracy" id="toc-the-problem-of-degeneracy" class="nav-link" data-scroll-target="#the-problem-of-degeneracy"><span class="header-section-number">6.2</span> the problem of degeneracy</a></li>
-  <li><a href="#the-curse-of-dimensionality" id="toc-the-curse-of-dimensionality" class="nav-link" data-scroll-target="#the-curse-of-dimensionality"><span class="header-section-number">6.3</span> the curse of dimensionality</a></li>
-  <li><a href="#the-need-for-a-shortcut" id="toc-the-need-for-a-shortcut" class="nav-link" data-scroll-target="#the-need-for-a-shortcut"><span class="header-section-number">6.4</span> the need for a shortcut</a></li>
+  <li><a href="#the-problem-of-generalization" id="toc-the-problem-of-generalization" class="nav-link" data-scroll-target="#the-problem-of-generalization"><span class="header-section-number">6.3</span> the problem of generalization</a></li>
+  <li><a href="#the-curse-of-dimensionality" id="toc-the-curse-of-dimensionality" class="nav-link" data-scroll-target="#the-curse-of-dimensionality"><span class="header-section-number">6.4</span> the curse of dimensionality</a></li>
+  <li><a href="#the-need-for-a-shortcut" id="toc-the-need-for-a-shortcut" class="nav-link" data-scroll-target="#the-need-for-a-shortcut"><span class="header-section-number">6.5</span> the need for a shortcut</a></li>
   </ul>
 </nav>
     </div>
@@ -343,11 +344,11 @@ window.Quarto = {
 <p>Imagine that the mouse is no longer just asking “is there a fox?” but is instead trying to estimate the <strong>distance</strong> of the fox from the burrow.</p>
 <ul>
 <li><strong>External state <span class="math inline">x^\star</span>:</strong> The physical, objective distance of the fox (e.g., 100 meters).</li>
-<li><strong>Hidden state <span class="math inline">x</span>:</strong> The mouse’s internal representation of that distance.</li>
+<li><strong>Hidden state <span class="math inline">x</span>:</strong> The latent state in the mouse’s model, corresponding here to fox distance. The mouse does not observe <span class="math inline">x</span> directly; it must infer a belief distribution over x from sensory data.</li>
 <li><strong>Sensory outcome <span class="math inline">y</span>:</strong> The continuous intensity of the fox’s scent reaching the mouse’s nose.</li>
 </ul>
 <p>In this scenario, the mouse’s <strong>generative model</strong> is no longer a simple table. It is a continuous <strong>joint probability density function (PDF)</strong>, <span class="math inline">p(x, y)</span>. This function maps how likely a specific smell intensity <span class="math inline">y</span> is, given a specific distance <span class="math inline">x</span>, weighted by how likely the mouse thinks that distance was in the first place (the prior).</p>
-<div id="9a9f829f" class="cell" data-execution_count="47">
+<div id="9a9f829f" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -360,94 +361,98 @@ window.Quarto = {
 <span id="cb1-8"><a href="#cb1-8"></a>y <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">15</span>, <span class="dv">300</span>)   </span>
 <span id="cb1-9"><a href="#cb1-9"></a>X, Y <span class="op">=</span> np.meshgrid(x, y)</span>
 <span id="cb1-10"><a href="#cb1-10"></a></span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="co"># 2. Define the Generative Model</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a>prior_pdf <span class="op">=</span> np.exp(<span class="op">-</span><span class="fl">0.2</span> <span class="op">*</span> x) </span>
-<span id="cb1-13"><a href="#cb1-13"></a>prior_pdf <span class="op">/=</span> prior_pdf.<span class="bu">sum</span>()  </span>
-<span id="cb1-14"><a href="#cb1-14"></a></span>
-<span id="cb1-15"><a href="#cb1-15"></a>k <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">5</span> <span class="op">*</span> np.exp(<span class="op">-</span><span class="fl">0.5</span> <span class="op">*</span> x) </span>
-<span id="cb1-16"><a href="#cb1-16"></a>mean_y <span class="op">=</span> <span class="dv">15</span> <span class="op">*</span> np.exp(<span class="op">-</span><span class="fl">0.4</span> <span class="op">*</span> x)</span>
-<span id="cb1-17"><a href="#cb1-17"></a>theta <span class="op">=</span> mean_y <span class="op">/</span> k</span>
-<span id="cb1-18"><a href="#cb1-18"></a>likelihood_pdf <span class="op">=</span> gamma.pdf(Y, a<span class="op">=</span>k, scale<span class="op">=</span>theta)</span>
-<span id="cb1-19"><a href="#cb1-19"></a></span>
-<span id="cb1-20"><a href="#cb1-20"></a><span class="co"># 3. Compute Joint PDF</span></span>
-<span id="cb1-21"><a href="#cb1-21"></a>joint_pdf <span class="op">=</span> likelihood_pdf <span class="op">*</span> prior_pdf</span>
+<span id="cb1-11"><a href="#cb1-11"></a>dx <span class="op">=</span> x[<span class="dv">1</span>] <span class="op">-</span> x[<span class="dv">0</span>]</span>
+<span id="cb1-12"><a href="#cb1-12"></a>dy <span class="op">=</span> y[<span class="dv">1</span>] <span class="op">-</span> y[<span class="dv">0</span>]</span>
+<span id="cb1-13"><a href="#cb1-13"></a></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="co"># 2. Define the Generative Model</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a>prior_pdf <span class="op">=</span> np.exp(<span class="op">-</span><span class="fl">0.2</span> <span class="op">*</span> x)</span>
+<span id="cb1-16"><a href="#cb1-16"></a>prior_pdf <span class="op">/=</span> np.<span class="bu">sum</span>(prior_pdf) <span class="op">*</span> dx </span>
+<span id="cb1-17"><a href="#cb1-17"></a></span>
+<span id="cb1-18"><a href="#cb1-18"></a>k <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">5</span> <span class="op">*</span> np.exp(<span class="op">-</span><span class="fl">0.5</span> <span class="op">*</span> x) </span>
+<span id="cb1-19"><a href="#cb1-19"></a>mean_y <span class="op">=</span> <span class="dv">15</span> <span class="op">*</span> np.exp(<span class="op">-</span><span class="fl">0.4</span> <span class="op">*</span> x)</span>
+<span id="cb1-20"><a href="#cb1-20"></a>theta <span class="op">=</span> mean_y <span class="op">/</span> k</span>
+<span id="cb1-21"><a href="#cb1-21"></a>likelihood_pdf <span class="op">=</span> gamma.pdf(Y, a<span class="op">=</span>k, scale<span class="op">=</span>theta)</span>
 <span id="cb1-22"><a href="#cb1-22"></a></span>
-<span id="cb1-23"><a href="#cb1-23"></a><span class="co"># 4. Marginal Likelihood (Evidence)</span></span>
-<span id="cb1-24"><a href="#cb1-24"></a>evidence_y <span class="op">=</span> np.<span class="bu">sum</span>(joint_pdf, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="co"># 3. Compute Joint PDF</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a>joint_pdf <span class="op">=</span> likelihood_pdf <span class="op">*</span> prior_pdf[<span class="va">None</span>, :]</span>
 <span id="cb1-25"><a href="#cb1-25"></a></span>
-<span id="cb1-26"><a href="#cb1-26"></a><span class="co"># 5. Inference for a specific observation (y=4.0)</span></span>
-<span id="cb1-27"><a href="#cb1-27"></a>obs_y_val <span class="op">=</span> <span class="fl">4.0</span></span>
-<span id="cb1-28"><a href="#cb1-28"></a>y_idx <span class="op">=</span> np.argmin(np.<span class="bu">abs</span>(y <span class="op">-</span> obs_y_val))</span>
-<span id="cb1-29"><a href="#cb1-29"></a>numerator_slice <span class="op">=</span> joint_pdf[y_idx, :]</span>
-<span id="cb1-30"><a href="#cb1-30"></a>evidence_scalar <span class="op">=</span> evidence_y[y_idx]</span>
-<span id="cb1-31"><a href="#cb1-31"></a>posterior_pdf <span class="op">=</span> numerator_slice <span class="op">/</span> evidence_scalar </span>
-<span id="cb1-32"><a href="#cb1-32"></a></span>
-<span id="cb1-33"><a href="#cb1-33"></a><span class="co"># 6. Calculate Centers of Mass (Expected Values)</span></span>
-<span id="cb1-34"><a href="#cb1-34"></a><span class="co"># E[x] = sum(x * p(x)) / sum(p(x)) -- since they are normalized, the denominator is 1</span></span>
-<span id="cb1-35"><a href="#cb1-35"></a>com_prior <span class="op">=</span> np.<span class="bu">sum</span>(x <span class="op">*</span> prior_pdf)</span>
-<span id="cb1-36"><a href="#cb1-36"></a>com_posterior <span class="op">=</span> np.<span class="bu">sum</span>(x <span class="op">*</span> posterior_pdf)</span>
-<span id="cb1-37"><a href="#cb1-37"></a></span>
-<span id="cb1-38"><a href="#cb1-38"></a><span class="co"># 7. Plotting</span></span>
-<span id="cb1-39"><a href="#cb1-39"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">10</span>))</span>
-<span id="cb1-40"><a href="#cb1-40"></a>gs <span class="op">=</span> fig.add_gridspec(<span class="dv">2</span>, <span class="dv">2</span>, width_ratios<span class="op">=</span>[<span class="dv">4</span>, <span class="dv">1</span>], height_ratios<span class="op">=</span>[<span class="dv">4</span>, <span class="dv">2</span>], hspace<span class="op">=</span><span class="fl">0.1</span>, wspace<span class="op">=</span><span class="fl">0.05</span>)</span>
+<span id="cb1-26"><a href="#cb1-26"></a><span class="co"># 4. Marginal Likelihood (Evidence)</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a>evidence_y <span class="op">=</span> np.<span class="bu">sum</span>(joint_pdf, axis<span class="op">=</span><span class="dv">1</span>) <span class="op">*</span> dx</span>
+<span id="cb1-28"><a href="#cb1-28"></a></span>
+<span id="cb1-29"><a href="#cb1-29"></a><span class="co"># 5. Inference for a specific observation (y=4.0)</span></span>
+<span id="cb1-30"><a href="#cb1-30"></a>obs_y_val <span class="op">=</span> <span class="fl">4.0</span></span>
+<span id="cb1-31"><a href="#cb1-31"></a>y_idx <span class="op">=</span> np.argmin(np.<span class="bu">abs</span>(y <span class="op">-</span> obs_y_val))</span>
+<span id="cb1-32"><a href="#cb1-32"></a>numerator_slice <span class="op">=</span> joint_pdf[y_idx, :]</span>
+<span id="cb1-33"><a href="#cb1-33"></a>evidence_scalar <span class="op">=</span> evidence_y[y_idx]</span>
+<span id="cb1-34"><a href="#cb1-34"></a>posterior_pdf <span class="op">=</span> numerator_slice <span class="op">/</span> evidence_scalar</span>
+<span id="cb1-35"><a href="#cb1-35"></a>posterior_pdf <span class="op">/=</span> np.<span class="bu">sum</span>(posterior_pdf) <span class="op">*</span> dx</span>
+<span id="cb1-36"><a href="#cb1-36"></a></span>
+<span id="cb1-37"><a href="#cb1-37"></a><span class="co"># 6. Calculate Centers of Mass (Expected Values)</span></span>
+<span id="cb1-38"><a href="#cb1-38"></a><span class="co"># E[x] = sum(x * p(x)) / sum(p(x)) -- since they are normalized, the denominator is 1</span></span>
+<span id="cb1-39"><a href="#cb1-39"></a>com_prior <span class="op">=</span> np.<span class="bu">sum</span>(x <span class="op">*</span> prior_pdf) <span class="op">*</span> dx</span>
+<span id="cb1-40"><a href="#cb1-40"></a>com_posterior <span class="op">=</span> np.<span class="bu">sum</span>(x <span class="op">*</span> posterior_pdf) <span class="op">*</span> dx</span>
 <span id="cb1-41"><a href="#cb1-41"></a></span>
-<span id="cb1-42"><a href="#cb1-42"></a><span class="co"># Top Left: Joint PDF</span></span>
-<span id="cb1-43"><a href="#cb1-43"></a>ax_main <span class="op">=</span> fig.add_subplot(gs[<span class="dv">0</span>, <span class="dv">0</span>])</span>
-<span id="cb1-44"><a href="#cb1-44"></a>im <span class="op">=</span> ax_main.pcolormesh(X, Y, joint_pdf, shading<span class="op">=</span><span class="st">'auto'</span>, cmap<span class="op">=</span><span class="st">'viridis'</span>, norm<span class="op">=</span>PowerNorm(gamma<span class="op">=</span><span class="fl">0.3</span>))</span>
-<span id="cb1-45"><a href="#cb1-45"></a>ax_main.axhline(obs_y_val, color<span class="op">=</span><span class="st">'white'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.8</span>, label<span class="op">=</span><span class="ss">f'Observation: smell $y=</span><span class="sc">{</span>obs_y_val<span class="sc">}</span><span class="ss">$'</span>)</span>
-<span id="cb1-46"><a href="#cb1-46"></a>ax_main.set_ylabel(<span class="st">'Smell Intensity (y)'</span>)</span>
-<span id="cb1-47"><a href="#cb1-47"></a>ax_main.set_title(<span class="st">'Joint PDF: $p(x, y)$'</span>)</span>
-<span id="cb1-48"><a href="#cb1-48"></a>ax_main.legend()</span>
-<span id="cb1-49"><a href="#cb1-49"></a></span>
-<span id="cb1-50"><a href="#cb1-50"></a><span class="co"># Top Right: Evidence Sidebar</span></span>
-<span id="cb1-51"><a href="#cb1-51"></a>ax_evid <span class="op">=</span> fig.add_subplot(gs[<span class="dv">0</span>, <span class="dv">1</span>], sharey<span class="op">=</span>ax_main)</span>
-<span id="cb1-52"><a href="#cb1-52"></a>ax_evid.plot(evidence_y, y, color<span class="op">=</span><span class="st">'teal'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb1-53"><a href="#cb1-53"></a>ax_evid.fill_betweenx(y, <span class="dv">0</span>, evidence_y, color<span class="op">=</span><span class="st">'teal'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
-<span id="cb1-54"><a href="#cb1-54"></a>ax_evid.set_xlabel(<span class="st">'Evidence $p(y)$'</span>)</span>
-<span id="cb1-55"><a href="#cb1-55"></a>ax_evid.<span class="bu">set</span>(ylim<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">15</span>),</span>
-<span id="cb1-56"><a href="#cb1-56"></a>            xlim<span class="op">=</span>(<span class="dv">0</span>, evidence_y.<span class="bu">max</span>() <span class="op">*</span> <span class="fl">1.2</span>)</span>
-<span id="cb1-57"><a href="#cb1-57"></a>)</span>
-<span id="cb1-58"><a href="#cb1-58"></a>y4_idx <span class="op">=</span> np.argmin(np.<span class="bu">abs</span>(y <span class="op">-</span> <span class="fl">4.0</span>))</span>
-<span id="cb1-59"><a href="#cb1-59"></a>ax_evid.plot(evidence_y[y4_idx], y[y4_idx], <span class="st">'ko'</span>, label<span class="op">=</span><span class="ss">f'Evidence at $y=</span><span class="sc">{</span>obs_y_val<span class="sc">}</span><span class="ss">$'</span>)</span>
-<span id="cb1-60"><a href="#cb1-60"></a>ax_evid.text(evidence_y[y4_idx] <span class="op">+</span> evidence_y.<span class="bu">max</span>()<span class="op">*</span><span class="fl">0.1</span>, y[y4_idx], <span class="ss">f'p(y=4.0)=</span><span class="sc">{</span>evidence_y[y4_idx]<span class="sc">:.2f}</span><span class="ss">'</span>, va<span class="op">=</span><span class="st">'center'</span>, ha<span class="op">=</span><span class="st">'left'</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb1-61"><a href="#cb1-61"></a>plt.setp(ax_evid.get_yticklabels(), visible<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb1-62"><a href="#cb1-62"></a></span>
-<span id="cb1-63"><a href="#cb1-63"></a><span class="co"># Bottom: Prior vs Posterior with Centers of Mass</span></span>
-<span id="cb1-64"><a href="#cb1-64"></a>ax_inf <span class="op">=</span> fig.add_subplot(gs[<span class="dv">1</span>, <span class="dv">0</span>], sharex<span class="op">=</span>ax_main)</span>
-<span id="cb1-65"><a href="#cb1-65"></a>ax_inf.plot(x, prior_pdf, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>, lw<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'Prior $p(x)$'</span>)</span>
-<span id="cb1-66"><a href="#cb1-66"></a>ax_inf.plot(x, posterior_pdf, color<span class="op">=</span><span class="st">'crimson'</span>, lw<span class="op">=</span><span class="fl">2.5</span>, label<span class="op">=</span><span class="st">'Posterior $p(x|y)$'</span>)</span>
-<span id="cb1-67"><a href="#cb1-67"></a>ax_inf.fill_between(x, <span class="dv">0</span>, posterior_pdf, color<span class="op">=</span><span class="st">'crimson'</span>, alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
-<span id="cb1-68"><a href="#cb1-68"></a></span>
-<span id="cb1-69"><a href="#cb1-69"></a>ax_inf.text(<span class="dv">7</span>, <span class="fl">0.003</span>, <span class="vs">r"prior, </span><span class="dv">$</span><span class="vs">p</span><span class="kw">(</span><span class="vs">x</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span>, color<span class="op">=</span><span class="st">'gray'</span>, fontsize<span class="op">=</span><span class="dv">12</span>, ha<span class="op">=</span><span class="st">'center'</span>)</span>
-<span id="cb1-70"><a href="#cb1-70"></a>ax_inf.text(<span class="fl">5.5</span>, <span class="fl">0.006</span>, <span class="vs">r"posterior, </span><span class="dv">$</span><span class="vs">p</span><span class="kw">(</span><span class="vs">x</span><span class="cf">|</span><span class="vs">y</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span>, color<span class="op">=</span><span class="st">'crimson'</span>, fontsize<span class="op">=</span><span class="dv">12</span>, ha<span class="op">=</span><span class="st">'center'</span>)</span>
-<span id="cb1-71"><a href="#cb1-71"></a>ax_inf.text(com_prior, <span class="fl">0.001</span>, <span class="vs">r" </span><span class="dv">$</span><span class="vs">E</span><span class="pp">[p(x)]</span><span class="dv">$</span><span class="vs">"</span>, color<span class="op">=</span><span class="st">'gray'</span>, fontsize<span class="op">=</span><span class="dv">12</span>, ha<span class="op">=</span><span class="st">'left'</span>)</span>
-<span id="cb1-72"><a href="#cb1-72"></a>ax_inf.text(com_posterior, <span class="fl">0.001</span>, <span class="vs">r"</span><span class="dv">$</span><span class="vs">E</span><span class="pp">[p(x|y)]</span><span class="dv">$</span><span class="vs">  "</span>, color<span class="op">=</span><span class="st">'crimson'</span>, fontsize<span class="op">=</span><span class="dv">12</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
-<span id="cb1-73"><a href="#cb1-73"></a><span class="co"># Add Vertical Lines for Centers of Mass</span></span>
-<span id="cb1-74"><a href="#cb1-74"></a>x_com_prior_idx <span class="op">=</span> np.argmin(np.<span class="bu">abs</span>(x <span class="op">-</span> com_prior))</span>
-<span id="cb1-75"><a href="#cb1-75"></a>x_com_posterior_idx <span class="op">=</span> np.argmin(np.<span class="bu">abs</span>(x <span class="op">-</span> com_posterior))</span>
-<span id="cb1-76"><a href="#cb1-76"></a>ax_inf.plot([x[x_com_prior_idx]]<span class="op">*</span><span class="dv">2</span>, [<span class="dv">0</span>, prior_pdf[x_com_prior_idx]], <span class="st">'--'</span>, color<span class="op">=</span><span class="st">'gray'</span>, label<span class="op">=</span><span class="ss">f'Prior Mean: </span><span class="sc">{</span>com_prior<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
-<span id="cb1-77"><a href="#cb1-77"></a>ax_inf.plot([x[x_com_posterior_idx]]<span class="op">*</span><span class="dv">2</span>, [<span class="dv">0</span>, posterior_pdf[x_com_posterior_idx]], <span class="st">'--'</span>, color<span class="op">=</span><span class="st">'crimson'</span>, label<span class="op">=</span><span class="ss">f'Posterior Mean: </span><span class="sc">{</span>com_posterior<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
-<span id="cb1-78"><a href="#cb1-78"></a><span class="co"># ax_inf.axvline(com_prior, color='gray', linestyle='--', alpha=0.6, label=f'Prior Mean: {com_prior:.2f}')</span></span>
-<span id="cb1-79"><a href="#cb1-79"></a><span class="co"># ax_inf.axvline(com_posterior, color='crimson', linestyle='--', alpha=0.8, label=f'Posterior Mean: {com_posterior:.2f}')</span></span>
-<span id="cb1-80"><a href="#cb1-80"></a></span>
-<span id="cb1-81"><a href="#cb1-81"></a>ax_inf.set_xlabel(<span class="st">'Distance (x)'</span>)</span>
-<span id="cb1-82"><a href="#cb1-82"></a>ax_inf.set_ylabel(<span class="st">'Probability Density'</span>)</span>
-<span id="cb1-83"><a href="#cb1-83"></a>ax_inf.set_title(<span class="st">'Inference: Updating Beliefs and Point Estimates'</span>, y<span class="op">=</span><span class="fl">0.88</span>)</span>
-<span id="cb1-84"><a href="#cb1-84"></a>ax_inf.<span class="bu">set</span>(xlim<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">12</span>),</span>
-<span id="cb1-85"><a href="#cb1-85"></a>           ylim<span class="op">=</span>(<span class="dv">0</span>, <span class="bu">max</span>(prior_pdf.<span class="bu">max</span>(), posterior_pdf.<span class="bu">max</span>()) <span class="op">*</span> <span class="fl">1.2</span>)</span>
-<span id="cb1-86"><a href="#cb1-86"></a>           )</span>
-<span id="cb1-87"><a href="#cb1-87"></a></span>
-<span id="cb1-88"><a href="#cb1-88"></a>ax_main.text(<span class="fl">0.03</span>, <span class="fl">0.97</span>, <span class="vs">r"a"</span>, transform<span class="op">=</span>ax_main.transAxes,</span>
-<span id="cb1-89"><a href="#cb1-89"></a>         horizontalalignment<span class="op">=</span><span class="st">'left'</span>, verticalalignment<span class="op">=</span><span class="st">'top'</span>,</span>
-<span id="cb1-90"><a href="#cb1-90"></a>         fontweight<span class="op">=</span><span class="st">"bold"</span>, color<span class="op">=</span><span class="st">"white"</span>, fontsize<span class="op">=</span><span class="dv">18</span>)</span>
-<span id="cb1-91"><a href="#cb1-91"></a>ax_evid.text(<span class="fl">0.06</span>, <span class="fl">0.97</span>, <span class="vs">r"b"</span>, transform<span class="op">=</span>ax_evid.transAxes,</span>
-<span id="cb1-92"><a href="#cb1-92"></a>         horizontalalignment<span class="op">=</span><span class="st">'left'</span>, verticalalignment<span class="op">=</span><span class="st">'top'</span>,</span>
-<span id="cb1-93"><a href="#cb1-93"></a>         fontweight<span class="op">=</span><span class="st">"bold"</span>, color<span class="op">=</span><span class="st">"black"</span>, fontsize<span class="op">=</span><span class="dv">18</span>)</span>
-<span id="cb1-94"><a href="#cb1-94"></a>ax_inf.text(<span class="fl">0.03</span>, <span class="fl">0.97</span>, <span class="vs">r"c"</span>, transform<span class="op">=</span>ax_inf.transAxes,</span>
-<span id="cb1-95"><a href="#cb1-95"></a>         horizontalalignment<span class="op">=</span><span class="st">'left'</span>, verticalalignment<span class="op">=</span><span class="st">'top'</span>,</span>
-<span id="cb1-96"><a href="#cb1-96"></a>         fontweight<span class="op">=</span><span class="st">"bold"</span>, color<span class="op">=</span><span class="st">"black"</span>, fontsize<span class="op">=</span><span class="dv">18</span>)</span>
-<span id="cb1-97"><a href="#cb1-97"></a></span>
-<span id="cb1-98"><a href="#cb1-98"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-42"><a href="#cb1-42"></a><span class="co"># 7. Plotting</span></span>
+<span id="cb1-43"><a href="#cb1-43"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">10</span>))</span>
+<span id="cb1-44"><a href="#cb1-44"></a>gs <span class="op">=</span> fig.add_gridspec(<span class="dv">2</span>, <span class="dv">2</span>, width_ratios<span class="op">=</span>[<span class="dv">4</span>, <span class="dv">1</span>], height_ratios<span class="op">=</span>[<span class="dv">4</span>, <span class="dv">2</span>], hspace<span class="op">=</span><span class="fl">0.1</span>, wspace<span class="op">=</span><span class="fl">0.05</span>)</span>
+<span id="cb1-45"><a href="#cb1-45"></a></span>
+<span id="cb1-46"><a href="#cb1-46"></a><span class="co"># Top Left: Joint PDF</span></span>
+<span id="cb1-47"><a href="#cb1-47"></a>ax_main <span class="op">=</span> fig.add_subplot(gs[<span class="dv">0</span>, <span class="dv">0</span>])</span>
+<span id="cb1-48"><a href="#cb1-48"></a>im <span class="op">=</span> ax_main.pcolormesh(X, Y, joint_pdf, shading<span class="op">=</span><span class="st">'auto'</span>, cmap<span class="op">=</span><span class="st">'viridis'</span>, norm<span class="op">=</span>PowerNorm(gamma<span class="op">=</span><span class="fl">0.3</span>))</span>
+<span id="cb1-49"><a href="#cb1-49"></a>ax_main.axhline(obs_y_val, color<span class="op">=</span><span class="st">'white'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.8</span>, label<span class="op">=</span><span class="ss">f'Observation: smell $y=</span><span class="sc">{</span>obs_y_val<span class="sc">}</span><span class="ss">$'</span>)</span>
+<span id="cb1-50"><a href="#cb1-50"></a>ax_main.set_ylabel(<span class="st">'Smell Intensity (y)'</span>)</span>
+<span id="cb1-51"><a href="#cb1-51"></a>ax_main.set_title(<span class="st">'Joint PDF: $p(x, y)$'</span>)</span>
+<span id="cb1-52"><a href="#cb1-52"></a>ax_main.legend()</span>
+<span id="cb1-53"><a href="#cb1-53"></a></span>
+<span id="cb1-54"><a href="#cb1-54"></a><span class="co"># Top Right: Evidence Sidebar</span></span>
+<span id="cb1-55"><a href="#cb1-55"></a>ax_evid <span class="op">=</span> fig.add_subplot(gs[<span class="dv">0</span>, <span class="dv">1</span>], sharey<span class="op">=</span>ax_main)</span>
+<span id="cb1-56"><a href="#cb1-56"></a>ax_evid.plot(evidence_y, y, color<span class="op">=</span><span class="st">'teal'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb1-57"><a href="#cb1-57"></a>ax_evid.fill_betweenx(y, <span class="dv">0</span>, evidence_y, color<span class="op">=</span><span class="st">'teal'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb1-58"><a href="#cb1-58"></a>ax_evid.set_xlabel(<span class="st">'Evidence $p(y)$'</span>)</span>
+<span id="cb1-59"><a href="#cb1-59"></a>ax_evid.<span class="bu">set</span>(ylim<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">15</span>),</span>
+<span id="cb1-60"><a href="#cb1-60"></a>            xlim<span class="op">=</span>(<span class="dv">0</span>, evidence_y.<span class="bu">max</span>() <span class="op">*</span> <span class="fl">1.2</span>)</span>
+<span id="cb1-61"><a href="#cb1-61"></a>)</span>
+<span id="cb1-62"><a href="#cb1-62"></a>y4_idx <span class="op">=</span> np.argmin(np.<span class="bu">abs</span>(y <span class="op">-</span> <span class="fl">4.0</span>))</span>
+<span id="cb1-63"><a href="#cb1-63"></a>ax_evid.plot(evidence_y[y4_idx], y[y4_idx], <span class="st">'ko'</span>, label<span class="op">=</span><span class="ss">f'Evidence at $y=</span><span class="sc">{</span>obs_y_val<span class="sc">}</span><span class="ss">$'</span>)</span>
+<span id="cb1-64"><a href="#cb1-64"></a>ax_evid.text(evidence_y[y4_idx] <span class="op">+</span> evidence_y.<span class="bu">max</span>()<span class="op">*</span><span class="fl">0.1</span>, y[y4_idx], <span class="ss">f'p(y=4.0)=</span><span class="sc">{</span>evidence_y[y4_idx]<span class="sc">:.2f}</span><span class="ss">'</span>, va<span class="op">=</span><span class="st">'center'</span>, ha<span class="op">=</span><span class="st">'left'</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb1-65"><a href="#cb1-65"></a>plt.setp(ax_evid.get_yticklabels(), visible<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-66"><a href="#cb1-66"></a></span>
+<span id="cb1-67"><a href="#cb1-67"></a><span class="co"># Bottom: Prior vs Posterior with Centers of Mass</span></span>
+<span id="cb1-68"><a href="#cb1-68"></a>ax_inf <span class="op">=</span> fig.add_subplot(gs[<span class="dv">1</span>, <span class="dv">0</span>], sharex<span class="op">=</span>ax_main)</span>
+<span id="cb1-69"><a href="#cb1-69"></a>ax_inf.plot(x, prior_pdf, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>, lw<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'Prior $p(x)$'</span>)</span>
+<span id="cb1-70"><a href="#cb1-70"></a>ax_inf.plot(x, posterior_pdf, color<span class="op">=</span><span class="st">'crimson'</span>, lw<span class="op">=</span><span class="fl">2.5</span>, label<span class="op">=</span><span class="st">'Posterior $p(x|y)$'</span>)</span>
+<span id="cb1-71"><a href="#cb1-71"></a>ax_inf.fill_between(x, <span class="dv">0</span>, posterior_pdf, color<span class="op">=</span><span class="st">'crimson'</span>, alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb1-72"><a href="#cb1-72"></a></span>
+<span id="cb1-73"><a href="#cb1-73"></a>ax_inf.text(<span class="dv">7</span>, <span class="fl">0.07</span>, <span class="vs">r"prior, </span><span class="dv">$</span><span class="vs">p</span><span class="kw">(</span><span class="vs">x</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span>, color<span class="op">=</span><span class="st">'gray'</span>, fontsize<span class="op">=</span><span class="dv">12</span>, ha<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb1-74"><a href="#cb1-74"></a>ax_inf.text(<span class="fl">5.5</span>, <span class="fl">0.15</span>, <span class="vs">r"posterior, </span><span class="dv">$</span><span class="vs">p</span><span class="kw">(</span><span class="vs">x</span><span class="cf">|</span><span class="vs">y</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span>, color<span class="op">=</span><span class="st">'crimson'</span>, fontsize<span class="op">=</span><span class="dv">12</span>, ha<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb1-75"><a href="#cb1-75"></a>ax_inf.text(com_prior, <span class="fl">0.01</span>, <span class="st">" prior mean</span><span class="ch">\n</span><span class="st">"</span> <span class="op">+</span> <span class="vs">r" </span><span class="dv">$</span><span class="vs">E_{p</span><span class="kw">(</span><span class="vs">x</span><span class="kw">)</span><span class="vs">}</span><span class="pp">[x]</span><span class="vs">]</span><span class="dv">$</span><span class="vs">"</span>, color<span class="op">=</span><span class="st">'gray'</span>, fontsize<span class="op">=</span><span class="dv">12</span>, ha<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb1-76"><a href="#cb1-76"></a>ax_inf.text(com_posterior, <span class="fl">0.01</span>, <span class="st">"posterior mean </span><span class="ch">\n</span><span class="st">"</span> <span class="op">+</span> <span class="vs">r"</span><span class="dv">$</span><span class="vs">E_{p</span><span class="kw">(</span><span class="vs">x</span><span class="cf">|</span><span class="vs">y</span><span class="kw">)</span><span class="vs">}</span><span class="pp">[x]</span><span class="dv">$</span><span class="vs">  "</span>, color<span class="op">=</span><span class="st">'crimson'</span>, fontsize<span class="op">=</span><span class="dv">12</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb1-77"><a href="#cb1-77"></a><span class="co"># Add Vertical Lines for Centers of Mass</span></span>
+<span id="cb1-78"><a href="#cb1-78"></a>x_com_prior_idx <span class="op">=</span> np.argmin(np.<span class="bu">abs</span>(x <span class="op">-</span> com_prior))</span>
+<span id="cb1-79"><a href="#cb1-79"></a>x_com_posterior_idx <span class="op">=</span> np.argmin(np.<span class="bu">abs</span>(x <span class="op">-</span> com_posterior))</span>
+<span id="cb1-80"><a href="#cb1-80"></a>ax_inf.plot([x[x_com_prior_idx]]<span class="op">*</span><span class="dv">2</span>, [<span class="dv">0</span>, prior_pdf[x_com_prior_idx]], <span class="st">'--'</span>, color<span class="op">=</span><span class="st">'gray'</span>, label<span class="op">=</span><span class="ss">f'Prior Mean: </span><span class="sc">{</span>com_prior<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb1-81"><a href="#cb1-81"></a>ax_inf.plot([x[x_com_posterior_idx]]<span class="op">*</span><span class="dv">2</span>, [<span class="dv">0</span>, posterior_pdf[x_com_posterior_idx]], <span class="st">'--'</span>, color<span class="op">=</span><span class="st">'crimson'</span>, label<span class="op">=</span><span class="ss">f'Posterior Mean: </span><span class="sc">{</span>com_posterior<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb1-82"><a href="#cb1-82"></a><span class="co"># ax_inf.axvline(com_prior, color='gray', linestyle='--', alpha=0.6, label=f'Prior Mean: {com_prior:.2f}')</span></span>
+<span id="cb1-83"><a href="#cb1-83"></a><span class="co"># ax_inf.axvline(com_posterior, color='crimson', linestyle='--', alpha=0.8, label=f'Posterior Mean: {com_posterior:.2f}')</span></span>
+<span id="cb1-84"><a href="#cb1-84"></a></span>
+<span id="cb1-85"><a href="#cb1-85"></a>ax_inf.set_xlabel(<span class="st">'Distance (x)'</span>)</span>
+<span id="cb1-86"><a href="#cb1-86"></a>ax_inf.set_ylabel(<span class="st">'Probability Density'</span>)</span>
+<span id="cb1-87"><a href="#cb1-87"></a>ax_inf.set_title(<span class="st">'Inference: Updating Beliefs and Point Estimates'</span>, y<span class="op">=</span><span class="fl">0.88</span>)</span>
+<span id="cb1-88"><a href="#cb1-88"></a>ax_inf.<span class="bu">set</span>(xlim<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">12</span>),</span>
+<span id="cb1-89"><a href="#cb1-89"></a>           ylim<span class="op">=</span>(<span class="dv">0</span>, <span class="bu">max</span>(prior_pdf.<span class="bu">max</span>(), posterior_pdf.<span class="bu">max</span>()) <span class="op">*</span> <span class="fl">1.2</span>)</span>
+<span id="cb1-90"><a href="#cb1-90"></a>           )</span>
+<span id="cb1-91"><a href="#cb1-91"></a></span>
+<span id="cb1-92"><a href="#cb1-92"></a>ax_main.text(<span class="fl">0.03</span>, <span class="fl">0.97</span>, <span class="vs">r"a"</span>, transform<span class="op">=</span>ax_main.transAxes,</span>
+<span id="cb1-93"><a href="#cb1-93"></a>         horizontalalignment<span class="op">=</span><span class="st">'left'</span>, verticalalignment<span class="op">=</span><span class="st">'top'</span>,</span>
+<span id="cb1-94"><a href="#cb1-94"></a>         fontweight<span class="op">=</span><span class="st">"bold"</span>, color<span class="op">=</span><span class="st">"white"</span>, fontsize<span class="op">=</span><span class="dv">18</span>)</span>
+<span id="cb1-95"><a href="#cb1-95"></a>ax_evid.text(<span class="fl">0.06</span>, <span class="fl">0.97</span>, <span class="vs">r"b"</span>, transform<span class="op">=</span>ax_evid.transAxes,</span>
+<span id="cb1-96"><a href="#cb1-96"></a>         horizontalalignment<span class="op">=</span><span class="st">'left'</span>, verticalalignment<span class="op">=</span><span class="st">'top'</span>,</span>
+<span id="cb1-97"><a href="#cb1-97"></a>         fontweight<span class="op">=</span><span class="st">"bold"</span>, color<span class="op">=</span><span class="st">"black"</span>, fontsize<span class="op">=</span><span class="dv">18</span>)</span>
+<span id="cb1-98"><a href="#cb1-98"></a>ax_inf.text(<span class="fl">0.03</span>, <span class="fl">0.97</span>, <span class="vs">r"c"</span>, transform<span class="op">=</span>ax_inf.transAxes,</span>
+<span id="cb1-99"><a href="#cb1-99"></a>         horizontalalignment<span class="op">=</span><span class="st">'left'</span>, verticalalignment<span class="op">=</span><span class="st">'top'</span>,</span>
+<span id="cb1-100"><a href="#cb1-100"></a>         fontweight<span class="op">=</span><span class="st">"bold"</span>, color<span class="op">=</span><span class="st">"black"</span>, fontsize<span class="op">=</span><span class="dv">18</span>)</span>
+<span id="cb1-101"><a href="#cb1-101"></a></span>
+<span id="cb1-102"><a href="#cb1-102"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -457,7 +462,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>Assume that the mouse started with a prior probability density for the fox’s distance as shown by the gray curve in panel c.&nbsp;The expected value (center of mass) of this prior is 3.87 (in standard mouse units). The mouse then receives a sensory observation of <span class="math inline">y=4.0</span>. The mouse uses its internal generative model to figure out what this means. The generative model is the joint PDF shown in panel a, which encodes the likelihood of observing different scent intensities at different distances, multiplied by the prior belief about those distances. By slicing through this joint PDF at the observed scent intensity of <span class="math inline">y=4.0</span> (gray dashed line), the mouse can find the numerator of Bayes’ rule, <span class="math inline">p(x, y=4.0)</span>. To get the posterior, the mouse needs to normalize this slice by the evidence <span class="math inline">p(y=4.0)</span>. The full curve for the evidence <span class="math inline">p(y)</span> is shown in panel b, and it can be calculated by integrating the joint PDF over all distances <span class="math inline">x</span>, that is, integrating over the horizontal axis of panel a. This integral gives us the marginal probability of observing that scent intensity, regardless of the distance. The value of the evidence at <span class="math inline">y=4.0</span> is shown as a black dot in panel b, and it equals 0.07. This value is the denominator in Bayes’ rule. Finally, the mouse divides the slice of the joint PDF at <span class="math inline">y=4.0</span> by this evidence value to get the posterior PDF over distances given the observed scent intensity. This is the red curve in panel c.&nbsp;The center of mass of the posterior is 2.89, which is closer than the prior mean of 3.87, indicating that after sniffing a smell intensity of 4.0, the mouse now thinks that the fox is likely closer than it previously thought.</p>
+<p>Assume that the mouse started with a prior probability density for the fox’s distance as shown by the gray curve in panel c.&nbsp;The expected value (center of mass) of this prior is 3.87 (in standard mouse units). The mouse then receives a sensory observation of <span class="math inline">y=4.0</span>. The mouse uses its internal generative model to figure out what this means. The generative model is the joint PDF shown in panel a, which encodes the likelihood of observing different scent intensities at different distances, multiplied by the prior belief about those distances. By slicing through this joint PDF at the observed scent intensity of <span class="math inline">y=4.0</span> (gray dashed line), the mouse can find the numerator of Bayes’ rule, <span class="math inline">p(x, y=4.0)</span>. To get the posterior, the mouse needs to normalize this slice by the evidence <span class="math inline">p(y=4.0)</span>. The full curve for the evidence <span class="math inline">p(y)</span> is shown in panel b, and it can be calculated by integrating the joint PDF over all distances <span class="math inline">x</span>, that is, integrating over the horizontal axis of panel a. This integral gives us the marginal probability of observing that scent intensity, regardless of the distance. The value of the evidence at <span class="math inline">y=4.0</span> is shown as a black dot in panel b, and it equals 0.07. This value is the denominator in Bayes’ rule. Strictly speaking, this is not the probability of observing exactly <span class="math inline">y=4.0</span>, but the probability density around that sensory value. Finally, the mouse divides the slice of the joint PDF at <span class="math inline">y=4.0</span> by this evidence value to get the posterior PDF over distances given the observed scent intensity. This is the red curve in panel c.&nbsp;The center of mass of the posterior is 2.89, which is closer than the prior mean of 3.87, indicating that after sniffing a smell intensity of 4.0, the mouse now thinks that the fox is likely closer than it previously thought.</p>
 <p>Easy, right?</p>
 </section>
 <section id="the-problem-of-degeneracy" class="level2" data-number="6.2">
@@ -469,10 +474,16 @@ window.Quarto = {
 <li>The fox is very close, but the wind is blowing the scent away from the burrow.</li>
 <li>The fox is medium-distance, but the mouse has a stuffed nose (sensor noise).</li>
 </ol>
-<p>If the mouse only models “distance”, its likelihood mapping <span class="math inline">p(y|x)</span> must be extremely “blurry” to account for all that wind-related uncertainty. A blurry model is a dangerous model; it leads to high-variance guesses that could get the mouse eaten.</p>
+<p>If the mouse only models “distance”, its likelihood mapping <span class="math inline">p(y|x)</span> must be extremely “blurry” to account for all that wind-related uncertainty. A model that collapses all this uncertainty into distance alone becomes very broad: the same smell intensity is compatible with many possible distances.</p>
 </section>
-<section id="the-curse-of-dimensionality" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="the-curse-of-dimensionality"><span class="header-section-number">6.3</span> the curse of dimensionality</h2>
+<section id="the-problem-of-generalization" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="the-problem-of-generalization"><span class="header-section-number">6.3</span> the problem of generalization</h2>
+<p>There is an even deeper problem. In the 2×2 example, it was reasonable to imagine that the mouse had learned the full likelihood matrix from experience. But in a continuous, high-dimensional world, this is impossible. The mouse has never experienced every possible combination of distance, wind direction, wind speed, humidity, vegetation, and fox behavior. Therefore, it cannot simply store a giant likelihood table.</p>
+<p>To survive, the mouse needs a generative model with structure. It must assume that smells behave in lawful ways: they tend to weaken with distance, drift with wind, and become noisier under turbulent conditions. These assumptions allow the mouse to generalize beyond direct experience. In other words, the generative model is not just memory; it is a compressed, structured model of how hidden causes generate sensory data.</p>
+<p>But even with structure, inference remains difficult. Once the model contains many hidden causes, the mouse must infer a whole configuration of the world, not just one variable. This brings us to the curse of dimensionality.</p>
+</section>
+<section id="the-curse-of-dimensionality" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="the-curse-of-dimensionality"><span class="header-section-number">6.4</span> the curse of dimensionality</h2>
 <p>To gain precision, the mouse must expand its <strong>hidden state <span class="math inline">x</span></strong> into a high-dimensional vector. It must model not just distance, but also <strong>wind velocity, wind direction, and turbulence</strong>, not to speak of the fox’s behavior and the possibility that there are multiple foxes. These are “nuisance variables”—the mouse doesn’t care about the wind for its own sake, but it <em>must</em> infer the state of the wind to “de-noise” the smell of the fox.</p>
 <p>As we add these necessary dimensions (distance, angle, velocity, wind speed, turbulence, humidity, etc.), our “easy” Bayesian solution falls apart:</p>
 <ol type="1">
@@ -480,13 +491,12 @@ window.Quarto = {
 </ol>
 <p><span class="math display">p(y) = \int \int \int \dots \int p(y|x_1, x_2, \dots, x_n) p(x_1, x_2, \dots, x_n) dx_1 dx_2 \dots dx_n</span></p>
 <ol start="2" type="1">
-<li><strong>Computational Collapse:</strong> If we used the same 300-point grid from our Python script for 10 dimensions, we would need <span class="math inline">300^{10}</span> calculations. That is roughly <span class="math inline">5 \times 10^{24}</span> operations—far more than any biological brain can compute in the split second needed to escape a predator.</li>
+<li><strong>Computational Collapse:</strong> If we used the same 300-point grid from our Python script for 10 dimensions, we would need <span class="math inline">300^{10}</span> calculations. That is roughly <span class="math inline">5 \times 10^{24}</span> operations—far more than any biological brain can compute in the split second needed to escape a predator. If we tried to solve the posterior by explicitly evaluating the joint density on a grid, as we did in the simple Python example, the computation would explode.</li>
 </ol>
 </section>
-<section id="the-need-for-a-shortcut" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="the-need-for-a-shortcut"><span class="header-section-number">6.4</span> the need for a shortcut</h2>
-<p>This is the “Statistical Inverse Problem” in its true form. Exact Bayesian inference is mathematically beautiful but biologically impossible in complex environments. The mouse cannot solve the integral to find the exact “Evidence.”</p>
-<p>Instead of trying to calculate that impossible integral, the brain uses a mathematical shortcut called <strong>Variational Inference</strong>. It turns a “calculus problem” (integration) into an “optimization problem.” The mouse creates a “guess” distribution <span class="math inline">q(x)</span> and simply moves that guess until it fits the incoming data, bypassing the need to ever solve the high-dimensional integral of the evidence.</p>
+<section id="the-need-for-a-shortcut" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="the-need-for-a-shortcut"><span class="header-section-number">6.5</span> the need for a shortcut</h2>
+<p>This is the statistical inverse problem in its true form. The sensory data are generated by hidden causes, but many different hidden causes can produce the same sensory outcome. Exact Bayesian inference tells us what the ideal posterior should be, but in high-dimensional environments computing it directly becomes impossible. Variational inference provides a shortcut: instead of calculating the exact posterior, the system maintains an approximate belief distribution <span class="math inline">q(x)</span> and adjusts it to better explain the sensory data. This move—from exact inference to approximate inference—is the mathematical doorway into active inference.</p>
 
 
 </section>
