@@ -338,10 +338,11 @@ A = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}
 <p><span class="math display">
 XY \stackrel{?}{=} YX
 </span></p>
-<p>In order to find the difference between the two sides of the equation, ideally I would subtract the same quantity from both sides. Unfortunately, groups only have multiplication and the inverse, not addition/subtraction. To measure the effect of doing operations in different orders, we compute</p>
+<p>In order to find the difference between the two sides of the equation, ideally I would subtract the same quantity from both sides. Unfortunately, groups only have multiplication and the inverse, not addition/subtraction. To measure the effect of doing operations in different orders, we right-multiply both sides of the equation by <span class="math inline">X^{-1}</span> on then right-multiply again by <span class="math inline">Y^{-1}</span>. We get:</p>
 <p><span class="math display">
-XYX^{-1}Y^{-1}
+XYX^{-1}Y^{-1} \stackrel{?}{=} I.
 </span></p>
+<p>That is to say, is doing <span class="math inline">X</span> followed by <span class="math inline">Y</span>, then the inverse of <span class="math inline">X</span>, then the inverse of <span class="math inline">Y</span> the same as doing nothing?</p>
 </section>
 <section id="tangent-space" class="level2" data-number="10.3">
 <h2 data-number="10.3" class="anchored" data-anchor-id="tangent-space"><span class="header-section-number">10.3</span> tangent space</h2>

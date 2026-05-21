@@ -256,7 +256,7 @@
     "href": "group_theory/lie_algebra_sl2.html#commutator",
     "title": "10  Lie algebra sl(2)",
     "section": "10.2 commutator",
-    "text": "10.2 commutator\nPutting one’s socks on, and then the shoes, is not the same as putting the shoes on and then the socks. The order of operations often matters. If I have two elements X,Y of my SL(2) group (i.e. matrices) will the order of operations matter?\n\nXY \\stackrel{?}{=} YX\n\nIn order to find the difference between the two sides of the equation, ideally I would subtract the same quantity from both sides. Unfortunately, groups only have multiplication and the inverse, not addition/subtraction. To measure the effect of doing operations in different orders, we compute\n\nXYX^{-1}Y^{-1}",
+    "text": "10.2 commutator\nPutting one’s socks on, and then the shoes, is not the same as putting the shoes on and then the socks. The order of operations often matters. If I have two elements X,Y of my SL(2) group (i.e. matrices) will the order of operations matter?\n\nXY \\stackrel{?}{=} YX\n\nIn order to find the difference between the two sides of the equation, ideally I would subtract the same quantity from both sides. Unfortunately, groups only have multiplication and the inverse, not addition/subtraction. To measure the effect of doing operations in different orders, we right-multiply both sides of the equation by X^{-1} on then right-multiply again by Y^{-1}. We get:\n\nXYX^{-1}Y^{-1} \\stackrel{?}{=} I.\n\nThat is to say, is doing X followed by Y, then the inverse of X, then the inverse of Y the same as doing nothing?",
     "crumbs": [
       "group theory",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Lie algebra sl(2)</span>"
