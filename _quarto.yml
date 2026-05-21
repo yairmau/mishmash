@@ -22,6 +22,10 @@ book:
     - part: "thermodynamics"
       chapters:
         - intro-thermodynamics.qmd
+    - part: "group theory"
+      chapters:
+        - group_theory/basic_properties.ipynb
+        - group_theory/lie_algebra_sl2.ipynb
     - part: "differential geometry"
       chapters:
         - intro-differential-geometry.qmd
