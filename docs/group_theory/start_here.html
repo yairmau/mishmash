@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; introduction to causal inference – mishmash</title>
+<title>9&nbsp; start here – mishmash</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../causal_inference/DAG_rules.html" rel="next">
-<link href="../index.html" rel="prev">
+<link href="../group_theory/basic_properties.html" rel="next">
+<link href="../intro-thermodynamics.html" rel="prev">
 <link href="../archive/logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -43,7 +43,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-2c63ad6a8cffefe8536d13eabcc001d1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script src="../site_libs/quarto-contrib/iconify-3.0.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -75,6 +74,49 @@ ul.task-list li input[type="checkbox"] {
 <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css"> -->
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -87,7 +129,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../causal_inference/intro-causal-inference.html">causal inference</a></li><li class="breadcrumb-item"><a href="../causal_inference/intro-causal-inference.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">introduction to causal inference</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../group_theory/start_here.html">group theory</a></li><li class="breadcrumb-item"><a href="../group_theory/start_here.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">start here</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -127,16 +169,16 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">causal inference</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../causal_inference/intro-causal-inference.html" class="sidebar-item-text sidebar-link active">
+  <a href="../causal_inference/intro-causal-inference.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">introduction to causal inference</span></span></a>
   </div>
 </li>
@@ -202,16 +244,16 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">group theory</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../group_theory/start_here.html" class="sidebar-item-text sidebar-link">
+  <a href="../group_theory/start_here.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">start here</span></span></a>
   </div>
 </li>
@@ -251,15 +293,26 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#a-concrete-example" id="toc-a-concrete-example" class="nav-link active" data-scroll-target="#a-concrete-example"><span class="header-section-number">9.1</span> a concrete example</a></li>
+  <li><a href="#the-formal-definition" id="toc-the-formal-definition" class="nav-link" data-scroll-target="#the-formal-definition"><span class="header-section-number">9.2</span> the formal definition</a></li>
+  <li><a href="#finite-groups" id="toc-finite-groups" class="nav-link" data-scroll-target="#finite-groups"><span class="header-section-number">9.3</span> finite groups</a></li>
+  <li><a href="#infinite-groups" id="toc-infinite-groups" class="nav-link" data-scroll-target="#infinite-groups"><span class="header-section-number">9.4</span> infinite groups</a></li>
+  <li><a href="#discrete-groups" id="toc-discrete-groups" class="nav-link" data-scroll-target="#discrete-groups"><span class="header-section-number">9.5</span> discrete groups</a></li>
+  <li><a href="#continuous-groups" id="toc-continuous-groups" class="nav-link" data-scroll-target="#continuous-groups"><span class="header-section-number">9.6</span> continuous groups</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../causal_inference/intro-causal-inference.html">causal inference</a></li><li class="breadcrumb-item"><a href="../causal_inference/intro-causal-inference.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">introduction to causal inference</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../group_theory/start_here.html">group theory</a></li><li class="breadcrumb-item"><a href="../group_theory/start_here.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">start here</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">introduction to causal inference</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/yairmau/mishmash/blob/main/causal_inference/intro-causal-inference.qmd"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">start here</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/yairmau/mishmash/blob/main/group_theory/start_here.ipynb"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -276,9 +329,181 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><iconify-icon role="img" inline="" icon="lucide:construction" aria-label="Icon construction from lucide Iconify.design set." title="Icon construction from lucide Iconify.design set."></iconify-icon> this page is under construction <iconify-icon role="img" inline="" icon="lucide:construction" aria-label="Icon construction from lucide Iconify.design set." title="Icon construction from lucide Iconify.design set."></iconify-icon></p>
+<section id="a-concrete-example" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="a-concrete-example"><span class="header-section-number">9.1</span> a concrete example</h2>
+<p>I think it is always best to start with a concrete example, and only later generalize to the abstract definition.</p>
+<p>You and I are looking at a blank rectangular sheet of paper on a table. If you look away, I could to a few things with it, and when you look back, you wouldn’t be able to tell the difference.</p>
+<ul>
+<li>I could rotate the paper 180 degrees around its center, without lifting it off the table. Let’s call this operation <span class="math inline">r</span>, for “rotation”.</li>
+<li>I could flip the paper over along a horizontal line that runs through its center, so that the top becomes the bottom and vice versa. Let’s call this operation <span class="math inline">h</span>, for “horizontal flip”.</li>
+<li>I could flip the paper over along a vertical line that runs through its center, so that the left side becomes the right side and vice versa. Let’s call this operation <span class="math inline">v</span>, for “vertical flip”.</li>
+<li>I should mention an obvious manipulation, that would be do nothing. I could leave the paper as it is. Let’s call this operation <span class="math inline">e</span>. There is no reason to use the symbol <span class="math inline">e</span>, that’s what everybody agreed to use. The standard name for “do nothing” is “identity”.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="S4_rectangle.svg" class="img-fluid figure-img"></p>
+<figcaption>Source: <a href="https://web.math.utk.edu/~dcartwr1/iaawa/section-sym.html" class="uri">https://web.math.utk.edu/~dcartwr1/iaawa/section-sym.html</a></figcaption>
+</figure>
+</div>
+<p>The four operations are shown in the image above, where the four corners of the rectangle are labeled to indicate which operation transforms the rectangle in which way.</p>
+<p>All these four operations act on an object (the rectangle), and leave it unchanged. They are the <strong>symmetries</strong> of the object.</p>
+<p>While you’re looking away, I could decide to perform two operations in sequence. For example, I could first perform a horizontal flip (<span class="math inline">h</span>) and then a rotation (<span class="math inline">r</span>). The result would clearly leave the rectangle unchanged from your point of view. If you look carefully at the image above, you’ll find out that the composition of these two operations is equivalent to a single operation, which is performing a vertical flip (<span class="math inline">v</span>).</p>
+<p>I can then ask the question: what if I try all possible compositions of these four operations?</p>
+<div class="custom-table" style="width: 250px; margin: 0 auto;">
+<table class="caption-top table">
+<caption>The group table for the symmetries of a rectangle</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline">e</span></th>
+<th><span class="math inline">r</span></th>
+<th><span class="math inline">h</span></th>
+<th><span class="math inline">v</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>e</strong></td>
+<td><span class="math inline">e</span></td>
+<td><span class="math inline">r</span></td>
+<td><span class="math inline">h</span></td>
+<td><span class="math inline">v</span></td>
+</tr>
+<tr class="even">
+<td><strong>r</strong></td>
+<td><span class="math inline">r</span></td>
+<td><span class="math inline">e</span></td>
+<td><span class="math inline">v</span></td>
+<td><span class="math inline">h</span></td>
+</tr>
+<tr class="odd">
+<td><strong>h</strong></td>
+<td><span class="math inline">h</span></td>
+<td><span class="math inline">v</span></td>
+<td><span class="math inline">e</span></td>
+<td><span class="math inline">r</span></td>
+</tr>
+<tr class="even">
+<td><strong>v</strong></td>
+<td><span class="math inline">v</span></td>
+<td><span class="math inline">h</span></td>
+<td><span class="math inline">r</span></td>
+<td><span class="math inline">e</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<style>
+/* Center the caption text below the centered table */
+.custom-table figcaption, .custom-table caption {
+  text-align: center;
+}
+
+/* Target all cells in the header row */
+.custom-table table thead tr th {
+  background-color: #e0e0e0;
+}
+
+/* Strip the background from the very first cell in the header row */
+.custom-table table thead tr th:first-child {
+  background-color: transparent;
+}
+
+/* Target the first column in the body */
+.custom-table table tbody tr td:first-child {
+  background-color: #f0f0f0;
+}
+</style>
+<p>The table above is called a <strong>group table</strong>, or a <strong>Cayley table</strong>, or a <strong>multiplication table</strong>. It should be read as follows: the first operation to be executed is the one listed on the column header, and the second operation is the one listed on the row header. The cell at the intersection of the row and column gives the result of performing those two operations in sequence. For example, take the column “<span class="math inline">r</span>” and the row “<span class="math inline">h</span>”. We write their composition as “<span class="math inline">h * r</span>”, where the convetion is that operations are performed from right to left. This is similar to the way we read functions in mathematics: if we have two functions <span class="math inline">f</span> and <span class="math inline">g</span>, we write their composition as <span class="math inline">f \circ g</span>, which means “apply <span class="math inline">g</span>, and then <span class="math inline">f</span>”.</p>
+<p>From this table we can note a few things:</p>
+<ol type="1">
+<li>For any two operations in the table, the result of their composition is also an operation in the table. This is called <strong>closure</strong>.</li>
+<li>The order in which we perform three or more operations does not matter. In other words, for any three operations <span class="math inline">a</span>, <span class="math inline">b</span>, and <span class="math inline">c</span>, the result of <span class="math inline">(a * b) * c</span> is the same as <span class="math inline">a * (b * c)</span>. Let’s verify this with an example from the table: if we take the operations <span class="math inline">r</span>, <span class="math inline">h</span>, and <span class="math inline">v</span>, then <span class="math inline">(r * h) * v = v * v = e</span>, and <span class="math inline">r * (h * v) = r * r = e</span>. Since both results are equal, the operation is <strong>associative</strong>.</li>
+<li>There exists an <strong>identity</strong> element in the table, which is the operation that leaves everything unchanged when performed. In this case, it’s the <span class="math inline">e</span> operation.</li>
+<li>For each operation in the table, there exists another operation that, when performed after it, results in the identity element. For example, performing a rotation (<span class="math inline">r</span>) followed by another rotation (<span class="math inline">r</span>) results in the identity (<span class="math inline">e</span>). Every element in the table has an <strong>inverse</strong>.</li>
+</ol>
+</section>
+<section id="the-formal-definition" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="the-formal-definition"><span class="header-section-number">9.2</span> the formal definition</h2>
+<p>Now that we are familiar with a concrete example of a group (the symmetries of a rectangle), we can state the formal definition of a group.</p>
+<p>A <strong>group</strong> is a set <span class="math inline">G</span> together with a binary operation <span class="math inline">*</span> (called the group operation, or simply a multiplication) that combines any two elements <span class="math inline">a</span> and <span class="math inline">b</span> in <span class="math inline">G</span> to form another element in <span class="math inline">G</span>, denoted <span class="math inline">a * b</span>, such that the following four conditions are satisfied:</p>
+<ol type="1">
+<li><strong>Closure</strong>: For all <span class="math inline">a</span>, <span class="math inline">b</span> in <span class="math inline">G</span>, the result of the operation <span class="math inline">a * b</span> is also in <span class="math inline">G</span>.</li>
+<li><strong>Associativity</strong>: For all <span class="math inline">a</span>, <span class="math inline">b</span>, <span class="math inline">c</span> in <span class="math inline">G</span>, <span class="math inline">(a * b) * c = a * (b * c)</span>.</li>
+<li><strong>Identity</strong>: There exists an element <span class="math inline">e</span> in <span class="math inline">G</span> such that for every element a in <span class="math inline">G</span>, <span class="math inline">e * a = a * e = a</span>. This element <span class="math inline">e</span> is called the <strong>identity</strong> of the group.</li>
+<li><strong>Inverse</strong>: For each element a in <span class="math inline">G</span>, there exists an element <span class="math inline">b</span> in <span class="math inline">G</span> such that <span class="math inline">a * b = b * a = e</span>, where <span class="math inline">e</span> is the identity element. The element <span class="math inline">b</span> is called the <strong>inverse</strong> of <span class="math inline">a</span> and is usually denoted as <span class="math inline">a^{-1}</span>.</li>
+</ol>
+</section>
+<section id="finite-groups" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="finite-groups"><span class="header-section-number">9.3</span> finite groups</h2>
+<p>The example of the symmetries of a rectangle is a finite group because it has a finite number of elements (in this case, 4 elements: e, r, h, v). Its formal name is the “Klein four-group”, or <span class="math inline">V_4</span>. Other intuitive examples of finite groups are:</p>
+<ul>
+<li><p>The symmetries of an equilateral triangle. Its elements are the identity, three rotations, and three reflections, making a total of 6 elements. This group is known as the “dihedral group of order 6”, or <span class="math inline">D_3</span>.</p></li>
+<li><p>The set of integers modulo <span class="math inline">n</span>, denoted by <span class="math inline">\mathbb{Z}/n\mathbb{Z}</span>, with the operation of addition modulo <span class="math inline">n</span>. This group has <span class="math inline">n</span> elements: <span class="math inline">\{0, 1, 2, \ldots, n-1\}</span>. The most common example of this type of group is what we use in clock arithmetic, where the numbers wrap around after reaching the maximum value. In that case, the elements are the hours on a clock (0 through 11 for a 12-hour clock), and the operation is addition modulo 12.</p></li>
+<li><p>The simplest non-trivial group is the “cyclic group of order 2”, or <span class="math inline">C_2</span>, which consists of two elements: the identity and one other element that is its own inverse. Examples in real life include the flip of a coin (heads or tails) or the state of a light switch (on or off). Interestingly, this same group can describe the multiplication of the numbers 1 and -1 (1 would be the identity and -1 would be the non-identity element).</p>
+<div class="custom-table" style="width: 250px; margin: 0 auto;">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline">e</span></th>
+<th><span class="math inline">a</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">e</span></td>
+<td><span class="math inline">e</span></td>
+<td><span class="math inline">a</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">a</span></td>
+<td><span class="math inline">a</span></td>
+<td><span class="math inline">e</span></td>
+</tr>
+</tbody>
+</table>
+</div></li>
+</ul>
+<style>
+/* Center the caption text below the centered table */
+.custom-table figcaption, .custom-table caption {
+  text-align: center;
+}
+
+/* Target all cells in the header row */
+.custom-table table thead tr th {
+  background-color: #e0e0e0;
+}
+
+/* Strip the background from the very first cell in the header row */
+.custom-table table thead tr th:first-child {
+  background-color: transparent;
+}
+
+/* Target the first column in the body */
+.custom-table table tbody tr td:first-child {
+  background-color: #f0f0f0;
+}
+</style>
+</section>
+<section id="infinite-groups" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="infinite-groups"><span class="header-section-number">9.4</span> infinite groups</h2>
+<p>In contrast to finite groups, infinite groups have an infinite number of elements. A classic example of an infinite group is the set of all integers, denoted by ℤ, with the operation of addition. This group is called the “infinite cyclic group” or <span class="math inline">C_\infty</span>. The addition of any two integers always results in another integer, demonstrating the closure property. The identity element in this group is 0, and the inverse of any integer <span class="math inline">n</span> is <span class="math inline">-n</span>. As for the associative property, the condition <span class="math inline">(a + b) + c = a + (b + c)</span> holds for all integers <span class="math inline">a</span>, <span class="math inline">b</span>, and <span class="math inline">c</span>.</p>
+<p>Another example is the set of all real numbers, denoted by ℝ, with the operation of addition. This group is also infinite and is known as the “additive group of real numbers”.</p>
+</section>
+<section id="discrete-groups" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="discrete-groups"><span class="header-section-number">9.5</span> discrete groups</h2>
+<p>In a discrete group, the elements are isolated from one another. There is a distinct “gap” between any two elements; you cannot smoothly slide from one element to the next.</p>
+<p>All finite groups are discrete groups because their elements are isolated and there is a clear gap between them. Some infinite groups are also discrete, such as the group of integers with addition, where each integer is separated from the next by a gap of 1. However, not all infinite groups are discrete; for example, the group of real numbers with addition is not discrete because there are no gaps between the elements.</p>
+</section>
+<section id="continuous-groups" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="continuous-groups"><span class="header-section-number">9.6</span> continuous groups</h2>
+<p>In a continuous group, the elements form a continuous space (a manifold). You can make infinitely small, smooth adjustments to move from one element to a neighboring element. Continuous groups are always infinite.</p>
+<p>A classic example of a continuous group is the set of all real numbers with the operation of addition, which we already discussed as the “additive group of real numbers”. Another example is the group of rotations in three-dimensional space, known as the “special orthogonal group” or <span class="math inline">SO(3)</span>. This is the symmetry group of a sphere. This group consists of all rotations about the origin in 3D space, and the group operation is the composition of rotations. The elements of this group form a continuous surface (a manifold), and you can make infinitely small changes to a rotation to get a neighboring rotation. I do realize that the concept of a manifold is weird at the moment, and we will discuss it in more detail when we talk about Lie groups.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -733,13 +958,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../index.html" class="pagination-link" aria-label="About">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">About</span></span>
+      <a href="../intro-thermodynamics.html" class="pagination-link" aria-label="intro to thermodynamics">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">intro to thermodynamics</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../causal_inference/DAG_rules.html" class="pagination-link" aria-label="DAG rules">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">DAG rules</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../group_theory/basic_properties.html" class="pagination-link" aria-label="basic properties">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">basic properties</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

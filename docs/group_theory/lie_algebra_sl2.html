@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>10&nbsp; Lie algebra sl(2) – mishmash</title>
+<title>11&nbsp; Lie algebra sl(2) – mishmash</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -129,7 +129,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../group_theory/basic_properties.html">group theory</a></li><li class="breadcrumb-item"><a href="../group_theory/lie_algebra_sl2.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Lie algebra sl(2)</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../group_theory/start_here.html">group theory</a></li><li class="breadcrumb-item"><a href="../group_theory/lie_algebra_sl2.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Lie algebra sl(2)</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -253,14 +253,20 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../group_theory/start_here.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">start here</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../group_theory/basic_properties.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">basic properties</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">basic properties</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../group_theory/lie_algebra_sl2.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Lie algebra sl(2)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Lie algebra sl(2)</span></span></a>
   </div>
 </li>
       </ul>
@@ -277,7 +283,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../intro-differential-geometry.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">intro to differential geometry</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">intro to differential geometry</span></span></a>
   </div>
 </li>
       </ul>
@@ -292,19 +298,19 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-group-sl2" id="toc-the-group-sl2" class="nav-link active" data-scroll-target="#the-group-sl2"><span class="header-section-number">10.1</span> the group SL(2)</a></li>
-  <li><a href="#commutator" id="toc-commutator" class="nav-link" data-scroll-target="#commutator"><span class="header-section-number">10.2</span> commutator</a></li>
-  <li><a href="#tangent-space" id="toc-tangent-space" class="nav-link" data-scroll-target="#tangent-space"><span class="header-section-number">10.3</span> tangent space</a></li>
-  <li><a href="#the-lie-algebra-sl2" id="toc-the-lie-algebra-sl2" class="nav-link" data-scroll-target="#the-lie-algebra-sl2"><span class="header-section-number">10.4</span> The Lie Algebra sl(2)</a></li>
+  <li><a href="#the-group-sl2" id="toc-the-group-sl2" class="nav-link active" data-scroll-target="#the-group-sl2"><span class="header-section-number">11.1</span> the group SL(2)</a></li>
+  <li><a href="#commutator" id="toc-commutator" class="nav-link" data-scroll-target="#commutator"><span class="header-section-number">11.2</span> commutator</a></li>
+  <li><a href="#tangent-space" id="toc-tangent-space" class="nav-link" data-scroll-target="#tangent-space"><span class="header-section-number">11.3</span> tangent space</a></li>
+  <li><a href="#the-lie-algebra-sl2" id="toc-the-lie-algebra-sl2" class="nav-link" data-scroll-target="#the-lie-algebra-sl2"><span class="header-section-number">11.4</span> The Lie Algebra sl(2)</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../group_theory/basic_properties.html">group theory</a></li><li class="breadcrumb-item"><a href="../group_theory/lie_algebra_sl2.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Lie algebra sl(2)</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../group_theory/start_here.html">group theory</a></li><li class="breadcrumb-item"><a href="../group_theory/lie_algebra_sl2.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Lie algebra sl(2)</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Lie algebra sl(2)</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/yairmau/mishmash/blob/main/group_theory/lie_algebra_sl2.ipynb"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Lie algebra sl(2)</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/yairmau/mishmash/blob/main/group_theory/lie_algebra_sl2.ipynb"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -322,8 +328,8 @@ window.Quarto = {
 
 
 <p>This chapter is heavily inspired by the excellent video <a href="https://youtu.be/tY7jac-iPA4" target="_blank">“how to understand all of lie algebras with one picture”</a> by Micheal Penn.</p>
-<section id="the-group-sl2" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="the-group-sl2"><span class="header-section-number">10.1</span> the group SL(2)</h2>
+<section id="the-group-sl2" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="the-group-sl2"><span class="header-section-number">11.1</span> the group SL(2)</h2>
 <p>The group SL(2) is the group of 2x2 matrices with determinant 1. It is a <strong>fundamental</strong> example in the study of Lie groups and Lie algebras. The determinant of a matrix measures volume scaling. If you apply a linear transformation with matrix <span class="math inline">A</span> to a region of space, the volume gets multiplied by <span class="math inline">\det(A)</span>. So <span class="math inline">\det=1</span> means volume preserving transformations. This is a very natural class of symmetries — transformations that don’t shrink or expand space, just reshape it.</p>
 <p>A general element of this group can be written as:</p>
 <p><span class="math display">
@@ -332,8 +338,8 @@ A = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}
 <p>where <span class="math inline">a, b, c, d \in \mathbb{C}</span> and the determinant is 1, i.e., <span class="math inline">ad - bc = 1</span>.</p>
 <p><strong>Change of point of view.</strong> Each of the elements <span class="math inline">a,b,c,d</span> is complex-valued, and we can imagine that every matrix in SL(2,<span class="math inline">\mathbb{C}</span>) is a point in an 4-dimensional complex space <span class="math inline">\mathbb{C}^4</span> . However, the constraint that the determinant equals 1 reduces the degrees of freedom by 1, meaning that the group SL(2,<span class="math inline">\mathbb{C}</span>) is a 3-dimensional surface embedded in a larger <span class="math inline">\mathbb{C}^4</span>. If you prefer to think of 1 complex dimension as equivalent to 2 real dimensions, then just multiply all the dimensions by 2. This surface is curved, because of the nonlinear constraint <span class="math inline">ad - bc = 1</span>. In mathematical parlance, we call this surface a <strong>manifold</strong>.</p>
 </section>
-<section id="commutator" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="commutator"><span class="header-section-number">10.2</span> commutator</h2>
+<section id="commutator" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="commutator"><span class="header-section-number">11.2</span> commutator</h2>
 <p>Putting one’s socks on, and then the shoes, is not the same as putting the shoes on and then the socks. The order of operations often matters. If I have two elements <span class="math inline">X,Y</span> of my SL(2) group (i.e.&nbsp;matrices) will the order of operations matter?</p>
 <p><span class="math display">
 XY \stackrel{?}{=} YX
@@ -344,8 +350,8 @@ XYX^{-1}Y^{-1} \stackrel{?}{=} I.
 </span></p>
 <p>That is to say, is doing <span class="math inline">X</span> followed by <span class="math inline">Y</span>, then the inverse of <span class="math inline">X</span>, then the inverse of <span class="math inline">Y</span> the same as doing nothing?</p>
 </section>
-<section id="tangent-space" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="tangent-space"><span class="header-section-number">10.3</span> tangent space</h2>
+<section id="tangent-space" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="tangent-space"><span class="header-section-number">11.3</span> tangent space</h2>
 <p>Let’s parametrize each element of the 2x2 matrix in SL(2) with the variable <span class="math inline">t</span>:</p>
 <p><span class="math display">
 A(t) = \begin{pmatrix} a(t) &amp; b(t) \\ c(t) &amp; d(t) \end{pmatrix}.
@@ -374,8 +380,8 @@ A'(0) = \begin{pmatrix} a'(0) &amp; b'(0) \\ c'(0) &amp; d'(0) \end{pmatrix}, \t
 <p>A good image goes a long way. I copied the image below from <a href="https://www.researchgate.net/publication/265646878_Force_Driven_Ruled_Surfaces" target="_blank">this paper</a>. This paper deals with another group and Lie algebra, but the drawing is good for us too. The curved surface represents the manifold of SL(2), and the plane above it represents the tangent space at the identity element. An element in the manifold (labeled <span class="math inline">T</span> in the image, for us it’s <span class="math inline">A</span>) gets mapped by the derivative to a point in the tangent space (labeled <span class="math inline">t</span> in the image, for us it’s <span class="math inline">A'</span>).</p>
 <p><img src="tangent-space.png" class="img-fluid"></p>
 </section>
-<section id="the-lie-algebra-sl2" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="the-lie-algebra-sl2"><span class="header-section-number">10.4</span> The Lie Algebra sl(2)</h2>
+<section id="the-lie-algebra-sl2" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="the-lie-algebra-sl2"><span class="header-section-number">11.4</span> The Lie Algebra sl(2)</h2>
 <p>What we just found is a new vector space related to the manifold. The elements in this flat space are given by</p>
 <p><span class="math display">
 sl(2) = \left\{ \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix} \Big| a + d = 0 \right\}   
@@ -890,12 +896,12 @@ X = I + \Delta t \, A, \quad Y = I + \Delta t \, B
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../group_theory/basic_properties.html" class="pagination-link" aria-label="basic properties">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">basic properties</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">basic properties</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../intro-differential-geometry.html" class="pagination-link" aria-label="intro to differential geometry">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">intro to differential geometry</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">intro to differential geometry</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
