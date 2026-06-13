@@ -337,7 +337,7 @@ window.Quarto = {
 <p>The group SL(2) is the group of 2x2 matrices with determinant 1. It is a <strong>fundamental</strong> example in the study of Lie groups and Lie algebras. The determinant of a matrix measures volume scaling. If you apply a linear transformation with matrix <span class="math inline">A</span> to a region of space, the volume gets multiplied by <span class="math inline">\det(A)</span>. So <span class="math inline">\det=1</span> means volume preserving transformations. This is a very natural class of symmetries — transformations that don’t shrink or expand space, just reshape it.</p>
 <p>A general element of this group can be written as:</p>
 <p><span class="math display">
-A = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}
+g = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}
 </span></p>
 <p>where <span class="math inline">a, b, c, d \in \mathbb{C}</span> and the determinant is 1, i.e., <span class="math inline">ad - bc = 1</span>.</p>
 <p><strong>Change of point of view.</strong> Each of the elements <span class="math inline">a,b,c,d</span> is complex-valued, and we can imagine that every matrix in SL(2,<span class="math inline">\mathbb{C}</span>) is a point in an 4-dimensional complex space <span class="math inline">\mathbb{C}^4</span> . However, the constraint that the determinant equals 1 reduces the degrees of freedom by 1, meaning that the group SL(2,<span class="math inline">\mathbb{C}</span>) is a 3-dimensional surface embedded in a larger <span class="math inline">\mathbb{C}^4</span>. If you prefer to think of 1 complex dimension as equivalent to 2 real dimensions, then just multiply all the dimensions by 2. This surface is curved, because of the nonlinear constraint <span class="math inline">ad - bc = 1</span>. In mathematical parlance, we call this surface a <strong>manifold</strong>.</p>
@@ -358,15 +358,15 @@ XYX^{-1}Y^{-1} \stackrel{?}{=} I.
 <h2 data-number="11.3" class="anchored" data-anchor-id="tangent-space"><span class="header-section-number">11.3</span> tangent space</h2>
 <p>Let’s parametrize each element of the 2x2 matrix in SL(2) with the variable <span class="math inline">t</span>:</p>
 <p><span class="math display">
-A(t) = \begin{pmatrix} a(t) &amp; b(t) \\ c(t) &amp; d(t) \end{pmatrix}.
+g(t) = \begin{pmatrix} a(t) &amp; b(t) \\ c(t) &amp; d(t) \end{pmatrix}.
 </span></p>
 <p>We can imagine that this parametrization defines a general curve in the manifold of SL(2). We will require that this curve passes through the identity element of SL(2) at <span class="math inline">t = 0</span>:</p>
 <p><span class="math display">
-A(t)\Big|_{t=0} = \begin{pmatrix} a(t) &amp; b(t) \\ c(t) &amp; d(t) \end{pmatrix}_{t=0} = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix}.
+g(t)\Big|_{t=0} = \begin{pmatrix} a(t) &amp; b(t) \\ c(t) &amp; d(t) \end{pmatrix}_{t=0} = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix}.
 </span></p>
 <p>What we will do now is to take the derivative of this curve with respect to the parameter <span class="math inline">t</span>, which will give us a vector in the tangent space of SL(2) at each point:</p>
 <p><span class="math display">
-A'(t) = \begin{pmatrix} a'(t) &amp; b'(t) \\ c'(t) &amp; d'(t) \end{pmatrix}.
+\dot{g}(t) = \begin{pmatrix} a'(t) &amp; b'(t) \\ c'(t) &amp; d'(t) \end{pmatrix}.
 </span></p>
 <p>Let’s now compute the derivative of the condition <span class="math inline">ad - bc = 1</span> with respect to <span class="math inline">t</span>, and evaluate it at <span class="math inline">t = 0</span>:</p>
 <p><span class="math display">
@@ -376,13 +376,13 @@ A'(t) = \begin{pmatrix} a'(t) &amp; b'(t) \\ c'(t) &amp; d'(t) \end{pmatrix}.
 <p><span class="math display">
 a'(0) + d'(0) = 0.
 </span></p>
-<p>This means that the derivative of the matrix <span class="math inline">A(t)</span> at <span class="math inline">t = 0</span> is</p>
+<p>This means that the derivative of the matrix <span class="math inline">g(t)</span> at <span class="math inline">t = 0</span> is</p>
 <p><span class="math display">
-A'(0) = \begin{pmatrix} a'(0) &amp; b'(0) \\ c'(0) &amp; d'(0) \end{pmatrix}, \text{ where } a'(0) + d'(0) = 0.
+\dot{g}(0) = \begin{pmatrix} a'(0) &amp; b'(0) \\ c'(0) &amp; d'(0) \end{pmatrix}, \text{ where } a'(0) + d'(0) = 0.
 </span></p>
 <p>Let’s take stock of what happened. From Calculus (and Physics), we are used to the idea that taking the time-derivative of the position curve gives us a vector for the velocity. The velocity is tangent to the displacement curve at each point. That’s exactly what we did here, but we did it for all possible curves in the manifold that pass through the identity element of SL(2). By taking the derivative of the curves <span class="math inline">A(t)</span> at <span class="math inline">t = 0</span> (at the identity element), we obtained vectors in the tangent space of SL(2) at that point. These new vectors have exactly the same dimension as the original (in this case 3 complex dimensions), but they live in a flat (Euclidean) space rather than in the curved manifold of SL(2).</p>
-<p>A good image goes a long way. I copied the image below from <a href="https://www.researchgate.net/publication/265646878_Force_Driven_Ruled_Surfaces" target="_blank">this paper</a>. This paper deals with another group and Lie algebra, but the drawing is good for us too. The curved surface represents the manifold of SL(2), and the plane above it represents the tangent space at the identity element. An element in the manifold (labeled <span class="math inline">T</span> in the image, for us it’s <span class="math inline">A</span>) gets mapped by the derivative to a point in the tangent space (labeled <span class="math inline">t</span> in the image, for us it’s <span class="math inline">A'</span>).</p>
-<p><img src="tangent-space.png" class="img-fluid"></p>
+<img src="lie_algebra_sl2_files/mediabag/673b89bede602f3c54bf4906c1b23f6d70e54651.svg" class="img-fluid" style="width:100.0%">
+<p>The curved gray surface represents the manifold of SL(2), and the plane below it represents the tangent space at the identity element. An element in the manifold gets mapped by the derivative to a point in the tangent space.</p>
 </section>
 <section id="the-lie-algebra-sl2" class="level2" data-number="11.4">
 <h2 data-number="11.4" class="anchored" data-anchor-id="the-lie-algebra-sl2"><span class="header-section-number">11.4</span> The Lie Algebra sl(2)</h2>
@@ -442,7 +442,6 @@ X = I + \Delta t \, A, \quad Y = I + \Delta t \, B
 <p><span class="math display">\text{trace}([A,B]) = \text{trace}(AB - BA) = \text{trace}(AB) - \text{trace}(BA) = 0 </span></p>
 <p>The Lie bracket is not invented — it is <strong>inherited</strong> from the group commutator. It is the leading order remnant of asking “how much do <span class="math inline">A</span> and <span class="math inline">B</span> fail to commute?”, pushed down from the curved group to the flat tangent space via a second order perturbation expansion.</p>
 <p>This promotes <span class="math inline">sl(2)</span> from a mere vector space to a <strong>Lie algebra</strong>: a vector space equipped with the bracket product <span class="math inline">[A,B] = AB - BA</span>.</p>
-<img src="lie_algebra_sl2_files/mediabag/043cc5c352a48a85238e0e77006bb162d5ed0b2b.svg" class="img-fluid" style="width:100.0%">
 
 
 </section>
