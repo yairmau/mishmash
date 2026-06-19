@@ -358,6 +358,7 @@ window.Quarto = {
   <li><a href="#representations" id="toc-representations" class="nav-link" data-scroll-target="#representations"><span class="header-section-number">11.13</span> representations</a></li>
   <li><a href="#what-is-a-representation" id="toc-what-is-a-representation" class="nav-link" data-scroll-target="#what-is-a-representation"><span class="header-section-number">11.14</span> what is a representation</a></li>
   <li><a href="#the-trivial-representation" id="toc-the-trivial-representation" class="nav-link" data-scroll-target="#the-trivial-representation"><span class="header-section-number">11.15</span> the trivial representation</a></li>
+  <li><a href="#the-standard-representation" id="toc-the-standard-representation" class="nav-link" data-scroll-target="#the-standard-representation"><span class="header-section-number">11.16</span> the standard representation</a></li>
   </ul>
 </nav>
     </div>
@@ -1920,19 +1921,58 @@ R(\theta) = e^{\theta j}.
 <p><span class="math display">
 X \mapsto \rho(X): V \rightarrow V
 </span></p>
-<p>Let’s read this out loud. Take an element <span class="math inline">X</span> of the Lie algebra. The representation <span class="math inline">\rho</span> turns <span class="math inline">X</span> into an operator <span class="math inline">\rho(X)</span>. That operator takes a vector <span class="math inline">v\in V</span> and produces another vector <span class="math inline">\rho(X)v \in V</span>.</p>
-<p>There is one last important thing to know. We called <span class="math inline">\mathfrak{sl}(2)</span> and algebra and not simply a vector space because it is equipped with the bracket operation: <span class="math inline">[X,Y]=XY-YX</span>. When we use the representation <span class="math inline">\rho</span> to map algebra elements <span class="math inline">X</span> to linear operators <span class="math inline">\rho(X)</span>, we have to make sure that this mapping respects the bracket:</p>
+<p>Let’s read this out loud. Take an element <span class="math inline">X</span> of the Lie algebra. The representation <span class="math inline">\rho</span> turns <span class="math inline">X</span> into an operator <span class="math inline">\rho(X)</span>. That operator takes a vector <span class="math inline">v\in V</span> and produces another vector <span class="math inline">\rho(X)v \in V</span>. If <span class="math inline">V</span> is n-dimensional, then the operator <span class="math inline">\rho(X)</span> will be a square <span class="math inline">n\times n</span> matrix, so that it can operate on column vectors <span class="math inline">v</span> of size <span class="math inline">n</span>.</p>
+<p>There is another important thing to know. We called <span class="math inline">\mathfrak{sl}(2)</span> and algebra and not simply a vector space because it is equipped with the bracket operation: <span class="math inline">[X,Y]=XY-YX</span>. When we use the representation <span class="math inline">\rho</span> to map algebra elements <span class="math inline">X</span> to linear operators <span class="math inline">\rho(X)</span>, we have to make sure that this mapping respects the bracket:</p>
 <p><span class="math display">
 \rho([X,Y])= \rho(X)\rho(Y) - \rho(Y)\rho(X).
 </span></p>
 <p>In other words, if two elements have a certain bracket relation in the algebra, their representative matrices must satisfy the same relation.</p>
-<p>The explanation of what a representation is can only go so far without actually doing it and seeing how the different pieces work together.</p>
+<p>You might be wondering: we’ve already seen that the basis elements of <span class="math inline">\mathfrak{sl}(2)</span> as <span class="math inline">2\times2</span> matrices. How can they be anything else now? If we want the algebra elements to operate on vectors in a 5-dimensional space, then the representation will produce versions of these algebra elements as <span class="math inline">5\times 5</span> matrices. So which is it?</p>
+<p>Now that we worked hard deriving everything, climbing our way through the development of the <span class="math inline">\mathfrak{sl}(2)</span> algebra and the commutation relation of its basis elements, it is time to get rid of the ladder we used to climb and not cling to previous concepts. We used concrete <span class="math inline">2\times2</span> matrices to derive the relations</p>
+<p><span class="math display">\begin{align*}
+[H,E] &amp;= 2E \\
+[H,F] &amp;= -2F \\
+[E,F] &amp;= H.
+\end{align*}</span></p>
+<p>Now that we know this, we can turn the argument around and say that these relations are not derived from something else. These relations <strong>define</strong> the <span class="math inline">\mathfrak{sl}(2)</span> algebra. We stop thinking of <span class="math inline">E,H,F</span> as <span class="math inline">2\times2</span> matrices, they are now just abstract, ethereal basis elements, that respect the relations above. We could have started with these relations, but I guess it would be deeply unsatisfying to impose these commutation relations of abstract elements without any justification. We developed them naturally from first principles. But now it’s time to grow up and understand the <span class="math inline">\mathfrak{sl}(2)</span> algebra for what it is: A vector space with three base elements, with a bracket operation <span class="math inline">[X,Y]=XY-YX</span>, and the basis elements respect the commutation relations above. That’s it.</p>
 <p>The roadmap now is the following. We will study three representations of the <span class="math inline">\mathfrak{sl}(2)</span> algebra. We will see how elements of this algebra operate on vectors in a vector space of size 1, 2 and then 3.</p>
 </section>
 <section id="the-trivial-representation" class="level2" data-number="11.15">
 <h2 data-number="11.15" class="anchored" data-anchor-id="the-trivial-representation"><span class="header-section-number">11.15</span> the trivial representation</h2>
 <p>We start with a 1-dimensional vector space.</p>
-<p>In one dimension, every linear transformation is just multiplication by a number, and numbers commute. But <span class="math inline">\mathfrak{sl}(2)</span> is built from nonzero commutators. The only way to preserve the bracket relations in one dimension is for every generator to act as zero. Therefore the only 1D representation of <span class="math inline">\mathfrak{sl}(2)</span> is the trivial representation.</p>
+<p>In one dimension, every linear transformation is just multiplication by a scalar, therefore the representation must be like this:</p>
+<p><span class="math display">
+\rho(E)=a_E,\quad \rho(H)=a_H,\quad \rho(F)=a_F,
+</span></p>
+<p>where <span class="math inline">a_E,a_H,a_F</span> are scalars (or <span class="math inline">1\times1</span> matrices). But scalars and <span class="math inline">1\times1</span> matrices always commute, so for any <span class="math inline">X,Y</span></p>
+<p><span class="math display">
+[\rho(X),\rho(Y)] = \rho(X)\rho(Y)-\rho(Y)\rho(X) = a_Xa_Y-a_Ya_X = 0.
+</span></p>
+<p>Now, let’s see what happens to the commutator of our basis vectors <span class="math inline">E,H,F</span>.</p>
+<p><span class="math display">\begin{align*}
+
+[H,E] &amp;= 2E &amp;&amp;&amp; 0 &amp;= 2a_E  &amp;&amp;&amp; a_E=0 \\
+[H,F] &amp;= -2F &amp;&amp; \xrightarrow{\rho} &amp; 0 &amp;= -2a_F  &amp;&amp; \longrightarrow &amp; a_F=0 \\
+[E,H] &amp;= F &amp;&amp;&amp; 0 &amp;= a_F  &amp;&amp;&amp; a_H=0
+
+\end{align*}</span></p>
+<p>The only way to preserve the bracket relations in one dimension is for every generator to act as zero. Therefore the only 1D representation of <span class="math inline">\mathfrak{sl}(2)</span> is the trivial representation.</p>
+</section>
+<section id="the-standard-representation" class="level2" data-number="11.16">
+<h2 data-number="11.16" class="anchored" data-anchor-id="the-standard-representation"><span class="header-section-number">11.16</span> the standard representation</h2>
+<p>Let’s see how elements of the algebra act on vectors in a 2d vector space. We need to choose a basis for this 2d space, so let’s choose:</p>
+<p><span class="math display">
+\text{basis vectors:}
+\quad v_0=\begin{pmatrix}1\\0\end{pmatrix}
+\quad v_1\begin{pmatrix}0\\1\end{pmatrix}
+</span></p>
+<p>We now need a translation rule, how to represent the basis elements of the algebra, <span class="math inline">E,H,F</span>, as <span class="math inline">2\times2</span> matrices? We’re in luck, because we can just use the <span class="math inline">2\times2</span> matrices we used in the section <a href="../group_theory/lie_algebra_sl2.html#a-basis-for-mathfraksl2">“a basis for <span class="math inline">\mathfrak{sl}(2)</span>”</a>:</p>
+<p><span class="math display">\begin{align*}
+E &amp;\mapsto \rho(E) =  \begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix} \\
+H &amp;\mapsto \rho(H) = \begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix} \\
+F &amp;\mapsto \rho(F) = \begin{pmatrix}0&amp;0\\1&amp;0\end{pmatrix}
+\end{align*}</span></p>
+<p>How will the basis elements of the algebra, <span class="math inline">E,H,F</span>, act on these two basis vectors?</p>
 <img src="lie_algebra_sl2_files/mediabag/4ce3f2c9e3f33c07ca1ad5c49abfa37eafeedf22.svg" class="img-fluid" style="width:100.0%">
 
 
