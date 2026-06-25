@@ -28,6 +28,7 @@ book:
         - group_theory/start_here.ipynb
         - group_theory/basic_properties.ipynb
         - group_theory/lie_algebra_sl2.ipynb
+        - group_theory/wolfram-jupyter-test.ipynb
     - part: "differential geometry"
       chapters:
         - intro-differential-geometry.qmd
