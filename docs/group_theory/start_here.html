@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9&nbsp; start here – mishmash</title>
+<title>10&nbsp; start here – mishmash</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -34,7 +34,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../group_theory/basic_properties.html" rel="next">
-<link href="../intro-thermodynamics.html" rel="prev">
+<link href="../thermodynamics/legendre_transform.html" rel="prev">
 <link href="../archive/logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -141,7 +141,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../group_theory/start_here.html">group theory</a></li><li class="breadcrumb-item"><a href="../group_theory/start_here.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">start here</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../group_theory/start_here.html">group theory</a></li><li class="breadcrumb-item"><a href="../group_theory/start_here.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">start here</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -249,8 +249,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../intro-thermodynamics.html" class="sidebar-item-text sidebar-link">
+  <a href="../thermodynamics/intro-thermodynamics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">intro to thermodynamics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../thermodynamics/legendre_transform.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Legendre transformations visualized</span></span></a>
   </div>
 </li>
       </ul>
@@ -267,25 +273,25 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../group_theory/start_here.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">start here</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">start here</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../group_theory/basic_properties.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">basic properties</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">basic properties</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../group_theory/lie_algebra_sl2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Lie algebra sl(2)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Lie algebra sl(2)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../group_theory/wolfram-jupyter-test.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">mathematica test</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">mathematica test</span></span></a>
   </div>
 </li>
       </ul>
@@ -302,7 +308,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../intro-differential-geometry.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">intro to differential geometry</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">intro to differential geometry</span></span></a>
   </div>
 </li>
       </ul>
@@ -317,21 +323,21 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#a-concrete-example" id="toc-a-concrete-example" class="nav-link active" data-scroll-target="#a-concrete-example"><span class="header-section-number">9.1</span> a concrete example</a></li>
-  <li><a href="#the-formal-definition" id="toc-the-formal-definition" class="nav-link" data-scroll-target="#the-formal-definition"><span class="header-section-number">9.2</span> the formal definition</a></li>
-  <li><a href="#finite-groups" id="toc-finite-groups" class="nav-link" data-scroll-target="#finite-groups"><span class="header-section-number">9.3</span> finite groups</a></li>
-  <li><a href="#infinite-groups" id="toc-infinite-groups" class="nav-link" data-scroll-target="#infinite-groups"><span class="header-section-number">9.4</span> infinite groups</a></li>
-  <li><a href="#discrete-groups" id="toc-discrete-groups" class="nav-link" data-scroll-target="#discrete-groups"><span class="header-section-number">9.5</span> discrete groups</a></li>
-  <li><a href="#continuous-groups" id="toc-continuous-groups" class="nav-link" data-scroll-target="#continuous-groups"><span class="header-section-number">9.6</span> continuous groups</a></li>
+  <li><a href="#a-concrete-example" id="toc-a-concrete-example" class="nav-link active" data-scroll-target="#a-concrete-example"><span class="header-section-number">10.1</span> a concrete example</a></li>
+  <li><a href="#the-formal-definition" id="toc-the-formal-definition" class="nav-link" data-scroll-target="#the-formal-definition"><span class="header-section-number">10.2</span> the formal definition</a></li>
+  <li><a href="#finite-groups" id="toc-finite-groups" class="nav-link" data-scroll-target="#finite-groups"><span class="header-section-number">10.3</span> finite groups</a></li>
+  <li><a href="#infinite-groups" id="toc-infinite-groups" class="nav-link" data-scroll-target="#infinite-groups"><span class="header-section-number">10.4</span> infinite groups</a></li>
+  <li><a href="#discrete-groups" id="toc-discrete-groups" class="nav-link" data-scroll-target="#discrete-groups"><span class="header-section-number">10.5</span> discrete groups</a></li>
+  <li><a href="#continuous-groups" id="toc-continuous-groups" class="nav-link" data-scroll-target="#continuous-groups"><span class="header-section-number">10.6</span> continuous groups</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../group_theory/start_here.html">group theory</a></li><li class="breadcrumb-item"><a href="../group_theory/start_here.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">start here</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../group_theory/start_here.html">group theory</a></li><li class="breadcrumb-item"><a href="../group_theory/start_here.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">start here</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">start here</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/yairmau/mishmash/blob/main/group_theory/start_here.ipynb"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">start here</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/yairmau/mishmash/blob/main/group_theory/start_here.ipynb"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -348,8 +354,8 @@ window.Quarto = {
 </header>
 
 
-<section id="a-concrete-example" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="a-concrete-example"><span class="header-section-number">9.1</span> a concrete example</h2>
+<section id="a-concrete-example" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="a-concrete-example"><span class="header-section-number">10.1</span> a concrete example</h2>
 <p>I think it is always best to start with a concrete example, and only later generalize to the abstract definition.</p>
 <p>You and I are looking at a blank rectangular sheet of paper on a table. If you look away, I could to a few things with it, and when you look back, you wouldn’t be able to tell the difference.</p>
 <ul>
@@ -442,8 +448,8 @@ window.Quarto = {
 <li>For each operation in the table, there exists another operation that, when performed after it, results in the identity element. For example, performing a rotation (<span class="math inline">r</span>) followed by another rotation (<span class="math inline">r</span>) results in the identity (<span class="math inline">e</span>). Every element in the table has an <strong>inverse</strong>.</li>
 </ol>
 </section>
-<section id="the-formal-definition" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="the-formal-definition"><span class="header-section-number">9.2</span> the formal definition</h2>
+<section id="the-formal-definition" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="the-formal-definition"><span class="header-section-number">10.2</span> the formal definition</h2>
 <p>Now that we are familiar with a concrete example of a group (the symmetries of a rectangle), we can state the formal definition of a group.</p>
 <p>A <strong>group</strong> is a set <span class="math inline">G</span> together with a binary operation <span class="math inline">*</span> (called the group operation, or simply a multiplication) that combines any two elements <span class="math inline">a</span> and <span class="math inline">b</span> in <span class="math inline">G</span> to form another element in <span class="math inline">G</span>, denoted <span class="math inline">a * b</span>, such that the following four conditions are satisfied:</p>
 <ol type="1">
@@ -453,8 +459,8 @@ window.Quarto = {
 <li><strong>Inverse</strong>: For each element a in <span class="math inline">G</span>, there exists an element <span class="math inline">b</span> in <span class="math inline">G</span> such that <span class="math inline">a * b = b * a = e</span>, where <span class="math inline">e</span> is the identity element. The element <span class="math inline">b</span> is called the <strong>inverse</strong> of <span class="math inline">a</span> and is usually denoted as <span class="math inline">a^{-1}</span>.</li>
 </ol>
 </section>
-<section id="finite-groups" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="finite-groups"><span class="header-section-number">9.3</span> finite groups</h2>
+<section id="finite-groups" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="finite-groups"><span class="header-section-number">10.3</span> finite groups</h2>
 <p>The example of the symmetries of a rectangle is a finite group because it has a finite number of elements (in this case, 4 elements: e, r, h, v). Its formal name is the “Klein four-group”, or <span class="math inline">V_4</span>. Other intuitive examples of finite groups are:</p>
 <ul>
 <li><p>The symmetries of an equilateral triangle. Its elements are the identity, three rotations, and three reflections, making a total of 6 elements. This group is known as the “dihedral group of order 6”, or <span class="math inline">D_3</span>.</p></li>
@@ -506,18 +512,18 @@ window.Quarto = {
 }
 </style>
 </section>
-<section id="infinite-groups" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="infinite-groups"><span class="header-section-number">9.4</span> infinite groups</h2>
+<section id="infinite-groups" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="infinite-groups"><span class="header-section-number">10.4</span> infinite groups</h2>
 <p>In contrast to finite groups, infinite groups have an infinite number of elements. A classic example of an infinite group is the set of all integers, denoted by ℤ, with the operation of addition. This group is called the “infinite cyclic group” or <span class="math inline">C_\infty</span>. The addition of any two integers always results in another integer, demonstrating the closure property. The identity element in this group is 0, and the inverse of any integer <span class="math inline">n</span> is <span class="math inline">-n</span>. As for the associative property, the condition <span class="math inline">(a + b) + c = a + (b + c)</span> holds for all integers <span class="math inline">a</span>, <span class="math inline">b</span>, and <span class="math inline">c</span>.</p>
 <p>Another example is the set of all real numbers, denoted by ℝ, with the operation of addition. This group is also infinite and is known as the “additive group of real numbers”.</p>
 </section>
-<section id="discrete-groups" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="discrete-groups"><span class="header-section-number">9.5</span> discrete groups</h2>
+<section id="discrete-groups" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="discrete-groups"><span class="header-section-number">10.5</span> discrete groups</h2>
 <p>In a discrete group, the elements are isolated from one another. There is a distinct “gap” between any two elements; you cannot smoothly slide from one element to the next.</p>
 <p>All finite groups are discrete groups because their elements are isolated and there is a clear gap between them. Some infinite groups are also discrete, such as the group of integers with addition, where each integer is separated from the next by a gap of 1. However, not all infinite groups are discrete; for example, the group of real numbers with addition is not discrete because there are no gaps between the elements.</p>
 </section>
-<section id="continuous-groups" class="level2" data-number="9.6">
-<h2 data-number="9.6" class="anchored" data-anchor-id="continuous-groups"><span class="header-section-number">9.6</span> continuous groups</h2>
+<section id="continuous-groups" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="continuous-groups"><span class="header-section-number">10.6</span> continuous groups</h2>
 <p>In a continuous group, the elements form a continuous space (a manifold). You can make infinitely small, smooth adjustments to move from one element to a neighboring element. Continuous groups are always infinite.</p>
 <p>A classic example of a continuous group is the set of all real numbers with the operation of addition, which we already discussed as the “additive group of real numbers”. Another example is the group of rotations in three-dimensional space, known as the “special orthogonal group” or <span class="math inline">SO(3)</span>. This is the symmetry group of a sphere. This group consists of all rotations about the origin in 3D space, and the group operation is the composition of rotations. The elements of this group form a continuous surface (a manifold), and you can make infinitely small changes to a rotation to get a neighboring rotation. I do realize that the concept of a manifold is weird at the moment, and we will discuss it in more detail when we talk about Lie groups.</p>
 
@@ -978,13 +984,13 @@ window.Quarto = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../intro-thermodynamics.html" class="pagination-link" aria-label="intro to thermodynamics">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">intro to thermodynamics</span></span>
+      <a href="../thermodynamics/legendre_transform.html" class="pagination-link" aria-label="Legendre transformations visualized">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Legendre transformations visualized</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../group_theory/basic_properties.html" class="pagination-link" aria-label="basic properties">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">basic properties</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">basic properties</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

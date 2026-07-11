@@ -22,7 +22,8 @@ book:
         - active_inference/simplex.ipynb
     - part: "thermodynamics"
       chapters:
-        - intro-thermodynamics.qmd
+        - thermodynamics/intro-thermodynamics.qmd
+        - thermodynamics/legendre_transform.ipynb
     - part: "group theory"
       chapters:
         - group_theory/start_here.ipynb

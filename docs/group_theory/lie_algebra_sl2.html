@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>11&nbsp; Lie algebra sl(2) – mishmash</title>
+<title>12&nbsp; Lie algebra sl(2) – mishmash</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -178,7 +178,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../group_theory/start_here.html">group theory</a></li><li class="breadcrumb-item"><a href="../group_theory/lie_algebra_sl2.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Lie algebra sl(2)</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../group_theory/start_here.html">group theory</a></li><li class="breadcrumb-item"><a href="../group_theory/lie_algebra_sl2.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Lie algebra sl(2)</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -286,8 +286,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../intro-thermodynamics.html" class="sidebar-item-text sidebar-link">
+  <a href="../thermodynamics/intro-thermodynamics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">intro to thermodynamics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../thermodynamics/legendre_transform.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Legendre transformations visualized</span></span></a>
   </div>
 </li>
       </ul>
@@ -304,25 +310,25 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../group_theory/start_here.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">start here</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">start here</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../group_theory/basic_properties.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">basic properties</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">basic properties</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../group_theory/lie_algebra_sl2.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Lie algebra sl(2)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Lie algebra sl(2)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../group_theory/wolfram-jupyter-test.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">mathematica test</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">mathematica test</span></span></a>
   </div>
 </li>
       </ul>
@@ -339,7 +345,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../intro-differential-geometry.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">intro to differential geometry</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">intro to differential geometry</span></span></a>
   </div>
 </li>
       </ul>
@@ -354,43 +360,44 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-group-sl2" id="toc-the-group-sl2" class="nav-link active" data-scroll-target="#the-group-sl2"><span class="header-section-number">11.1</span> the group SL(2)</a></li>
-  <li><a href="#tangent-space" id="toc-tangent-space" class="nav-link" data-scroll-target="#tangent-space"><span class="header-section-number">11.2</span> tangent space</a></li>
-  <li><a href="#back-and-forth-between-the-group-and-the-tangent-space" id="toc-back-and-forth-between-the-group-and-the-tangent-space" class="nav-link" data-scroll-target="#back-and-forth-between-the-group-and-the-tangent-space"><span class="header-section-number">11.3</span> back and forth between the group and the tangent space</a></li>
-  <li><a href="#wait-what" id="toc-wait-what" class="nav-link" data-scroll-target="#wait-what"><span class="header-section-number">11.4</span> wait, what?</a>
+  <li><a href="#the-group-sl2" id="toc-the-group-sl2" class="nav-link active" data-scroll-target="#the-group-sl2"><span class="header-section-number">12.1</span> the group SL(2)</a></li>
+  <li><a href="#tangent-space" id="toc-tangent-space" class="nav-link" data-scroll-target="#tangent-space"><span class="header-section-number">12.2</span> tangent space</a></li>
+  <li><a href="#back-and-forth-between-the-group-and-the-tangent-space" id="toc-back-and-forth-between-the-group-and-the-tangent-space" class="nav-link" data-scroll-target="#back-and-forth-between-the-group-and-the-tangent-space"><span class="header-section-number">12.3</span> back and forth between the group and the tangent space</a></li>
+  <li><a href="#wait-what" id="toc-wait-what" class="nav-link" data-scroll-target="#wait-what"><span class="header-section-number">12.4</span> wait, what?</a>
   <ul class="collapse">
-  <li><a href="#derivative-log" id="toc-derivative-log" class="nav-link" data-scroll-target="#derivative-log"><span class="header-section-number">11.4.1</span> derivative <span class="math inline">=</span> log</a></li>
-  <li><a href="#integral-exp" id="toc-integral-exp" class="nav-link" data-scroll-target="#integral-exp"><span class="header-section-number">11.4.2</span> integral <span class="math inline">=</span> exp</a></li>
+  <li><a href="#derivative-log" id="toc-derivative-log" class="nav-link" data-scroll-target="#derivative-log"><span class="header-section-number">12.4.1</span> derivative <span class="math inline">=</span> log</a></li>
+  <li><a href="#integral-exp" id="toc-integral-exp" class="nav-link" data-scroll-target="#integral-exp"><span class="header-section-number">12.4.2</span> integral <span class="math inline">=</span> exp</a></li>
   </ul></li>
-  <li><a href="#the-tangent-space-is-a-vector-space" id="toc-the-tangent-space-is-a-vector-space" class="nav-link" data-scroll-target="#the-tangent-space-is-a-vector-space"><span class="header-section-number">11.5</span> the tangent space is a vector space</a></li>
-  <li><a href="#the-tangent-space-is-an-algebra" id="toc-the-tangent-space-is-an-algebra" class="nav-link" data-scroll-target="#the-tangent-space-is-an-algebra"><span class="header-section-number">11.6</span> the tangent space is an “algebra”</a></li>
-  <li><a href="#commutativity" id="toc-commutativity" class="nav-link" data-scroll-target="#commutativity"><span class="header-section-number">11.7</span> commutativity</a></li>
-  <li><a href="#non-commutativity" id="toc-non-commutativity" class="nav-link" data-scroll-target="#non-commutativity"><span class="header-section-number">11.8</span> non-commutativity</a></li>
-  <li><a href="#quantifying-the-non-commutativity" id="toc-quantifying-the-non-commutativity" class="nav-link" data-scroll-target="#quantifying-the-non-commutativity"><span class="header-section-number">11.9</span> quantifying the non-commutativity</a></li>
-  <li><a href="#the-lie-algebra-sl2" id="toc-the-lie-algebra-sl2" class="nav-link" data-scroll-target="#the-lie-algebra-sl2"><span class="header-section-number">11.10</span> the Lie Algebra sl(2)</a></li>
-  <li><a href="#taking-stock-of-what-we-know" id="toc-taking-stock-of-what-we-know" class="nav-link" data-scroll-target="#taking-stock-of-what-we-know"><span class="header-section-number">11.11</span> taking stock of what we know</a></li>
-  <li><a href="#a-basis-for-mathfraksl2" id="toc-a-basis-for-mathfraksl2" class="nav-link" data-scroll-target="#a-basis-for-mathfraksl2"><span class="header-section-number">11.12</span> a basis for <span class="math inline">\mathfrak{sl}(2)</span></a></li>
-  <li><a href="#representations" id="toc-representations" class="nav-link" data-scroll-target="#representations"><span class="header-section-number">11.13</span> representations</a></li>
-  <li><a href="#what-is-a-representation" id="toc-what-is-a-representation" class="nav-link" data-scroll-target="#what-is-a-representation"><span class="header-section-number">11.14</span> what is a representation</a></li>
-  <li><a href="#the-trivial-representation" id="toc-the-trivial-representation" class="nav-link" data-scroll-target="#the-trivial-representation"><span class="header-section-number">11.15</span> the trivial representation</a></li>
-  <li><a href="#the-standard-representation" id="toc-the-standard-representation" class="nav-link" data-scroll-target="#the-standard-representation"><span class="header-section-number">11.16</span> the standard representation</a></li>
-  <li><a href="#the-adjoint-representation" id="toc-the-adjoint-representation" class="nav-link" data-scroll-target="#the-adjoint-representation"><span class="header-section-number">11.17</span> the adjoint representation</a>
+  <li><a href="#the-tangent-space-is-a-vector-space" id="toc-the-tangent-space-is-a-vector-space" class="nav-link" data-scroll-target="#the-tangent-space-is-a-vector-space"><span class="header-section-number">12.5</span> the tangent space is a vector space</a></li>
+  <li><a href="#the-tangent-space-is-an-algebra" id="toc-the-tangent-space-is-an-algebra" class="nav-link" data-scroll-target="#the-tangent-space-is-an-algebra"><span class="header-section-number">12.6</span> the tangent space is an “algebra”</a></li>
+  <li><a href="#commutativity" id="toc-commutativity" class="nav-link" data-scroll-target="#commutativity"><span class="header-section-number">12.7</span> commutativity</a></li>
+  <li><a href="#non-commutativity" id="toc-non-commutativity" class="nav-link" data-scroll-target="#non-commutativity"><span class="header-section-number">12.8</span> non-commutativity</a></li>
+  <li><a href="#quantifying-the-non-commutativity" id="toc-quantifying-the-non-commutativity" class="nav-link" data-scroll-target="#quantifying-the-non-commutativity"><span class="header-section-number">12.9</span> quantifying the non-commutativity</a></li>
+  <li><a href="#the-lie-algebra-sl2" id="toc-the-lie-algebra-sl2" class="nav-link" data-scroll-target="#the-lie-algebra-sl2"><span class="header-section-number">12.10</span> the Lie Algebra sl(2)</a></li>
+  <li><a href="#taking-stock-of-what-we-know" id="toc-taking-stock-of-what-we-know" class="nav-link" data-scroll-target="#taking-stock-of-what-we-know"><span class="header-section-number">12.11</span> taking stock of what we know</a></li>
+  <li><a href="#a-basis-for-mathfraksl2" id="toc-a-basis-for-mathfraksl2" class="nav-link" data-scroll-target="#a-basis-for-mathfraksl2"><span class="header-section-number">12.12</span> a basis for <span class="math inline">\mathfrak{sl}(2)</span></a></li>
+  <li><a href="#representations" id="toc-representations" class="nav-link" data-scroll-target="#representations"><span class="header-section-number">12.13</span> representations</a></li>
+  <li><a href="#what-is-a-representation" id="toc-what-is-a-representation" class="nav-link" data-scroll-target="#what-is-a-representation"><span class="header-section-number">12.14</span> what is a representation</a></li>
+  <li><a href="#the-trivial-representation" id="toc-the-trivial-representation" class="nav-link" data-scroll-target="#the-trivial-representation"><span class="header-section-number">12.15</span> the trivial representation</a></li>
+  <li><a href="#the-standard-representation" id="toc-the-standard-representation" class="nav-link" data-scroll-target="#the-standard-representation"><span class="header-section-number">12.16</span> the standard representation</a></li>
+  <li><a href="#the-adjoint-representation" id="toc-the-adjoint-representation" class="nav-link" data-scroll-target="#the-adjoint-representation"><span class="header-section-number">12.17</span> the adjoint representation</a>
   <ul class="collapse">
-  <li><a href="#computing-textad_e" id="toc-computing-textad_e" class="nav-link" data-scroll-target="#computing-textad_e"><span class="header-section-number">11.17.1</span> computing <span class="math inline">\text{ad}_E</span></a></li>
-  <li><a href="#computing-textad_h" id="toc-computing-textad_h" class="nav-link" data-scroll-target="#computing-textad_h"><span class="header-section-number">11.17.2</span> computing <span class="math inline">\text{ad}_H</span></a></li>
-  <li><a href="#computing-textad_f" id="toc-computing-textad_f" class="nav-link" data-scroll-target="#computing-textad_f"><span class="header-section-number">11.17.3</span> computing <span class="math inline">\text{ad}_F</span></a></li>
-  <li><a href="#to-sum-up" id="toc-to-sum-up" class="nav-link" data-scroll-target="#to-sum-up"><span class="header-section-number">11.17.4</span> to sum up</a></li>
+  <li><a href="#computing-textad_e" id="toc-computing-textad_e" class="nav-link" data-scroll-target="#computing-textad_e"><span class="header-section-number">12.17.1</span> computing <span class="math inline">\text{ad}_E</span></a></li>
+  <li><a href="#computing-textad_h" id="toc-computing-textad_h" class="nav-link" data-scroll-target="#computing-textad_h"><span class="header-section-number">12.17.2</span> computing <span class="math inline">\text{ad}_H</span></a></li>
+  <li><a href="#computing-textad_f" id="toc-computing-textad_f" class="nav-link" data-scroll-target="#computing-textad_f"><span class="header-section-number">12.17.3</span> computing <span class="math inline">\text{ad}_F</span></a></li>
+  <li><a href="#to-sum-up" id="toc-to-sum-up" class="nav-link" data-scroll-target="#to-sum-up"><span class="header-section-number">12.17.4</span> to sum up</a></li>
   </ul></li>
-  <li><a href="#irreducible-representations" id="toc-irreducible-representations" class="nav-link" data-scroll-target="#irreducible-representations"><span class="header-section-number">11.18</span> irreducible representations</a></li>
+  <li><a href="#irreducible-representations" id="toc-irreducible-representations" class="nav-link" data-scroll-target="#irreducible-representations"><span class="header-section-number">12.18</span> irreducible representations</a></li>
+  <li><a href="#weights" id="toc-weights" class="nav-link" data-scroll-target="#weights"><span class="header-section-number">12.19</span> weights</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../group_theory/start_here.html">group theory</a></li><li class="breadcrumb-item"><a href="../group_theory/lie_algebra_sl2.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Lie algebra sl(2)</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../group_theory/start_here.html">group theory</a></li><li class="breadcrumb-item"><a href="../group_theory/lie_algebra_sl2.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Lie algebra sl(2)</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Lie algebra sl(2)</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button" data-quarto-source-url="https://github.com/yairmau/mishmash/blob/main/group_theory/lie_algebra_sl2.ipynb">View Source</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Lie algebra sl(2)</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button" data-quarto-source-url="https://github.com/yairmau/mishmash/blob/main/group_theory/lie_algebra_sl2.ipynb">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -412,8 +419,8 @@ window.Quarto = {
 <li><a href="https://youtu.be/tY7jac-iPA4" target="_blank">“how to understand all of lie algebras with one picture”</a>, by Micheal Penn.</li>
 <li><a href="https://www.youtube.com/watch?v=gj4kvpy1eCE">“Lie algebras visualized: why are they defined like that? Why Jacobi identity?”</a>, by Trevor Cheung.</li>
 </ul>
-<section id="the-group-sl2" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="the-group-sl2"><span class="header-section-number">11.1</span> the group SL(2)</h2>
+<section id="the-group-sl2" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="the-group-sl2"><span class="header-section-number">12.1</span> the group SL(2)</h2>
 <p>The group SL(2) is the group of 2x2 matrices with determinant 1. It is a <strong>fundamental</strong> example in the study of Lie groups and Lie algebras. The determinant of a matrix measures volume scaling. If you apply a linear transformation with matrix <span class="math inline">A</span> to a region of space, the volume gets multiplied by <span class="math inline">\det(A)</span>. So <span class="math inline">\det=1</span> means volume preserving transformations. This is a very natural class of symmetries — transformations that don’t shrink or expand space, just reshape it.</p>
 <p>Play with the widget below and and get a feel for three kinds of transformations that preserve area in 2d space: rotation, shear, and squish/stretch. The last panel shows all three operations at once.</p>
 <div class="cell">
@@ -703,8 +710,8 @@ g = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}
 <p>where <span class="math inline">a, b, c, d \in \mathbb{C}</span> and the determinant is 1, i.e., <span class="math inline">ad - bc = 1</span>.</p>
 <p><strong>Change of point of view.</strong> Each of the elements <span class="math inline">a,b,c,d</span> is complex-valued, and we can imagine that every matrix in SL(2,<span class="math inline">\mathbb{C}</span>) is a point in an 4-dimensional complex space <span class="math inline">\mathbb{C}^4</span> . However, the constraint that the determinant equals 1 reduces the degrees of freedom by 1, meaning that the group SL(2,<span class="math inline">\mathbb{C}</span>) is a 3-dimensional surface embedded in a larger <span class="math inline">\mathbb{C}^4</span> space. (If you prefer to think of 1 complex dimension as equivalent to 2 real dimensions, then just multiply all the dimensions by 2.) This surface is curved, because of the nonlinear constraint <span class="math inline">ad - bc = 1</span>. In mathematical parlance, we call this surface a <strong>manifold</strong>.</p>
 </section>
-<section id="tangent-space" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="tangent-space"><span class="header-section-number">11.2</span> tangent space</h2>
+<section id="tangent-space" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="tangent-space"><span class="header-section-number">12.2</span> tangent space</h2>
 <p>Let’s parametrize each element of the <span class="math inline">2\times2</span> matrix in SL(2) with the variable <span class="math inline">t</span>:</p>
 <p><span class="math display">
 g(t) = \begin{pmatrix} a(t) &amp; b(t) \\ c(t) &amp; d(t) \end{pmatrix}.
@@ -742,8 +749,8 @@ X = \begin{pmatrix} \dot{a}(0) &amp; \dot{b}(0) \\ \dot{c}(0) &amp; -\dot{a}(0) 
 <img src="lie_algebra_sl2_files/mediabag/621be5bf24b99c685ed27aa6fdba0c5d4354bf84.svg" class="img-fluid" style="width:100.0%">
 <p>The curved gray surface represents the manifold of SL(2), and the plane below it represents the tangent space at the identity element. The curve <span class="math inline">g(t)</span> in the manifold passes through the identity, and its derivative at that point is the blue tangent vector <span class="math inline">X</span>.</p>
 </section>
-<section id="back-and-forth-between-the-group-and-the-tangent-space" class="level2" data-number="11.3">
-<h2 data-number="11.3" class="anchored" data-anchor-id="back-and-forth-between-the-group-and-the-tangent-space"><span class="header-section-number">11.3</span> back and forth between the group and the tangent space</h2>
+<section id="back-and-forth-between-the-group-and-the-tangent-space" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="back-and-forth-between-the-group-and-the-tangent-space"><span class="header-section-number">12.3</span> back and forth between the group and the tangent space</h2>
 <p>We’ve seen that, starting from a curve <span class="math inline">g(t)</span>, we can get to an element of the tangent space <span class="math inline">X</span> by taking its derivative at the identity:</p>
 <p><span class="math display">
 g(t) \xrightarrow[]{\frac{d}{dt}} X.
@@ -815,12 +822,12 @@ g(t) = \lim_{n\to\infty}\left(I + \frac{tX}{n} \right)^n = \exp(tX).
 <p>We’ve reached the same result as before, but this time the exponential appears naturally from the derivation.</p>
 <p>To sum up: taking the derivative of a curve <span class="math inline">g(t)</span> in the manifold gives us the element <span class="math inline">X</span> in the tangent space. Exponentiating <span class="math inline">X</span> brings us back to <span class="math inline">g(t)</span>.</p>
 </section>
-<section id="wait-what" class="level2" data-number="11.4">
-<h2 data-number="11.4" class="anchored" data-anchor-id="wait-what"><span class="header-section-number">11.4</span> wait, what?</h2>
+<section id="wait-what" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="wait-what"><span class="header-section-number">12.4</span> wait, what?</h2>
 <p>Is this correct? The derivative and the exponential are lanes travelling in opposite directions in the same road? Usually, we have the following pairs: <span class="math inline">(\exp,\log)</span> and <span class="math inline">(\text{derivative},\text{integral})</span>. Did we not just mix elements of these two pairs?</p>
 <p>I will show now that, in a sense, taking the derivative or the log of a group element is the same. Conversely, exponentiating or integrating an element in the tangent space give the same result.</p>
-<section id="derivative-log" class="level3" data-number="11.4.1">
-<h3 data-number="11.4.1" class="anchored" data-anchor-id="derivative-log"><span class="header-section-number">11.4.1</span> derivative <span class="math inline">=</span> log</h3>
+<section id="derivative-log" class="level3" data-number="12.4.1">
+<h3 data-number="12.4.1" class="anchored" data-anchor-id="derivative-log"><span class="header-section-number">12.4.1</span> derivative <span class="math inline">=</span> log</h3>
 <p>Let’s take a group element <span class="math inline">g</span> close to the identity. We can write it as</p>
 <p><span class="math display">
 g = I + \Delta t X + O(\Delta t^2),
@@ -838,8 +845,8 @@ g = I + \Delta t X + O(\Delta t^2),
 <p>To leading order in <span class="math inline">\Delta t</span>, the log simply gives back <span class="math inline">\Delta t X</span>, which is exactly the tangent vector <span class="math inline">X</span>, up to the small parameter <span class="math inline">\Delta t</span>.</p>
 <p>Both the derivative and the log do the same job, they extract the linear part of the deviation from the identity. Differentiation gives the exact geometric definition for what the tangent space is, while the logarithm is a computational shortcut, it extracts the tangent vector from a specific point near the identity, without needing a whole curve in the manifold.</p>
 </section>
-<section id="integral-exp" class="level3" data-number="11.4.2">
-<h3 data-number="11.4.2" class="anchored" data-anchor-id="integral-exp"><span class="header-section-number">11.4.2</span> integral <span class="math inline">=</span> exp</h3>
+<section id="integral-exp" class="level3" data-number="12.4.2">
+<h3 data-number="12.4.2" class="anchored" data-anchor-id="integral-exp"><span class="header-section-number">12.4.2</span> integral <span class="math inline">=</span> exp</h3>
 <p>We’ve seen before that the rule for taking small steps along a curve <span class="math inline">g(t)</span> is</p>
 <p><span class="math display">
 g(t)\longmapsto g(t) \left(I+\Delta t\cdot X\right).
@@ -860,8 +867,8 @@ g(t+\Delta t)\approx g(t)\left( I+ \Delta t \cdot X \right) = g(t) + \Delta t \c
 <p>Of course, we can solve this first-order differential equation by <strong>integrating</strong> it, giving what we found before: <span class="math inline">g(t)=\exp(tX)</span>. Thus we have shown that, in a sense, integration and exponentiation give the same thing.</p>
 </section>
 </section>
-<section id="the-tangent-space-is-a-vector-space" class="level2" data-number="11.5">
-<h2 data-number="11.5" class="anchored" data-anchor-id="the-tangent-space-is-a-vector-space"><span class="header-section-number">11.5</span> the tangent space is a vector space</h2>
+<section id="the-tangent-space-is-a-vector-space" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="the-tangent-space-is-a-vector-space"><span class="header-section-number">12.5</span> the tangent space is a vector space</h2>
 <p>A vector space has the following property: if <span class="math inline">A</span> and <span class="math inline">B</span> are two vectors in the vector space, their linear combination <span class="math inline">\mu_1 A + \mu_2 B</span> is also a vector belonging to this vector space. The one condition we know about the tangent space is that its elements are <span class="math inline">2\times2</span> matrices with trace zero. So let’s use that to prove that our tangent space is a vector space. Using the fact that the trace operation is linear:</p>
 <p><span class="math display">
 \text{trace}(\mu_1 A + \mu_2 B) = \mu_1 \underbrace{\text{trace}(A)}_{=0} + \mu_2 \underbrace{\text{trace}(B)}_{=0} = 0.
@@ -880,12 +887,12 @@ B=\begin{pmatrix}b_{11} &amp; b_{12}\\b_{21} &amp; -b_{11}\end{pmatrix}.
 \end{align*}</span></p>
 <p>And that concludes the proof. <span class="math inline">\blacksquare</span></p>
 </section>
-<section id="the-tangent-space-is-an-algebra" class="level2" data-number="11.6">
-<h2 data-number="11.6" class="anchored" data-anchor-id="the-tangent-space-is-an-algebra"><span class="header-section-number">11.6</span> the tangent space is an “algebra”</h2>
+<section id="the-tangent-space-is-an-algebra" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="the-tangent-space-is-an-algebra"><span class="header-section-number">12.6</span> the tangent space is an “algebra”</h2>
 <p>An algebra is a vector space equipped with a special operation. The natural operation of vector spaces is the addition: you can add two vectors and get another vector. That’s not what I’m talking about. The extra operation also takes two vectors and return a third vector. What should this extra operation be? The answer is related to a concept we have not discussed yet: commutativity</p>
 </section>
-<section id="commutativity" class="level2" data-number="11.7">
-<h2 data-number="11.7" class="anchored" data-anchor-id="commutativity"><span class="header-section-number">11.7</span> commutativity</h2>
+<section id="commutativity" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="commutativity"><span class="header-section-number">12.7</span> commutativity</h2>
 <p>Putting one’s socks on, and then the shoes, is not the same as putting the shoes on and then the socks. The order of operations often matters.</p>
 <p>When the order of two operations doesn’t affect the result, we say that the operations commute. Simple examples are the sum and product of two numbers</p>
 <p><span class="math display">\begin{align}
@@ -898,8 +905,8 @@ B=\begin{pmatrix}b_{11} &amp; b_{12}\\b_{21} &amp; -b_{11}\end{pmatrix}.
 </span></p>
 <p>The same goes for the product: <span class="math inline">2\cdot 7\cdot x = 7\cdot 2\cdot x</span>.</p>
 </section>
-<section id="non-commutativity" class="level2" data-number="11.8">
-<h2 data-number="11.8" class="anchored" data-anchor-id="non-commutativity"><span class="header-section-number">11.8</span> non-commutativity</h2>
+<section id="non-commutativity" class="level2" data-number="12.8">
+<h2 data-number="12.8" class="anchored" data-anchor-id="non-commutativity"><span class="header-section-number">12.8</span> non-commutativity</h2>
 <p>Of course, non-commutativity is the name we give to operations whose order <em>does</em> affect the result. I’ll give a concrete example here using rotations, and it turns out that this will be super useful to us. Rotations in 3d space are a special case inside the bigger Lie group SL(2). I’ll use rotations because this is something we have lots of intuition about from day-to-day experience.</p>
 <p>We will talk about rotation using the image of Earth. See the widget below.</p>
 <ul>
@@ -1465,8 +1472,8 @@ B=\begin{pmatrix}b_{11} &amp; b_{12}\\b_{21} &amp; -b_{11}\end{pmatrix}.
 <p>Did you get the same thing? No! If you think there’s something suspicious with this simulations, just take any object around you and try it yourself. I recomment doing 90-degree rotations because it’s just easier to keep track of what’s going on. One more thing: the operation <span class="math inline">g(t)</span> means spinning the globe to the right, no matter where the plane of the equator is. That is to say that the operations are with respect to an external coordinate system (the screen where you’re reading this), not the globe’s own coordinate system.</p>
 <p>The conclusion: the order of operation matters when we’re dealing with rotations.</p>
 </section>
-<section id="quantifying-the-non-commutativity" class="level2" data-number="11.9">
-<h2 data-number="11.9" class="anchored" data-anchor-id="quantifying-the-non-commutativity"><span class="header-section-number">11.9</span> quantifying the non-commutativity</h2>
+<section id="quantifying-the-non-commutativity" class="level2" data-number="12.9">
+<h2 data-number="12.9" class="anchored" data-anchor-id="quantifying-the-non-commutativity"><span class="header-section-number">12.9</span> quantifying the non-commutativity</h2>
 <p>Ok, the order of operation matters, but how much? Is the difference barely perceptible, or super consequential? How to quantify it? We are wondering, “is <span class="math inline">gk</span> equal to <span class="math inline">kg</span>?”</p>
 <p><span class="math display">
 gk \stackrel{?}{=} kg
@@ -1800,8 +1807,8 @@ gkg^{-1}k^{-1} = I + \epsilon^2\left(AB-BA\right) + O(\epsilon^3)
 \text{algebra commutator:}&amp; \qquad [A,B] = AB-BA. \\
 \end{align*}</span></p>
 </section>
-<section id="the-lie-algebra-sl2" class="level2" data-number="11.10">
-<h2 data-number="11.10" class="anchored" data-anchor-id="the-lie-algebra-sl2"><span class="header-section-number">11.10</span> the Lie Algebra sl(2)</h2>
+<section id="the-lie-algebra-sl2" class="level2" data-number="12.10">
+<h2 data-number="12.10" class="anchored" data-anchor-id="the-lie-algebra-sl2"><span class="header-section-number">12.10</span> the Lie Algebra sl(2)</h2>
 <p>We can now go back to talking about why the tangent space we found is “an algebra”. We showed that the tangent space is a vector space. This is the first requirement. The second, is that this vector space is equipped with an extra operator that takes two elements in the vector space and returns another element in the space. This special operator is the Lie bracket <span class="math inline">[A,B]=AB-BA</span>. We have to show that the result also lives in the tangent space. We will remember that any element in the tangent space is a <span class="math inline">2\times 2</span> matrix with trace zero, so let’s compute <span class="math inline">AB-BA</span> explicitly:</p>
 <p><span class="math display">\begin{align*}
 [A,B] =&amp; \,AB-BA\\
@@ -1828,8 +1835,8 @@ gkg^{-1}k^{-1} = I + \epsilon^2\left(AB-BA\right) + O(\epsilon^3)
 \end{align*}</span></p>
 <p>and it is easy to see now that the trace of <span class="math inline">[A,B]</span> is zero.</p>
 </section>
-<section id="taking-stock-of-what-we-know" class="level2" data-number="11.11">
-<h2 data-number="11.11" class="anchored" data-anchor-id="taking-stock-of-what-we-know"><span class="header-section-number">11.11</span> taking stock of what we know</h2>
+<section id="taking-stock-of-what-we-know" class="level2" data-number="12.11">
+<h2 data-number="12.11" class="anchored" data-anchor-id="taking-stock-of-what-we-know"><span class="header-section-number">12.11</span> taking stock of what we know</h2>
 <p>Let’s give formal names to objects we’ve been dealing with.</p>
 <p>SL(2) is the group of <span class="math inline">2\times 2</span> matrices with complex elements and determinant 1.</p>
 <p><span class="math display">
@@ -1871,9 +1878,9 @@ a,b,c\in\mathbb C.
 </span></p>
 <p>This is called the <strong>Lie bracket</strong>. It measures the infinitesimal failure of commutativity.</p>
 </section>
-<section id="a-basis-for-mathfraksl2" class="level2" data-number="11.12">
-<h2 data-number="11.12" class="anchored" data-anchor-id="a-basis-for-mathfraksl2"><span class="header-section-number">11.12</span> a basis for <span class="math inline">\mathfrak{sl}(2)</span></h2>
-<p>Since all elements in the <span class="math inline">\mathfrak{sl}(2)</span> algebra have three free parameters, we can define a convenient basis for this space, made of three basis elements:</p>
+<section id="a-basis-for-mathfraksl2" class="level2" data-number="12.12">
+<h2 data-number="12.12" class="anchored" data-anchor-id="a-basis-for-mathfraksl2"><span class="header-section-number">12.12</span> a basis for <span class="math inline">\mathfrak{sl}(2)</span></h2>
+<p>Since all elements in the <span class="math inline">\mathfrak{sl}(2)</span> algebra live in a 3-dimensional vector space, we can define a convenient basis for this space made of three basis elements:</p>
 <p><span class="math display">
 E = \begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix},\quad
 H = \begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix},\quad
@@ -1888,7 +1895,7 @@ c&amp;-a
 \end{pmatrix}
 = bE+aH+cF.
 </span></p>
-<p>How will these basis elements commute? Let’s apply the Lie bracket to each pair of basis vectors.</p>
+<p>The linear combination above shows how these elements behave under the basic operation of a vector space: addtion. What about the special operation we defined for the <span class="math inline">\mathfrak{sl}(2)</span> algebra? How will these basis elements commute? Let’s apply the Lie bracket to each pair of basis vectors and see.</p>
 <p><span class="math display">\begin{align*}
 [H,E] &amp;= HE-EH \\
 &amp;= \begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix} \begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix} -
@@ -1919,14 +1926,14 @@ c&amp;-a
 [E,F] &amp;= H
 \end{align*}</span></p>
 </div>
-<p>You know this is important, because I put it in a box.</p>
+<p><br> You know these commutation relationships are important, because I put them in a box!</p>
 </section>
-<section id="representations" class="level2" data-number="11.13">
-<h2 data-number="11.13" class="anchored" data-anchor-id="representations"><span class="header-section-number">11.13</span> representations</h2>
+<section id="representations" class="level2" data-number="12.13">
+<h2 data-number="12.13" class="anchored" data-anchor-id="representations"><span class="header-section-number">12.13</span> representations</h2>
 <p>Remember the operations in the very first widget in this page. We had a square, and we could spin in, shear it, or squish/stretch it. All these maintain the area, and mathematically this is enforced by the requirement that the determinant of elements in the group SL(2) equals one.</p>
 <p>Rotations, shear and squish/stretch are abstract concepts, and they only get embodied in a specific form once we define on which kind of objects they are operating on. Take rotations, for example. If we are talking about rotating an object in 2d space, this is accomplished by a <span class="math inline">2\times 2</span> matrix. If, instead, we wish to rotate an object in 3d space, that matrix won’t do, we’ll need a <span class="math inline">3\times3</span> matrix to do it. The abstract notion of “rotation” needs to be <em>represented</em> by different things depending on the object it operates on.</p>
-<p>So far we’ve started to get to know the group SL(2) and its tangent algebra <span class="math inline">\mathfrak{sl}(2)</span>, and now it’s time to get acquainted with a few of their representations. Both groups and algebras have representations, but in what follows we will deal with representation of the algebra. Let me try to justify why this makes sense.</p>
-<p>A representation of the group tells us how finite transformations act. Think of a specific rotation by a given angle <span class="math inline">\theta</span>:</p>
+<p>So far we’ve started to get to know the group SL(2) and its tangent algebra <span class="math inline">\mathfrak{sl}(2)</span>, and now it’s time to get acquainted with some of its most important representations.</p>
+<p>Both groups and algebras have representations, but in what follows we will deal with representation of the algebra. Let me try to justify why this makes sense. A representation of the group tells us how finite transformations act. Think of a specific rotation by a given angle <span class="math inline">\theta</span>, taking place in 2d space:</p>
 <p><span class="math display">
 R(\theta) =
 \begin{pmatrix}\cos(\theta)&amp;-\sin(\theta)\\ \sin(\theta)&amp;\cos(\theta)\end{pmatrix}
@@ -1948,13 +1955,13 @@ R(\theta) = e^{\theta j}.
 <p>So instead of studying every finite rotation separately, we study the generator <span class="math inline">j</span>. The generator contains the local rule for how the rotation starts, and exponentiation recovers the finite motion. This is true not only for rotations, but for all other kinds of transformations contained in SL(2).</p>
 <p>Another reason to study the representations of the algebra instead of representations of the group is that the algebra is a flat space, while the group is a curved manifold. Linear algebra is easier than curved geometry.</p>
 </section>
-<section id="what-is-a-representation" class="level2" data-number="11.14">
-<h2 data-number="11.14" class="anchored" data-anchor-id="what-is-a-representation"><span class="header-section-number">11.14</span> what is a representation</h2>
+<section id="what-is-a-representation" class="level2" data-number="12.14">
+<h2 data-number="12.14" class="anchored" data-anchor-id="what-is-a-representation"><span class="header-section-number">12.14</span> what is a representation</h2>
 <p>A representation is a translation rule. Imagine I show you a picture of a dog, and ask you to say what it represents out loud. You could say: “Sure, I’ll say it, but in what language? English? Tagalog? Guarani? Choose one and I’ll do it!” So the translation needs to convert an abstract idea (the image of a dog, or the element of the algebra) into a specific word in the target languague, or to a specific matrix in the target n-dimensional space. Let’s write this in mathematical language.</p>
 <p><span class="math display">
 X \mapsto \rho(X): V \rightarrow V
 </span></p>
-<p>Let’s read this out loud. Take an element <span class="math inline">X</span> of the Lie algebra. The representation <span class="math inline">\rho</span> turns <span class="math inline">X</span> into an operator <span class="math inline">\rho(X)</span>. That operator takes a vector <span class="math inline">v\in V</span> and produces another vector <span class="math inline">\rho(X)v \in V</span>. If <span class="math inline">V</span> is n-dimensional, then the operator <span class="math inline">\rho(X)</span> will be a square <span class="math inline">n\times n</span> matrix, so that it can operate on column vectors <span class="math inline">v</span> of size <span class="math inline">n</span>.</p>
+<p>Let’s read this out loud. Take an abstract element <span class="math inline">X</span> of the Lie algebra. The representation <span class="math inline">\rho</span> turns <span class="math inline">X</span> into a concrete operator <span class="math inline">\rho(X)</span>. That operator takes a vector <span class="math inline">v\in V</span> and produces another vector <span class="math inline">\rho(X)v \in V</span>. If <span class="math inline">V</span> is n-dimensional, then the operator <span class="math inline">\rho(X)</span> will be a square <span class="math inline">n\times n</span> matrix, so that it can operate on column vectors <span class="math inline">v</span> of size <span class="math inline">n</span>.</p>
 <p>There is another important thing to know. We called <span class="math inline">\mathfrak{sl}(2)</span> and algebra and not simply a vector space because it is equipped with the bracket operation: <span class="math inline">[X,Y]=XY-YX</span>. When we use the representation <span class="math inline">\rho</span> to map algebra elements <span class="math inline">X</span> to linear operators <span class="math inline">\rho(X)</span>, we have to make sure that this mapping respects the bracket:</p>
 <p><span class="math display">
 \rho([X,Y])= \rho(X)\rho(Y) - \rho(Y)\rho(X).
@@ -1970,8 +1977,8 @@ X \mapsto \rho(X): V \rightarrow V
 <p>Now that we know this, we can turn the argument around and say that these relations are not derived from something else. These relations <strong>define</strong> the <span class="math inline">\mathfrak{sl}(2)</span> algebra. We stop thinking of <span class="math inline">E,H,F</span> as <span class="math inline">2\times2</span> matrices, they are now just abstract, ethereal basis elements, that respect the relations above. We could have started with these relations, but I guess it would be deeply unsatisfying to impose these commutation relations of abstract elements without any justification. We developed them naturally from first principles. But now it’s time to grow up and understand the <span class="math inline">\mathfrak{sl}(2)</span> algebra for what it is: A vector space with three base elements, with a bracket operation <span class="math inline">[X,Y]=XY-YX</span>, and the basis elements respect the commutation relations above. That’s it.</p>
 <p>The roadmap now is the following. We will study three representations of the <span class="math inline">\mathfrak{sl}(2)</span> algebra. We will see how elements of this algebra operate on vectors in a vector space of size 1, 2 and then 3.</p>
 </section>
-<section id="the-trivial-representation" class="level2" data-number="11.15">
-<h2 data-number="11.15" class="anchored" data-anchor-id="the-trivial-representation"><span class="header-section-number">11.15</span> the trivial representation</h2>
+<section id="the-trivial-representation" class="level2" data-number="12.15">
+<h2 data-number="12.15" class="anchored" data-anchor-id="the-trivial-representation"><span class="header-section-number">12.15</span> the trivial representation</h2>
 <p>We start with a 1-dimensional vector space.</p>
 <p>In one dimension, every linear transformation is just multiplication by a scalar, therefore the representation must be like this:</p>
 <p><span class="math display">
@@ -1989,17 +1996,17 @@ X \mapsto \rho(X): V \rightarrow V
 [E,H] &amp;= F &amp;&amp;&amp; 0 &amp;= a_F  &amp;&amp;&amp; a_H=0
 
 \end{align*}</span></p>
-<p>The only way to preserve the bracket relations in one dimension is for every generator to act as zero. Therefore the only 1D representation of <span class="math inline">\mathfrak{sl}(2)</span> is the trivial representation.</p>
+<p>The only way to preserve the bracket relations in one dimension is for every generator to act as zero. Therefore the only 1D representation of <span class="math inline">\mathfrak{sl}(2)</span> is called the trivial representation.</p>
 </section>
-<section id="the-standard-representation" class="level2" data-number="11.16">
-<h2 data-number="11.16" class="anchored" data-anchor-id="the-standard-representation"><span class="header-section-number">11.16</span> the standard representation</h2>
+<section id="the-standard-representation" class="level2" data-number="12.16">
+<h2 data-number="12.16" class="anchored" data-anchor-id="the-standard-representation"><span class="header-section-number">12.16</span> the standard representation</h2>
 <p>Let’s see how elements of the algebra act on vectors in a 2d vector space. We need to choose a basis for this 2d space, so let’s choose:</p>
 <p><span class="math display">
 \text{basis vectors:}
 \quad v_0=\begin{pmatrix}1\\0\end{pmatrix}
-\quad v_1\begin{pmatrix}0\\1\end{pmatrix}
+\quad v_1=\begin{pmatrix}0\\1\end{pmatrix}
 </span></p>
-<p>We now need a translation rule, how to represent the basis elements of the algebra, <span class="math inline">E,H,F</span>, as <span class="math inline">2\times2</span> matrices? We’re in luck, because we can just use the <span class="math inline">2\times2</span> matrices we used in the section <a href="../group_theory/lie_algebra_sl2.html#a-basis-for-mathfraksl2">“a basis for <span class="math inline">\mathfrak{sl}(2)</span>”</a>:</p>
+<p>We now need a translation rule: how to represent the basis elements of the algebra, <span class="math inline">E,H,F</span>, as <span class="math inline">2\times2</span> matrices? We’re in luck, because we can just use the <span class="math inline">2\times2</span> matrices we used in the section <a href="../group_theory/lie_algebra_sl2.html#a-basis-for-mathfraksl2">“a basis for <span class="math inline">\mathfrak{sl}(2)</span>”</a>:</p>
 <p><span class="math display">\begin{align*}
 E &amp;\mapsto \rho_{\text{std}}(E) =  \begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix} \\
 H &amp;\mapsto \rho_{\text{std}}(H) = \begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix} \\
@@ -2037,8 +2044,8 @@ F &amp;\mapsto \rho_{\text{std}}(F) = \begin{pmatrix}0&amp;0\\1&amp;0\end{pmatri
 </ul>
 <p>Now, let’s move on to the next representation</p>
 </section>
-<section id="the-adjoint-representation" class="level2" data-number="11.17">
-<h2 data-number="11.17" class="anchored" data-anchor-id="the-adjoint-representation"><span class="header-section-number">11.17</span> the adjoint representation</h2>
+<section id="the-adjoint-representation" class="level2" data-number="12.17">
+<h2 data-number="12.17" class="anchored" data-anchor-id="the-adjoint-representation"><span class="header-section-number">12.17</span> the adjoint representation</h2>
 <p>In this representation, elements of the algebra are represented as linear operators (matrices) that operate on vectors in a 3d vector space. We need to define a basis for this space. In the 2d case of the standard representation, we chose the basis <span class="math inline">v_0=(1\,0)^T</span> and <span class="math inline">v_1=(0\,1)^T</span>. It would be natural to choose this time the basis</p>
 <p><span class="math display">
 v_0=\begin{pmatrix}1\\0\\0\end{pmatrix}\quad
@@ -2083,8 +2090,8 @@ v_2=\begin{pmatrix}0\\0\\1\end{pmatrix}.
   Y = \begin{pmatrix}a\\b\\c\end{pmatrix}.
   </span></li>
 </ol>
-<section id="computing-textad_e" class="level3" data-number="11.17.1">
-<h3 data-number="11.17.1" class="anchored" data-anchor-id="computing-textad_e"><span class="header-section-number">11.17.1</span> computing <span class="math inline">\text{ad}_E</span></h3>
+<section id="computing-textad_e" class="level3" data-number="12.17.1">
+<h3 data-number="12.17.1" class="anchored" data-anchor-id="computing-textad_e"><span class="header-section-number">12.17.1</span> computing <span class="math inline">\text{ad}_E</span></h3>
 <p>Let’s calculate</p>
 <p><span class="math display">\begin{align*}
 \text{ad}_E(Y) &amp;= [E,Y] \\
@@ -2113,8 +2120,8 @@ v_2=\begin{pmatrix}0\\0\\1\end{pmatrix}.
 \end{pmatrix}.
 </span></p>
 </section>
-<section id="computing-textad_h" class="level3" data-number="11.17.2">
-<h3 data-number="11.17.2" class="anchored" data-anchor-id="computing-textad_h"><span class="header-section-number">11.17.2</span> computing <span class="math inline">\text{ad}_H</span></h3>
+<section id="computing-textad_h" class="level3" data-number="12.17.2">
+<h3 data-number="12.17.2" class="anchored" data-anchor-id="computing-textad_h"><span class="header-section-number">12.17.2</span> computing <span class="math inline">\text{ad}_H</span></h3>
 <p><span class="math display">\begin{align*}
 \text{ad}_H(Y) &amp;= [H,Y] \\
 &amp;= [H,aE + bH + cF] \\
@@ -2142,8 +2149,8 @@ v_2=\begin{pmatrix}0\\0\\1\end{pmatrix}.
 \end{pmatrix}.
 </span></p>
 </section>
-<section id="computing-textad_f" class="level3" data-number="11.17.3">
-<h3 data-number="11.17.3" class="anchored" data-anchor-id="computing-textad_f"><span class="header-section-number">11.17.3</span> computing <span class="math inline">\text{ad}_F</span></h3>
+<section id="computing-textad_f" class="level3" data-number="12.17.3">
+<h3 data-number="12.17.3" class="anchored" data-anchor-id="computing-textad_f"><span class="header-section-number">12.17.3</span> computing <span class="math inline">\text{ad}_F</span></h3>
 <p><span class="math display">\begin{align*}
 \text{ad}_F(Y) &amp;= [F,Y] \\
 &amp;= [F,aE + bH + cF] \\
@@ -2171,8 +2178,8 @@ v_2=\begin{pmatrix}0\\0\\1\end{pmatrix}.
 \end{pmatrix}.
 </span></p>
 </section>
-<section id="to-sum-up" class="level3" data-number="11.17.4">
-<h3 data-number="11.17.4" class="anchored" data-anchor-id="to-sum-up"><span class="header-section-number">11.17.4</span> to sum up</h3>
+<section id="to-sum-up" class="level3" data-number="12.17.4">
+<h3 data-number="12.17.4" class="anchored" data-anchor-id="to-sum-up"><span class="header-section-number">12.17.4</span> to sum up</h3>
 <p>I’ll come back to the image of the ladder introduced in the standard representation. I want to know how each of the operators <span class="math inline">\text{ad}_E,\text{ad}_H,\text{ad}_F</span> acts on each of the basis vectors <span class="math inline">E,H,F</span>:</p>
 <p><span class="math display">\begin{align*}
 \text{ad}_E(E)&amp;=[E,E]=0 \\
@@ -2187,12 +2194,76 @@ v_2=\begin{pmatrix}0\\0\\1\end{pmatrix}.
 \end{align*}</span></p>
 <p>Of course, the this is exactly the same information as we obtained in the <span class="math inline">3\times3</span> matrices we’ve just derived. Picture each outcome above as a column vector and you’ll understand why.</p>
 <img src="lie_algebra_sl2_files/mediabag/7908afa4cd78719f675ccf145ff5139c79053ed5.svg" class="img-fluid" style="width:100.0%">
+<p><br> The ladder has three rungs now. Applying the operator <span class="math inline">E</span> makes us go up the ladder, until we reach its top and fall into the abyss: <span class="math inline">\text{ad}_E(E)=0</span>. The same goes for <span class="math inline">F</span>, it brings us down the ladder, and when we step off the bottom rung we also fall into the abyss: <span class="math inline">\text{ad}_F(F)=0</span>. Intuitively enough, the elements <span class="math inline">E</span> and <span class="math inline">F</span> are called <strong>step operators</strong>, or raising and lowering operators. The scalars that appear in the red and blue arrows are called ladder coefficients. The property that by applying these step operators enough times we will eventually get a zero has a name: <strong>nilpotent</strong>. Nil means zero or null, and potent means power, meaning that applying a power of these operators onto a basis vector yields zero. For example, start from the bottom rung <span class="math inline">F</span> and apply <span class="math inline">E</span> three times: <span class="math inline">E(E(E(F)))=E^3F=0</span>. So <span class="math inline">E</span> and <span class="math inline">F</span> are nilpotent step operators.</p>
+<p>The operator <span class="math inline">H</span> has a few names, depending on the context. In mathematics it is known as the Cartan element, in Quantum Physics it is called the diagonal or measuring operator, and in focusing on the ladder analogy, it is called the level-counting or number operator. In any case, the operator <span class="math inline">H</span> plays the role of a <strong>weight generator</strong>: we apply it to any basis element and we get back the same basis element multiplied by a weight. In other words, all basis elements <span class="math inline">E,H,F</span> are eigenvectors of the operator <span class="math inline">H</span>, with eigenvalues <span class="math inline">2,0,-2</span>, respectively.</p>
 </section>
 </section>
-<section id="irreducible-representations" class="level2" data-number="11.18">
-<h2 data-number="11.18" class="anchored" data-anchor-id="irreducible-representations"><span class="header-section-number">11.18</span> irreducible representations</h2>
-<p>We have now seen three representations of <span class="math inline">\mathfrak{sl}(2)</span>: the 1D trivial representation, the 2D standard representation, and the 3D adjoint representation. These are not just isolated examples. They are the first three irreducible representations of <span class="math inline">\mathfrak{sl}(2)</span>. Irreducible means that the representation cannot be decomposed into smaller invariant pieces. In the ladder picture, this means the ladder is connected from bottom to top by the actions of <span class="math inline">E</span> and <span class="math inline">F</span>.</p>
-<img src="lie_algebra_sl2_files/mediabag/4ce3f2c9e3f33c07ca1ad5c49abfa37eafeedf22.svg" class="img-fluid" style="width:100.0%">
+<section id="irreducible-representations" class="level2" data-number="12.18">
+<h2 data-number="12.18" class="anchored" data-anchor-id="irreducible-representations"><span class="header-section-number">12.18</span> irreducible representations</h2>
+<p>We have now seen three representations of <span class="math inline">\mathfrak{sl}(2)</span>: the 1D trivial representation, the 2D standard representation, and the 3D adjoint representation. These are not just isolated examples. They are the first three irreducible representations of <span class="math inline">\mathfrak{sl}(2)</span>. Irreducible means that the representation cannot be decomposed into smaller invariant pieces. In the ladder picture, this means the ladder is connected from bottom to top by the actions of <span class="math inline">E</span> and <span class="math inline">F</span>. If it were possible to decompose the representation into smaller subspaces, this would mean that the ladder would be split into 2 or more parts, not mutually accessible by applying the step operators.</p>
+<p>To make sense of an n-dimensional irreducible representation, we look for a tool that helps us organize the n-dimensional space into neat, independent subspaces. The operator <span class="math inline">H</span> is such a tool. To explain why, we need to talk about <strong>weights</strong>.</p>
+</section>
+<section id="weights" class="level2" data-number="12.19">
+<h2 data-number="12.19" class="anchored" data-anchor-id="weights"><span class="header-section-number">12.19</span> weights</h2>
+<p>Let’s write down the representation of <span class="math inline">H</span> for the standard and the adjoint representations:</p>
+<p><span class="math display">
+\rho_\text{std}(H) =
+\begin{pmatrix}
+1 &amp; 0 \\ 0 &amp; -1
+\end{pmatrix}
+\qquad
+\rho_\text{adj}(H) =
+\begin{pmatrix}
+2 &amp; 0 &amp; 0 \\ 0 &amp; 0&amp; 0 \\ 0 &amp; 0 &amp; -2
+\end{pmatrix}
+</span></p>
+<p>The diagonals of each matrix show precisely the eigenvalues of the basis vectors for the 2D and 3D representations. Take a look at the ladder diagrams from before, and notice the numbers assigned to the black loopy arrows.</p>
+<p>By applying the operator <span class="math inline">H</span> to a vector in an <span class="math inline">n</span>-dimensional space, we are acting like a measuring device asking: <em>“Hey vector, which rung of the ladder are you on?”</em> To see how this works, let’s test it on an arbitrary vector <span class="math inline">v</span> in our 3D vector space (the adjoint representation), where our basis vectors are the algebra elements themselves: <span class="math inline">(v_0, v_1, v_2) = (E, H, F)</span>. If we write <span class="math inline">v</span> as a general linear combination <span class="math inline">v = aE + bH + cF</span>, applying <span class="math inline">H</span> yields:</p>
+<p><span class="math display">\begin{align}
+\rho_\text{adj}(H)v &amp;= \rho_\text{adj}(H)\left( aE+bH+cF \right) \\
+&amp;= a\rho_\text{adj}(H)E + b\rho_\text{adj}(H)H + c\rho_\text{adj}(H)F \\
+&amp;= a[H, E] + b[H, H] + c[H, F] \\
+&amp;= 2aE + 0bH - 2cF
+\end{align}</span></p>
+<p>While this output is not a simple scalar multiple of our input vector, look closely at the structure of the result: <span class="math inline">H</span> did not scramble our ingredients. The <span class="math inline">E</span> component remained strictly along the <span class="math inline">E</span> direction (scaled by <span class="math inline">+2</span>), the <span class="math inline">H</span> component was scaled by <span class="math inline">0</span>, and the <span class="math inline">F</span> component remained along the <span class="math inline">F</span> direction (scaled by <span class="math inline">-2</span>). Contrast this with the step operator <span class="math inline">E</span>:</p>
+<p><span class="math display">\begin{align}
+\rho_\text{adj}(E)v &amp;= \rho_\text{adj}(E)\left( aE+bH+cF \right) \\
+&amp;= a,\rho_\text{adj}(E)E + b,\rho_\text{adj}(E)H + c,\rho_\text{adj}(E)F \\
+&amp;= a[E, E] + b[E, H] + c[E, F] \\
+&amp;= - 2bE + cH
+\end{align}</span></p>
+<p>The ingredients bleed into one another, shifting across dimensions and destroying the original vector’s anatomy. The <span class="math inline">E</span> direction now depends on the original direction in <span class="math inline">H</span> (because of the coefficient <span class="math inline">b</span>), and the <span class="math inline">H</span> direction depends on the previous <span class="math inline">F</span> direction (because of <span class="math inline">c</span>). A similar thing happens to the step operator <span class="math inline">F</span>, it also mixes the different directions.</p>
+<p>This reveals the true power of <span class="math inline">H</span>: it acts like a prism or frequency analyzer. Because its action is diagonalizable, <span class="math inline">H</span> is the unique operator capable of reading a complex, multidimensional space and separating it into clean, independent components without tangling them together. When we feed <span class="math inline">H</span> a pure basis state, it isolates its numerical tag (its <strong>weight</strong>) allowing us to construct the vertical scaffolding of our ladder:</p>
+<ul>
+<li>If <span class="math inline">v = 1E + 0H + 0F</span>, then <span class="math inline">\rho(H)E = \mathbf{+2}E \implies \text{weight is } +2</span></li>
+<li>If <span class="math inline">v = 0E + 1H + 0F</span>, then <span class="math inline">\rho(H)H = \mathbf{0}H \implies \text{weight is } 0</span></li>
+<li>If <span class="math inline">v = 0E + 0H + 1F</span>, then <span class="math inline">\rho(H)F = \mathbf{-2}F \implies \text{weight is } -2</span></li>
+</ul>
+<p>Let’s construct an entire ladder from the top down. Let’s start at the very top floor, the <strong>highest weight vector</strong> <span class="math inline">v_0</span>, where <span class="math inline">E v_0 = 0</span>. Once we are standing on the top floor, we just repeatedly apply the lowering operator <span class="math inline">F</span> to build the entire <span class="math inline">n</span>-dimensional ladder from scratch! Because <span class="math inline">F</span> is nilpotent, this ladder is guaranteed to terminate. The same idea would work if we started from the base floor and climbed up the ladder with <span class="math inline">E</span>. Each of these floors represents an eigenvector of the representation of <span class="math inline">H</span>, and its associated eigenvalue is the weight. The basis of the vector space for an n-dimensional representation is written as</p>
+<p><span class="math display">
+V_\lambda =
+\left\{
+v \in V \mid Hv=\lambda v
+\right\} =
+\text{ weight space}
+</span></p>
+<p>What is the relationship between weights in neighboring floors? Take a given floor <span class="math inline">v</span> with weight <span class="math inline">\lambda</span>. What are the weights of the floor above it (<span class="math inline">Ev</span>) and below it (Fv)?</p>
+<p><span class="math display">\begin{align*}
+H(Ev) &amp;= HE\cdot v \\
+&amp;= \left( EH + \underbrace{[H,E]}_{HE-EH} \right)\cdot v \\
+&amp;= E(Hv) + 2Ev \\
+&amp; = \lambda E v + 2Ev \\
+&amp;= (\lambda+2)Ev
+\end{align*}</span></p>
+<p>We found that the weight of the floor above <span class="math inline">v</span> is <span class="math inline">\lambda+2</span>. A similar calculation works for the floor below <span class="math inline">v</span>, namely <span class="math inline">Fv</span>:</p>
+<p><span class="math display">\begin{align}
+H(Fv) &amp;= HF\cdot v \\
+&amp;= \left( EF + \underbrace{[H,F]}_{HF-FH} \right)\cdot v \\
+&amp;= F(Hv) - 2Fv \\
+&amp; = \lambda F v + 2Fv \\
+&amp;= (\lambda-2)Fv
+\end{align}</span></p>
+<p>The weight of the floor below <span class="math inline">v</span> is <span class="math inline">\lambda -2</span>.</p>
 
 
 </section>
@@ -2663,12 +2734,12 @@ window._ojs.runtime.interpretFromScriptTags();
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../group_theory/basic_properties.html" class="pagination-link" aria-label="basic properties">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">basic properties</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">basic properties</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../group_theory/wolfram-jupyter-test.html" class="pagination-link" aria-label="mathematica test">
-        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">mathematica test</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">mathematica test</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

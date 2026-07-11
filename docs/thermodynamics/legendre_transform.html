@@ -1,0 +1,1923 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>9&nbsp; Legendre transformations visualized – mishmash</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../group_theory/start_here.html" rel="next">
+<link href="../thermodynamics/intro-thermodynamics.html" rel="prev">
+<link href="../archive/logo.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-84bb7a51fcc1ae1268a7e2af559d4b30.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-75d35b8b933727816098ee1d621b2fac.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KF3W04H104"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-KF3W04H104', { 'anonymize_ip': true});
+</script>
+<!-- <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css"> -->
+<script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating slimcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../thermodynamics/intro-thermodynamics.html">thermodynamics</a></li><li class="breadcrumb-item"><a href="../thermodynamics/legendre_transform.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Legendre transformations visualized</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../archive/logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../archive/logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">mishmash</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://yairmau.com/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-house-fill"></i></a>
+    <a href="https://github.com/yairmau/mishmash/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">About</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">causal inference</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../causal_inference/intro-causal-inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">introduction to causal inference</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../causal_inference/DAG_rules.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">DAG rules</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">active inference</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../active_inference/intro-active-inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">introduction to active inference</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../active_inference/bayes-inference-easy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">easy bayesian inference</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../active_inference/bayes-inference-intractable.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">intractable bayesian inference</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../active_inference/simplex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">simplex</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">thermodynamics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../thermodynamics/intro-thermodynamics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">intro to thermodynamics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../thermodynamics/legendre_transform.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Legendre transformations visualized</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">group theory</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../group_theory/start_here.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">start here</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../group_theory/basic_properties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">basic properties</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../group_theory/lie_algebra_sl2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Lie algebra sl(2)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../group_theory/wolfram-jupyter-test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">mathematica test</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">differential geometry</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../intro-differential-geometry.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">intro to differential geometry</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation"><span class="header-section-number">9.1</span> motivation</a></li>
+  <li><a href="#a-practical-example-that-doesnt-work" id="toc-a-practical-example-that-doesnt-work" class="nav-link" data-scroll-target="#a-practical-example-that-doesnt-work"><span class="header-section-number">9.2</span> a practical example that doesn’t work</a></li>
+  <li><a href="#y-intercept-not-slope" id="toc-y-intercept-not-slope" class="nav-link" data-scroll-target="#y-intercept-not-slope"><span class="header-section-number">9.3</span> y-intercept, not slope</a></li>
+  <li><a href="#duality-relationship" id="toc-duality-relationship" class="nav-link" data-scroll-target="#duality-relationship"><span class="header-section-number">9.4</span> duality relationship</a></li>
+  <li><a href="#derivation-according-to-v.i.-arnold" id="toc-derivation-according-to-v.i.-arnold" class="nav-link" data-scroll-target="#derivation-according-to-v.i.-arnold"><span class="header-section-number">9.5</span> derivation according to V.I. Arnold</a></li>
+  <li><a href="#sources" id="toc-sources" class="nav-link" data-scroll-target="#sources"><span class="header-section-number">9.6</span> sources</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../thermodynamics/intro-thermodynamics.html">thermodynamics</a></li><li class="breadcrumb-item"><a href="../thermodynamics/legendre_transform.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Legendre transformations visualized</span></a></li></ol></nav>
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Legendre transformations visualized</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button" data-quarto-source-url="https://github.com/yairmau/mishmash/blob/main/thermodynamics/legendre_transform.ipynb">View Source</a></li></ul></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="motivation" class="level2 page-columns page-full" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="motivation"><span class="header-section-number">9.1</span> motivation</h2>
+<p>It is hard to give good motivations for the Legendre transform without going into the physics of thermodynamics or classical mechanics. I’ll do that in another post. I’ll try to give here a mathematical motivation, which is to say, let’s clearly state what is the problem we would like to solve.</p>
+<p>Suppose we have a function <span class="math inline">f(x)</span>. We can compute its derivative <span class="math inline">p = \frac{df}{dx}</span>. Can we express <strong>the same information</strong> contained in <span class="math inline">f(x)</span> through a new function <span class="math inline">g(p)</span>? What do I mean by “the same information”?</p>
+<p><strong>Involution</strong><br>
+Starting from <span class="math inline">f(x)</span>, we compute <span class="math inline">g(p)</span> with a given procedure (to be found below). Applying <strong>the same procedure</strong> to <span class="math inline">g(p)</span> gives us back <span class="math inline">f(x)</span>. <span class="math inline">f(x)</span> and <span class="math inline">g(p)</span> are two sides of the same coin. Flipping the coin twice returns us to our starting point. This is what involution means.</p>
+<p><strong>Conjugate variable swap</strong><br>
+The independent variable of <span class="math inline">g</span> is <span class="math inline">p</span>, and it is defined as the derivative <span class="math inline">df/dx</span>. The independent variable of <span class="math inline">f</span> is <span class="math inline">x</span>, and it is defined as the derivative <span class="math inline">dg/dp</span>. So the roles of dependent and independent variables are swapped, but in a very specific way.</p>
+<div id="cell-fig-convex-concave" class="cell page-columns page-full" data-execution_count="20">
+
+<div class="no-row-height column-margin column-container"><div class="cell-output cell-output-display">
+<div id="fig-convex-concave" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-convex-concave-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="legendre_transform_files/figure-html/fig-convex-concave-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-convex-concave-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.1: Comparison of Convex and Concave functions.
+</figcaption>
+</figure>
+</div>
+</div></div></div>
+<p><strong>Uniqueness</strong><br>
+The original function <span class="math inline">f(x)</span> <strong>has to be strictly convex</strong> (or concave) for the Legendre transform to be defined. Convexity (concavity) means that the second derivative is positive (negative). A geometric way to understand convexity is that if we draw a line between any two points of the graph of <span class="math inline">f(x)</span>, the line lies always above (or below) the graph. If this requirement is not satisfied, the mapping between <span class="math inline">x</span> and <span class="math inline">p</span> is no longer one-to-one, meaning we can no longer uniquely reconstruct the original function <span class="math inline">f(x)</span> from <span class="math inline">g(p)</span>. We used the word “strictly” because a convex function can have flat segments (zero second derivative) which break the one-to-one mapping, because several values of <span class="math inline">x</span> correspond to the same value of <span class="math inline">p</span>. The word strictly means that the second derivative is never zero.</p>
+<p>The challenge, then, is to find a mathematical operation that satisfies all three criteria: it must be an involution, it must swap the variable with the derivative, and it must rely on the unique curvature of the function.</p>
+</section>
+<section id="a-practical-example-that-doesnt-work" class="level2 page-columns page-full" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="a-practical-example-that-doesnt-work"><span class="header-section-number">9.2</span> a practical example that doesn’t work</h2>
+<p>I am following the arguments laid out by Dan Kosakowski in his YouTube video, <a href="https://youtu.be/P2HZelQm7Lw?si=vBaUeWywBtDsBIZq" target="_blank">A Simple yet Powerful Math Trick</a>.</p>
+<p>We start with a function <span class="math inline">f(x)</span>. For this practical example we’ll choose a parabola. In panel <strong>a</strong> below, we plot the function</p>
+<p><span class="math display">
+f(x) = x^2.
+</span></p>
+<p>We then define the slope of the function as</p>
+<p><span class="math display">
+p = \frac{df}{dx}.
+</span></p>
+<p>Panel <strong>b</strong> shows that if we draw tangent lines to <span class="math inline">f(x)</span>, they make a nice envelope of the function itself, and this suggests that the function <span class="math inline">f</span> might be described in terms of <span class="math inline">p</span> rather than <span class="math inline">x</span>.</p>
+<div id="4c7d5af9" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>import libraries</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="b95c1f49" class="cell" data-execution_count="21">
+<details class="code-fold">
+<summary>define useful functions</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">def</span> f(x):</span>
+<span id="cb2-2"><a href="#cb2-2"></a>    <span class="cf">return</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="kw">def</span> f_inverse(p):</span>
+<span id="cb2-4"><a href="#cb2-4"></a>    <span class="cf">return</span> (p<span class="op">/</span><span class="dv">2</span>)<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="kw">def</span> f2(x):</span>
+<span id="cb2-6"><a href="#cb2-6"></a>    <span class="cf">return</span> (x <span class="op">-</span> <span class="dv">1</span>)<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="kw">def</span> f_prime(x):</span>
+<span id="cb2-9"><a href="#cb2-9"></a>    <span class="cf">return</span> <span class="dv">2</span> <span class="op">*</span> x</span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="kw">def</span> f_prime2(x):</span>
+<span id="cb2-11"><a href="#cb2-11"></a>    <span class="cf">return</span> <span class="dv">2</span> <span class="op">*</span> (x <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb2-12"><a href="#cb2-12"></a></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="kw">def</span> tangent_line(x, x0):</span>
+<span id="cb2-14"><a href="#cb2-14"></a>    <span class="cf">return</span> f_prime(x0) <span class="op">*</span> (x <span class="op">-</span> x0) <span class="op">+</span> f(x0)</span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="kw">def</span> tangent_line2(x, x0):</span>
+<span id="cb2-16"><a href="#cb2-16"></a>    <span class="cf">return</span> f_prime2(x0) <span class="op">*</span> (x <span class="op">-</span> x0) <span class="op">+</span> f2(x0)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="86761029" class="cell" data-execution_count="22">
+<details class="code-fold">
+<summary>plot</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>fig, axx <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">8</span>))</span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a>ax <span class="op">=</span> axx.flatten()</span>
+<span id="cb3-4"><a href="#cb3-4"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">100</span>)</span>
+<span id="cb3-5"><a href="#cb3-5"></a></span>
+<span id="cb3-6"><a href="#cb3-6"></a>ax[<span class="dv">0</span>].plot(x, f(x), label<span class="op">=</span><span class="st">'$f(x) = x^2$'</span>, color<span class="op">=</span><span class="st">'tab:blue'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb3-7"><a href="#cb3-7"></a></span>
+<span id="cb3-8"><a href="#cb3-8"></a>x0_values <span class="op">=</span> np.arange(<span class="op">-</span><span class="fl">2.5</span>, <span class="fl">2.6</span>, <span class="fl">0.1</span>)</span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="cf">for</span> x0 <span class="kw">in</span> x0_values:</span>
+<span id="cb3-10"><a href="#cb3-10"></a>    ax[<span class="dv">1</span>].plot(x, tangent_line(x, x0), color<span class="op">=</span><span class="st">'gray'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb3-11"><a href="#cb3-11"></a>ax[<span class="dv">1</span>].plot(x, tangent_line(x, <span class="dv">1</span>), color<span class="op">=</span><span class="st">'black'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb3-12"><a href="#cb3-12"></a>x1, x2 <span class="op">=</span> <span class="dv">1</span>, <span class="dv">2</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a>y1, y2 <span class="op">=</span> tangent_line(x1, <span class="dv">1</span>), tangent_line(x2, <span class="dv">1</span>)</span>
+<span id="cb3-14"><a href="#cb3-14"></a>ax[<span class="dv">1</span>].plot([x1, x2], [y1, y1], color<span class="op">=</span><span class="st">'xkcd:bright pink'</span>)</span>
+<span id="cb3-15"><a href="#cb3-15"></a>ax[<span class="dv">1</span>].plot([x2, x2], [y1, y2], color<span class="op">=</span><span class="st">'xkcd:bright pink'</span>)</span>
+<span id="cb3-16"><a href="#cb3-16"></a>ax[<span class="dv">1</span>].text(x1<span class="op">+</span>(x2<span class="op">-</span>x1)<span class="op">/</span><span class="dv">2</span>, f(x1), <span class="st">'1'</span>, va<span class="op">=</span><span class="st">'bottom'</span>, ha<span class="op">=</span><span class="st">'center'</span>, color<span class="op">=</span><span class="st">'xkcd:bright pink'</span>)</span>
+<span id="cb3-17"><a href="#cb3-17"></a>ax[<span class="dv">1</span>].text(x2, y1 <span class="op">+</span> (y2<span class="op">-</span>y1)<span class="op">/</span><span class="dv">2</span>,</span>
+<span id="cb3-18"><a href="#cb3-18"></a>           <span class="vs">r'</span><span class="dv">$</span><span class="vs">p=</span><span class="dv">\d</span><span class="vs">frac{df}{dx}</span><span class="dv">$</span><span class="vs">'</span>, va<span class="op">=</span><span class="st">'center'</span>, ha<span class="op">=</span><span class="st">'left'</span>, color<span class="op">=</span><span class="st">'xkcd:bright pink'</span>)</span>
+<span id="cb3-19"><a href="#cb3-19"></a></span>
+<span id="cb3-20"><a href="#cb3-20"></a><span class="cf">for</span> axis <span class="kw">in</span> ax[[<span class="dv">0</span>,<span class="dv">1</span>]]:</span>
+<span id="cb3-21"><a href="#cb3-21"></a>    axis.spines[<span class="st">'left'</span>].set_position(<span class="st">'zero'</span>)</span>
+<span id="cb3-22"><a href="#cb3-22"></a>    axis.spines[<span class="st">'bottom'</span>].set_position(<span class="st">'zero'</span>)</span>
+<span id="cb3-23"><a href="#cb3-23"></a>    axis.spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb3-24"><a href="#cb3-24"></a>    axis.spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb3-25"><a href="#cb3-25"></a>    axis.<span class="bu">set</span>(xlim<span class="op">=</span>(x[<span class="dv">0</span>], x[<span class="op">-</span><span class="dv">1</span>]),</span>
+<span id="cb3-26"><a href="#cb3-26"></a>             ylim<span class="op">=</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">5</span>),</span>
+<span id="cb3-27"><a href="#cb3-27"></a>             xticks<span class="op">=</span>np.arange(<span class="op">-</span><span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">1</span>),</span>
+<span id="cb3-28"><a href="#cb3-28"></a>             yticks<span class="op">=</span>np.arange(<span class="op">-</span><span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">1</span>)</span>
+<span id="cb3-29"><a href="#cb3-29"></a>             )</span>
+<span id="cb3-30"><a href="#cb3-30"></a>    axis.set_xlabel(<span class="st">'$x$'</span>, loc<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb3-31"><a href="#cb3-31"></a></span>
+<span id="cb3-32"><a href="#cb3-32"></a>ax[<span class="dv">0</span>].set_title(<span class="st">'Function $f(x)$'</span>)</span>
+<span id="cb3-33"><a href="#cb3-33"></a>ax[<span class="dv">0</span>].set_xlabel(<span class="st">'$x$'</span>, loc<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb3-34"><a href="#cb3-34"></a>ax[<span class="dv">1</span>].set_title(<span class="st">'Tangent lines to $f(x)$'</span>)</span>
+<span id="cb3-35"><a href="#cb3-35"></a></span>
+<span id="cb3-36"><a href="#cb3-36"></a>ax[<span class="dv">2</span>].plot(x, f_prime(x), label<span class="op">=</span><span class="vs">r"</span><span class="dv">$</span><span class="vs">f'</span><span class="kw">(</span><span class="vs">x</span><span class="kw">)</span><span class="vs"> = 2x</span><span class="dv">$</span><span class="vs">"</span>, color<span class="op">=</span><span class="st">'black'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb3-37"><a href="#cb3-37"></a>ax[<span class="dv">2</span>].spines[<span class="st">'left'</span>].set_position(<span class="st">'zero'</span>)</span>
+<span id="cb3-38"><a href="#cb3-38"></a>ax[<span class="dv">2</span>].spines[<span class="st">'bottom'</span>].set_position(<span class="st">'zero'</span>)</span>
+<span id="cb3-39"><a href="#cb3-39"></a>ax[<span class="dv">2</span>].spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb3-40"><a href="#cb3-40"></a>ax[<span class="dv">2</span>].spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb3-41"><a href="#cb3-41"></a>ax[<span class="dv">2</span>].<span class="bu">set</span>(xlim<span class="op">=</span>(x[<span class="dv">0</span>], x[<span class="op">-</span><span class="dv">1</span>]),</span>
+<span id="cb3-42"><a href="#cb3-42"></a>            ylim<span class="op">=</span>(<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>),</span>
+<span id="cb3-43"><a href="#cb3-43"></a>            xticks<span class="op">=</span>np.arange(<span class="op">-</span><span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">1</span>),</span>
+<span id="cb3-44"><a href="#cb3-44"></a>            yticks<span class="op">=</span>np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">5</span>),</span>
+<span id="cb3-45"><a href="#cb3-45"></a>            title<span class="op">=</span><span class="st">"Derivative $p=df/dx$"</span></span>
+<span id="cb3-46"><a href="#cb3-46"></a>            )</span>
+<span id="cb3-47"><a href="#cb3-47"></a>ax[<span class="dv">2</span>].set_xlabel(<span class="st">'$x$'</span>, loc<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb3-48"><a href="#cb3-48"></a></span>
+<span id="cb3-49"><a href="#cb3-49"></a>p <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">100</span>)</span>
+<span id="cb3-50"><a href="#cb3-50"></a>ax[<span class="dv">3</span>].plot(p, f_inverse(p), label<span class="op">=</span><span class="vs">r"</span><span class="dv">$</span><span class="vs">g</span><span class="kw">(</span><span class="vs">p</span><span class="kw">)</span><span class="vs"> = </span><span class="er">\</span><span class="vs">left</span><span class="kw">(</span><span class="ch">\f</span><span class="vs">rac{p}</span><span class="op">{2}</span><span class="ch">\r</span><span class="vs">ight</span><span class="kw">)</span><span class="dv">^</span><span class="vs">2</span><span class="dv">$</span><span class="vs">"</span>, color<span class="op">=</span><span class="st">'xkcd:bright pink'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb3-51"><a href="#cb3-51"></a>ax[<span class="dv">3</span>].spines[<span class="st">'left'</span>].set_position(<span class="st">'zero'</span>)</span>
+<span id="cb3-52"><a href="#cb3-52"></a>ax[<span class="dv">3</span>].spines[<span class="st">'bottom'</span>].set_position(<span class="st">'zero'</span>)</span>
+<span id="cb3-53"><a href="#cb3-53"></a>ax[<span class="dv">3</span>].spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb3-54"><a href="#cb3-54"></a>ax[<span class="dv">3</span>].spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb3-55"><a href="#cb3-55"></a>ax[<span class="dv">3</span>].<span class="bu">set</span>(xlim<span class="op">=</span>(p[<span class="dv">0</span>], p[<span class="op">-</span><span class="dv">1</span>]),</span>
+<span id="cb3-56"><a href="#cb3-56"></a>            ylim<span class="op">=</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">5</span>),</span>
+<span id="cb3-57"><a href="#cb3-57"></a>            xticks<span class="op">=</span>np.arange(<span class="op">-</span><span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">1</span>),</span>
+<span id="cb3-58"><a href="#cb3-58"></a>            yticks<span class="op">=</span>np.arange(<span class="op">-</span><span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">1</span>),</span>
+<span id="cb3-59"><a href="#cb3-59"></a>            title<span class="op">=</span><span class="st">"function $g(p)$"</span>,</span>
+<span id="cb3-60"><a href="#cb3-60"></a>            )</span>
+<span id="cb3-61"><a href="#cb3-61"></a>ax[<span class="dv">3</span>].set_xlabel(<span class="st">'$p$'</span>, loc<span class="op">=</span><span class="st">'right'</span>)<span class="op">;</span></span>
+<span id="cb3-62"><a href="#cb3-62"></a></span>
+<span id="cb3-63"><a href="#cb3-63"></a>ax[<span class="dv">0</span>].text(<span class="fl">0.03</span>, <span class="fl">0.97</span>, <span class="vs">r"a"</span>, transform<span class="op">=</span>ax[<span class="dv">0</span>].transAxes,</span>
+<span id="cb3-64"><a href="#cb3-64"></a>         horizontalalignment<span class="op">=</span><span class="st">'left'</span>, verticalalignment<span class="op">=</span><span class="st">'top'</span>,</span>
+<span id="cb3-65"><a href="#cb3-65"></a>         fontweight<span class="op">=</span><span class="st">"bold"</span>)</span>
+<span id="cb3-66"><a href="#cb3-66"></a>ax[<span class="dv">1</span>].text(<span class="fl">0.03</span>, <span class="fl">0.97</span>, <span class="vs">r"b"</span>, transform<span class="op">=</span>ax[<span class="dv">1</span>].transAxes,</span>
+<span id="cb3-67"><a href="#cb3-67"></a>         horizontalalignment<span class="op">=</span><span class="st">'left'</span>, verticalalignment<span class="op">=</span><span class="st">'top'</span>,</span>
+<span id="cb3-68"><a href="#cb3-68"></a>         fontweight<span class="op">=</span><span class="st">"bold"</span>)</span>
+<span id="cb3-69"><a href="#cb3-69"></a>ax[<span class="dv">2</span>].text(<span class="fl">0.03</span>, <span class="fl">0.97</span>, <span class="vs">r"c"</span>, transform<span class="op">=</span>ax[<span class="dv">2</span>].transAxes,</span>
+<span id="cb3-70"><a href="#cb3-70"></a>         horizontalalignment<span class="op">=</span><span class="st">'left'</span>, verticalalignment<span class="op">=</span><span class="st">'top'</span>,</span>
+<span id="cb3-71"><a href="#cb3-71"></a>         fontweight<span class="op">=</span><span class="st">"bold"</span>)</span>
+<span id="cb3-72"><a href="#cb3-72"></a>ax[<span class="dv">3</span>].text(<span class="fl">0.03</span>, <span class="fl">0.97</span>, <span class="vs">r"d"</span>, transform<span class="op">=</span>ax[<span class="dv">3</span>].transAxes, </span>
+<span id="cb3-73"><a href="#cb3-73"></a>         horizontalalignment<span class="op">=</span><span class="st">'left'</span>, verticalalignment<span class="op">=</span><span class="st">'top'</span>,</span>
+<span id="cb3-74"><a href="#cb3-74"></a>         fontweight<span class="op">=</span><span class="st">"bold"</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="legendre_transform_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Differentiating <span class="math inline">x^2</span> gives us a relation between <span class="math inline">u</span> and <span class="math inline">x</span>:</p>
+<p><span class="math display">
+p(x) = 2x,
+</span></p>
+<p>which can be seen in panel <strong>c</strong>.</p>
+<p>Because this is a one-to-one relation, that is, for each <span class="math inline">x</span> there is a unique <span class="math inline">p</span> and vice versa, we can invert this relation to express <span class="math inline">x</span> in terms of <span class="math inline">p</span>:</p>
+<p><span class="math display">
+x(p) = \frac{p}{2}
+</span></p>
+<div id="cell-fig-nonconvex" class="cell page-columns page-full" data-execution_count="127">
+
+<div class="no-row-height column-margin column-container"><div class="cell-output cell-output-display">
+<div id="fig-nonconvex" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-nonconvex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="legendre_transform_files/figure-html/fig-nonconvex-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-nonconvex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.2: A non-convex function can have multiple points with the same slope.
+</figcaption>
+</figure>
+</div>
+</div></div></div>
+<p>This is where the requirement that <span class="math inline">f(x)</span> is convex comes to play. If it were not convex, there could be multiple values of <span class="math inline">x</span> for the same value of <span class="math inline">p</span>, and we would not be able to invert the relation.</p>
+<p>We need now a function <span class="math inline">g(p)</span>. A first guess of what <span class="math inline">g(p)</span> could be is:</p>
+<p><span class="math display">
+g(p) = f(x(p)) = \left(\frac{p}{2}\right)^2 = \frac{p^2}{4}.
+</span></p>
+<p>This last function is plotted in panel <strong>d</strong>.</p>
+<p>Alas, our choice for the procedure <span class="math inline">g(p) = f(x(p))</span> is not a good one. We will show that a different function (our original <span class="math inline">f(x)</span> shifted to the right) gives us the same <span class="math inline">g(p)</span>, meaning we lost information in the transformation. We define:</p>
+<p><span class="math display">
+f_2(x) = (x - a)^2.
+</span></p>
+<p>The derivative of this new function defines <span class="math inline">p</span>:</p>
+<p><span class="math display">\begin{align*}
+p &amp;= \frac{df_2}{dx} \\
+&amp; = \frac{d}{dx} (x - a)^2 \\
+&amp; = 2(x-a).
+\end{align*}</span></p>
+<p>Expressing now <span class="math inline">x</span> in terms of <span class="math inline">p</span> gives</p>
+<p><span class="math display">
+x(p) = \frac{p}{2} + a.
+</span></p>
+<p>Finally, we substitute <span class="math inline">x(p)</span> back into <span class="math inline">f_2</span> to get</p>
+<p><span class="math display">\begin{align*}
+g_2(p) &amp;= f_2(x(p)) \\
+&amp;= (x(p) - a)^2 \\
+&amp;= \left(\frac{p}{2} + a - a\right)^2 \\
+&amp;= \frac{p^2}{4}.
+\end{align*}</span></p>
+<p>This is exactly the same function we had before shifting the original function! We completely lost the information that the parabola was shifted. See panel <strong>d</strong> below, it is identical to panel <strong>d</strong> in the previous example.</p>
+<div id="ac4ed309" class="cell" data-execution_count="24">
+<details class="code-fold">
+<summary>plot</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>fig, axx <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">8</span>))</span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a>ax <span class="op">=</span> axx.flatten()</span>
+<span id="cb4-4"><a href="#cb4-4"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">100</span>)</span>
+<span id="cb4-5"><a href="#cb4-5"></a></span>
+<span id="cb4-6"><a href="#cb4-6"></a>ax[<span class="dv">0</span>].plot(x, f2(x), label<span class="op">=</span><span class="st">'$f_2(x) = </span><span class="er">\</span><span class="st">cosh(x - 1)$'</span>, color<span class="op">=</span><span class="st">'tab:blue'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb4-7"><a href="#cb4-7"></a></span>
+<span id="cb4-8"><a href="#cb4-8"></a>x0_values <span class="op">=</span> np.arange(x[<span class="dv">0</span>], x[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="fl">0.1</span>, <span class="fl">0.1</span>)</span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="cf">for</span> x0 <span class="kw">in</span> x0_values:</span>
+<span id="cb4-10"><a href="#cb4-10"></a>    ax[<span class="dv">1</span>].plot(x, tangent_line2(x, x0), color<span class="op">=</span><span class="st">'gray'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb4-11"><a href="#cb4-11"></a></span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="cf">for</span> axis <span class="kw">in</span> ax[[<span class="dv">0</span>,<span class="dv">1</span>]]:</span>
+<span id="cb4-13"><a href="#cb4-13"></a>    axis.spines[<span class="st">'left'</span>].set_position(<span class="st">'zero'</span>)</span>
+<span id="cb4-14"><a href="#cb4-14"></a>    axis.spines[<span class="st">'bottom'</span>].set_position(<span class="st">'zero'</span>)</span>
+<span id="cb4-15"><a href="#cb4-15"></a>    axis.spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb4-16"><a href="#cb4-16"></a>    axis.spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb4-17"><a href="#cb4-17"></a>    axis.<span class="bu">set</span>(xlim<span class="op">=</span>(x[<span class="dv">0</span>], x[<span class="op">-</span><span class="dv">1</span>]),</span>
+<span id="cb4-18"><a href="#cb4-18"></a>             ylim<span class="op">=</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">5</span>),</span>
+<span id="cb4-19"><a href="#cb4-19"></a>             xticks<span class="op">=</span>np.arange(<span class="op">-</span><span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">1</span>),</span>
+<span id="cb4-20"><a href="#cb4-20"></a>             yticks<span class="op">=</span>np.arange(<span class="op">-</span><span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">1</span>)</span>
+<span id="cb4-21"><a href="#cb4-21"></a>             )</span>
+<span id="cb4-22"><a href="#cb4-22"></a>    axis.set_xlabel(<span class="st">'$x$'</span>, loc<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb4-23"><a href="#cb4-23"></a></span>
+<span id="cb4-24"><a href="#cb4-24"></a>ax[<span class="dv">0</span>].set_title(<span class="st">'Function $f(x)$'</span>)</span>
+<span id="cb4-25"><a href="#cb4-25"></a>ax[<span class="dv">0</span>].set_xlabel(<span class="st">'$x$'</span>, loc<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb4-26"><a href="#cb4-26"></a>ax[<span class="dv">1</span>].set_title(<span class="st">'Tangent lines to $f_2(x)$'</span>)</span>
+<span id="cb4-27"><a href="#cb4-27"></a></span>
+<span id="cb4-28"><a href="#cb4-28"></a>ax[<span class="dv">2</span>].plot(x, f_prime2(x), label<span class="op">=</span><span class="vs">r"</span><span class="dv">$</span><span class="vs">f'</span><span class="kw">(</span><span class="vs">x</span><span class="kw">)</span><span class="vs"> = </span><span class="dv">\s</span><span class="vs">inh</span><span class="kw">(</span><span class="vs">x-1</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span>, color<span class="op">=</span><span class="st">'black'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb4-29"><a href="#cb4-29"></a>ax[<span class="dv">2</span>].spines[<span class="st">'left'</span>].set_position(<span class="st">'zero'</span>)</span>
+<span id="cb4-30"><a href="#cb4-30"></a>ax[<span class="dv">2</span>].spines[<span class="st">'bottom'</span>].set_position(<span class="st">'zero'</span>)</span>
+<span id="cb4-31"><a href="#cb4-31"></a>ax[<span class="dv">2</span>].spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb4-32"><a href="#cb4-32"></a>ax[<span class="dv">2</span>].spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb4-33"><a href="#cb4-33"></a>ax[<span class="dv">2</span>].<span class="bu">set</span>(xlim<span class="op">=</span>(x[<span class="dv">0</span>], x[<span class="op">-</span><span class="dv">1</span>]),</span>
+<span id="cb4-34"><a href="#cb4-34"></a>            ylim<span class="op">=</span>(<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>),</span>
+<span id="cb4-35"><a href="#cb4-35"></a>            xticks<span class="op">=</span>np.arange(<span class="op">-</span><span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">1</span>),</span>
+<span id="cb4-36"><a href="#cb4-36"></a>            yticks<span class="op">=</span>np.arange(<span class="op">-</span><span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">5</span>),</span>
+<span id="cb4-37"><a href="#cb4-37"></a>            title<span class="op">=</span><span class="st">"Derivative $p_2=df_2/dx$"</span></span>
+<span id="cb4-38"><a href="#cb4-38"></a>            )</span>
+<span id="cb4-39"><a href="#cb4-39"></a>ax[<span class="dv">2</span>].set_xlabel(<span class="st">'$x$'</span>, loc<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb4-40"><a href="#cb4-40"></a></span>
+<span id="cb4-41"><a href="#cb4-41"></a>p <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">100</span>)</span>
+<span id="cb4-42"><a href="#cb4-42"></a>ax[<span class="dv">3</span>].plot(p, f_inverse(p), label<span class="op">=</span><span class="vs">r"</span><span class="dv">$</span><span class="vs">f_2</span><span class="kw">(</span><span class="vs">x</span><span class="kw">(</span><span class="vs">p</span><span class="kw">))</span><span class="vs"> = </span><span class="er">\</span><span class="vs">cosh</span><span class="kw">(</span><span class="dv">\s</span><span class="vs">inh</span><span class="dv">^</span><span class="vs">{-1}</span><span class="kw">(</span><span class="vs">p</span><span class="kw">))</span><span class="dv">$</span><span class="vs">"</span>, color<span class="op">=</span><span class="st">'xkcd:bright pink'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb4-43"><a href="#cb4-43"></a>ax[<span class="dv">3</span>].spines[<span class="st">'left'</span>].set_position(<span class="st">'zero'</span>)</span>
+<span id="cb4-44"><a href="#cb4-44"></a>ax[<span class="dv">3</span>].spines[<span class="st">'bottom'</span>].set_position(<span class="st">'zero'</span>)</span>
+<span id="cb4-45"><a href="#cb4-45"></a>ax[<span class="dv">3</span>].spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb4-46"><a href="#cb4-46"></a>ax[<span class="dv">3</span>].spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb4-47"><a href="#cb4-47"></a>ax[<span class="dv">3</span>].<span class="bu">set</span>(xlim<span class="op">=</span>(p[<span class="dv">0</span>], p[<span class="op">-</span><span class="dv">1</span>]),</span>
+<span id="cb4-48"><a href="#cb4-48"></a>            ylim<span class="op">=</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">5</span>),</span>
+<span id="cb4-49"><a href="#cb4-49"></a>            xticks<span class="op">=</span>np.arange(<span class="op">-</span><span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">1</span>),</span>
+<span id="cb4-50"><a href="#cb4-50"></a>            yticks<span class="op">=</span>np.arange(<span class="op">-</span><span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">1</span>),</span>
+<span id="cb4-51"><a href="#cb4-51"></a>            title<span class="op">=</span><span class="st">"function $f_2(p_2)$"</span>,</span>
+<span id="cb4-52"><a href="#cb4-52"></a>            )</span>
+<span id="cb4-53"><a href="#cb4-53"></a>ax[<span class="dv">3</span>].set_xlabel(<span class="st">'$p_2$'</span>, loc<span class="op">=</span><span class="st">'right'</span>)<span class="op">;</span></span>
+<span id="cb4-54"><a href="#cb4-54"></a></span>
+<span id="cb4-55"><a href="#cb4-55"></a>ax[<span class="dv">0</span>].text(<span class="fl">0.03</span>, <span class="fl">0.97</span>, <span class="vs">r"a"</span>, transform<span class="op">=</span>ax[<span class="dv">0</span>].transAxes,</span>
+<span id="cb4-56"><a href="#cb4-56"></a>         horizontalalignment<span class="op">=</span><span class="st">'left'</span>, verticalalignment<span class="op">=</span><span class="st">'top'</span>,</span>
+<span id="cb4-57"><a href="#cb4-57"></a>         fontweight<span class="op">=</span><span class="st">"bold"</span>)</span>
+<span id="cb4-58"><a href="#cb4-58"></a>ax[<span class="dv">1</span>].text(<span class="fl">0.03</span>, <span class="fl">0.97</span>, <span class="vs">r"b"</span>, transform<span class="op">=</span>ax[<span class="dv">1</span>].transAxes,</span>
+<span id="cb4-59"><a href="#cb4-59"></a>         horizontalalignment<span class="op">=</span><span class="st">'left'</span>, verticalalignment<span class="op">=</span><span class="st">'top'</span>,</span>
+<span id="cb4-60"><a href="#cb4-60"></a>         fontweight<span class="op">=</span><span class="st">"bold"</span>)</span>
+<span id="cb4-61"><a href="#cb4-61"></a>ax[<span class="dv">2</span>].text(<span class="fl">0.03</span>, <span class="fl">0.97</span>, <span class="vs">r"c"</span>, transform<span class="op">=</span>ax[<span class="dv">2</span>].transAxes,</span>
+<span id="cb4-62"><a href="#cb4-62"></a>         horizontalalignment<span class="op">=</span><span class="st">'left'</span>, verticalalignment<span class="op">=</span><span class="st">'top'</span>,</span>
+<span id="cb4-63"><a href="#cb4-63"></a>         fontweight<span class="op">=</span><span class="st">"bold"</span>)</span>
+<span id="cb4-64"><a href="#cb4-64"></a>ax[<span class="dv">3</span>].text(<span class="fl">0.03</span>, <span class="fl">0.97</span>, <span class="vs">r"d"</span>, transform<span class="op">=</span>ax[<span class="dv">3</span>].transAxes, </span>
+<span id="cb4-65"><a href="#cb4-65"></a>         horizontalalignment<span class="op">=</span><span class="st">'left'</span>, verticalalignment<span class="op">=</span><span class="st">'top'</span>,</span>
+<span id="cb4-66"><a href="#cb4-66"></a>         fontweight<span class="op">=</span><span class="st">"bold"</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="legendre_transform_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Just for completeness, let’s go back from <span class="math inline">g_2(p)</span> to <span class="math inline">f_2(x)</span>:</p>
+<p><span class="math display">\begin{align*}
+x &amp;= \frac{dg_2}{dp} \\
+&amp;= \frac{d}{dp} \left(\frac{p}{2}\right)^2 \\
+&amp;= \frac{p}{2},
+\end{align*}</span></p>
+<p>And now:</p>
+<p><span class="math display">
+f_2(x) = g_2(p(x)) = g_2(2x) = \left(\frac{2x}{2}\right)^2 = x^2,
+</span></p>
+<p>which is not the shifted parabola we started with.</p>
+</section>
+<section id="y-intercept-not-slope" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="y-intercept-not-slope"><span class="header-section-number">9.3</span> y-intercept, not slope</h2>
+<p>We learned that defining the function <span class="math inline">g(p)=f(x(p))</span> does not work. Instead, let’s define <span class="math inline">g(p)</span> as the negative-y-intercept of the tangent line. The choice of a negative sign will be justified later.</p>
+<p>How to find <span class="math inline">g(p)</span>? We start with the equation for the tangent line of <span class="math inline">f(x)</span>:</p>
+<p><span class="math display">
+y = px - g.
+</span></p>
+<p>How do I know this? This is simply the equation of a line, <span class="math inline">y = mx + b</span>, where the slope is <span class="math inline">m=p</span> and the y-intercept is <span class="math inline">b=-g</span>.</p>
+<div id="c77e0a79" class="cell" data-execution_count="27">
+<details class="code-fold">
+<summary>plot</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
+<span id="cb5-2"><a href="#cb5-2"></a></span>
+<span id="cb5-3"><a href="#cb5-3"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">100</span>)</span>
+<span id="cb5-4"><a href="#cb5-4"></a></span>
+<span id="cb5-5"><a href="#cb5-5"></a>ax.plot(x, f(x), color<span class="op">=</span><span class="st">'tab:blue'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb5-6"><a href="#cb5-6"></a></span>
+<span id="cb5-7"><a href="#cb5-7"></a>ax.plot(x, tangent_line(x, <span class="dv">1</span>), color<span class="op">=</span><span class="st">'black'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb5-8"><a href="#cb5-8"></a>x1, x2 <span class="op">=</span> <span class="dv">1</span>, <span class="dv">2</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a>y1, y2 <span class="op">=</span> tangent_line(x1, <span class="dv">1</span>), tangent_line(x2, <span class="dv">1</span>)</span>
+<span id="cb5-10"><a href="#cb5-10"></a>ax.plot([x1, x2], [y1, y1], color<span class="op">=</span><span class="st">'xkcd:bright pink'</span>)</span>
+<span id="cb5-11"><a href="#cb5-11"></a>ax.plot([x2, x2], [y1, y2], color<span class="op">=</span><span class="st">'xkcd:bright pink'</span>)</span>
+<span id="cb5-12"><a href="#cb5-12"></a>ax.plot([<span class="dv">0</span>,], [<span class="op">-</span><span class="dv">1</span>], ls<span class="op">=</span><span class="st">'None'</span>, marker<span class="op">=</span><span class="st">'o'</span>,</span>
+<span id="cb5-13"><a href="#cb5-13"></a>        mec<span class="op">=</span><span class="st">'xkcd:bright pink'</span>, mfc<span class="op">=</span><span class="st">"None"</span>, markersize<span class="op">=</span><span class="dv">8</span>, markeredgewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb5-14"><a href="#cb5-14"></a>ax.text(<span class="fl">0.4</span>, <span class="op">-</span><span class="dv">1</span>, <span class="vs">r'</span><span class="dv">$</span><span class="vs">-g</span><span class="kw">(</span><span class="vs">p</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>, va<span class="op">=</span><span class="st">'top'</span>, ha<span class="op">=</span><span class="st">'right'</span>, color<span class="op">=</span><span class="st">'xkcd:bright pink'</span>)</span>
+<span id="cb5-15"><a href="#cb5-15"></a>ax.text(x1<span class="op">+</span>(x2<span class="op">-</span>x1)<span class="op">/</span><span class="dv">2</span>, f(x1), <span class="st">'1'</span>, va<span class="op">=</span><span class="st">'bottom'</span>, ha<span class="op">=</span><span class="st">'center'</span>, color<span class="op">=</span><span class="st">'xkcd:bright pink'</span>)</span>
+<span id="cb5-16"><a href="#cb5-16"></a>ax.text(x2, y1 <span class="op">+</span> (y2<span class="op">-</span>y1)<span class="op">/</span><span class="dv">2</span>,</span>
+<span id="cb5-17"><a href="#cb5-17"></a>        <span class="vs">r'</span><span class="dv">$</span><span class="vs">p=</span><span class="dv">\d</span><span class="vs">frac{df}{dx}</span><span class="dv">$</span><span class="vs">'</span>, va<span class="op">=</span><span class="st">'center'</span>, ha<span class="op">=</span><span class="st">'left'</span>, color<span class="op">=</span><span class="st">'xkcd:bright pink'</span>)</span>
+<span id="cb5-18"><a href="#cb5-18"></a></span>
+<span id="cb5-19"><a href="#cb5-19"></a>ax.spines[<span class="st">'left'</span>].set_position(<span class="st">'zero'</span>)</span>
+<span id="cb5-20"><a href="#cb5-20"></a>ax.spines[<span class="st">'bottom'</span>].set_position(<span class="st">'zero'</span>)</span>
+<span id="cb5-21"><a href="#cb5-21"></a>ax.spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb5-22"><a href="#cb5-22"></a>ax.spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb5-23"><a href="#cb5-23"></a>ax.<span class="bu">set</span>(xlim<span class="op">=</span>(x[<span class="dv">0</span>], x[<span class="op">-</span><span class="dv">1</span>]),</span>
+<span id="cb5-24"><a href="#cb5-24"></a>            ylim<span class="op">=</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb5-25"><a href="#cb5-25"></a>            xticks<span class="op">=</span>np.arange(<span class="op">-</span><span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">1</span>),</span>
+<span id="cb5-26"><a href="#cb5-26"></a>            yticks<span class="op">=</span>np.arange(<span class="op">-</span><span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">1</span>),</span>
+<span id="cb5-27"><a href="#cb5-27"></a>            title<span class="op">=</span><span class="vs">r"</span><span class="dv">$</span><span class="vs">g</span><span class="kw">(</span><span class="vs">p</span><span class="kw">)</span><span class="dv">$</span><span class="vs"> as the negative y-intercept of the tangent line"</span></span>
+<span id="cb5-28"><a href="#cb5-28"></a>            )</span>
+<span id="cb5-29"><a href="#cb5-29"></a>ax.set_xlabel(<span class="st">'$x$'</span>, loc<span class="op">=</span><span class="st">'right'</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="legendre_transform_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The tangent line evaluated at <span class="math inline">x_0</span> touches the function at <span class="math inline">f(x_0)</span>, so we can use that to find <span class="math inline">g</span>:</p>
+<p><span class="math display">\begin{align*}
+f(x_0) &amp;= px_0 - g \\
+g &amp;= px_0 - f(x_0).
+\end{align*}</span></p>
+<p>For a tangent line at a generic point <span class="math inline">x</span>, we have that the intercept is</p>
+<div class="alert alert-danger">
+<p><span class="math display">
+g(p) = p\cdot x - f(x).
+</span></p>
+</div>
+<p>This is important, so I put it in a red box. See that I wrote <span class="math inline">g</span> as a function of <span class="math inline">p</span>. Every point <span class="math inline">x</span> of the function <span class="math inline">f(x)</span> has a unique slope <span class="math inline">p = df/dx</span>, and for each slope there is a unique tangent line with a unique y-intercept <span class="math inline">-g</span>. Because of this “uniqueness-daisy-chaining”, we can choose to think of <span class="math inline">g</span> as a function of <span class="math inline">p</span>.</p>
+<p>Let’s use the formula above to compute <span class="math inline">g(p)</span> for our shifted parabola <span class="math inline">f(x) = (x-a)^2</span>.</p>
+<p><span class="math display">\begin{align*}
+p &amp;= \frac{df}{dx} \\
+&amp;= \frac{d}{dx} (x-a)^2 \\
+&amp;= 2(x-a),
+\end{align*}</span></p>
+<p>which we can invert to get <span class="math display">
+x(p) = \frac{p}{2} + a.
+</span></p>
+<p>Substituting into the formula for <span class="math inline">g(p)</span> gives</p>
+<p><span class="math display">\begin{align*}
+g(p) &amp;= p \cdot x(p) - f(x(p)) \\
+&amp;= p \cdot \left(\frac{p}{2} + a\right) - \left(\frac{p}{2} + a - a\right)^2 \\
+&amp;= p \cdot \left(\frac{p}{2} + a\right) - \left(\frac{p}{2}\right)^2 \\
+&amp;= \frac{p^2}{2} + pa - \frac{p^2}{4} \\
+&amp;= \frac{p^2}{4} + pa.
+\end{align*}</span></p>
+<p>This function is different from the one we obtained before, and it contains the information about the shift <span class="math inline">a</span>. Now let’s try going back from <span class="math inline">g(p)</span> to <span class="math inline">f(x)</span>.</p>
+<p><span class="math display">\begin{align*}
+x &amp;= \frac{dg}{dp} \\
+&amp;= \frac{d}{dp} \left(\frac{p^2}{4} + pa\right) \\
+&amp;= \frac{p}{2} + a,
+\end{align*}</span></p>
+<p>Solving for <span class="math inline">p</span> gives <span class="math inline">p = 2(x - a)</span>.</p>
+<p>And now, using the result in the red box above, and solving for <span class="math inline">f(x)</span>: <span class="math display">\begin{align*}
+f(x) &amp;= p\cdot x - g(p(x)) \\
+&amp;= 2(x - a) \cdot x - \left(\frac{(2(x - a))^2}{4} + 2(x - a)a\right) \\
+&amp;= 2(x - a) \cdot x - \left((x - a)^2 + 2a(x - a)\right) \\
+&amp;= 2(x - a) \cdot x - (x - a)^2 - 2a(x - a) \\
+&amp;= (x - a)^2.
+\end{align*}</span></p>
+<p>Success! This procedure keeps all the information as we do the Legendre transformation forward and then backward. As a prize, go play with the widget below.</p>
+<div id="interactive-container" style="display: flex; flex-direction: column; align-items: center;">
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="2" data-source-offset="-1"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 1;"><span id="cb6-2"><a href="#cb6-2"></a>blue_color <span class="op">=</span> <span class="st">"#0343df"</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>red_color <span class="op">=</span> <span class="st">"#e50000"</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co">// 1. Define the slider without a label to keep it tight</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a>viewof x0 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">3</span>]<span class="op">,</span> {</span>
+<span id="cb6-7"><a href="#cb6-7"></a>  <span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> </span>
+<span id="cb6-8"><a href="#cb6-8"></a>  <span class="dt">value</span><span class="op">:</span> <span class="fl">2.5</span><span class="op">,</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">250</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a>})</span>
+<span id="cb6-11"><a href="#cb6-11"></a></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="co">// 2. Create a centered row using a template literal</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="co">// This puts "Slope p" right next to the number box</span></span>
+<span id="cb6-14"><a href="#cb6-14"></a><span class="fu">html</span><span class="vs">`&lt;div style="display: flex; align-items: center; gap: 10px; font-weight: bold; font-family: sans-serif; margin-bottom: 15px;"&gt;</span></span>
+<span id="cb6-15"><a href="#cb6-15"></a><span class="vs">  &lt;span&gt;x₀&lt;/span&gt; </span><span class="sc">${</span>viewof x0<span class="sc">}</span></span>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-4" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<details class="code-fold hidden">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="18" data-source-offset="-460"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 17;"><span id="cb7-18"><a href="#cb7-18"></a>p1 <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> x0</span>
+<span id="cb7-19"><a href="#cb7-19"></a>g <span class="op">=</span> p1 <span class="op">*</span> x0 <span class="op">-</span> (x0 <span class="op">**</span> <span class="dv">2</span>)</span>
+<span id="cb7-20"><a href="#cb7-20"></a>angle_degrees <span class="op">=</span> <span class="op">-</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">atan</span>(p1<span class="op">*</span>(<span class="dv">3</span><span class="op">/</span><span class="dv">16</span>)<span class="op">*</span>(<span class="dv">400</span><span class="op">/</span><span class="dv">600</span>)) <span class="op">*</span> (<span class="dv">180</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span>)</span>
+<span id="cb7-21"><a href="#cb7-21"></a></span>
+<span id="cb7-22"><a href="#cb7-22"></a><span class="co">// 3. Define the plot</span></span>
+<span id="cb7-23"><a href="#cb7-23"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb7-24"><a href="#cb7-24"></a>  <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb7-25"><a href="#cb7-25"></a>  <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">60</span><span class="op">,</span></span>
+<span id="cb7-26"><a href="#cb7-26"></a>  <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">60</span><span class="op">,</span></span>
+<span id="cb7-27"><a href="#cb7-27"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">600</span><span class="op">,</span></span>
+<span id="cb7-28"><a href="#cb7-28"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">400</span><span class="op">,</span></span>
+<span id="cb7-29"><a href="#cb7-29"></a>  <span class="dt">style</span><span class="op">:</span> { <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">14</span> }<span class="op">,</span></span>
+<span id="cb7-30"><a href="#cb7-30"></a>  <span class="dt">x</span><span class="op">:</span> { <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">3</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"x →"</span><span class="op">,</span> <span class="dt">labelOffset</span><span class="op">:</span> <span class="dv">45</span> }<span class="op">,</span></span>
+<span id="cb7-31"><a href="#cb7-31"></a>  <span class="dt">y</span><span class="op">:</span> { <span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="dv">8</span><span class="op">,</span> <span class="dv">8</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"↑ y"</span><span class="op">,</span> <span class="dt">labelOffset</span><span class="op">:</span> <span class="dv">50</span> }<span class="op">,</span></span>
+<span id="cb7-32"><a href="#cb7-32"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb7-33"><a href="#cb7-33"></a>    Plot<span class="op">.</span><span class="fu">axisX</span>({<span class="dt">fontSize</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span>})<span class="op">,</span></span>
+<span id="cb7-34"><a href="#cb7-34"></a>    Plot<span class="op">.</span><span class="fu">axisY</span>({<span class="dt">fontSize</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span>})<span class="op">,</span></span>
+<span id="cb7-35"><a href="#cb7-35"></a></span>
+<span id="cb7-36"><a href="#cb7-36"></a>    <span class="co">// Parabola</span></span>
+<span id="cb7-37"><a href="#cb7-37"></a>    Plot<span class="op">.</span><span class="fu">line</span>(d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">0</span><span class="op">,</span> <span class="fl">3.1</span><span class="op">,</span> <span class="fl">0.1</span>)<span class="op">,</span> {</span>
+<span id="cb7-38"><a href="#cb7-38"></a>      <span class="dt">x</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">,</span></span>
+<span id="cb7-39"><a href="#cb7-39"></a>      <span class="dt">y</span><span class="op">:</span> d <span class="kw">=&gt;</span> d <span class="op">**</span> <span class="dv">2</span><span class="op">,</span></span>
+<span id="cb7-40"><a href="#cb7-40"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span></span>
+<span id="cb7-41"><a href="#cb7-41"></a>      <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">4</span></span>
+<span id="cb7-42"><a href="#cb7-42"></a>    })<span class="op">,</span></span>
+<span id="cb7-43"><a href="#cb7-43"></a>    </span>
+<span id="cb7-44"><a href="#cb7-44"></a>    <span class="co">// Blue line</span></span>
+<span id="cb7-45"><a href="#cb7-45"></a>    Plot<span class="op">.</span><span class="fu">link</span>([<span class="kw">null</span>]<span class="op">,</span> {</span>
+<span id="cb7-46"><a href="#cb7-46"></a>      <span class="dt">x1</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> <span class="op">-</span>g<span class="op">,</span></span>
+<span id="cb7-47"><a href="#cb7-47"></a>      <span class="dt">x2</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> <span class="dv">3</span><span class="op">*</span>p1 <span class="op">-</span> g<span class="op">,</span></span>
+<span id="cb7-48"><a href="#cb7-48"></a>      <span class="dt">stroke</span><span class="op">:</span> blue_color<span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">5</span></span>
+<span id="cb7-49"><a href="#cb7-49"></a>    })<span class="op">,</span></span>
+<span id="cb7-50"><a href="#cb7-50"></a></span>
+<span id="cb7-51"><a href="#cb7-51"></a>    <span class="co">// Red vertical segment</span></span>
+<span id="cb7-52"><a href="#cb7-52"></a>    Plot<span class="op">.</span><span class="fu">link</span>([<span class="kw">null</span>]<span class="op">,</span> {</span>
+<span id="cb7-53"><a href="#cb7-53"></a>      <span class="dt">x1</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb7-54"><a href="#cb7-54"></a>      <span class="dt">x2</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> <span class="op">-</span>g<span class="op">,</span></span>
+<span id="cb7-55"><a href="#cb7-55"></a>      <span class="dt">stroke</span><span class="op">:</span> red_color<span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">5</span></span>
+<span id="cb7-56"><a href="#cb7-56"></a>    })<span class="op">,</span></span>
+<span id="cb7-57"><a href="#cb7-57"></a></span>
+<span id="cb7-58"><a href="#cb7-58"></a>    <span class="co">// black dashed vertical segment</span></span>
+<span id="cb7-59"><a href="#cb7-59"></a>    Plot<span class="op">.</span><span class="fu">link</span>([<span class="kw">null</span>]<span class="op">,</span> {</span>
+<span id="cb7-60"><a href="#cb7-60"></a>      <span class="dt">x1</span><span class="op">:</span> x0<span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb7-61"><a href="#cb7-61"></a>      <span class="dt">x2</span><span class="op">:</span> x0<span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> x0 <span class="op">**</span> <span class="dv">2</span><span class="op">,</span></span>
+<span id="cb7-62"><a href="#cb7-62"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"4 4"</span></span>
+<span id="cb7-63"><a href="#cb7-63"></a>    })<span class="op">,</span></span>
+<span id="cb7-64"><a href="#cb7-64"></a></span>
+<span id="cb7-65"><a href="#cb7-65"></a>    Plot<span class="op">.</span><span class="fu">dot</span>([<span class="kw">null</span>]<span class="op">,</span> {</span>
+<span id="cb7-66"><a href="#cb7-66"></a>      <span class="dt">x</span><span class="op">:</span> x0<span class="op">,</span> </span>
+<span id="cb7-67"><a href="#cb7-67"></a>      <span class="dt">y</span><span class="op">:</span> x0 <span class="op">**</span> <span class="dv">2</span><span class="op">,</span> </span>
+<span id="cb7-68"><a href="#cb7-68"></a>      <span class="dt">r</span><span class="op">:</span> <span class="dv">8</span><span class="op">,</span>            <span class="co">// Radius of the dot</span></span>
+<span id="cb7-69"><a href="#cb7-69"></a>      <span class="dt">fill</span><span class="op">:</span> red_color<span class="op">,</span>   <span class="co">// Color of the dot</span></span>
+<span id="cb7-70"><a href="#cb7-70"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"white"</span><span class="op">,</span> <span class="co">// Optional: adds an outline to make it pop</span></span>
+<span id="cb7-71"><a href="#cb7-71"></a>      <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span></span>
+<span id="cb7-72"><a href="#cb7-72"></a>    })<span class="op">,</span></span>
+<span id="cb7-73"><a href="#cb7-73"></a></span>
+<span id="cb7-74"><a href="#cb7-74"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>]<span class="op">,</span> {</span>
+<span id="cb7-75"><a href="#cb7-75"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#aaa"</span><span class="op">,</span>    <span class="co">// A light gray color</span></span>
+<span id="cb7-76"><a href="#cb7-76"></a>      <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span>    <span class="co">// Makes it "thin"</span></span>
+<span id="cb7-77"><a href="#cb7-77"></a>      <span class="dt">strokeOpacity</span><span class="op">:</span> <span class="fl">0.5</span> <span class="co">// Makes it subtle</span></span>
+<span id="cb7-78"><a href="#cb7-78"></a>    })<span class="op">,</span></span>
+<span id="cb7-79"><a href="#cb7-79"></a></span>
+<span id="cb7-80"><a href="#cb7-80"></a>    <span class="co">// TEXT LABELS</span></span>
+<span id="cb7-81"><a href="#cb7-81"></a>    Plot<span class="op">.</span><span class="fu">text</span>([<span class="kw">null</span>]<span class="op">,</span> {</span>
+<span id="cb7-82"><a href="#cb7-82"></a>      <span class="dt">x</span><span class="op">:</span> <span class="fl">2.7</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">8</span><span class="op">,</span> </span>
+<span id="cb7-83"><a href="#cb7-83"></a>      <span class="dt">text</span><span class="op">:</span> [<span class="st">"f(x)"</span>]<span class="op">,</span> </span>
+<span id="cb7-84"><a href="#cb7-84"></a>      <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span><span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> <span class="op">-</span><span class="dv">10</span> </span>
+<span id="cb7-85"><a href="#cb7-85"></a>    })<span class="op">,</span></span>
+<span id="cb7-86"><a href="#cb7-86"></a></span>
+<span id="cb7-87"><a href="#cb7-87"></a>    Plot<span class="op">.</span><span class="fu">text</span>([<span class="kw">null</span>]<span class="op">,</span> {</span>
+<span id="cb7-88"><a href="#cb7-88"></a>      <span class="dt">x</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="op">-</span>g<span class="op">/</span><span class="dv">2</span><span class="op">,</span> </span>
+<span id="cb7-89"><a href="#cb7-89"></a>      <span class="dt">text</span><span class="op">:</span> [<span class="st">"g"</span>]<span class="op">,</span> </span>
+<span id="cb7-90"><a href="#cb7-90"></a>      <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span><span class="op">,</span> <span class="dt">dx</span><span class="op">:</span> <span class="dv">15</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> red_color<span class="op">,</span> </span>
+<span id="cb7-91"><a href="#cb7-91"></a>    })<span class="op">,</span></span>
+<span id="cb7-92"><a href="#cb7-92"></a></span>
+<span id="cb7-93"><a href="#cb7-93"></a>    Plot<span class="op">.</span><span class="fu">text</span>([<span class="kw">null</span>]<span class="op">,</span> {</span>
+<span id="cb7-94"><a href="#cb7-94"></a>      <span class="dt">x</span><span class="op">:</span> x0<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> </span>
+<span id="cb7-95"><a href="#cb7-95"></a>      <span class="dt">text</span><span class="op">:</span> [<span class="st">"x₀"</span>]<span class="op">,</span> </span>
+<span id="cb7-96"><a href="#cb7-96"></a>      <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span><span class="op">,</span> <span class="dt">dx</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span> </span>
+<span id="cb7-97"><a href="#cb7-97"></a>    })<span class="op">,</span></span>
+<span id="cb7-98"><a href="#cb7-98"></a></span>
+<span id="cb7-99"><a href="#cb7-99"></a>    Plot<span class="op">.</span><span class="fu">text</span>([<span class="kw">null</span>]<span class="op">,</span> {</span>
+<span id="cb7-100"><a href="#cb7-100"></a>      <span class="dt">x</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">2</span><span class="op">*</span>p1 <span class="op">-</span> g <span class="op">-</span><span class="fl">0.5</span><span class="op">,</span> </span>
+<span id="cb7-101"><a href="#cb7-101"></a>      <span class="dt">text</span><span class="op">:</span> [<span class="st">"tangent line y = px - g"</span>]<span class="op">,</span> </span>
+<span id="cb7-102"><a href="#cb7-102"></a>      <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span><span class="op">,</span> <span class="dt">dx</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> blue_color<span class="op">,</span> <span class="dt">rotate</span><span class="op">:</span> angle_degrees</span>
+<span id="cb7-103"><a href="#cb7-103"></a>    })<span class="op">,</span></span>
+<span id="cb7-104"><a href="#cb7-104"></a></span>
+<span id="cb7-105"><a href="#cb7-105"></a>  ]</span>
+<span id="cb7-106"><a href="#cb7-106"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-6" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-7" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-8" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="duality-relationship" class="level2 page-columns page-full" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="duality-relationship"><span class="header-section-number">9.4</span> duality relationship</h2>
+<div id="cell-fig-envelope" class="cell page-columns page-full" data-execution_count="139">
+
+<div class="no-row-height column-margin column-container"><div class="cell-output cell-output-display">
+<div id="fig-envelope" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-envelope-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="legendre_transform_files/figure-html/fig-envelope-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-envelope-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.3: the envelope of tangent lines to a convex function.
+</figcaption>
+</figure>
+</div>
+</div></div></div>
+<p>The Legendre transformation takes advantage of the fact that we can represent a function in two ways. The first is the usual way, <span class="math inline">y=f(x)</span>, where the function is defined by the set of points <span class="math inline">(x, f(x))</span>. The second is through the family of tangent lines to the function, where the function is defined by the set of tangent slopes <span class="math inline">p</span> and their negative-y-intercept <span class="math inline">g(p)</span>.</p>
+<p>If we had defined <span class="math inline">g(p)</span> as the y-intercept (and not the negative y-intercept), the formula for the Legendre transform would be:</p>
+<p><span class="math display">
+g(p) = f(x) - p\cdot x.
+</span></p>
+<p>There is nothing illegal about that. Actually, that’s exactly the way it is defined in the context of Thermodynamics. This choice has the effect that if the function <span class="math inline">f</span> is convex, then <span class="math inline">g</span> will be concave. In classical mechanics, however, the relationship between the Lagrangian and Hamiltonian formulations uses the negative y-intercept definition, where convex functions map to convex functions.</p>
+<div id="2152d323" class="cell" data-execution_count="108">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">5</span>))</span>
+<span id="cb8-2"><a href="#cb8-2"></a>fig.subplots_adjust(left<span class="op">=</span><span class="fl">0.10</span>, right<span class="op">=</span><span class="fl">0.90</span>, top<span class="op">=</span><span class="fl">0.95</span>, bottom<span class="op">=</span><span class="fl">0.10</span>,</span>
+<span id="cb8-3"><a href="#cb8-3"></a>          hspace<span class="op">=</span><span class="fl">0.20</span>, wspace<span class="op">=</span><span class="fl">0.60</span>)</span>
+<span id="cb8-4"><a href="#cb8-4"></a></span>
+<span id="cb8-5"><a href="#cb8-5"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">100</span>)</span>
+<span id="cb8-6"><a href="#cb8-6"></a>ax[<span class="dv">0</span>, <span class="dv">0</span>].plot(x, x<span class="op">**</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'$f(x) = x^2$'</span>, color<span class="op">=</span><span class="st">'tab:blue'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb8-7"><a href="#cb8-7"></a>ax[<span class="dv">1</span>, <span class="dv">0</span>].plot(x, x<span class="op">**</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'$f(x) = x^2$'</span>, color<span class="op">=</span><span class="st">'tab:blue'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb8-8"><a href="#cb8-8"></a></span>
+<span id="cb8-9"><a href="#cb8-9"></a>p <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">100</span>)</span>
+<span id="cb8-10"><a href="#cb8-10"></a>ax[<span class="dv">0</span>, <span class="dv">1</span>].plot(p, p<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> <span class="dv">4</span>, label<span class="op">=</span><span class="st">'$g(p) = (p/2)^2$'</span>, color<span class="op">=</span><span class="st">'xkcd:bright pink'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb8-11"><a href="#cb8-11"></a>ax[<span class="dv">1</span>, <span class="dv">1</span>].plot(p, <span class="op">-</span>p<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> <span class="dv">4</span>, label<span class="op">=</span><span class="st">'$-g(p) = -(p/2)^2$'</span>, color<span class="op">=</span><span class="st">'xkcd:bright pink'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb8-12"><a href="#cb8-12"></a></span>
+<span id="cb8-13"><a href="#cb8-13"></a><span class="cf">for</span> axis <span class="kw">in</span> ax.flatten():</span>
+<span id="cb8-14"><a href="#cb8-14"></a>    axis.<span class="bu">set</span>(xticks<span class="op">=</span>[],</span>
+<span id="cb8-15"><a href="#cb8-15"></a>             yticks<span class="op">=</span>[],</span>
+<span id="cb8-16"><a href="#cb8-16"></a>             )</span>
+<span id="cb8-17"><a href="#cb8-17"></a>    axis.set_box_aspect(<span class="dv">1</span>)</span>
+<span id="cb8-18"><a href="#cb8-18"></a></span>
+<span id="cb8-19"><a href="#cb8-19"></a></span>
+<span id="cb8-20"><a href="#cb8-20"></a>fig.text(<span class="fl">0.50</span>, <span class="fl">0.75</span>, <span class="st">"maintains convexity"</span>, transform<span class="op">=</span>fig.transFigure,</span>
+<span id="cb8-21"><a href="#cb8-21"></a>         ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'center'</span>, color<span class="op">=</span><span class="st">"black"</span>,)</span>
+<span id="cb8-22"><a href="#cb8-22"></a>fig.text(<span class="fl">0.50</span>, <span class="fl">0.65</span>, <span class="vs">r"</span><span class="dv">$</span><span class="vs">g</span><span class="kw">(</span><span class="vs">p</span><span class="kw">)</span><span class="vs">=px-f</span><span class="kw">(</span><span class="vs">x</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span><span class="op">+</span><span class="st">"</span><span class="ch">\n</span><span class="st">"</span><span class="op">+</span><span class="vs">r"</span><span class="dv">$</span><span class="vs">p=f'</span><span class="kw">(</span><span class="vs">x</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span>, ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"center"</span>,</span>
+<span id="cb8-23"><a href="#cb8-23"></a>            size<span class="op">=</span><span class="dv">12</span>,</span>
+<span id="cb8-24"><a href="#cb8-24"></a>            bbox<span class="op">=</span><span class="bu">dict</span>(boxstyle<span class="op">=</span><span class="st">"rarrow,pad=0.3"</span>, fc<span class="op">=</span><span class="dv">3</span><span class="op">*</span>[<span class="fl">0.85</span>], ec<span class="op">=</span><span class="st">"black"</span>, lw<span class="op">=</span><span class="dv">1</span>))</span>
+<span id="cb8-25"><a href="#cb8-25"></a>fig.text(<span class="fl">0.50</span>, <span class="fl">0.85</span>, <span class="vs">r"</span><span class="dv">$</span><span class="vs">f</span><span class="kw">(</span><span class="vs">x</span><span class="kw">)</span><span class="vs">=px-g</span><span class="kw">(</span><span class="vs">p</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span><span class="op">+</span><span class="st">"</span><span class="ch">\n</span><span class="st">"</span><span class="op">+</span><span class="vs">r"</span><span class="dv">$</span><span class="vs">x=g'</span><span class="kw">(</span><span class="vs">p</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span>, ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"center"</span>,</span>
+<span id="cb8-26"><a href="#cb8-26"></a>            size<span class="op">=</span><span class="dv">12</span>,</span>
+<span id="cb8-27"><a href="#cb8-27"></a>            bbox<span class="op">=</span><span class="bu">dict</span>(boxstyle<span class="op">=</span><span class="st">"larrow,pad=0.3"</span>, fc<span class="op">=</span><span class="dv">3</span><span class="op">*</span>[<span class="fl">0.85</span>], ec<span class="op">=</span><span class="st">"black"</span>, lw<span class="op">=</span><span class="dv">1</span>))</span>
+<span id="cb8-28"><a href="#cb8-28"></a></span>
+<span id="cb8-29"><a href="#cb8-29"></a></span>
+<span id="cb8-30"><a href="#cb8-30"></a>fig.text(<span class="fl">0.50</span>, <span class="fl">0.30</span>, <span class="st">"flips convexity"</span>, transform<span class="op">=</span>fig.transFigure,</span>
+<span id="cb8-31"><a href="#cb8-31"></a>         ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'center'</span>, color<span class="op">=</span><span class="st">"black"</span>,)</span>
+<span id="cb8-32"><a href="#cb8-32"></a>fig.text(<span class="fl">0.50</span>, <span class="fl">0.20</span>, <span class="vs">r"</span><span class="dv">$</span><span class="vs">g</span><span class="kw">(</span><span class="vs">p</span><span class="kw">)</span><span class="vs">=f</span><span class="kw">(</span><span class="vs">x</span><span class="kw">)</span><span class="vs">-px</span><span class="dv">$</span><span class="vs">"</span><span class="op">+</span><span class="st">"</span><span class="ch">\n</span><span class="st">"</span><span class="op">+</span><span class="vs">r"</span><span class="dv">$</span><span class="vs">p=f'</span><span class="kw">(</span><span class="vs">x</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span>, ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"center"</span>,</span>
+<span id="cb8-33"><a href="#cb8-33"></a>            size<span class="op">=</span><span class="dv">12</span>,</span>
+<span id="cb8-34"><a href="#cb8-34"></a>            bbox<span class="op">=</span><span class="bu">dict</span>(boxstyle<span class="op">=</span><span class="st">"rarrow,pad=0.3"</span>, fc<span class="op">=</span><span class="dv">3</span><span class="op">*</span>[<span class="fl">0.85</span>], ec<span class="op">=</span><span class="st">"black"</span>, lw<span class="op">=</span><span class="dv">1</span>))</span>
+<span id="cb8-35"><a href="#cb8-35"></a>fig.text(<span class="fl">0.50</span>, <span class="fl">0.40</span>, <span class="vs">r"</span><span class="dv">$</span><span class="vs">f</span><span class="kw">(</span><span class="vs">x</span><span class="kw">)</span><span class="vs">=g</span><span class="kw">(</span><span class="vs">p</span><span class="kw">)</span><span class="op">+</span><span class="vs">px</span><span class="dv">$</span><span class="vs">"</span><span class="op">+</span><span class="st">"</span><span class="ch">\n</span><span class="st">"</span><span class="op">+</span><span class="vs">r"</span><span class="dv">$</span><span class="vs">x=-g'</span><span class="kw">(</span><span class="vs">p</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span>, ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"center"</span>,</span>
+<span id="cb8-36"><a href="#cb8-36"></a>            size<span class="op">=</span><span class="dv">12</span>,</span>
+<span id="cb8-37"><a href="#cb8-37"></a>            bbox<span class="op">=</span><span class="bu">dict</span>(boxstyle<span class="op">=</span><span class="st">"larrow,pad=0.3"</span>, fc<span class="op">=</span><span class="dv">3</span><span class="op">*</span>[<span class="fl">0.85</span>], ec<span class="op">=</span><span class="st">"black"</span>, lw<span class="op">=</span><span class="dv">1</span>))</span>
+<span id="cb8-38"><a href="#cb8-38"></a></span>
+<span id="cb8-39"><a href="#cb8-39"></a>ax[<span class="dv">0</span>,<span class="dv">0</span>].set_title(<span class="st">"Original function $f(x)$"</span>, y<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb8-40"><a href="#cb8-40"></a>ax[<span class="dv">0</span>,<span class="dv">1</span>].set_title(<span class="st">"Legendre transform</span><span class="ch">\n</span><span class="st">(Classical Mechanics)"</span>, y<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb8-41"><a href="#cb8-41"></a>ax[<span class="dv">1</span>,<span class="dv">0</span>].set_title(<span class="st">"Original function $f(x)$"</span>, y<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb8-42"><a href="#cb8-42"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].set_title(<span class="st">"Legendre transform</span><span class="ch">\n</span><span class="st">(Thermodynamics)"</span>, y<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb8-43"><a href="#cb8-43"></a>ax[<span class="dv">1</span>,<span class="dv">0</span>].set_xlabel(<span class="st">"$x$"</span>)</span>
+<span id="cb8-44"><a href="#cb8-44"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].set_xlabel(<span class="st">"$p$"</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="legendre_transform_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The figure above summarizes all the procedures of the Legendre transformation in both conventions. See how the top convention is totally symmetric: if you replace <span class="math inline">f</span> and <span class="math inline">x</span> for <span class="math inline">g</span> and <span class="math inline">p</span>, the equations remain the same. The bottom convention has two horrendous minus signs that break the symmetry. I really find it ugly and non intuitive. From now on let’s keep using the top convention.</p>
+<p>The best way to remember the Legendre transformation is this:</p>
+<div class="alert alert-info">
+<p><span class="math display">
+f(x) + g(p) = p \cdot x.
+</span></p>
+</div>
+<p>As it is written, we can’t still interpret it. If we want the “forward” Legendre transform, we solve for <span class="math inline">g</span> and get <span class="math inline">g(p)=p\cdot x - f(x)</span>, while for the “inverse” Legendre transform we solve for <span class="math inline">f</span> and get <span class="math inline">f(x)=p\cdot x - g(p)</span>. As for the variables, there is not much to remember, each variable is defined as the derivative of the other function with respect to its variable: <span class="math inline">p=f'(x)</span> and <span class="math inline">x=g'(p)</span>. Just simple and beautiful.</p>
+<p>The equation above will the basis of a wonderful geometric intepretation of the Legendre transformation, which we shall see next.</p>
+<div id="fc83d7c2" class="cell" data-execution_count="140">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<span id="cb9-2"><a href="#cb9-2"></a>plt.text(<span class="fl">0.2</span>, <span class="fl">0.5</span>, <span class="vs">r"</span><span class="dv">$</span><span class="vs">f</span><span class="kw">(</span><span class="vs">x</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span>,</span>
+<span id="cb9-3"><a href="#cb9-3"></a>         size<span class="op">=</span><span class="dv">20</span>, rotation<span class="op">=</span><span class="dv">0</span>,</span>
+<span id="cb9-4"><a href="#cb9-4"></a>         ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"center"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5"></a>         bbox<span class="op">=</span><span class="bu">dict</span>(boxstyle<span class="op">=</span><span class="st">"round"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6"></a>                   ec<span class="op">=</span><span class="st">"black"</span>,</span>
+<span id="cb9-7"><a href="#cb9-7"></a>                   fc<span class="op">=</span>[<span class="fl">0.85</span>]<span class="op">*</span><span class="dv">3</span>,</span>
+<span id="cb9-8"><a href="#cb9-8"></a>                   )</span>
+<span id="cb9-9"><a href="#cb9-9"></a>         )</span>
+<span id="cb9-10"><a href="#cb9-10"></a></span>
+<span id="cb9-11"><a href="#cb9-11"></a>plt.text(<span class="fl">0.8</span>, <span class="fl">0.5</span>, <span class="vs">r"</span><span class="dv">$</span><span class="vs">g</span><span class="kw">(</span><span class="vs">p</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span>,</span>
+<span id="cb9-12"><a href="#cb9-12"></a>         size<span class="op">=</span><span class="dv">20</span>, rotation<span class="op">=</span><span class="dv">0</span>,</span>
+<span id="cb9-13"><a href="#cb9-13"></a>         ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"center"</span>,</span>
+<span id="cb9-14"><a href="#cb9-14"></a>         bbox<span class="op">=</span><span class="bu">dict</span>(boxstyle<span class="op">=</span><span class="st">"round"</span>,</span>
+<span id="cb9-15"><a href="#cb9-15"></a>                   ec<span class="op">=</span><span class="st">"black"</span>,</span>
+<span id="cb9-16"><a href="#cb9-16"></a>                   fc<span class="op">=</span>[<span class="fl">0.85</span>]<span class="op">*</span><span class="dv">3</span>,</span>
+<span id="cb9-17"><a href="#cb9-17"></a>                   )</span>
+<span id="cb9-18"><a href="#cb9-18"></a>         )</span>
+<span id="cb9-19"><a href="#cb9-19"></a></span>
+<span id="cb9-20"><a href="#cb9-20"></a>ax.annotate(<span class="st">""</span>,</span>
+<span id="cb9-21"><a href="#cb9-21"></a>            xy<span class="op">=</span>(<span class="fl">0.8</span>, <span class="fl">0.5</span>), xycoords<span class="op">=</span><span class="st">'data'</span>,</span>
+<span id="cb9-22"><a href="#cb9-22"></a>            xytext<span class="op">=</span>(<span class="fl">0.2</span>, <span class="fl">0.5</span>), textcoords<span class="op">=</span><span class="st">'data'</span>,</span>
+<span id="cb9-23"><a href="#cb9-23"></a>            arrowprops<span class="op">=</span><span class="bu">dict</span>(arrowstyle<span class="op">=</span><span class="st">"-&gt;"</span>,</span>
+<span id="cb9-24"><a href="#cb9-24"></a>                            connectionstyle<span class="op">=</span><span class="st">"arc3,rad=-0.6"</span>,</span>
+<span id="cb9-25"><a href="#cb9-25"></a>                            color<span class="op">=</span><span class="st">"black"</span>,</span>
+<span id="cb9-26"><a href="#cb9-26"></a>                            shrinkA<span class="op">=</span><span class="dv">30</span>, shrinkB<span class="op">=</span><span class="dv">30</span>,</span>
+<span id="cb9-27"><a href="#cb9-27"></a>                            lw<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb9-28"><a href="#cb9-28"></a>                            mutation_scale<span class="op">=</span><span class="dv">30</span>)</span>
+<span id="cb9-29"><a href="#cb9-29"></a>            )</span>
+<span id="cb9-30"><a href="#cb9-30"></a>ax.annotate(<span class="st">""</span>,</span>
+<span id="cb9-31"><a href="#cb9-31"></a>            xy<span class="op">=</span>(<span class="fl">0.2</span>, <span class="fl">0.5</span>), xycoords<span class="op">=</span><span class="st">'data'</span>,</span>
+<span id="cb9-32"><a href="#cb9-32"></a>            xytext<span class="op">=</span>(<span class="fl">0.8</span>, <span class="fl">0.5</span>), textcoords<span class="op">=</span><span class="st">'data'</span>,</span>
+<span id="cb9-33"><a href="#cb9-33"></a>            arrowprops<span class="op">=</span><span class="bu">dict</span>(arrowstyle<span class="op">=</span><span class="st">"-&gt;"</span>,</span>
+<span id="cb9-34"><a href="#cb9-34"></a>                            connectionstyle<span class="op">=</span><span class="st">"arc3,rad=-0.6"</span>,</span>
+<span id="cb9-35"><a href="#cb9-35"></a>                            color<span class="op">=</span><span class="st">"black"</span>,</span>
+<span id="cb9-36"><a href="#cb9-36"></a>                            shrinkA<span class="op">=</span><span class="dv">30</span>, shrinkB<span class="op">=</span><span class="dv">30</span>,</span>
+<span id="cb9-37"><a href="#cb9-37"></a>                            lw<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb9-38"><a href="#cb9-38"></a>                            mutation_scale<span class="op">=</span><span class="dv">30</span>)</span>
+<span id="cb9-39"><a href="#cb9-39"></a>            )</span>
+<span id="cb9-40"><a href="#cb9-40"></a>ax.text(<span class="fl">0.5</span>, <span class="fl">0.8</span>, <span class="vs">r"</span><span class="dv">$</span><span class="vs">p=</span><span class="dv">\d</span><span class="vs">frac{df}{dx}</span><span class="dv">$</span><span class="vs">"</span><span class="op">+</span><span class="st">"</span><span class="ch">\n</span><span class="st">"</span><span class="op">+</span><span class="vs">r"</span><span class="dv">$</span><span class="vs">g</span><span class="kw">(</span><span class="vs">p</span><span class="kw">)</span><span class="vs"> = px - f</span><span class="kw">(</span><span class="vs">x</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span>,</span>
+<span id="cb9-41"><a href="#cb9-41"></a>        ha<span class="op">=</span><span class="st">"center"</span>)</span>
+<span id="cb9-42"><a href="#cb9-42"></a>ax.text(<span class="fl">0.5</span>, <span class="fl">0.2</span>, <span class="vs">r"</span><span class="dv">$</span><span class="vs">x=</span><span class="dv">\d</span><span class="vs">frac{dg}{dp}</span><span class="dv">$</span><span class="vs">"</span><span class="op">+</span><span class="st">"</span><span class="ch">\n</span><span class="st">"</span><span class="op">+</span><span class="vs">r"</span><span class="dv">$</span><span class="vs">f</span><span class="kw">(</span><span class="vs">x</span><span class="kw">)</span><span class="vs"> = px - g</span><span class="kw">(</span><span class="vs">p</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span>,</span>
+<span id="cb9-43"><a href="#cb9-43"></a>        ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"top"</span>)</span>
+<span id="cb9-44"><a href="#cb9-44"></a>ax.axis(<span class="st">'off'</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="legendre_transform_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="derivation-according-to-v.i.-arnold" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="derivation-according-to-v.i.-arnold"><span class="header-section-number">9.5</span> derivation according to V.I. Arnold</h2>
+<p>We will follow now V.I. Arnold’s arguments from his book <a href="https://www.ceremade.dauphine.fr/~fejoz/Enseignement/ds2021/Arnold_1989_MMCM.pdf">Mathematical Methods of Classical Mechanics</a>, 2nd edition, pages 61 to 64.</p>
+<p>The geometric intution is great, but the text is nothing but obtuse, in my opinion. I’ll put here Arnold’s text and comment on it, with words, images and interactive widgets.</p>
+<blockquote class="blockquote">
+<p><strong>Legendre transformations</strong><br>
+The Legendre transformation is a very useful mathematical tool: it transforms functions on a vector space to functions on the dual space. Legendre transformations are related to projective duality and tangential coordinates in algebraic geometry and the construction of dual Banach spaces in analysis. They are often encountered in physics (for example, in the definition of thermodynamic quantities).</p>
+</blockquote>
+<p>Great. I have no idea what a Banach space is. Nervermind. Let’s continue.</p>
+<blockquote class="blockquote">
+<p><strong>Definition</strong><br>
+Let <span class="math inline">y=f(x)</span> be a convex function, <span class="math inline">f''(x)&gt;0</span>.<br>
+The <em>Legendre transformation</em> of the function <span class="math inline">f</span> is a new function <span class="math inline">g</span> of a new variable <span class="math inline">p</span>, which is constructed in the following way (Figure 43). We draw the graph of <span class="math inline">f</span> in the <span class="math inline">x,y</span> plane. Let <span class="math inline">p</span> be a given number. Consider the straight line <span class="math inline">y=px</span>. We take the point <span class="math inline">x=x(p)</span> at which the curve is farthest from the straight line in the vertical direction: for each <span class="math inline">p</span> the function <span class="math inline">px-f(x)=F(p,x)</span> has a maximum with respect to <span class="math inline">x</span> at the point <span class="math inline">x(p)</span>. Now we define <span class="math inline">g(p)=F(p,x(p))</span>.</p>
+<p>The point <span class="math inline">x(p)</span> is defined by the extremal condition <span class="math inline">\partial F/\partial x=0</span>, i.e., <span class="math inline">f'(x)=p</span>. Since <span class="math inline">f</span> is convex, the point <span class="math inline">x(p)</span> is unique.</p>
+</blockquote>
+<p><img src="arnold43.png" class="img-fluid" width="400"></p>
+<p>That’s super interesting! Arnold doesn’t start like we did, defining that <span class="math inline">p</span> is the slope of the tangent line. He starts from a straight line that passes through the origin, <span class="math inline">y=px</span>, and looks for the point that maximizes the vertical distance between the function and the line. Since our function is convex, such a point must exist and be unique. In the widget we saw before, we varied <span class="math inline">x_0</span> and got to see how the negative y-intercept <span class="math inline">g(p)</span> changed. Arnold inverts this logic: he varies <span class="math inline">p</span> and looks for the point <span class="math inline">x(p)</span> that maximizes the vertical distance. See this in action:</p>
+<div id="interactive-container" style="display: flex; flex-direction: column; align-items: center;">
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="3" data-source-offset="-58"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 2;"><span id="cb10-3"><a href="#cb10-3"></a>viewof p <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">4</span>]<span class="op">,</span> {</span>
+<span id="cb10-4"><a href="#cb10-4"></a>  <span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> </span>
+<span id="cb10-5"><a href="#cb10-5"></a>  <span class="dt">value</span><span class="op">:</span> <span class="fl">2.5</span><span class="op">,</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">250</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a>})</span>
+<span id="cb10-8"><a href="#cb10-8"></a></span>
+<span id="cb10-9"><a href="#cb10-9"></a><span class="co">// 2. Create a centered row using a template literal</span></span>
+<span id="cb10-10"><a href="#cb10-10"></a><span class="co">// This puts "Slope p" right next to the number box</span></span>
+<span id="cb10-11"><a href="#cb10-11"></a><span class="fu">html</span><span class="vs">`&lt;div style="display: flex; align-items: center; gap: 10px; font-weight: bold; font-family: sans-serif; margin-bottom: 15px;"&gt;</span></span>
+<span id="cb10-12"><a href="#cb10-12"></a><span class="vs">  &lt;span&gt;Slope p&lt;/span&gt; </span><span class="sc">${</span>viewof p<span class="sc">}</span></span>
+<span id="cb10-13"><a href="#cb10-13"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<details class="code-fold hidden">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="15" data-source-offset="-417"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 14;"><span id="cb11-15"><a href="#cb11-15"></a>xo <span class="op">=</span> p <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb11-16"><a href="#cb11-16"></a></span>
+<span id="cb11-17"><a href="#cb11-17"></a><span class="co">// 3. Define the plot</span></span>
+<span id="cb11-18"><a href="#cb11-18"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb11-19"><a href="#cb11-19"></a>  <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb11-20"><a href="#cb11-20"></a>  <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">60</span><span class="op">,</span></span>
+<span id="cb11-21"><a href="#cb11-21"></a>  <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">60</span><span class="op">,</span></span>
+<span id="cb11-22"><a href="#cb11-22"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">600</span><span class="op">,</span> </span>
+<span id="cb11-23"><a href="#cb11-23"></a>  <span class="dt">style</span><span class="op">:</span> { <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">14</span> }<span class="op">,</span></span>
+<span id="cb11-24"><a href="#cb11-24"></a>  <span class="dt">x</span><span class="op">:</span> { <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">3</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"x →"</span><span class="op">,</span> <span class="dt">labelOffset</span><span class="op">:</span> <span class="dv">45</span> }<span class="op">,</span></span>
+<span id="cb11-25"><a href="#cb11-25"></a>  <span class="dt">y</span><span class="op">:</span> { <span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="dv">4</span><span class="op">,</span> <span class="dv">8</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"↑ y"</span><span class="op">,</span> <span class="dt">labelOffset</span><span class="op">:</span> <span class="dv">50</span> }<span class="op">,</span></span>
+<span id="cb11-26"><a href="#cb11-26"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb11-27"><a href="#cb11-27"></a>    Plot<span class="op">.</span><span class="fu">axisX</span>({<span class="dt">fontSize</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span>})<span class="op">,</span></span>
+<span id="cb11-28"><a href="#cb11-28"></a>    Plot<span class="op">.</span><span class="fu">axisY</span>({<span class="dt">fontSize</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span>})<span class="op">,</span></span>
+<span id="cb11-29"><a href="#cb11-29"></a></span>
+<span id="cb11-30"><a href="#cb11-30"></a>    <span class="co">// Parabola</span></span>
+<span id="cb11-31"><a href="#cb11-31"></a>    Plot<span class="op">.</span><span class="fu">line</span>(d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">0</span><span class="op">,</span> <span class="fl">3.1</span><span class="op">,</span> <span class="fl">0.1</span>)<span class="op">,</span> {</span>
+<span id="cb11-32"><a href="#cb11-32"></a>      <span class="dt">x</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">,</span></span>
+<span id="cb11-33"><a href="#cb11-33"></a>      <span class="dt">y</span><span class="op">:</span> d <span class="kw">=&gt;</span> d <span class="op">**</span> <span class="dv">2</span><span class="op">,</span></span>
+<span id="cb11-34"><a href="#cb11-34"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span></span>
+<span id="cb11-35"><a href="#cb11-35"></a>      <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">4</span></span>
+<span id="cb11-36"><a href="#cb11-36"></a>    })<span class="op">,</span></span>
+<span id="cb11-37"><a href="#cb11-37"></a>    </span>
+<span id="cb11-38"><a href="#cb11-38"></a>    <span class="co">// Blue line</span></span>
+<span id="cb11-39"><a href="#cb11-39"></a>    Plot<span class="op">.</span><span class="fu">line</span>(d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">0</span><span class="op">,</span> <span class="fl">3.1</span><span class="op">,</span> <span class="fl">0.1</span>)<span class="op">,</span> {</span>
+<span id="cb11-40"><a href="#cb11-40"></a>      <span class="dt">x</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">,</span></span>
+<span id="cb11-41"><a href="#cb11-41"></a>      <span class="dt">y</span><span class="op">:</span> d <span class="kw">=&gt;</span> p <span class="op">*</span> d<span class="op">,</span></span>
+<span id="cb11-42"><a href="#cb11-42"></a>      <span class="dt">stroke</span><span class="op">:</span> blue_color<span class="op">,</span></span>
+<span id="cb11-43"><a href="#cb11-43"></a>      <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">4</span></span>
+<span id="cb11-44"><a href="#cb11-44"></a>    })<span class="op">,</span></span>
+<span id="cb11-45"><a href="#cb11-45"></a></span>
+<span id="cb11-46"><a href="#cb11-46"></a>    <span class="co">// LIGHT Blue line</span></span>
+<span id="cb11-47"><a href="#cb11-47"></a>    Plot<span class="op">.</span><span class="fu">link</span>([<span class="kw">null</span>]<span class="op">,</span> {</span>
+<span id="cb11-48"><a href="#cb11-48"></a>      <span class="dt">x1</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> <span class="op">-</span>p <span class="op">*</span> p <span class="op">/</span> <span class="dv">4</span><span class="op">,</span></span>
+<span id="cb11-49"><a href="#cb11-49"></a>      <span class="dt">x2</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> p<span class="op">*</span><span class="dv">3</span> <span class="op">-</span>p <span class="op">*</span> p <span class="op">/</span> <span class="dv">4</span><span class="op">,</span></span>
+<span id="cb11-50"><a href="#cb11-50"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#ddd"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span></span>
+<span id="cb11-51"><a href="#cb11-51"></a>    })<span class="op">,</span></span>
+<span id="cb11-52"><a href="#cb11-52"></a></span>
+<span id="cb11-53"><a href="#cb11-53"></a>    <span class="co">// Red vertical segment</span></span>
+<span id="cb11-54"><a href="#cb11-54"></a>    Plot<span class="op">.</span><span class="fu">link</span>([<span class="kw">null</span>]<span class="op">,</span> {</span>
+<span id="cb11-55"><a href="#cb11-55"></a>      <span class="dt">x1</span><span class="op">:</span> p <span class="op">/</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> (p <span class="op">**</span> <span class="dv">2</span>) <span class="op">/</span> <span class="dv">2</span><span class="op">,</span></span>
+<span id="cb11-56"><a href="#cb11-56"></a>      <span class="dt">x2</span><span class="op">:</span> p <span class="op">/</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> (p <span class="op">**</span> <span class="dv">2</span>) <span class="op">/</span> <span class="dv">4</span><span class="op">,</span></span>
+<span id="cb11-57"><a href="#cb11-57"></a>      <span class="dt">stroke</span><span class="op">:</span> red_color<span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">5</span></span>
+<span id="cb11-58"><a href="#cb11-58"></a>    })<span class="op">,</span></span>
+<span id="cb11-59"><a href="#cb11-59"></a></span>
+<span id="cb11-60"><a href="#cb11-60"></a>    <span class="co">// The gray thick straight line (Vertical segment)</span></span>
+<span id="cb11-61"><a href="#cb11-61"></a>    Plot<span class="op">.</span><span class="fu">link</span>([<span class="kw">null</span>]<span class="op">,</span> {</span>
+<span id="cb11-62"><a href="#cb11-62"></a>      <span class="dt">x1</span><span class="op">:</span> p <span class="op">/</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb11-63"><a href="#cb11-63"></a>      <span class="dt">x2</span><span class="op">:</span> p <span class="op">/</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> (p <span class="op">**</span> <span class="dv">2</span>) <span class="op">/</span> <span class="dv">4</span><span class="op">,</span></span>
+<span id="cb11-64"><a href="#cb11-64"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"gray"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">5</span></span>
+<span id="cb11-65"><a href="#cb11-65"></a>    })<span class="op">,</span></span>
+<span id="cb11-66"><a href="#cb11-66"></a></span>
+<span id="cb11-67"><a href="#cb11-67"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>]<span class="op">,</span> {</span>
+<span id="cb11-68"><a href="#cb11-68"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#aaa"</span><span class="op">,</span>    <span class="co">// A light gray color</span></span>
+<span id="cb11-69"><a href="#cb11-69"></a>      <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span>    <span class="co">// Makes it "thin"</span></span>
+<span id="cb11-70"><a href="#cb11-70"></a>      <span class="dt">strokeOpacity</span><span class="op">:</span> <span class="fl">0.5</span> <span class="co">// Makes it subtle</span></span>
+<span id="cb11-71"><a href="#cb11-71"></a>    })<span class="op">,</span></span>
+<span id="cb11-72"><a href="#cb11-72"></a></span>
+<span id="cb11-73"><a href="#cb11-73"></a>    <span class="co">// TEXT LABELS</span></span>
+<span id="cb11-74"><a href="#cb11-74"></a>    Plot<span class="op">.</span><span class="fu">text</span>([<span class="kw">null</span>]<span class="op">,</span> {</span>
+<span id="cb11-75"><a href="#cb11-75"></a>      <span class="dt">x</span><span class="op">:</span> <span class="fl">2.7</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">8</span><span class="op">,</span> </span>
+<span id="cb11-76"><a href="#cb11-76"></a>      <span class="dt">text</span><span class="op">:</span> [<span class="st">"f(x)"</span>]<span class="op">,</span> </span>
+<span id="cb11-77"><a href="#cb11-77"></a>      <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span><span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> <span class="op">-</span><span class="dv">10</span> </span>
+<span id="cb11-78"><a href="#cb11-78"></a>    })<span class="op">,</span></span>
+<span id="cb11-79"><a href="#cb11-79"></a></span>
+<span id="cb11-80"><a href="#cb11-80"></a>    Plot<span class="op">.</span><span class="fu">text</span>([<span class="kw">null</span>]<span class="op">,</span> {</span>
+<span id="cb11-81"><a href="#cb11-81"></a>      <span class="dt">x</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">2</span> <span class="op">*</span> p<span class="op">,</span> </span>
+<span id="cb11-82"><a href="#cb11-82"></a>      <span class="dt">text</span><span class="op">:</span> [<span class="st">"px"</span>]<span class="op">,</span> </span>
+<span id="cb11-83"><a href="#cb11-83"></a>      <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> blue_color<span class="op">,</span> <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"start"</span><span class="op">,</span> <span class="dt">dx</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> <span class="dv">10</span> </span>
+<span id="cb11-84"><a href="#cb11-84"></a>    })<span class="op">,</span></span>
+<span id="cb11-85"><a href="#cb11-85"></a></span>
+<span id="cb11-86"><a href="#cb11-86"></a>    Plot<span class="op">.</span><span class="fu">text</span>([<span class="kw">null</span>]<span class="op">,</span> {</span>
+<span id="cb11-87"><a href="#cb11-87"></a>      <span class="dt">x</span><span class="op">:</span> p <span class="op">/</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> (p <span class="op">**</span> <span class="dv">2</span>) <span class="op">*</span> <span class="dv">3</span> <span class="op">/</span> <span class="dv">8</span><span class="op">,</span> </span>
+<span id="cb11-88"><a href="#cb11-88"></a>      <span class="dt">text</span><span class="op">:</span> [<span class="st">"g(p)"</span>]<span class="op">,</span> </span>
+<span id="cb11-89"><a href="#cb11-89"></a>      <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">15</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> red_color<span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span><span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">dx</span><span class="op">:</span> <span class="dv">20</span> </span>
+<span id="cb11-90"><a href="#cb11-90"></a>    })<span class="op">,</span></span>
+<span id="cb11-91"><a href="#cb11-91"></a></span>
+<span id="cb11-92"><a href="#cb11-92"></a>    Plot<span class="op">.</span><span class="fu">text</span>([<span class="kw">null</span>]<span class="op">,</span> {</span>
+<span id="cb11-93"><a href="#cb11-93"></a>      <span class="dt">x</span><span class="op">:</span> p <span class="op">/</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> (p <span class="op">**</span> <span class="dv">2</span>) <span class="op">*</span> <span class="dv">1</span> <span class="op">/</span> <span class="dv">8</span><span class="op">,</span> </span>
+<span id="cb11-94"><a href="#cb11-94"></a>      <span class="dt">text</span><span class="op">:</span> [<span class="st">"f(x)"</span>]<span class="op">,</span> </span>
+<span id="cb11-95"><a href="#cb11-95"></a>      <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">15</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span><span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">dx</span><span class="op">:</span> <span class="dv">20</span> </span>
+<span id="cb11-96"><a href="#cb11-96"></a>    })<span class="op">,</span></span>
+<span id="cb11-97"><a href="#cb11-97"></a></span>
+<span id="cb11-98"><a href="#cb11-98"></a>    Plot<span class="op">.</span><span class="fu">text</span>([<span class="kw">null</span>]<span class="op">,</span> {</span>
+<span id="cb11-99"><a href="#cb11-99"></a>      <span class="dt">x</span><span class="op">:</span> p <span class="op">/</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> </span>
+<span id="cb11-100"><a href="#cb11-100"></a>      <span class="dt">text</span><span class="op">:</span> [<span class="st">"x(p)"</span>]<span class="op">,</span> </span>
+<span id="cb11-101"><a href="#cb11-101"></a>      <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">16</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span><span class="op">,</span> <span class="dt">dx</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span> </span>
+<span id="cb11-102"><a href="#cb11-102"></a>    })<span class="op">,</span></span>
+<span id="cb11-103"><a href="#cb11-103"></a>  ]</span>
+<span id="cb11-104"><a href="#cb11-104"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-4" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>We find that the derivative has something to do with this procedure only when we go about finding the <strong>maximum distance</strong>. Arnold calls the vertical distance between the line <span class="math inline">px</span> in blue and the function <span class="math inline">f(x)</span> in black as <span class="math inline">F(p,x) = px - f(x)</span>. To find the maximum distance, we set the derivative of <span class="math inline">F</span> with respect to <span class="math inline">x</span> to zero:</p>
+<p><span class="math display">\begin{align*}
+\frac{\partial F}{\partial x} = p - f'(x) &amp;= 0\\
+p &amp;= f'(x).
+\end{align*}</span></p>
+<p>Only at this stage in the argument we find that <span class="math inline">p</span> is the derivative of <span class="math inline">f</span> at the point <span class="math inline">x(p)</span>! I added a light gray line to connect this argument with the previous widget. The light gray line is <span class="math inline">px</span> shifted down by <span class="math inline">g(p)</span>, so its y-intercept is exactly <span class="math inline">-g(p)</span>.</p>
+<p>Because of this maximization procedure, sometimes we see the Legendre transformation define as:</p>
+<p><span class="math display">
+g(p) = \max_x (px - f(x)).
+</span></p>
+<p>The argument inside the parenthesis is <span class="math inline">F(p,x)</span>, and it can be thought of as a function of two variables, <span class="math inline">p</span> and <span class="math inline">x</span>. For each fixed <span class="math inline">p</span>, we look for the value of <span class="math inline">x</span> that maximizes <span class="math inline">F(p,x)</span>, and that value is <span class="math inline">x(p)</span>. Substituting back into <span class="math inline">F</span> gives us <span class="math inline">g(p)</span>.</p>
+<p>One more thing. If we sum the vertical height given by <span class="math inline">f(x)</span> (gray) and the vertical height given by <span class="math inline">g(p)</span> (red), we get exactly the vertical height of the blue line <span class="math inline">px</span>, that is, the symmetric equation in the blue box from before:</p>
+<p><span class="math display">
+f(x) + g(p) = p \cdot x.
+</span></p>
+<p>Let’s keep going with Arnold’s text.</p>
+<blockquote class="blockquote">
+<p><strong>Involutivity</strong><br>
+Let us consider a function <span class="math inline">f</span> which is differentiable as many times as necessary, with <span class="math inline">f''(x) &gt; 0</span>. It is easy to verify that a Legendre transformation takes convex functions to convex functions. Therefore, we can apply it twice.</p>
+</blockquote>
+<p>Indeed, we already verified that this definition of the Legendre transformation maintains convexity for a specific function.</p>
+<blockquote class="blockquote">
+<p><strong>Theorem.</strong> The Legendre transformation is involutive, i.e., its square is the identity: if under the Legendre transformation <span class="math inline">f</span> is taken to <span class="math inline">g</span>, then the Legendre transform of <span class="math inline">g</span> will again be <span class="math inline">f</span>.</p>
+</blockquote>
+<p>I usually don’t love Arnold’s prose, but this is great.</p>
+<p>Now Arnold will justify why the Legendre transformation of <span class="math inline">g(p)</span> gives us back <span class="math inline">f(x)</span>.</p>
+<blockquote class="blockquote">
+<p><strong>Proof.</strong> In order to apply the Legendre transform to <span class="math inline">g</span>, with variable <span class="math inline">p</span>, we must by definition look at a new independent variable (which we will call <span class="math inline">x</span>), construct the function <span class="math display">
+G(x, p) = xp - g(p),
+</span> and find the point <span class="math inline">p(x)</span> at which <span class="math inline">G</span> attains its maximum: <span class="math inline">\partial G/\partial p = 0</span>, i.e., <span class="math inline">g'(p) = x</span>. Then the Legendre transform of <span class="math inline">g(p)</span> will be the function of <span class="math inline">x</span> equal to <span class="math inline">G(x, p(x))</span>.</p>
+</blockquote>
+<p>Arnold is using <strong>the same argument</strong> as before, this is exactly the same procedure he defined for getting <span class="math inline">g(p)</span> from <span class="math inline">f(x)</span>. The only difference is that now we start from <span class="math inline">g(p)</span> and want to get back to <span class="math inline">f(x)</span>, so we swap the roles of <span class="math inline">x\rightleftarrows p</span> and of <span class="math inline">f\rightleftarrows g</span>. He calls this new function <span class="math inline">G(x,p)</span> instead of <span class="math inline">F(p,x)</span>, but it is the same idea. Again, requiring that <span class="math inline">G(x,p)</span> is maximized with respect to <span class="math inline">p</span> means taking the derivative and setting it to zero, so naturally we get that the original variable <span class="math inline">x=g'(p)</span>. Taking the value of <span class="math inline">p</span> that maximizes <span class="math inline">G(x,p)</span> and substituting back gives us the Legendre transform of <span class="math inline">g(p)</span>. All this is algebra, now comes the geometric interpretation.</p>
+<blockquote class="blockquote">
+<p>We will show that <span class="math inline">G(x, p(x)) = f(x)</span>. To this end we notice that <span class="math inline">G(x, p) = xp - g(p)</span> has a simple geometric interpretation: it is the ordinate of the point with abscissa <span class="math inline">x</span> on the line tangent to the graph of <span class="math inline">f(x)</span> with slope <span class="math inline">p</span> (Figure 45). For fixed <span class="math inline">p</span>, the function <span class="math inline">G(x, p)</span> is a linear function of <span class="math inline">x</span>, with <span class="math inline">\partial G/\partial x = p</span>, and for <span class="math inline">x = x(p)</span> we have <span class="math inline">G(x, p) = xp - g(p) = f(x)</span> by the definition of <span class="math inline">g(p)</span>.</p>
+</blockquote>
+<p><img src="arnold45.png" class="img-fluid" width="400"></p>
+<p>Wow. That’s <strong>incomprehensible</strong>. Let me try to explain it in my own words. Remember when we found the formula for the tangent line to the function <span class="math inline">f(x)</span>? See it <a href="#y-intercept-not-slope">here</a>. The formula was</p>
+<p><span class="math display">
+y = px - g.
+</span></p>
+<p>Arnold is saying: “Hey! Look! The function <span class="math inline">G(x,p)</span> is exactly the same as the right-hand side of the equation above, that is, this second application of the Legendre transformation gave us the equation of the tangent line to <span class="math inline">f(x)</span> with slope <span class="math inline">p</span>!” More than that: <span class="math inline">G(x,p)</span> is not just one tangent line, it is the <strong>family of all tangent lines</strong> to <span class="math inline">f(x)</span>, one for each value of <span class="math inline">p</span>. That’s what he drew in Figure 45.</p>
+<blockquote class="blockquote">
+<p>Let us now fix <span class="math inline">x = x_0</span> and vary <span class="math inline">p</span>. Then the values of <span class="math inline">G(x,p)</span> will be the ordinates of the points of intersection of the line <span class="math inline">x=x_0</span> with the line tangent to the graph of <span class="math inline">f(x)</span> with various slopes <span class="math inline">p</span>. By the convexity of the graph it follows that all these tangents lie below the curve, and therefore the maximum of <span class="math inline">G(x,p)</span> for a fixed <span class="math inline">x(p_0)</span> is equal to <span class="math inline">f(x)</span> (and is achieved for <span class="math inline">p=p(x_0)=f'(x_0)</span>).</p>
+</blockquote>
+<p>Once more, it is very hard to understand Arnold’s text. If an image is worth a thousand words, an interactive widget is our only hope of deciphering Arnold’s proof. Play with it a little bit and then read the explanation below.</p>
+<div id="interactive-container" style="display: flex; flex-direction: column; align-items: center;">
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="3" data-source-offset="-58"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 2;"><span id="cb12-3"><a href="#cb12-3"></a>viewof p2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">7</span>]<span class="op">,</span> {</span>
+<span id="cb12-4"><a href="#cb12-4"></a>  <span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> </span>
+<span id="cb12-5"><a href="#cb12-5"></a>  <span class="dt">value</span><span class="op">:</span> <span class="fl">2.5</span><span class="op">,</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">250</span></span>
+<span id="cb12-7"><a href="#cb12-7"></a>})</span>
+<span id="cb12-8"><a href="#cb12-8"></a></span>
+<span id="cb12-9"><a href="#cb12-9"></a><span class="co">// 2. Create a centered row using a template literal</span></span>
+<span id="cb12-10"><a href="#cb12-10"></a><span class="co">// This puts "Slope p" right next to the number box</span></span>
+<span id="cb12-11"><a href="#cb12-11"></a><span class="fu">html</span><span class="vs">`&lt;div style="display: flex; align-items: center; gap: 10px; font-weight: bold; font-family: sans-serif; margin-bottom: 15px;"&gt;</span></span>
+<span id="cb12-12"><a href="#cb12-12"></a><span class="vs">  &lt;span&gt;Slope p&lt;/span&gt; </span><span class="sc">${</span>viewof p2<span class="sc">}</span></span>
+<span id="cb12-13"><a href="#cb12-13"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-2" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<details class="code-fold hidden">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb13" data-startfrom="14" data-source-offset="-418"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 13;"><span id="cb13-14"><a href="#cb13-14"></a>x_naught <span class="op">=</span> p2 <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb13-15"><a href="#cb13-15"></a>gee <span class="op">=</span> p2 <span class="op">*</span> x_naught <span class="op">-</span> (x_naught <span class="op">**</span> <span class="dv">2</span>)</span>
+<span id="cb13-16"><a href="#cb13-16"></a></span>
+<span id="cb13-17"><a href="#cb13-17"></a><span class="co">// 3. Define the plot</span></span>
+<span id="cb13-18"><a href="#cb13-18"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb13-19"><a href="#cb13-19"></a>  <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb13-20"><a href="#cb13-20"></a>  <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">60</span><span class="op">,</span></span>
+<span id="cb13-21"><a href="#cb13-21"></a>  <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">60</span><span class="op">,</span></span>
+<span id="cb13-22"><a href="#cb13-22"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">600</span><span class="op">,</span></span>
+<span id="cb13-23"><a href="#cb13-23"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">400</span><span class="op">,</span></span>
+<span id="cb13-24"><a href="#cb13-24"></a>  <span class="dt">style</span><span class="op">:</span> { <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">14</span> }<span class="op">,</span></span>
+<span id="cb13-25"><a href="#cb13-25"></a>  <span class="dt">x</span><span class="op">:</span> { <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">3</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"x →"</span><span class="op">,</span> <span class="dt">labelOffset</span><span class="op">:</span> <span class="dv">45</span> }<span class="op">,</span></span>
+<span id="cb13-26"><a href="#cb13-26"></a>  <span class="dt">y</span><span class="op">:</span> { <span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="dv">2</span><span class="op">,</span> <span class="dv">8</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"↑ y"</span><span class="op">,</span> <span class="dt">labelOffset</span><span class="op">:</span> <span class="dv">50</span> }<span class="op">,</span></span>
+<span id="cb13-27"><a href="#cb13-27"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb13-28"><a href="#cb13-28"></a>    Plot<span class="op">.</span><span class="fu">axisX</span>({<span class="dt">fontSize</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span>})<span class="op">,</span></span>
+<span id="cb13-29"><a href="#cb13-29"></a>    Plot<span class="op">.</span><span class="fu">axisY</span>({<span class="dt">fontSize</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span>})<span class="op">,</span></span>
+<span id="cb13-30"><a href="#cb13-30"></a></span>
+<span id="cb13-31"><a href="#cb13-31"></a>    <span class="co">// Parabola</span></span>
+<span id="cb13-32"><a href="#cb13-32"></a>    Plot<span class="op">.</span><span class="fu">line</span>(d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">0</span><span class="op">,</span> <span class="fl">3.1</span><span class="op">,</span> <span class="fl">0.1</span>)<span class="op">,</span> {</span>
+<span id="cb13-33"><a href="#cb13-33"></a>      <span class="dt">x</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">,</span></span>
+<span id="cb13-34"><a href="#cb13-34"></a>      <span class="dt">y</span><span class="op">:</span> d <span class="kw">=&gt;</span> d <span class="op">**</span> <span class="dv">2</span><span class="op">,</span></span>
+<span id="cb13-35"><a href="#cb13-35"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span></span>
+<span id="cb13-36"><a href="#cb13-36"></a>      <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">4</span></span>
+<span id="cb13-37"><a href="#cb13-37"></a>    })<span class="op">,</span></span>
+<span id="cb13-38"><a href="#cb13-38"></a>    </span>
+<span id="cb13-39"><a href="#cb13-39"></a>    <span class="co">// Blue line</span></span>
+<span id="cb13-40"><a href="#cb13-40"></a>    Plot<span class="op">.</span><span class="fu">link</span>([<span class="kw">null</span>]<span class="op">,</span> {</span>
+<span id="cb13-41"><a href="#cb13-41"></a>      <span class="dt">x1</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> <span class="op">-</span>gee<span class="op">,</span></span>
+<span id="cb13-42"><a href="#cb13-42"></a>      <span class="dt">x2</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> <span class="dv">3</span><span class="op">*</span>p2 <span class="op">-</span> gee<span class="op">,</span></span>
+<span id="cb13-43"><a href="#cb13-43"></a>      <span class="dt">stroke</span><span class="op">:</span> blue_color<span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">5</span></span>
+<span id="cb13-44"><a href="#cb13-44"></a>    })<span class="op">,</span></span>
+<span id="cb13-45"><a href="#cb13-45"></a></span>
+<span id="cb13-46"><a href="#cb13-46"></a>    <span class="co">// Red vertical segment</span></span>
+<span id="cb13-47"><a href="#cb13-47"></a>    Plot<span class="op">.</span><span class="fu">link</span>([<span class="kw">null</span>]<span class="op">,</span> {</span>
+<span id="cb13-48"><a href="#cb13-48"></a>      <span class="dt">x1</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb13-49"><a href="#cb13-49"></a>      <span class="dt">x2</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> p2<span class="op">*</span><span class="dv">2</span> <span class="op">-</span> gee<span class="op">,</span></span>
+<span id="cb13-50"><a href="#cb13-50"></a>      <span class="dt">stroke</span><span class="op">:</span> red_color<span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">5</span></span>
+<span id="cb13-51"><a href="#cb13-51"></a>    })<span class="op">,</span></span>
+<span id="cb13-52"><a href="#cb13-52"></a></span>
+<span id="cb13-53"><a href="#cb13-53"></a>    <span class="co">// black dashed vertical segment</span></span>
+<span id="cb13-54"><a href="#cb13-54"></a>    Plot<span class="op">.</span><span class="fu">link</span>([<span class="kw">null</span>]<span class="op">,</span> {</span>
+<span id="cb13-55"><a href="#cb13-55"></a>      <span class="dt">x1</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb13-56"><a href="#cb13-56"></a>      <span class="dt">x2</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> <span class="dv">2</span> <span class="op">**</span> <span class="dv">2</span><span class="op">,</span></span>
+<span id="cb13-57"><a href="#cb13-57"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"4 4"</span></span>
+<span id="cb13-58"><a href="#cb13-58"></a>    })<span class="op">,</span></span>
+<span id="cb13-59"><a href="#cb13-59"></a></span>
+<span id="cb13-60"><a href="#cb13-60"></a></span>
+<span id="cb13-61"><a href="#cb13-61"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>]<span class="op">,</span> {</span>
+<span id="cb13-62"><a href="#cb13-62"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#aaa"</span><span class="op">,</span>    <span class="co">// A light gray color</span></span>
+<span id="cb13-63"><a href="#cb13-63"></a>      <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span>    <span class="co">// Makes it "thin"</span></span>
+<span id="cb13-64"><a href="#cb13-64"></a>      <span class="dt">strokeOpacity</span><span class="op">:</span> <span class="fl">0.5</span> <span class="co">// Makes it subtle</span></span>
+<span id="cb13-65"><a href="#cb13-65"></a>    })<span class="op">,</span></span>
+<span id="cb13-66"><a href="#cb13-66"></a></span>
+<span id="cb13-67"><a href="#cb13-67"></a>    <span class="co">// TEXT LABELS</span></span>
+<span id="cb13-68"><a href="#cb13-68"></a>    Plot<span class="op">.</span><span class="fu">text</span>([<span class="kw">null</span>]<span class="op">,</span> {</span>
+<span id="cb13-69"><a href="#cb13-69"></a>      <span class="dt">x</span><span class="op">:</span> <span class="fl">2.7</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">8</span><span class="op">,</span> </span>
+<span id="cb13-70"><a href="#cb13-70"></a>      <span class="dt">text</span><span class="op">:</span> [<span class="st">"f(x)"</span>]<span class="op">,</span> </span>
+<span id="cb13-71"><a href="#cb13-71"></a>      <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span><span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> <span class="op">-</span><span class="dv">10</span> </span>
+<span id="cb13-72"><a href="#cb13-72"></a>    })<span class="op">,</span></span>
+<span id="cb13-73"><a href="#cb13-73"></a></span>
+<span id="cb13-74"><a href="#cb13-74"></a>    Plot<span class="op">.</span><span class="fu">text</span>([<span class="kw">null</span>]<span class="op">,</span> {</span>
+<span id="cb13-75"><a href="#cb13-75"></a>      <span class="dt">x</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> </span>
+<span id="cb13-76"><a href="#cb13-76"></a>      <span class="dt">text</span><span class="op">:</span> [<span class="st">"x₀"</span>]<span class="op">,</span> </span>
+<span id="cb13-77"><a href="#cb13-77"></a>      <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span><span class="op">,</span> <span class="dt">dx</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span> </span>
+<span id="cb13-78"><a href="#cb13-78"></a>    })<span class="op">,</span></span>
+<span id="cb13-79"><a href="#cb13-79"></a></span>
+<span id="cb13-80"><a href="#cb13-80"></a>  ]</span>
+<span id="cb13-81"><a href="#cb13-81"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-5" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>The widget above allows us to see the maximization process in action. We draw a vertical dashed line at a fixed value of <span class="math inline">x_0</span>. We then control the slope <span class="math inline">p</span> of the tangent line with a slider. For a given value of <span class="math inline">p</span>, the quantity <span class="math inline">G(x,p)</span> describes a specific straight line, shown in blue. Since we fixed <span class="math inline">x_0</span>, the value of this tangent line at <span class="math inline">x_0</span> is exactly the height of the intersection point between the blue line and the dashed vertical line, shown in red. We now vary <span class="math inline">p</span> with the slider, and see how the height of the intersection point changes. In this maximization procedure, our job is to find the value of <span class="math inline">p</span> that maximizes this red line segment. Because the function <span class="math inline">f(x)</span> is convex, the tangent lines always lie below the curve, so the maximum height of this red line segment is exactly <span class="math inline">f(x_0)</span>, and it is achieved when the tangent line touches the curve at <span class="math inline">x_0</span>, that is, when <span class="math inline">p=f'(x_0)</span>.</p>
+<p>We can do that for every value of <span class="math inline">x</span>, and thus prove that</p>
+<p><span class="math display">
+f(x) = \max_p (px - g(p)).
+</span></p>
+<p>This completes Arnold’s proof of the involutivity of the Legendre transformation.</p>
+</section>
+<section id="sources" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="sources"><span class="header-section-number">9.6</span> sources</h2>
+<p>This post was inspired by Dan Kosakowski’s youtube video, <a href="https://youtu.be/P2HZelQm7Lw?si=vBaUeWywBtDsBIZq" target="_blank">A Simple yet Powerful Math Trick</a>. It blew my mind. After that I had no other option but doing a deep dive into the Legendre transformation. Follow his youtube channel, <a href="https://www.youtube.com/@AbideByReason" target="_blank">Abide by Reason</a>, it’s very good.</p>
+<p>In studying the Legendre transformation I found the following resources helpful:</p>
+<ul>
+<li><a href="https://web.physics.wustl.edu/alford/physics/Legendre_introduction.pdf" target="_blank">Legendre transforms by Mark Alford</a>.</li>
+<li><a href="https://www.aapt.org/docdirectory/meetingpresentations/sm14/mungan-poster.pdf" target="_blank">Legendre Transforms for Dummies, by Carl E. Mungan</a>.</li>
+<li><a href="https://math.arizona.edu/~glickenstein/tex/legendre.pdf" target="_blank">The Legendre Transform, by David Glickenstein</a>.</li>
+<li><a href="https://academicweb.nd.edu/~powers/ame.20231/zia.pdf" target="_blank">R. K. P. Zia, Edward F. Redish, and Susan R. McKay. Making sense of the legendre transform. American Journal of Physics, 2009</a></li>
+<li><a href="https://web.archive.org/web/20231223213826/https://www.physics.drexel.edu/~skennerly/maths/Legendre.pdf" target="_blank">A graphical derivation of the Legendre transform, by Sam Kennerly</a>.</li>
+<li><a href="https://www.ceremade.dauphine.fr/~fejoz/Enseignement/ds2021/Arnold_1989_MMCM.pdf" target="_blank">Mathematical Methods of Classical Mechanics, by V.I. Arnold</a>, 2nd edition, pages 61 to 64.</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuYmx1ZV9jb2xvciA9IFwiIzAzNDNkZlwiXG5yZWRfY29sb3IgPSBcIiNlNTAwMDBcIlxuXG4vLyAxLiBEZWZpbmUgdGhlIHNsaWRlciB3aXRob3V0IGEgbGFiZWwgdG8ga2VlcCBpdCB0aWdodFxudmlld29mIHgwID0gSW5wdXRzLnJhbmdlKFswLCAzXSwge1xuICBzdGVwOiAwLjEsIFxuICB2YWx1ZTogMi41LFxuICB3aWR0aDogMjUwXG59KVxuXG4vLyAyLiBDcmVhdGUgYSBjZW50ZXJlZCByb3cgdXNpbmcgYSB0ZW1wbGF0ZSBsaXRlcmFsXG4vLyBUaGlzIHB1dHMgXCJTbG9wZSBwXCIgcmlnaHQgbmV4dCB0byB0aGUgbnVtYmVyIGJveFxuaHRtbGA8ZGl2IHN0eWxlPVwiZGlzcGxheTogZmxleDsgYWxpZ24taXRlbXM6IGNlbnRlcjsgZ2FwOiAxMHB4OyBmb250LXdlaWdodDogYm9sZDsgZm9udC1mYW1pbHk6IHNhbnMtc2VyaWY7IG1hcmdpbi1ib3R0b206IDE1cHg7XCI+XG4gIDxzcGFuPnjigoA8L3NwYW4+ICR7dmlld29mIHgwfVxuPC9kaXY+YFxuXG5wMSA9IDIgKiB4MFxuZyA9IHAxICogeDAgLSAoeDAgKiogMilcbmFuZ2xlX2RlZ3JlZXMgPSAtIE1hdGguYXRhbihwMSooMy8xNikqKDQwMC82MDApKSAqICgxODAgLyBNYXRoLlBJKVxuXG4vLyAzLiBEZWZpbmUgdGhlIHBsb3RcblBsb3QucGxvdCh7XG4gIGdyaWQ6IHRydWUsXG4gIG1hcmdpbkxlZnQ6IDYwLFxuICBtYXJnaW5Cb3R0b206IDYwLFxuICB3aWR0aDogNjAwLFxuICBoZWlnaHQ6IDQwMCxcbiAgc3R5bGU6IHsgZm9udFNpemU6IDE0IH0sXG4gIHg6IHsgZG9tYWluOiBbMCwgM10sIGxhYmVsOiBcIngg4oaSXCIsIGxhYmVsT2Zmc2V0OiA0NSB9LFxuICB5OiB7IGRvbWFpbjogWy04LCA4XSwgbGFiZWw6IFwi4oaRIHlcIiwgbGFiZWxPZmZzZXQ6IDUwIH0sXG4gIG1hcmtzOiBbXG4gICAgUGxvdC5heGlzWCh7Zm9udFNpemU6IDIwLCBmb250V2VpZ2h0OiBcImJvbGRcIn0pLFxuICAgIFBsb3QuYXhpc1koe2ZvbnRTaXplOiAyMCwgZm9udFdlaWdodDogXCJib2xkXCJ9KSxcblxuICAgIC8vIFBhcmFib2xhXG4gICAgUGxvdC5saW5lKGQzLnJhbmdlKDAsIDMuMSwgMC4xKSwge1xuICAgICAgeDogZCA9PiBkLFxuICAgICAgeTogZCA9PiBkICoqIDIsXG4gICAgICBzdHJva2U6IFwiYmxhY2tcIixcbiAgICAgIHN0cm9rZVdpZHRoOiA0XG4gICAgfSksXG4gICAgXG4gICAgLy8gQmx1ZSBsaW5lXG4gICAgUGxvdC5saW5rKFtudWxsXSwge1xuICAgICAgeDE6IDAsIHkxOiAtZyxcbiAgICAgIHgyOiAzLCB5MjogMypwMSAtIGcsXG4gICAgICBzdHJva2U6IGJsdWVfY29sb3IsIHN0cm9rZVdpZHRoOiA1XG4gICAgfSksXG5cbiAgICAvLyBSZWQgdmVydGljYWwgc2VnbWVudFxuICAgIFBsb3QubGluayhbbnVsbF0sIHtcbiAgICAgIHgxOiAwLCB5MTogMCxcbiAgICAgIHgyOiAwLCB5MjogLWcsXG4gICAgICBzdHJva2U6IHJlZF9jb2xvciwgc3Ryb2tlV2lkdGg6IDVcbiAgICB9KSxcblxuICAgIC8vIGJsYWNrIGRhc2hlZCB2ZXJ0aWNhbCBzZWdtZW50XG4gICAgUGxvdC5saW5rKFtudWxsXSwge1xuICAgICAgeDE6IHgwLCB5MTogMCxcbiAgICAgIHgyOiB4MCwgeTI6IHgwICoqIDIsXG4gICAgICBzdHJva2U6IFwiYmxhY2tcIiwgc3Ryb2tlV2lkdGg6IDIsIHN0cm9rZURhc2hhcnJheTogXCI0IDRcIlxuICAgIH0pLFxuXG4gICAgUGxvdC5kb3QoW251bGxdLCB7XG4gICAgICB4OiB4MCwgXG4gICAgICB5OiB4MCAqKiAyLCBcbiAgICAgIHI6IDgsICAgICAgICAgICAgLy8gUmFkaXVzIG9mIHRoZSBkb3RcbiAgICAgIGZpbGw6IHJlZF9jb2xvciwgICAvLyBDb2xvciBvZiB0aGUgZG90XG4gICAgICBzdHJva2U6IFwid2hpdGVcIiwgLy8gT3B0aW9uYWw6IGFkZHMgYW4gb3V0bGluZSB0byBtYWtlIGl0IHBvcFxuICAgICAgc3Ryb2tlV2lkdGg6IDJcbiAgICB9KSxcblxuICAgIFBsb3QucnVsZVkoWzBdLCB7XG4gICAgICBzdHJva2U6IFwiI2FhYVwiLCAgICAvLyBBIGxpZ2h0IGdyYXkgY29sb3JcbiAgICAgIHN0cm9rZVdpZHRoOiAyLCAgICAvLyBNYWtlcyBpdCBcInRoaW5cIlxuICAgICAgc3Ryb2tlT3BhY2l0eTogMC41IC8vIE1ha2VzIGl0IHN1YnRsZVxuICAgIH0pLFxuXG4gICAgLy8gVEVYVCBMQUJFTFNcbiAgICBQbG90LnRleHQoW251bGxdLCB7XG4gICAgICB4OiAyLjcsIHk6IDgsIFxuICAgICAgdGV4dDogW1wiZih4KVwiXSwgXG4gICAgICBmb250U2l6ZTogMjAsIGZvbnRXZWlnaHQ6IFwiYm9sZFwiLCBkeTogLTEwIFxuICAgIH0pLFxuXG4gICAgUGxvdC50ZXh0KFtudWxsXSwge1xuICAgICAgeDogMCwgeTogLWcvMiwgXG4gICAgICB0ZXh0OiBbXCJnXCJdLCBcbiAgICAgIGZvbnRTaXplOiAyMCwgZm9udFdlaWdodDogXCJib2xkXCIsIGR4OiAxNSwgZmlsbDogcmVkX2NvbG9yLCBcbiAgICB9KSxcblxuICAgIFBsb3QudGV4dChbbnVsbF0sIHtcbiAgICAgIHg6IHgwLCB5OiAwLCBcbiAgICAgIHRleHQ6IFtcInjigoBcIl0sIFxuICAgICAgZm9udFNpemU6IDIwLCBmb250V2VpZ2h0OiBcImJvbGRcIiwgZHg6IDAsIGR5OiAxMCwgZmlsbDogXCJibGFja1wiLCBcbiAgICB9KSxcblxuICAgIFBsb3QudGV4dChbbnVsbF0sIHtcbiAgICAgIHg6IDIsIHk6IDIqcDEgLSBnIC0wLjUsIFxuICAgICAgdGV4dDogW1widGFuZ2VudCBsaW5lIHkgPSBweCAtIGdcIl0sIFxuICAgICAgZm9udFNpemU6IDIwLCBmb250V2VpZ2h0OiBcImJvbGRcIiwgZHg6IDAsIGR5OiAxMCwgZmlsbDogYmx1ZV9jb2xvciwgcm90YXRlOiBhbmdsZV9kZWdyZWVzXG4gICAgfSksXG5cbiAgXVxufSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuLy8gMS4gRGVmaW5lIHRoZSBzbGlkZXIgd2l0aG91dCBhIGxhYmVsIHRvIGtlZXAgaXQgdGlnaHRcbnZpZXdvZiBwID0gSW5wdXRzLnJhbmdlKFswLCA0XSwge1xuICBzdGVwOiAwLjEsIFxuICB2YWx1ZTogMi41LFxuICB3aWR0aDogMjUwXG59KVxuXG4vLyAyLiBDcmVhdGUgYSBjZW50ZXJlZCByb3cgdXNpbmcgYSB0ZW1wbGF0ZSBsaXRlcmFsXG4vLyBUaGlzIHB1dHMgXCJTbG9wZSBwXCIgcmlnaHQgbmV4dCB0byB0aGUgbnVtYmVyIGJveFxuaHRtbGA8ZGl2IHN0eWxlPVwiZGlzcGxheTogZmxleDsgYWxpZ24taXRlbXM6IGNlbnRlcjsgZ2FwOiAxMHB4OyBmb250LXdlaWdodDogYm9sZDsgZm9udC1mYW1pbHk6IHNhbnMtc2VyaWY7IG1hcmdpbi1ib3R0b206IDE1cHg7XCI+XG4gIDxzcGFuPlNsb3BlIHA8L3NwYW4+ICR7dmlld29mIHB9XG48L2Rpdj5gXG5cbnhvID0gcCAvIDJcblxuLy8gMy4gRGVmaW5lIHRoZSBwbG90XG5QbG90LnBsb3Qoe1xuICBncmlkOiB0cnVlLFxuICBtYXJnaW5MZWZ0OiA2MCxcbiAgbWFyZ2luQm90dG9tOiA2MCxcbiAgd2lkdGg6IDYwMCwgXG4gIHN0eWxlOiB7IGZvbnRTaXplOiAxNCB9LFxuICB4OiB7IGRvbWFpbjogWzAsIDNdLCBsYWJlbDogXCJ4IOKGklwiLCBsYWJlbE9mZnNldDogNDUgfSxcbiAgeTogeyBkb21haW46IFstNCwgOF0sIGxhYmVsOiBcIuKGkSB5XCIsIGxhYmVsT2Zmc2V0OiA1MCB9LFxuICBtYXJrczogW1xuICAgIFBsb3QuYXhpc1goe2ZvbnRTaXplOiAyMCwgZm9udFdlaWdodDogXCJib2xkXCJ9KSxcbiAgICBQbG90LmF4aXNZKHtmb250U2l6ZTogMjAsIGZvbnRXZWlnaHQ6IFwiYm9sZFwifSksXG5cbiAgICAvLyBQYXJhYm9sYVxuICAgIFBsb3QubGluZShkMy5yYW5nZSgwLCAzLjEsIDAuMSksIHtcbiAgICAgIHg6IGQgPT4gZCxcbiAgICAgIHk6IGQgPT4gZCAqKiAyLFxuICAgICAgc3Ryb2tlOiBcImJsYWNrXCIsXG4gICAgICBzdHJva2VXaWR0aDogNFxuICAgIH0pLFxuICAgIFxuICAgIC8vIEJsdWUgbGluZVxuICAgIFBsb3QubGluZShkMy5yYW5nZSgwLCAzLjEsIDAuMSksIHtcbiAgICAgIHg6IGQgPT4gZCxcbiAgICAgIHk6IGQgPT4gcCAqIGQsXG4gICAgICBzdHJva2U6IGJsdWVfY29sb3IsXG4gICAgICBzdHJva2VXaWR0aDogNFxuICAgIH0pLFxuXG4gICAgLy8gTElHSFQgQmx1ZSBsaW5lXG4gICAgUGxvdC5saW5rKFtudWxsXSwge1xuICAgICAgeDE6IDAsIHkxOiAtcCAqIHAgLyA0LFxuICAgICAgeDI6IDMsIHkyOiBwKjMgLXAgKiBwIC8gNCxcbiAgICAgIHN0cm9rZTogXCIjZGRkXCIsIHN0cm9rZVdpZHRoOiAyLFxuICAgIH0pLFxuXG4gICAgLy8gUmVkIHZlcnRpY2FsIHNlZ21lbnRcbiAgICBQbG90LmxpbmsoW251bGxdLCB7XG4gICAgICB4MTogcCAvIDIsIHkxOiAocCAqKiAyKSAvIDIsXG4gICAgICB4MjogcCAvIDIsIHkyOiAocCAqKiAyKSAvIDQsXG4gICAgICBzdHJva2U6IHJlZF9jb2xvciwgc3Ryb2tlV2lkdGg6IDVcbiAgICB9KSxcblxuICAgIC8vIFRoZSBncmF5IHRoaWNrIHN0cmFpZ2h0IGxpbmUgKFZlcnRpY2FsIHNlZ21lbnQpXG4gICAgUGxvdC5saW5rKFtudWxsXSwge1xuICAgICAgeDE6IHAgLyAyLCB5MTogMCxcbiAgICAgIHgyOiBwIC8gMiwgeTI6IChwICoqIDIpIC8gNCxcbiAgICAgIHN0cm9rZTogXCJncmF5XCIsIHN0cm9rZVdpZHRoOiA1XG4gICAgfSksXG5cbiAgICBQbG90LnJ1bGVZKFswXSwge1xuICAgICAgc3Ryb2tlOiBcIiNhYWFcIiwgICAgLy8gQSBsaWdodCBncmF5IGNvbG9yXG4gICAgICBzdHJva2VXaWR0aDogMiwgICAgLy8gTWFrZXMgaXQgXCJ0aGluXCJcbiAgICAgIHN0cm9rZU9wYWNpdHk6IDAuNSAvLyBNYWtlcyBpdCBzdWJ0bGVcbiAgICB9KSxcblxuICAgIC8vIFRFWFQgTEFCRUxTXG4gICAgUGxvdC50ZXh0KFtudWxsXSwge1xuICAgICAgeDogMi43LCB5OiA4LCBcbiAgICAgIHRleHQ6IFtcImYoeClcIl0sIFxuICAgICAgZm9udFNpemU6IDIwLCBmb250V2VpZ2h0OiBcImJvbGRcIiwgZHk6IC0xMCBcbiAgICB9KSxcblxuICAgIFBsb3QudGV4dChbbnVsbF0sIHtcbiAgICAgIHg6IDIsIHk6IDIgKiBwLCBcbiAgICAgIHRleHQ6IFtcInB4XCJdLCBcbiAgICAgIGZvbnRTaXplOiAyMCwgZmlsbDogYmx1ZV9jb2xvciwgdGV4dEFuY2hvcjogXCJzdGFydFwiLCBkeDogMCwgZHk6IDEwIFxuICAgIH0pLFxuXG4gICAgUGxvdC50ZXh0KFtudWxsXSwge1xuICAgICAgeDogcCAvIDIsIHk6IChwICoqIDIpICogMyAvIDgsIFxuICAgICAgdGV4dDogW1wiZyhwKVwiXSwgXG4gICAgICBmb250U2l6ZTogMTUsIGZpbGw6IHJlZF9jb2xvciwgZm9udFdlaWdodDogXCJib2xkXCIsIGR5OiAwLCBkeDogMjAgXG4gICAgfSksXG5cbiAgICBQbG90LnRleHQoW251bGxdLCB7XG4gICAgICB4OiBwIC8gMiwgeTogKHAgKiogMikgKiAxIC8gOCwgXG4gICAgICB0ZXh0OiBbXCJmKHgpXCJdLCBcbiAgICAgIGZvbnRTaXplOiAxNSwgZmlsbDogXCJibGFja1wiLCBmb250V2VpZ2h0OiBcImJvbGRcIiwgZHk6IDAsIGR4OiAyMCBcbiAgICB9KSxcblxuICAgIFBsb3QudGV4dChbbnVsbF0sIHtcbiAgICAgIHg6IHAgLyAyLCB5OiAwLCBcbiAgICAgIHRleHQ6IFtcIngocClcIl0sIFxuICAgICAgZm9udFNpemU6IDE2LCBmb250V2VpZ2h0OiBcImJvbGRcIiwgZHg6IDAsIGR5OiAxMCwgZmlsbDogXCJibGFja1wiLCBcbiAgICB9KSxcbiAgXVxufSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuLy8gMS4gRGVmaW5lIHRoZSBzbGlkZXIgd2l0aG91dCBhIGxhYmVsIHRvIGtlZXAgaXQgdGlnaHRcbnZpZXdvZiBwMiA9IElucHV0cy5yYW5nZShbMCwgN10sIHtcbiAgc3RlcDogMC4xLCBcbiAgdmFsdWU6IDIuNSxcbiAgd2lkdGg6IDI1MFxufSlcblxuLy8gMi4gQ3JlYXRlIGEgY2VudGVyZWQgcm93IHVzaW5nIGEgdGVtcGxhdGUgbGl0ZXJhbFxuLy8gVGhpcyBwdXRzIFwiU2xvcGUgcFwiIHJpZ2h0IG5leHQgdG8gdGhlIG51bWJlciBib3hcbmh0bWxgPGRpdiBzdHlsZT1cImRpc3BsYXk6IGZsZXg7IGFsaWduLWl0ZW1zOiBjZW50ZXI7IGdhcDogMTBweDsgZm9udC13ZWlnaHQ6IGJvbGQ7IGZvbnQtZmFtaWx5OiBzYW5zLXNlcmlmOyBtYXJnaW4tYm90dG9tOiAxNXB4O1wiPlxuICA8c3Bhbj5TbG9wZSBwPC9zcGFuPiAke3ZpZXdvZiBwMn1cbjwvZGl2PmBcbnhfbmF1Z2h0ID0gcDIgLyAyXG5nZWUgPSBwMiAqIHhfbmF1Z2h0IC0gKHhfbmF1Z2h0ICoqIDIpXG5cbi8vIDMuIERlZmluZSB0aGUgcGxvdFxuUGxvdC5wbG90KHtcbiAgZ3JpZDogdHJ1ZSxcbiAgbWFyZ2luTGVmdDogNjAsXG4gIG1hcmdpbkJvdHRvbTogNjAsXG4gIHdpZHRoOiA2MDAsXG4gIGhlaWdodDogNDAwLFxuICBzdHlsZTogeyBmb250U2l6ZTogMTQgfSxcbiAgeDogeyBkb21haW46IFswLCAzXSwgbGFiZWw6IFwieCDihpJcIiwgbGFiZWxPZmZzZXQ6IDQ1IH0sXG4gIHk6IHsgZG9tYWluOiBbLTIsIDhdLCBsYWJlbDogXCLihpEgeVwiLCBsYWJlbE9mZnNldDogNTAgfSxcbiAgbWFya3M6IFtcbiAgICBQbG90LmF4aXNYKHtmb250U2l6ZTogMjAsIGZvbnRXZWlnaHQ6IFwiYm9sZFwifSksXG4gICAgUGxvdC5heGlzWSh7Zm9udFNpemU6IDIwLCBmb250V2VpZ2h0OiBcImJvbGRcIn0pLFxuXG4gICAgLy8gUGFyYWJvbGFcbiAgICBQbG90LmxpbmUoZDMucmFuZ2UoMCwgMy4xLCAwLjEpLCB7XG4gICAgICB4OiBkID0+IGQsXG4gICAgICB5OiBkID0+IGQgKiogMixcbiAgICAgIHN0cm9rZTogXCJibGFja1wiLFxuICAgICAgc3Ryb2tlV2lkdGg6IDRcbiAgICB9KSxcbiAgICBcbiAgICAvLyBCbHVlIGxpbmVcbiAgICBQbG90LmxpbmsoW251bGxdLCB7XG4gICAgICB4MTogMCwgeTE6IC1nZWUsXG4gICAgICB4MjogMywgeTI6IDMqcDIgLSBnZWUsXG4gICAgICBzdHJva2U6IGJsdWVfY29sb3IsIHN0cm9rZVdpZHRoOiA1XG4gICAgfSksXG5cbiAgICAvLyBSZWQgdmVydGljYWwgc2VnbWVudFxuICAgIFBsb3QubGluayhbbnVsbF0sIHtcbiAgICAgIHgxOiAyLCB5MTogMCxcbiAgICAgIHgyOiAyLCB5MjogcDIqMiAtIGdlZSxcbiAgICAgIHN0cm9rZTogcmVkX2NvbG9yLCBzdHJva2VXaWR0aDogNVxuICAgIH0pLFxuXG4gICAgLy8gYmxhY2sgZGFzaGVkIHZlcnRpY2FsIHNlZ21lbnRcbiAgICBQbG90LmxpbmsoW251bGxdLCB7XG4gICAgICB4MTogMiwgeTE6IDAsXG4gICAgICB4MjogMiwgeTI6IDIgKiogMixcbiAgICAgIHN0cm9rZTogXCJibGFja1wiLCBzdHJva2VXaWR0aDogMiwgc3Ryb2tlRGFzaGFycmF5OiBcIjQgNFwiXG4gICAgfSksXG5cblxuICAgIFBsb3QucnVsZVkoWzBdLCB7XG4gICAgICBzdHJva2U6IFwiI2FhYVwiLCAgICAvLyBBIGxpZ2h0IGdyYXkgY29sb3JcbiAgICAgIHN0cm9rZVdpZHRoOiAyLCAgICAvLyBNYWtlcyBpdCBcInRoaW5cIlxuICAgICAgc3Ryb2tlT3BhY2l0eTogMC41IC8vIE1ha2VzIGl0IHN1YnRsZVxuICAgIH0pLFxuXG4gICAgLy8gVEVYVCBMQUJFTFNcbiAgICBQbG90LnRleHQoW251bGxdLCB7XG4gICAgICB4OiAyLjcsIHk6IDgsIFxuICAgICAgdGV4dDogW1wiZih4KVwiXSwgXG4gICAgICBmb250U2l6ZTogMjAsIGZvbnRXZWlnaHQ6IFwiYm9sZFwiLCBkeTogLTEwIFxuICAgIH0pLFxuXG4gICAgUGxvdC50ZXh0KFtudWxsXSwge1xuICAgICAgeDogMiwgeTogMCwgXG4gICAgICB0ZXh0OiBbXCJ44oKAXCJdLCBcbiAgICAgIGZvbnRTaXplOiAyMCwgZm9udFdlaWdodDogXCJib2xkXCIsIGR4OiAwLCBkeTogMTAsIGZpbGw6IFwiYmxhY2tcIiwgXG4gICAgfSksXG5cbiAgXVxufSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgneDAnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgncCcpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdwMicpIn1dfQ==
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../thermodynamics";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../thermodynamics/intro-thermodynamics.html" class="pagination-link" aria-label="intro to thermodynamics">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">intro to thermodynamics</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../group_theory/start_here.html" class="pagination-link" aria-label="start here">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">start here</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
