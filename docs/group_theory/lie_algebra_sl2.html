@@ -701,38 +701,46 @@ window.Quarto = {
 g = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}
 </span></p>
 <p>where <span class="math inline">a, b, c, d \in \mathbb{C}</span> and the determinant is 1, i.e., <span class="math inline">ad - bc = 1</span>.</p>
-<p><strong>Change of point of view.</strong> Each of the elements <span class="math inline">a,b,c,d</span> is complex-valued, and we can imagine that every matrix in SL(2,<span class="math inline">\mathbb{C}</span>) is a point in an 4-dimensional complex space <span class="math inline">\mathbb{C}^4</span> . However, the constraint that the determinant equals 1 reduces the degrees of freedom by 1, meaning that the group SL(2,<span class="math inline">\mathbb{C}</span>) is a 3-dimensional surface embedded in a larger <span class="math inline">\mathbb{C}^4</span>. If you prefer to think of 1 complex dimension as equivalent to 2 real dimensions, then just multiply all the dimensions by 2. This surface is curved, because of the nonlinear constraint <span class="math inline">ad - bc = 1</span>. In mathematical parlance, we call this surface a <strong>manifold</strong>.</p>
+<p><strong>Change of point of view.</strong> Each of the elements <span class="math inline">a,b,c,d</span> is complex-valued, and we can imagine that every matrix in SL(2,<span class="math inline">\mathbb{C}</span>) is a point in an 4-dimensional complex space <span class="math inline">\mathbb{C}^4</span> . However, the constraint that the determinant equals 1 reduces the degrees of freedom by 1, meaning that the group SL(2,<span class="math inline">\mathbb{C}</span>) is a 3-dimensional surface embedded in a larger <span class="math inline">\mathbb{C}^4</span> space. (If you prefer to think of 1 complex dimension as equivalent to 2 real dimensions, then just multiply all the dimensions by 2.) This surface is curved, because of the nonlinear constraint <span class="math inline">ad - bc = 1</span>. In mathematical parlance, we call this surface a <strong>manifold</strong>.</p>
 </section>
 <section id="tangent-space" class="level2" data-number="11.2">
 <h2 data-number="11.2" class="anchored" data-anchor-id="tangent-space"><span class="header-section-number">11.2</span> tangent space</h2>
-<p>Let’s parametrize each element of the 2x2 matrix in SL(2) with the variable <span class="math inline">t</span>:</p>
+<p>Let’s parametrize each element of the <span class="math inline">2\times2</span> matrix in SL(2) with the variable <span class="math inline">t</span>:</p>
 <p><span class="math display">
 g(t) = \begin{pmatrix} a(t) &amp; b(t) \\ c(t) &amp; d(t) \end{pmatrix}.
 </span></p>
 <p>We can imagine that this parametrization defines a general curve in the manifold of SL(2). We will require that this curve passes through the identity element of SL(2) at <span class="math inline">t = 0</span>:</p>
 <p><span class="math display">
-g(t)\Big|_{t=0} = \begin{pmatrix} a(t) &amp; b(t) \\ c(t) &amp; d(t) \end{pmatrix}_{t=0} = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix}.
+g(t)\Big|_{t=0} =
+\begin{pmatrix} a(t) &amp; b(t) \\ c(t) &amp; d(t) \end{pmatrix}_{t=0} =
+\begin{pmatrix} a(0) &amp; b(0) \\ c(0) &amp; d(0) \end{pmatrix}_{t=0} =
+\begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix} =
+I.
 </span></p>
 <p>What we will do now is to take the derivative of this curve with respect to the parameter <span class="math inline">t</span>, which will give us a vector in the tangent space of SL(2) at each point:</p>
 <p><span class="math display">
 \dot{g}(t) = \begin{pmatrix} \dot{a}(t) &amp; \dot{b}(t) \\ \dot{c}(t) &amp; \dot{d}(t) \end{pmatrix},
 </span> where the dot means “time derivative”.</p>
-<p>Let’s now compute the derivative of the condition <span class="math inline">ad - bc = 1</span> with respect to <span class="math inline">t</span>, and evaluate it at <span class="math inline">t = 0</span>:</p>
+<p>We are particularly interested in the tangent space at the identity, so we evaluate the vector <span class="math inline">\dot{g}</span> at <span class="math inline">t=0</span>, and we’ll call it <span class="math inline">X</span> for simplicity’s sake:</p>
+<p><span class="math display">
+X = \dot{g}(0) = \begin{pmatrix} \dot{a}(0) &amp; \dot{b}(0) \\ \dot{c}(0) &amp; \dot{d}(0) \end{pmatrix}.
+</span></p>
+<p>Now let’s see how the constraint that an element <span class="math inline">g</span> in SL(2) has a determinant equal to 1 translates into this tangent vector <span class="math inline">X</span>. For that, we compute the derivative of the condition <span class="math inline">ad - bc = 1</span> with respect to <span class="math inline">t</span>, and evaluate it at <span class="math inline">t = 0</span>:</p>
 <p><span class="math display">
 \frac{d}{dt}(ad - bc)\Big|_{t=0} = \frac{da}{dt}d\Big|_{t=0} + a\frac{dd}{dt}\Big|_{t=0} - \cancel{\frac{db}{dt}c\Big|_{t=0}} - \cancel{b\frac{dc}{dt}\Big|_{t=0}} = 0.
 </span></p>
 <p>The last two terms cancel out because at <span class="math inline">t = 0</span>, we have <span class="math inline">b(0) = c(0) = 0</span>. Also, at <span class="math inline">t = 0</span>, we have <span class="math inline">a(0) = d(0) = 1</span>, so we get:</p>
 <p><span class="math display">
-\dot{a}(0) + \dot{d}(0) = 0.
+\dot{a}(0) + \dot{d}(0) = 0 \to \dot{d}(0) = -\dot{a}(0).
 </span></p>
-<p>This means that the derivative of the matrix <span class="math inline">g(t)</span> at <span class="math inline">t = 0</span> is</p>
+<p>This means that the vector <span class="math inline">X</span> can be written as</p>
 <p><span class="math display">
-X = \dot{g}(0) = \begin{pmatrix} \dot{a}(0) &amp; \dot{b}(0) \\ \dot{c}(0) &amp; \dot{d}(0) \end{pmatrix}, \text{ where } \dot{a}(0) + \dot{d}(0) = 0.
+X = \begin{pmatrix} \dot{a}(0) &amp; \dot{b}(0) \\ \dot{c}(0) &amp; -\dot{a}(0) \end{pmatrix}.
 </span></p>
-<p>For convenience, we will call the tangent vector of <span class="math inline">g(t)</span> at the identity <span class="math inline">X</span>.</p>
+<p>This means that, in the same way that the element <span class="math inline">g</span> of the group has dimension 3, it’s tangent vector at the identity <span class="math inline">X</span> also has dimension 3.</p>
 <p>Let’s take stock of what happened. From Calculus (and Physics), we are used to the idea that taking the time-derivative of the position curve gives us a vector for the velocity. The velocity is tangent to the displacement curve at each point. That’s exactly what we did here, but we did it for all possible curves in the manifold that pass through the identity element of SL(2). By taking the derivative of the curves <span class="math inline">A(t)</span> at <span class="math inline">t = 0</span> (at the identity element), we obtained vectors in the tangent space of SL(2) at that point. These new vectors have exactly the same dimension as the original (in this case 3 complex dimensions), but they live in a flat (Euclidean) space rather than in the curved manifold of SL(2).</p>
 <img src="lie_algebra_sl2_files/mediabag/621be5bf24b99c685ed27aa6fdba0c5d4354bf84.svg" class="img-fluid" style="width:100.0%">
-<p>The curved gray surface represents the manifold of SL(2), and the plane below it represents the tangent space at the identity element. An element in the manifold gets mapped by the derivative to a point in the tangent space.</p>
+<p>The curved gray surface represents the manifold of SL(2), and the plane below it represents the tangent space at the identity element. The curve <span class="math inline">g(t)</span> in the manifold passes through the identity, and its derivative at that point is the blue tangent vector <span class="math inline">X</span>.</p>
 </section>
 <section id="back-and-forth-between-the-group-and-the-tangent-space" class="level2" data-number="11.3">
 <h2 data-number="11.3" class="anchored" data-anchor-id="back-and-forth-between-the-group-and-the-tangent-space"><span class="header-section-number">11.3</span> back and forth between the group and the tangent space</h2>
@@ -744,7 +752,7 @@ g(t) \xrightarrow[]{\frac{d}{dt}} X.
 <p><span class="math display">
 X \xrightarrow[]{\exp} g(t).
 </span></p>
-<p>Let’s see how this works. <span class="math inline">X</span> is a <span class="math inline">2\times2</span> matrix, and its (parametric)exponential is</p>
+<p>Let’s see how this works. <span class="math inline">X</span> is a <span class="math inline">2\times2</span> matrix, and its (parametric) exponential is</p>
 <p><span class="math display">
 \exp(tX) = I + tX + \frac{(tX)^2}{2!} + \frac{(tX)^3}{3!} + \ldots
 </span></p>
@@ -772,7 +780,7 @@ x(t+\Delta t) \approx x(t) + \Delta t \cdot v.
 x(t)\longmapsto x(t)+\Delta t\cdot v
 </span></p>
 <p>The same idea works for a Lie group, except that the update operation is no longer addition. In a group, motions are composed by multiplication. Therefore, the analogue of adding a small displacement is multiplying by a small group element near the identity.</p>
-<p>If <span class="math inline">g(t)</span> is a curve in the manifold for which <span class="math inline">g(0)=I</span> and <span class="math inline">\dot{g}(t)=X</span>, we can rewrite its derivative by using the definition</p>
+<p>If <span class="math inline">g(t)</span> is a curve in the manifold for which <span class="math inline">g(0)=I</span> and <span class="math inline">\dot{g}(0)=X</span>, we can rewrite its derivative by using the definition</p>
 <p><span class="math display">
 \frac{d}{dt}g(t)\Big|_{t=0} \approx \frac{g(\Delta t)-g(0)}{\Delta t} = \frac{g(\Delta t)-I}{\Delta t}.
 </span></p>
@@ -800,7 +808,7 @@ g_2 = \left(I + \Delta t \cdot X \right)^2.
 <p><span class="math display">
 g(t) = g_n = \left(I + \frac{tX}{n} \right)^n.
 </span></p>
-<p>Of course, you know where this is going. In the limit where we slice <span class="math inline">t</span> in infinitely many <span class="math inline">n</span> slices:</p>
+<p>Of course, you know where this is going. In the limit where we slice <span class="math inline">t</span> in infinitely many slices:</p>
 <p><span class="math display">
 g(t) = \lim_{n\to\infty}\left(I + \frac{tX}{n} \right)^n = \exp(tX).
 </span></p>
@@ -822,9 +830,11 @@ g = I + \Delta t X + O(\Delta t^2),
 \log(g) = \log(I + \Delta t X + O(\Delta t^2)).
 </span></p>
 <p>We now use the Taylor series for the log:</p>
-<p><span class="math display">
-\log(g) = \log(I+\Delta t X) = \Delta t X - \frac{(\Delta t X)^2}{2} + \frac{(\Delta t X)^3}{3} - \ldots = \Delta t X + O(\Delta t^2).
-</span></p>
+<p><span class="math display">\begin{align}
+\log(g) &amp;= \log(I+\Delta t X) \\
+&amp;= \Delta t X - \frac{(\Delta t X)^2}{2} + \frac{(\Delta t X)^3}{3} - \ldots \\
+&amp;= \Delta t X + O(\Delta t^2).
+\end{align}</span></p>
 <p>To leading order in <span class="math inline">\Delta t</span>, the log simply gives back <span class="math inline">\Delta t X</span>, which is exactly the tangent vector <span class="math inline">X</span>, up to the small parameter <span class="math inline">\Delta t</span>.</p>
 <p>Both the derivative and the log do the same job, they extract the linear part of the deviation from the identity. Differentiation gives the exact geometric definition for what the tangent space is, while the logarithm is a computational shortcut, it extracts the tangent vector from a specific point near the identity, without needing a whole curve in the manifold.</p>
 </section>
@@ -890,7 +900,7 @@ B=\begin{pmatrix}b_{11} &amp; b_{12}\\b_{21} &amp; -b_{11}\end{pmatrix}.
 </section>
 <section id="non-commutativity" class="level2" data-number="11.8">
 <h2 data-number="11.8" class="anchored" data-anchor-id="non-commutativity"><span class="header-section-number">11.8</span> non-commutativity</h2>
-<p>Of course, non-commutativity is the name we give to operations whose order does affect the result. I’ll give a concrete example here using rotations, and it turns out that this will be super useful to us. Rotations in 3d space are a special case inside the bigger Lie group SL(2). I’ll use rotations because this is something we have lots of intuition on from day-to-day experience.</p>
+<p>Of course, non-commutativity is the name we give to operations whose order <em>does</em> affect the result. I’ll give a concrete example here using rotations, and it turns out that this will be super useful to us. Rotations in 3d space are a special case inside the bigger Lie group SL(2). I’ll use rotations because this is something we have lots of intuition about from day-to-day experience.</p>
 <p>We will talk about rotation using the image of Earth. See the widget below.</p>
 <ul>
 <li>On the left we see Earth with a head-on view of the equator, centered at the meridian 75E, making India right at the center.</li>
@@ -1164,8 +1174,8 @@ B=\begin{pmatrix}b_{11} &amp; b_{12}\\b_{21} &amp; -b_{11}\end{pmatrix}.
 </div>
 <p>The question now is: does the order or operations matter? Spinning to the right and then tilting is the same as the opposite order? Let’s see this in action. In the widget below:</p>
 <ul>
-<li>On the globe on the left, first slide <span class="math inline">A(t)</span> on the top and then <span class="math inline">B(t)</span> at the bottom.</li>
-<li>On the globe on the right, slide first <span class="math inline">B(t)</span> and then <span class="math inline">A(t)</span>.</li>
+<li>On the globe on the left, first slide <span class="math inline">g(t)</span> on the top and then <span class="math inline">k(t)</span> at the bottom.</li>
+<li>On the globe on the right, slide first <span class="math inline">k(t)</span> and then <span class="math inline">g(t)</span>.</li>
 </ul>
 <div class="cell">
 <details class="code-fold">
@@ -1452,7 +1462,7 @@ B=\begin{pmatrix}b_{11} &amp; b_{12}\\b_{21} &amp; -b_{11}\end{pmatrix}.
 </div>
 </div>
 </div>
-<p>Did you get the same thing? No! If you think there’s something suspicious with this simulations, just take any object around you and try it yourself. I recomment doing 90-degree rotations because it’s just easier to keep track of what’s going on.</p>
+<p>Did you get the same thing? No! If you think there’s something suspicious with this simulations, just take any object around you and try it yourself. I recomment doing 90-degree rotations because it’s just easier to keep track of what’s going on. One more thing: the operation <span class="math inline">g(t)</span> means spinning the globe to the right, no matter where the plane of the equator is. That is to say that the operations are with respect to an external coordinate system (the screen where you’re reading this), not the globe’s own coordinate system.</p>
 <p>The conclusion: the order of operation matters when we’re dealing with rotations.</p>
 </section>
 <section id="quantifying-the-non-commutativity" class="level2" data-number="11.9">
@@ -1766,7 +1776,7 @@ gkg^{-1}k^{-1} \stackrel{?}{=} I.
 <p><span class="math display">
 g = \exp(\epsilon A),\qquad k = \exp(\epsilon B),
 </span></p>
-<p>where is a small parameter. If <span class="math inline">g(t)=\exp(tA)</span>, then think of <span class="math inline">g = \exp(\epsilon A)</span> as leaving from the identity and following the curve <span class="math inline">g(t)</span> for a very small time interval <span class="math inline">\epsilon</span>. The group commutator then reads</p>
+<p>where <span class="math inline">\epsilon</span> is a small parameter. If <span class="math inline">g(t)=\exp(tA)</span>, then think of <span class="math inline">g = \exp(\epsilon A)</span> as leaving from the identity and following the curve <span class="math inline">g(t)</span> for a very small time interval <span class="math inline">\epsilon</span>. The group commutator then reads</p>
 <p><span class="math display">\begin{align*}
 gkg^{-1}k^{-1} =&amp; e^{\epsilon A}e^{\epsilon B}e^{-\epsilon A}e^{-\epsilon B} \\
 =&amp; (I + \epsilon A + \tfrac{\epsilon^2}{2} A^2 \ldots) \times \\
@@ -1777,8 +1787,8 @@ gkg^{-1}k^{-1} =&amp; e^{\epsilon A}e^{\epsilon B}e^{-\epsilon A}e^{-\epsilon B}
 \text{order }\epsilon^0:&amp;\quad I + \\
 \text{order }\epsilon^1:&amp;\quad \epsilon(A+B-A-B) + \\
 \text{order }\epsilon^2:&amp;\quad \epsilon^2(AB-A^2-AB-BA-B^2+AB + \\
-&amp;\quad \phantom{\epsilon^2(}\tfrac{\epsilon^2}{2} A^2+\tfrac{\epsilon^2}{2} B^2+\tfrac{\epsilon^2}{2} A^2+\tfrac{\epsilon^2}{2} B^2 ) + \\
-&amp;\text{higher order terms in }\epsilon
+&amp;\quad \phantom{\epsilon^2(}\tfrac{\epsilon^2}{2} A^2+\tfrac{\epsilon^2}{2} B^2+\tfrac{\epsilon^2}{2} A^2+\tfrac{\epsilon^2}{2} B^2 )\\
+&amp;+\text{ higher order terms in }\epsilon
 \end{align*}</span></p>
 <p>All the terms in order <span class="math inline">\epsilon^1</span> cancel out, and many of the terms in order <span class="math inline">\epsilon^2</span> cancel out too, but not all. The result is:</p>
 <p><span class="math display">
@@ -1792,7 +1802,7 @@ gkg^{-1}k^{-1} = I + \epsilon^2\left(AB-BA\right) + O(\epsilon^3)
 </section>
 <section id="the-lie-algebra-sl2" class="level2" data-number="11.10">
 <h2 data-number="11.10" class="anchored" data-anchor-id="the-lie-algebra-sl2"><span class="header-section-number">11.10</span> the Lie Algebra sl(2)</h2>
-<p>We can now go back to talking about why the tangent space we found is “an algebra”. We showed that the tangent space is a vector space. This is the first requirement. The second, is that this vector space is equipped with an extra operator that takes to elements in the vector space and returns another element in the space. This special operator is the Lie bracket <span class="math inline">[A,B]=AB-BA</span>. We have to show that the result also lives in the tangent space. We will remember that any element in the tangent space is a <span class="math inline">2\times 2</span> matrix with trace zero, so let’s compute <span class="math inline">AB-BA</span> explicitly:</p>
+<p>We can now go back to talking about why the tangent space we found is “an algebra”. We showed that the tangent space is a vector space. This is the first requirement. The second, is that this vector space is equipped with an extra operator that takes two elements in the vector space and returns another element in the space. This special operator is the Lie bracket <span class="math inline">[A,B]=AB-BA</span>. We have to show that the result also lives in the tangent space. We will remember that any element in the tangent space is a <span class="math inline">2\times 2</span> matrix with trace zero, so let’s compute <span class="math inline">AB-BA</span> explicitly:</p>
 <p><span class="math display">\begin{align*}
 [A,B] =&amp; \,AB-BA\\
 =&amp;\begin{pmatrix} a_{11}&amp;a_{12}\\a_{21}&amp;-a_{11}\end{pmatrix}
