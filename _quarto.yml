@@ -24,11 +24,13 @@ book:
       chapters:
         - thermodynamics/intro-thermodynamics.qmd
         - thermodynamics/legendre_transform.ipynb
+    - part: "lie algebra"
+      chapters: 
+        - lie_algebra/basic_properties.ipynb
+        - lie_algebra/sl2.ipynb
     - part: "group theory"
       chapters:
         - group_theory/start_here.ipynb
-        - group_theory/basic_properties.ipynb
-        - group_theory/lie_algebra_sl2.ipynb
         - group_theory/wolfram-jupyter-test.ipynb
     - part: "differential geometry"
       chapters:
