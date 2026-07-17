@@ -538,6 +538,17 @@
     ]
   },
   {
+    "objectID": "lie_algebra/sl2.html#conclusion",
+    "href": "lie_algebra/sl2.html#conclusion",
+    "title": "11  Lie algebra sl(2)",
+    "section": "11.22 conclusion",
+    "text": "11.22 conclusion\nThis has been a very long chapter, it’s time to wrap it up.\nFrom first principles, we derived the mathfrak{sl}(2) algebra, which is derived from the SL(2) group. We got to know its basis elements E,H,F and how they interact through the Lie bracket. We then developed concrete realizations of the algebra, when the basis elements are treated as linear operators that act on n-dimensional vector spaces. We did that for the trivial, standard and adjoint representations, and then we generalized the ladder picture for any finite-dimensional irreducible representation.\nThe next chapters will show the relevance of the mathfrak{sl}(2) algebra is various important application in Physics. Our hard work will pay off handsomely.",
+    "crumbs": [
+      "lie algebra",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Lie algebra sl(2)</span>"
+    ]
+  },
+  {
     "objectID": "group_theory/start_here.html",
     "href": "group_theory/start_here.html",
     "title": "12  start here",
