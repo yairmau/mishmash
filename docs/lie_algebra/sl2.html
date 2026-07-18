@@ -2,16 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.7.31">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>11&nbsp; Lie algebra sl(2) – mishmash</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -77,10 +74,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-84bb7a51fcc1ae1268a7e2af559d4b30.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-a588049bcf6ba0aff1d03aeee07a0105.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-75d35b8b933727816098ee1d621b2fac.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-2c63ad6a8cffefe8536d13eabcc001d1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -151,7 +148,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -193,8 +190,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../archive/logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="../archive/logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <img src="../archive/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="../">mishmash</a> 
@@ -385,24 +381,29 @@ window.Quarto = {
   <li><a href="#non-commutativity" id="toc-non-commutativity" class="nav-link" data-scroll-target="#non-commutativity"><span class="header-section-number">11.8</span> non-commutativity</a></li>
   <li><a href="#quantifying-the-non-commutativity" id="toc-quantifying-the-non-commutativity" class="nav-link" data-scroll-target="#quantifying-the-non-commutativity"><span class="header-section-number">11.9</span> quantifying the non-commutativity</a></li>
   <li><a href="#the-lie-algebra-sl2" id="toc-the-lie-algebra-sl2" class="nav-link" data-scroll-target="#the-lie-algebra-sl2"><span class="header-section-number">11.10</span> the Lie Algebra sl(2)</a></li>
-  <li><a href="#taking-stock-of-what-we-know" id="toc-taking-stock-of-what-we-know" class="nav-link" data-scroll-target="#taking-stock-of-what-we-know"><span class="header-section-number">11.11</span> taking stock of what we know</a></li>
-  <li><a href="#a-basis-for-mathfraksl2" id="toc-a-basis-for-mathfraksl2" class="nav-link" data-scroll-target="#a-basis-for-mathfraksl2"><span class="header-section-number">11.12</span> a basis for <span class="math inline">\mathfrak{sl}(2)</span></a></li>
-  <li><a href="#representations" id="toc-representations" class="nav-link" data-scroll-target="#representations"><span class="header-section-number">11.13</span> representations</a></li>
-  <li><a href="#what-is-a-representation" id="toc-what-is-a-representation" class="nav-link" data-scroll-target="#what-is-a-representation"><span class="header-section-number">11.14</span> what is a representation</a></li>
-  <li><a href="#the-trivial-representation" id="toc-the-trivial-representation" class="nav-link" data-scroll-target="#the-trivial-representation"><span class="header-section-number">11.15</span> the trivial representation</a></li>
-  <li><a href="#the-standard-representation" id="toc-the-standard-representation" class="nav-link" data-scroll-target="#the-standard-representation"><span class="header-section-number">11.16</span> the standard representation</a></li>
-  <li><a href="#the-adjoint-representation" id="toc-the-adjoint-representation" class="nav-link" data-scroll-target="#the-adjoint-representation"><span class="header-section-number">11.17</span> the adjoint representation</a>
+  <li><a href="#closure" id="toc-closure" class="nav-link" data-scroll-target="#closure"><span class="header-section-number">11.11</span> closure</a></li>
+  <li><a href="#bilinearity" id="toc-bilinearity" class="nav-link" data-scroll-target="#bilinearity"><span class="header-section-number">11.12</span> bilinearity</a></li>
+  <li><a href="#antisymmetry" id="toc-antisymmetry" class="nav-link" data-scroll-target="#antisymmetry"><span class="header-section-number">11.13</span> antisymmetry</a></li>
+  <li><a href="#jacobi-identity" id="toc-jacobi-identity" class="nav-link" data-scroll-target="#jacobi-identity"><span class="header-section-number">11.14</span> Jacobi identity</a></li>
+  <li><a href="#group-conjugation-and-the-jacobi-identity" id="toc-group-conjugation-and-the-jacobi-identity" class="nav-link" data-scroll-target="#group-conjugation-and-the-jacobi-identity"><span class="header-section-number">11.15</span> group conjugation and the Jacobi identity</a></li>
+  <li><a href="#taking-stock-of-what-we-know" id="toc-taking-stock-of-what-we-know" class="nav-link" data-scroll-target="#taking-stock-of-what-we-know"><span class="header-section-number">11.16</span> taking stock of what we know</a></li>
+  <li><a href="#a-basis-for-mathfraksl2" id="toc-a-basis-for-mathfraksl2" class="nav-link" data-scroll-target="#a-basis-for-mathfraksl2"><span class="header-section-number">11.17</span> a basis for <span class="math inline">\mathfrak{sl}(2)</span></a></li>
+  <li><a href="#representations" id="toc-representations" class="nav-link" data-scroll-target="#representations"><span class="header-section-number">11.18</span> representations</a></li>
+  <li><a href="#what-is-a-representation" id="toc-what-is-a-representation" class="nav-link" data-scroll-target="#what-is-a-representation"><span class="header-section-number">11.19</span> what is a representation</a></li>
+  <li><a href="#the-trivial-representation" id="toc-the-trivial-representation" class="nav-link" data-scroll-target="#the-trivial-representation"><span class="header-section-number">11.20</span> the trivial representation</a></li>
+  <li><a href="#the-standard-representation" id="toc-the-standard-representation" class="nav-link" data-scroll-target="#the-standard-representation"><span class="header-section-number">11.21</span> the standard representation</a></li>
+  <li><a href="#the-adjoint-representation" id="toc-the-adjoint-representation" class="nav-link" data-scroll-target="#the-adjoint-representation"><span class="header-section-number">11.22</span> the adjoint representation</a>
   <ul class="collapse">
-  <li><a href="#computing-textad_e" id="toc-computing-textad_e" class="nav-link" data-scroll-target="#computing-textad_e"><span class="header-section-number">11.17.1</span> computing <span class="math inline">\text{ad}_E</span></a></li>
-  <li><a href="#computing-textad_h" id="toc-computing-textad_h" class="nav-link" data-scroll-target="#computing-textad_h"><span class="header-section-number">11.17.2</span> computing <span class="math inline">\text{ad}_H</span></a></li>
-  <li><a href="#computing-textad_f" id="toc-computing-textad_f" class="nav-link" data-scroll-target="#computing-textad_f"><span class="header-section-number">11.17.3</span> computing <span class="math inline">\text{ad}_F</span></a></li>
-  <li><a href="#to-sum-up" id="toc-to-sum-up" class="nav-link" data-scroll-target="#to-sum-up"><span class="header-section-number">11.17.4</span> to sum up</a></li>
+  <li><a href="#computing-textad_e" id="toc-computing-textad_e" class="nav-link" data-scroll-target="#computing-textad_e"><span class="header-section-number">11.22.1</span> computing <span class="math inline">\text{ad}_E</span></a></li>
+  <li><a href="#computing-textad_h" id="toc-computing-textad_h" class="nav-link" data-scroll-target="#computing-textad_h"><span class="header-section-number">11.22.2</span> computing <span class="math inline">\text{ad}_H</span></a></li>
+  <li><a href="#computing-textad_f" id="toc-computing-textad_f" class="nav-link" data-scroll-target="#computing-textad_f"><span class="header-section-number">11.22.3</span> computing <span class="math inline">\text{ad}_F</span></a></li>
+  <li><a href="#to-sum-up" id="toc-to-sum-up" class="nav-link" data-scroll-target="#to-sum-up"><span class="header-section-number">11.22.4</span> to sum up</a></li>
   </ul></li>
-  <li><a href="#irreducible-representations" id="toc-irreducible-representations" class="nav-link" data-scroll-target="#irreducible-representations"><span class="header-section-number">11.18</span> irreducible representations</a></li>
-  <li><a href="#weights" id="toc-weights" class="nav-link" data-scroll-target="#weights"><span class="header-section-number">11.19</span> weights</a></li>
-  <li><a href="#ladder-coefficients" id="toc-ladder-coefficients" class="nav-link" data-scroll-target="#ladder-coefficients"><span class="header-section-number">11.20</span> ladder coefficients</a></li>
-  <li><a href="#weight-values" id="toc-weight-values" class="nav-link" data-scroll-target="#weight-values"><span class="header-section-number">11.21</span> weight values</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">11.22</span> conclusion</a></li>
+  <li><a href="#irreducible-representations" id="toc-irreducible-representations" class="nav-link" data-scroll-target="#irreducible-representations"><span class="header-section-number">11.23</span> irreducible representations</a></li>
+  <li><a href="#weights" id="toc-weights" class="nav-link" data-scroll-target="#weights"><span class="header-section-number">11.24</span> weights</a></li>
+  <li><a href="#ladder-coefficients" id="toc-ladder-coefficients" class="nav-link" data-scroll-target="#ladder-coefficients"><span class="header-section-number">11.25</span> ladder coefficients</a></li>
+  <li><a href="#weight-values" id="toc-weight-values" class="nav-link" data-scroll-target="#weight-values"><span class="header-section-number">11.26</span> weight values</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">11.27</span> conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -440,7 +441,7 @@ window.Quarto = {
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-startfrom="-1" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line -2;"><span id="cb1--1"><a href="#cb1--1"></a>{</span>
+<div class="sourceCode cell-code" id="cb1" data-startfrom="-1" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line -2;"><span id="cb1--1"><a href="#cb1--1"></a>{</span>
 <span id="cb1-0"><a href="#cb1-0"></a>  <span class="kw">const</span> panelW<span class="op">=</span><span class="dv">250</span><span class="op">,</span> panelH<span class="op">=</span><span class="dv">250</span><span class="op">;</span></span>
 <span id="cb1-1"><a href="#cb1-1"></a>  <span class="kw">const</span> margin<span class="op">=</span>{<span class="dt">left</span><span class="op">:</span><span class="dv">34</span><span class="op">,</span><span class="dt">right</span><span class="op">:</span><span class="dv">16</span><span class="op">,</span><span class="dt">top</span><span class="op">:</span><span class="dv">18</span><span class="op">,</span><span class="dt">bottom</span><span class="op">:</span><span class="dv">30</span>}<span class="op">;</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a>  <span class="kw">const</span> BG<span class="op">=</span><span class="st">'#eeeeee'</span><span class="op">;</span></span>
@@ -709,7 +710,7 @@ window.Quarto = {
 <span id="cb1-265"><a href="#cb1-265"></a>  container<span class="op">.</span><span class="fu">append</span>(rotationPanel<span class="op">,</span>shearPanel<span class="op">,</span>stretchPanel<span class="op">,</span>allPanel)<span class="op">;</span></span>
 <span id="cb1-266"><a href="#cb1-266"></a></span>
 <span id="cb1-267"><a href="#cb1-267"></a>  <span class="cf">return</span> container<span class="op">;</span></span>
-<span id="cb1-268"><a href="#cb1-268"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-268"><a href="#cb1-268"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="expression">
@@ -910,12 +911,12 @@ B=\begin{pmatrix}b_{11} &amp; b_{12}\\b_{21} &amp; -b_{11}\end{pmatrix}.
 <p>Putting one’s socks on, and then the shoes, is not the same as putting the shoes on and then the socks. The order of operations often matters.</p>
 <p>When the order of two operations doesn’t affect the result, we say that the operations commute. Simple examples are the sum and product of two numbers</p>
 <p><span class="math display">\begin{align}
-3 + 5 &amp;= 5 + 3 = 15 \\
+3 + 5 &amp;= 5 + 3 = 8 \\
 2 \cdot 7 &amp;= 7 \cdot 2 = 14
 \end{align}</span></p>
 <p>Maybe you’re thinking: “There are not two operations in the example above, there is only one sum and one product, one for each example! The numbers commute, not the operations!” Sure, this is a legitimate way of seeing things. Another way is to, in the summation example, see every number as its own summation operation, being applied on a “test element” <span class="math inline">x</span> not shown. Let me spell out how this looks:</p>
 <p><span class="math display">
-+3+5+x = +5+3+x = +15+x.
++3+5+x = +5+3+x = +8+x.
 </span></p>
 <p>The same goes for the product: <span class="math inline">2\cdot 7\cdot x = 7\cdot 2\cdot x</span>.</p>
 </section>
@@ -931,7 +932,7 @@ B=\begin{pmatrix}b_{11} &amp; b_{12}\\b_{21} &amp; -b_{11}\end{pmatrix}.
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" data-startfrom="1" data-source-offset="-1"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1"></a>topojson <span class="op">=</span> <span class="pp">require</span>(<span class="st">"topojson-client@3"</span>)</span>
+<div class="sourceCode cell-code" id="cb2" data-startfrom="1" data-source-offset="-1"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1"></a>topojson <span class="op">=</span> <span class="pp">require</span>(<span class="st">"topojson-client@3"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2"></a>world <span class="op">=</span> <span class="fu">fetch</span>(<span class="st">"https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3"></a>  <span class="op">.</span><span class="fu">then</span>(r <span class="kw">=&gt;</span> r<span class="op">.</span><span class="fu">json</span>())</span>
 <span id="cb2-4"><a href="#cb2-4"></a></span>
@@ -1169,7 +1170,7 @@ B=\begin{pmatrix}b_{11} &amp; b_{12}\\b_{21} &amp; -b_{11}\end{pmatrix}.
 <span id="cb2-236"><a href="#cb2-236"></a>  <span class="fu">update</span>()<span class="op">;</span></span>
 <span id="cb2-237"><a href="#cb2-237"></a></span>
 <span id="cb2-238"><a href="#cb2-238"></a>  <span class="cf">return</span> container<span class="op">;</span></span>
-<span id="cb2-239"><a href="#cb2-239"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-239"><a href="#cb2-239"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -1201,7 +1202,7 @@ B=\begin{pmatrix}b_{11} &amp; b_{12}\\b_{21} &amp; -b_{11}\end{pmatrix}.
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" data-startfrom="-1" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line -2;"><span id="cb3--1"><a href="#cb3--1"></a>{</span>
+<div class="sourceCode cell-code" id="cb3" data-startfrom="-1" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line -2;"><span id="cb3--1"><a href="#cb3--1"></a>{</span>
 <span id="cb3-0"><a href="#cb3-0"></a>  <span class="kw">const</span> W<span class="op">=</span><span class="dv">280</span><span class="op">,</span> H<span class="op">=</span><span class="dv">340</span><span class="op">,</span> R<span class="op">=</span><span class="dv">115</span><span class="op">,</span> cx<span class="op">=</span>W<span class="op">/</span><span class="dv">2</span><span class="op">,</span> cy<span class="op">=</span><span class="dv">165</span><span class="op">,</span> ext<span class="op">=</span><span class="dv">40</span><span class="op">,</span> gap<span class="op">=</span><span class="dv">20</span><span class="op">;</span></span>
 <span id="cb3-1"><a href="#cb3-1"></a>  <span class="kw">const</span> BG<span class="op">=</span><span class="st">'#dddddd'</span><span class="op">,</span> OCEAN<span class="op">=</span><span class="st">'#84a1b7'</span><span class="op">,</span> π<span class="op">=</span><span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span><span class="op">;</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a></span>
@@ -1475,7 +1476,7 @@ B=\begin{pmatrix}b_{11} &amp; b_{12}\\b_{21} &amp; -b_{11}\end{pmatrix}.
 <span id="cb3-270"><a href="#cb3-270"></a>  <span class="fu">redraw</span>()<span class="op">;</span></span>
 <span id="cb3-271"><a href="#cb3-271"></a></span>
 <span id="cb3-272"><a href="#cb3-272"></a>  <span class="cf">return</span> container<span class="op">;</span></span>
-<span id="cb3-273"><a href="#cb3-273"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-273"><a href="#cb3-273"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-3" data-nodetype="expression">
@@ -1503,7 +1504,7 @@ gkg^{-1}k^{-1} \stackrel{?}{=} I.
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" data-startfrom="-1" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line -2;"><span id="cb4--1"><a href="#cb4--1"></a>{</span>
+<div class="sourceCode cell-code" id="cb4" data-startfrom="-1" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line -2;"><span id="cb4--1"><a href="#cb4--1"></a>{</span>
 <span id="cb4-0"><a href="#cb4-0"></a>  <span class="kw">const</span> W<span class="op">=</span><span class="dv">280</span><span class="op">,</span> H<span class="op">=</span><span class="dv">340</span><span class="op">,</span> R<span class="op">=</span><span class="dv">115</span><span class="op">,</span> cx<span class="op">=</span>W<span class="op">/</span><span class="dv">2</span><span class="op">,</span> cy<span class="op">=</span><span class="dv">165</span><span class="op">,</span> ext<span class="op">=</span><span class="dv">40</span><span class="op">,</span> gap<span class="op">=</span><span class="dv">20</span><span class="op">;</span></span>
 <span id="cb4-1"><a href="#cb4-1"></a>  <span class="kw">const</span> BG<span class="op">=</span><span class="st">'#dddddd'</span><span class="op">,</span> OCEAN<span class="op">=</span><span class="st">'#84a1b7'</span><span class="op">,</span> π<span class="op">=</span><span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span><span class="op">;</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a></span>
@@ -1785,7 +1786,7 @@ gkg^{-1}k^{-1} \stackrel{?}{=} I.
 <span id="cb4-278"><a href="#cb4-278"></a>  <span class="fu">redraw</span>()<span class="op">;</span></span>
 <span id="cb4-279"><a href="#cb4-279"></a></span>
 <span id="cb4-280"><a href="#cb4-280"></a>  <span class="cf">return</span> container<span class="op">;</span></span>
-<span id="cb4-281"><a href="#cb4-281"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-281"><a href="#cb4-281"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-4" data-nodetype="expression">
@@ -1800,10 +1801,10 @@ g = \exp(\epsilon A),\qquad k = \exp(\epsilon B),
 <p>where <span class="math inline">\epsilon</span> is a small parameter. If <span class="math inline">g(t)=\exp(tA)</span>, then think of <span class="math inline">g = \exp(\epsilon A)</span> as leaving from the identity and following the curve <span class="math inline">g(t)</span> for a very small time interval <span class="math inline">\epsilon</span>. The group commutator then reads</p>
 <p><span class="math display">\begin{align*}
 gkg^{-1}k^{-1} =&amp; e^{\epsilon A}e^{\epsilon B}e^{-\epsilon A}e^{-\epsilon B} \\
-=&amp; (I + \epsilon A + \tfrac{\epsilon^2}{2} A^2 \ldots) \times \\
-=&amp; (I + \epsilon B + \tfrac{\epsilon^2}{2} B^2 \ldots) \times \\
-=&amp; (I - \epsilon A + \tfrac{\epsilon^2}{2} A^2 \ldots) \times \\
-=&amp; (I - \epsilon B + \tfrac{\epsilon^2}{2} B^2 \ldots) \\
+=&amp; (I + \epsilon A + \tfrac{\epsilon^2}{2} A^2 \ldots) \\
+\times &amp; (I + \epsilon B + \tfrac{\epsilon^2}{2} B^2 \ldots) \\
+\times &amp; (I - \epsilon A + \tfrac{\epsilon^2}{2} A^2 \ldots) \\
+\times &amp; (I - \epsilon B + \tfrac{\epsilon^2}{2} B^2 \ldots) \\
 =&amp; \\
 \text{order }\epsilon^0:&amp;\quad I + \\
 \text{order }\epsilon^1:&amp;\quad \epsilon(A+B-A-B) + \\
@@ -1823,7 +1824,12 @@ gkg^{-1}k^{-1} = I + \epsilon^2\left(AB-BA\right) + O(\epsilon^3)
 </section>
 <section id="the-lie-algebra-sl2" class="level2" data-number="11.10">
 <h2 data-number="11.10" class="anchored" data-anchor-id="the-lie-algebra-sl2"><span class="header-section-number">11.10</span> the Lie Algebra sl(2)</h2>
-<p>We can now go back to talking about why the tangent space we found is “an algebra”. We showed that the tangent space is a vector space. This is the first requirement. The second, is that this vector space is equipped with an extra operator that takes two elements in the vector space and returns another element in the space. This special operator is the Lie bracket <span class="math inline">[A,B]=AB-BA</span>. We have to show that the result also lives in the tangent space. We will remember that any element in the tangent space is a <span class="math inline">2\times 2</span> matrix with trace zero, so let’s compute <span class="math inline">AB-BA</span> explicitly:</p>
+<p>Now that we are somewhat familiar with the algebra commutator, we can discuss explicitly what it means for the tangent space to be “an algebra”. We showed that the tangent space is a vector space. This is the first requirement. The second, is that this vector space is equipped with an extra operator that takes two elements in the vector space and returns another element in the space. This special operator is the Lie bracket <span class="math inline">[A,B]=AB-BA</span>. Lastly, we need to show that this operator satisfies the following properties: closure, bilinearity, antisymmetry, and the Jacobi identity. Let’s go through each of these properties one by one.</p>
+</section>
+<section id="closure" class="level2" data-number="11.11">
+<h2 data-number="11.11" class="anchored" data-anchor-id="closure"><span class="header-section-number">11.11</span> closure</h2>
+<p>Closure means that if we take two elements in the tangent space, <span class="math inline">A</span> and <span class="math inline">B</span>, and apply the Lie bracket to them, the result is also an element in the tangent space. In other words, if <span class="math inline">A</span> and <span class="math inline">B</span> are both <span class="math inline">2\times 2</span> matrices with trace zero, then <span class="math inline">[A,B]</span> is also a <span class="math inline">2\times 2</span> matrix with trace zero. This is important because it ensures that the Lie bracket operation does not take us out of the tangent space.</p>
+<p>Let’s take two arbitrary elements in the tangent space, <span class="math inline">A</span> and <span class="math inline">B</span>, and compute their Lie bracket:</p>
 <p><span class="math display">\begin{align*}
 [A,B] =&amp; \,AB-BA\\
 =&amp;\begin{pmatrix} a_{11}&amp;a_{12}\\a_{21}&amp;-a_{11}\end{pmatrix}
@@ -1847,10 +1853,108 @@ gkg^{-1}k^{-1} = I + \epsilon^2\left(AB-BA\right) + O(\epsilon^3)
    \text{whatever} &amp; a_{21}b_{12} - a_{12}b_{21}
    \end{pmatrix},
 \end{align*}</span></p>
-<p>and it is easy to see now that the trace of <span class="math inline">[A,B]</span> is zero.</p>
+<p>and it is easy to see now that the trace of <span class="math inline">[A,B]</span> is zero. This proves that the Lie bracket is closed in the tangent space.</p>
 </section>
-<section id="taking-stock-of-what-we-know" class="level2" data-number="11.11">
-<h2 data-number="11.11" class="anchored" data-anchor-id="taking-stock-of-what-we-know"><span class="header-section-number">11.11</span> taking stock of what we know</h2>
+<section id="bilinearity" class="level2" data-number="11.12">
+<h2 data-number="11.12" class="anchored" data-anchor-id="bilinearity"><span class="header-section-number">11.12</span> bilinearity</h2>
+<p>Bilinearity means that the Lie bracket is linear in both of its arguments. In other words, if we take two elements in the tangent space, <span class="math inline">A</span> and <span class="math inline">B</span>, and a scalar <span class="math inline">\alpha</span>, then we have:</p>
+<p><span class="math display">
+[\alpha A, B] = \alpha [A,B], \quad [A, \alpha B] = \alpha [A,B].
+</span></p>
+<p>To prove this, we just need to expand the Lie bracket using the definition <span class="math inline">[A,B] = AB - BA</span>:</p>
+<p><span class="math display">\begin{align*}
+[\alpha A, B] &amp;= (\alpha A)B - B(\alpha A) = \alpha(AB - BA) = \alpha [A,B] \\
+[A, \alpha B] &amp;= A(\alpha B) - (\alpha B)A = \alpha(AB - BA) = \alpha [A,B].
+\end{align*}</span></p>
+<p>This property is important because it allows us to scale the elements in the tangent space and still have the Lie bracket behave in a predictable way.</p>
+</section>
+<section id="antisymmetry" class="level2" data-number="11.13">
+<h2 data-number="11.13" class="anchored" data-anchor-id="antisymmetry"><span class="header-section-number">11.13</span> antisymmetry</h2>
+<p>Antisymmetry means that the Lie bracket is antisymmetric in its arguments. In other words, if we take two elements in the tangent space, <span class="math inline">A</span> and <span class="math inline">B</span>, then we have:</p>
+<p><span class="math display">
+[A,B] = -[B,A].
+</span></p>
+<p>Again, we can prove this by expanding the Lie bracket using the definition <span class="math inline">[A,B] = AB - BA</span>:</p>
+<p><span class="math display">
+[A,B] = AB - BA = -(BA - AB) = -[B,A].
+</span></p>
+<p>This means that the bracket measures non-commutativity and nothing else — swap the inputs and you flip the sign, with no leftover symmetric part.</p>
+</section>
+<section id="jacobi-identity" class="level2" data-number="11.14">
+<h2 data-number="11.14" class="anchored" data-anchor-id="jacobi-identity"><span class="header-section-number">11.14</span> Jacobi identity</h2>
+<p>The Jacobi identity is a property that relates the Lie bracket of three elements in the tangent space. It states that for any three elements <span class="math inline">A</span>, <span class="math inline">B</span>, and <span class="math inline">C</span> in the tangent space, we have:</p>
+<p><span class="math display">
+[A,[B,C]] + [B,[C,A]] + [C,[A,B]] = 0.
+</span></p>
+<p>I will first show that this is true. You will not be satisfied, because this equation seems to have fallen from the sky. Don’t worry, I will soon show you where it comes from. Let’s expand each of the three terms in the Jacobi identity:</p>
+<p><span class="math display">\begin{align*}
+[A,[B,C]] =&amp; A(BC-CB) - (BC-CB)A
+= ABC - ACB - BCA + CBA, \\
+[B,[C,A]] =&amp; B(CA-AC) - (CA-AC)B
+= BCA - BAC - CAB + ACB, \\
+[C,[A,B]] =&amp; C(AB-BA) - (AB-BA)C
+= CAB - CBA - ABC + BAC.
+\end{align*}</span></p>
+<p>You can do the boring task of verifying that when you add all three terms together, everything cancels out and you get zero. This proves the Jacobi identity.</p>
+<p>I feel deeply unsatisfied with this proof, because it seems like the Jacobi identity is just a random fact about operators. Let’s see where this comes from.</p>
+</section>
+<section id="group-conjugation-and-the-jacobi-identity" class="level2" data-number="11.15">
+<h2 data-number="11.15" class="anchored" data-anchor-id="group-conjugation-and-the-jacobi-identity"><span class="header-section-number">11.15</span> group conjugation and the Jacobi identity</h2>
+<p>If <span class="math inline">g</span> and <span class="math inline">k</span> are elements of a group, then the conjugation of <span class="math inline">k</span> by <span class="math inline">g</span> is defined as:</p>
+<p><span class="math display">
+gkg^{-1}.
+</span></p>
+<p>In intuitive terms, the group conjugation <span class="math inline">gkg^{-1}</span> expresses the operation of applying just <span class="math inline">k</span>, but in a different frame of reference. By multiplying <span class="math inline">k</span> on both sides by <span class="math inline">g</span> and <span class="math inline">g^{-1}</span>, we have effectively applied <span class="math inline">k</span> in the frame of reference defined by <span class="math inline">g</span>. Importantly here, conjugation preserves the bracket structure:</p>
+<p><span class="math display">
+g[Y,Z]g^{-1} = [gYg^{-1}, gZg^{-1}].
+</span></p>
+<p>See an extended discussion of this <a href="../lie_algebra/basic_properties.html#conjugation">here</a>.</p>
+<p>We will now see what happens if we take the group element to be <span class="math inline">g=\exp(tX)</span>, and we take the derivative of the bracket conjugation above with respect to <span class="math inline">t</span> at <span class="math inline">t=0</span>. This is similar to what we did in the previous section, where we took the derivative of the group commutator at <span class="math inline">t=0</span> to get the algebra commutator. We do this to see how the group conjugation behaves in the tangent space. Taking the derivative of the left-hand side with respect to <span class="math inline">t</span> at <span class="math inline">t=0</span>, we have:</p>
+<p><span class="math display">\begin{align*}
+\frac{d}{dt} \left(g[Y,Z]g^{-1}\right)_{t=0} &amp;=\frac{d}{dt} \left(e^{tX}[Y,Z]e^{-tX}\right)_{t=0} \\
+&amp;= \left(Xe^{tX}[Y,Z]e^{-tX} - e^{tX}[Y,Z]Xe^{-tX} \right)_{t=0} \\
+&amp;= X[Y,Z] - [Y,Z]X \\
+&amp;= [X,[Y,Z]].
+\end{align*}</span></p>
+<p>Now let’s take the derivative of the right-hand side with respect to <span class="math inline">t</span> at <span class="math inline">t=0</span>. For convenience, let’s call <span class="math inline">\hat{Y}</span> and <span class="math inline">\hat{Z}</span> the conjugation of <span class="math inline">Y</span> and <span class="math inline">Z</span> respectively. We have:</p>
+<p><span class="math display">\begin{align*}
+\frac{d}{dt} \left[ gYg^{-1}, gZg^{-1} \right]_{t=0} &amp;= \frac{d}{dt} \left( \hat{Y}(t)\hat{Z}(t) - \hat{Z}(t)\hat{Y}(t) \right)_{t=0} \\
+&amp;= \frac{d}{dt}\left( \hat{Y}(t)\hat{Z}(t)\right)_{t=0} - \frac{d}{dt}\left( \hat{Z}(t)\hat{Y}(t)\right)_{t=0} \\
+&amp;= \left[ \tfrac{d}{dt}(\hat{Y}(t))\hat{Z}(t) + \hat{Y}(t)\tfrac{d}{dt}(\hat{Z}(t)) \right]_{t=0} \\
+&amp;- \left[ \tfrac{d}{dt}(\hat{Z}(t))\hat{Y}(t) + \hat{Z}(t)\tfrac{d}{dt}(\hat{Y}(t)) \right]_{t=0}
+\end{align*}</span></p>
+<p>Let’s compute the derivatives of <span class="math inline">\hat{Y}(t)</span> and <span class="math inline">\hat{Z}(t)</span> with respect to <span class="math inline">t</span>. We have:</p>
+<p><span class="math display">
+\frac{d}{dt} \hat{Y}(t) = \frac{d}{dt} \left( gYg^{-1} \right) = XgYg^{-1} - gYg^{-1}X = X\hat{Y}(t) - \hat{Y}(t)X = [X,\hat{Y}(t)].
+</span></p>
+<p>and similarly,</p>
+<p><span class="math display">
+\frac{d}{dt} \hat{Z}(t) = \frac{d}{dt} \left( gZg^{-1} \right) = XgZg^{-1} - gZg^{-1}X = X\hat{Z}(t) - \hat{Z}(t)X = [X,\hat{Z}(t)].
+</span></p>
+<p>We also note that at <span class="math inline">t=0</span>, <span class="math inline">\hat{Y}(0) = e^{0X}Ye^{-0X}=Y</span> and <span class="math inline">\hat{Z}(0) = e^{0X}Ze^{-0X} = Z</span>. Then continuing with the derivative of the right-hand side, we have:</p>
+<p><span class="math display">\begin{align*}
+\frac{d}{dt} \left[ gYg^{-1}, gZg^{-1} \right]_{t=0} &amp;= [X,Y]Z + Y[X,Z] - [X,Z]Y - Z[X,Y] \\
+&amp;= [[X,Y],Z] + [Y,[X,Z]]
+\end{align*}</span></p>
+<p>Now let’s equate the two derivatives we computed. We have:</p>
+<p><span class="math display">
+[X,[Y,Z]] = [[X,Y],Z] + [Y,[X,Z]].
+</span></p>
+<p>Using the antisymmetry property of the Lie bracket, we can rewrite the second and third terms on the right-hand side as:</p>
+<p><span class="math display">
+[[X,Y],Z] = -[Z,[X,Y]], \quad [Y,[X,Z]] = -[Y,[Z,X]].
+</span></p>
+<p>Substituting these and rearranging, we get the Jacobi identity</p>
+<div class="card bg-info card-body pb-0">
+<p><span class="math display">
+[X,[Y,Z]] +[Y,[Z,X]] + [Z,[X,Y]] =0.
+</span></p>
+</div>
+<p><br></p>
+<p>The Jacobi identity is a direct consequence of the properties of the group conjugation and the Lie bracket. Specifically, because we applied the product rule to the derivative of the right-hand side, we see that the Jacobi identity is a consequence of the Leibniz rule for derivatives. We will see later in the “adjoint representation” section a very nice connection to this last statement.</p>
+</section>
+<section id="taking-stock-of-what-we-know" class="level2" data-number="11.16">
+<h2 data-number="11.16" class="anchored" data-anchor-id="taking-stock-of-what-we-know"><span class="header-section-number">11.16</span> taking stock of what we know</h2>
 <p>Let’s give formal names to objects we’ve been dealing with.</p>
 <p>SL(2) is the group of <span class="math inline">2\times 2</span> matrices with complex elements and determinant 1.</p>
 <p><span class="math display">
@@ -1892,8 +1996,8 @@ a,b,c\in\mathbb C.
 </span></p>
 <p>This is called the <strong>Lie bracket</strong>. It measures the infinitesimal failure of commutativity.</p>
 </section>
-<section id="a-basis-for-mathfraksl2" class="level2" data-number="11.12">
-<h2 data-number="11.12" class="anchored" data-anchor-id="a-basis-for-mathfraksl2"><span class="header-section-number">11.12</span> a basis for <span class="math inline">\mathfrak{sl}(2)</span></h2>
+<section id="a-basis-for-mathfraksl2" class="level2" data-number="11.17">
+<h2 data-number="11.17" class="anchored" data-anchor-id="a-basis-for-mathfraksl2"><span class="header-section-number">11.17</span> a basis for <span class="math inline">\mathfrak{sl}(2)</span></h2>
 <p>Since all elements in the <span class="math inline">\mathfrak{sl}(2)</span> algebra live in a 3-dimensional vector space, we can define a convenient basis for this space made of three basis elements:</p>
 <p><span class="math display">
 E = \begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix},\quad
@@ -1917,14 +2021,18 @@ c&amp;-a
 &amp;= \begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix} - \begin{pmatrix}0&amp;-1\\0&amp;0\end{pmatrix} \\
 &amp;= \begin{pmatrix}0&amp;2\\0&amp;0\end{pmatrix} \\
 &amp;= 2E
-\end{align*}</span> Also, <span class="math display">\begin{align*}
+\end{align*}</span></p>
+<p>Also,</p>
+<p><span class="math display">\begin{align*}
 [H,F] &amp;= HF-FH \\
 &amp;= \begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix} \begin{pmatrix}0&amp;0\\1&amp;0\end{pmatrix} -
 \begin{pmatrix}0&amp;0\\1&amp;0\end{pmatrix}\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}\\
 &amp;= \begin{pmatrix}0&amp;0\\-1&amp;0\end{pmatrix} - \begin{pmatrix}0&amp;0\\1&amp;0\end{pmatrix} \\
 &amp;= \begin{pmatrix}0&amp;0\\-2&amp;0\end{pmatrix} \\
 &amp;= -2F
-\end{align*}</span> Finally, <span class="math display">\begin{align*}
+\end{align*}</span></p>
+<p>Finally,</p>
+<p><span class="math display">\begin{align*}
 [E,F] &amp;= EF-FE \\
 &amp;= \begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix} \begin{pmatrix}0&amp;0\\1&amp;0\end{pmatrix} -
 \begin{pmatrix}0&amp;0\\1&amp;0\end{pmatrix}\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}\\
@@ -1942,8 +2050,8 @@ c&amp;-a
 </div>
 <p><br> You know these commutation relationships are important, because I put them in a box!</p>
 </section>
-<section id="representations" class="level2" data-number="11.13">
-<h2 data-number="11.13" class="anchored" data-anchor-id="representations"><span class="header-section-number">11.13</span> representations</h2>
+<section id="representations" class="level2" data-number="11.18">
+<h2 data-number="11.18" class="anchored" data-anchor-id="representations"><span class="header-section-number">11.18</span> representations</h2>
 <p>Remember the operations in the very first widget in this page. We had a square, and we could spin in, shear it, or squish/stretch it. All these maintain the area, and mathematically this is enforced by the requirement that the determinant of elements in the group SL(2) equals one.</p>
 <p>Rotations, shear and squish/stretch are abstract concepts, and they only get embodied in a specific form once we define on which kind of objects they are operating on. Take rotations, for example. If we are talking about rotating an object in 2d space, this is accomplished by a <span class="math inline">2\times 2</span> matrix. If, instead, we wish to rotate an object in 3d space, that matrix won’t do, we’ll need a <span class="math inline">3\times3</span> matrix to do it. The abstract notion of “rotation” needs to be <em>represented</em> by different things depending on the object it operates on.</p>
 <p>So far we’ve started to get to know the group SL(2) and its tangent algebra <span class="math inline">\mathfrak{sl}(2)</span>, and now it’s time to get acquainted with some of its most important representations.</p>
@@ -1969,8 +2077,8 @@ R(\theta) = e^{\theta j}.
 <p>So instead of studying every finite rotation separately, we study the generator <span class="math inline">j</span>. The generator contains the local rule for how the rotation starts, and exponentiation recovers the finite motion. This is true not only for rotations, but for all other kinds of transformations contained in SL(2).</p>
 <p>Another reason to study the representations of the algebra instead of representations of the group is that the algebra is a flat space, while the group is a curved manifold. Linear algebra is easier than curved geometry.</p>
 </section>
-<section id="what-is-a-representation" class="level2" data-number="11.14">
-<h2 data-number="11.14" class="anchored" data-anchor-id="what-is-a-representation"><span class="header-section-number">11.14</span> what is a representation</h2>
+<section id="what-is-a-representation" class="level2" data-number="11.19">
+<h2 data-number="11.19" class="anchored" data-anchor-id="what-is-a-representation"><span class="header-section-number">11.19</span> what is a representation</h2>
 <p>A representation is a translation rule. Imagine I show you a picture of a dog, and ask you to say what it represents out loud. You could say: “Sure, I’ll say it, but in what language? English? Tagalog? Guarani? Choose one and I’ll do it!” So the translation needs to convert an abstract idea (the image of a dog, or the element of the algebra) into a specific word in the target languague, or to a specific matrix in the target n-dimensional space. Let’s write this in mathematical language.</p>
 <p><span class="math display">
 X \mapsto \rho(X): V \rightarrow V
@@ -1991,8 +2099,8 @@ X \mapsto \rho(X): V \rightarrow V
 <p>Now that we know this, we can turn the argument around and say that these relations are not derived from something else. These relations <strong>define</strong> the <span class="math inline">\mathfrak{sl}(2)</span> algebra. We stop thinking of <span class="math inline">E,H,F</span> as <span class="math inline">2\times2</span> matrices, they are now just abstract, ethereal basis elements, that respect the relations above. We could have started with these relations, but I guess it would be deeply unsatisfying to impose these commutation relations of abstract elements without any justification. We developed them naturally from first principles. But now it’s time to grow up and understand the <span class="math inline">\mathfrak{sl}(2)</span> algebra for what it is: A vector space with three base elements, with a bracket operation <span class="math inline">[X,Y]=XY-YX</span>, and the basis elements respect the commutation relations above. That’s it.</p>
 <p>The roadmap now is the following. We will study three representations of the <span class="math inline">\mathfrak{sl}(2)</span> algebra. We will see how elements of this algebra operate on vectors in a vector space of size 1, 2 and then 3.</p>
 </section>
-<section id="the-trivial-representation" class="level2" data-number="11.15">
-<h2 data-number="11.15" class="anchored" data-anchor-id="the-trivial-representation"><span class="header-section-number">11.15</span> the trivial representation</h2>
+<section id="the-trivial-representation" class="level2" data-number="11.20">
+<h2 data-number="11.20" class="anchored" data-anchor-id="the-trivial-representation"><span class="header-section-number">11.20</span> the trivial representation</h2>
 <p>We start with a 1-dimensional vector space.</p>
 <p>In one dimension, every linear transformation is just multiplication by a scalar, therefore the representation must be like this:</p>
 <p><span class="math display">
@@ -2007,13 +2115,13 @@ X \mapsto \rho(X): V \rightarrow V
 
 [H,E] &amp;= 2E &amp;&amp;&amp; 0 &amp;= 2a_E  &amp;&amp;&amp; a_E=0 \\
 [H,F] &amp;= -2F &amp;&amp; \xrightarrow{\rho} &amp; 0 &amp;= -2a_F  &amp;&amp; \longrightarrow &amp; a_F=0 \\
-[E,H] &amp;= F &amp;&amp;&amp; 0 &amp;= a_F  &amp;&amp;&amp; a_H=0
+[E,F] &amp;= H &amp;&amp;&amp; 0 &amp;= a_H  &amp;&amp;&amp; a_H=0
 
 \end{align*}</span></p>
 <p>The only way to preserve the bracket relations in one dimension is for every generator to act as zero. Therefore the only 1D representation of <span class="math inline">\mathfrak{sl}(2)</span> is called the trivial representation.</p>
 </section>
-<section id="the-standard-representation" class="level2" data-number="11.16">
-<h2 data-number="11.16" class="anchored" data-anchor-id="the-standard-representation"><span class="header-section-number">11.16</span> the standard representation</h2>
+<section id="the-standard-representation" class="level2" data-number="11.21">
+<h2 data-number="11.21" class="anchored" data-anchor-id="the-standard-representation"><span class="header-section-number">11.21</span> the standard representation</h2>
 <p>Let’s see how elements of the algebra act on vectors in a 2d vector space. We need to choose a basis for this 2d space, so let’s choose:</p>
 <p><span class="math display">
 \text{basis vectors:}
@@ -2058,8 +2166,8 @@ F &amp;\mapsto \rho_{\text{std}}(F) = \begin{pmatrix}0&amp;0\\1&amp;0\end{pmatri
 </ul>
 <p>Now, let’s move on to the next representation</p>
 </section>
-<section id="the-adjoint-representation" class="level2" data-number="11.17">
-<h2 data-number="11.17" class="anchored" data-anchor-id="the-adjoint-representation"><span class="header-section-number">11.17</span> the adjoint representation</h2>
+<section id="the-adjoint-representation" class="level2" data-number="11.22">
+<h2 data-number="11.22" class="anchored" data-anchor-id="the-adjoint-representation"><span class="header-section-number">11.22</span> the adjoint representation</h2>
 <p>In this representation, elements of the algebra are represented as linear operators (matrices) that operate on vectors in a 3d vector space. We need to define a basis for this space. In the 2d case of the standard representation, we chose the basis <span class="math inline">v_0=(1\,0)^T</span> and <span class="math inline">v_1=(0\,1)^T</span>. It would be natural to choose this time the basis</p>
 <p><span class="math display">
 v_0=\begin{pmatrix}1\\0\\0\end{pmatrix}\quad
@@ -2089,7 +2197,20 @@ v_2=\begin{pmatrix}0\\0\\1\end{pmatrix}.
 <p><span class="math display">
 \text{ad}_X(Y) = [X,Y].
 </span></p>
-<p>Let’s find out the precise expression of the <span class="math inline">3\times3</span> matrices representing each of the elements <span class="math inline">E,H,F</span>. For that, we need two things.</p>
+<p>This is the time to remember the Jacobi identity we saw before:</p>
+<p><span class="math display">
+[X,[Y,Z]] +[Y,[Z,X]] + [Z,[X,Y]] = 0.
+</span></p>
+<p>Just before we got to this nice form, we had it like this:</p>
+<p><span class="math display">
+[X,[Y,Z]] = [[X,Y],Z] + [Y,[X,Z]],
+</span></p>
+<p>which will prove useful now. By writing <span class="math inline">\text{ad}_X=[X,-]</span> the act of “bracketing with <span class="math inline">X</span>”, we can rewrite the Jacobi identity as</p>
+<p><span class="math display">
+\text{ad}_X([Y,Z]) = [\text{ad}_X(Y),Z] + [Y,\text{ad}_X(Z)].
+</span></p>
+<p>This is just like the product rule! The Jacobi identity says that “bracketing with <span class="math inline">X</span>” distributes over a bracket exactly the way differentiation distributes over a product. That’s incredible! An operator with that property is called a derivation. So seen under a different light, the somewhat mysterious choice of reusing the bracket operation to define the adjoint representation is actually a very natural choice, because it is the only choice that makes <span class="math inline">\text{ad}_X</span> a derivation.</p>
+<p>Let’s find out now the precise expression of the <span class="math inline">3\times3</span> matrices representing each of the elements <span class="math inline">E,H,F</span>. For that, we need two things.</p>
 <ol type="1">
 <li>remember the commutation rules: <span class="math display">\begin{align*}
   [H,E]&amp;=2E\\
@@ -2104,8 +2225,8 @@ v_2=\begin{pmatrix}0\\0\\1\end{pmatrix}.
   Y = \begin{pmatrix}a\\b\\c\end{pmatrix}.
   </span></li>
 </ol>
-<section id="computing-textad_e" class="level3" data-number="11.17.1">
-<h3 data-number="11.17.1" class="anchored" data-anchor-id="computing-textad_e"><span class="header-section-number">11.17.1</span> computing <span class="math inline">\text{ad}_E</span></h3>
+<section id="computing-textad_e" class="level3" data-number="11.22.1">
+<h3 data-number="11.22.1" class="anchored" data-anchor-id="computing-textad_e"><span class="header-section-number">11.22.1</span> computing <span class="math inline">\text{ad}_E</span></h3>
 <p>Let’s calculate</p>
 <p><span class="math display">\begin{align*}
 \text{ad}_E(Y) &amp;= [E,Y] \\
@@ -2134,8 +2255,8 @@ v_2=\begin{pmatrix}0\\0\\1\end{pmatrix}.
 \end{pmatrix}.
 </span></p>
 </section>
-<section id="computing-textad_h" class="level3" data-number="11.17.2">
-<h3 data-number="11.17.2" class="anchored" data-anchor-id="computing-textad_h"><span class="header-section-number">11.17.2</span> computing <span class="math inline">\text{ad}_H</span></h3>
+<section id="computing-textad_h" class="level3" data-number="11.22.2">
+<h3 data-number="11.22.2" class="anchored" data-anchor-id="computing-textad_h"><span class="header-section-number">11.22.2</span> computing <span class="math inline">\text{ad}_H</span></h3>
 <p><span class="math display">\begin{align*}
 \text{ad}_H(Y) &amp;= [H,Y] \\
 &amp;= [H,aE + bH + cF] \\
@@ -2163,8 +2284,8 @@ v_2=\begin{pmatrix}0\\0\\1\end{pmatrix}.
 \end{pmatrix}.
 </span></p>
 </section>
-<section id="computing-textad_f" class="level3" data-number="11.17.3">
-<h3 data-number="11.17.3" class="anchored" data-anchor-id="computing-textad_f"><span class="header-section-number">11.17.3</span> computing <span class="math inline">\text{ad}_F</span></h3>
+<section id="computing-textad_f" class="level3" data-number="11.22.3">
+<h3 data-number="11.22.3" class="anchored" data-anchor-id="computing-textad_f"><span class="header-section-number">11.22.3</span> computing <span class="math inline">\text{ad}_F</span></h3>
 <p><span class="math display">\begin{align*}
 \text{ad}_F(Y) &amp;= [F,Y] \\
 &amp;= [F,aE + bH + cF] \\
@@ -2192,8 +2313,8 @@ v_2=\begin{pmatrix}0\\0\\1\end{pmatrix}.
 \end{pmatrix}.
 </span></p>
 </section>
-<section id="to-sum-up" class="level3" data-number="11.17.4">
-<h3 data-number="11.17.4" class="anchored" data-anchor-id="to-sum-up"><span class="header-section-number">11.17.4</span> to sum up</h3>
+<section id="to-sum-up" class="level3" data-number="11.22.4">
+<h3 data-number="11.22.4" class="anchored" data-anchor-id="to-sum-up"><span class="header-section-number">11.22.4</span> to sum up</h3>
 <p>I’ll come back to the image of the ladder introduced in the standard representation. I want to know how each of the operators <span class="math inline">\text{ad}_E,\text{ad}_H,\text{ad}_F</span> acts on each of the basis vectors <span class="math inline">E,H,F</span>:</p>
 <p><span class="math display">\begin{align*}
 \text{ad}_E(E)&amp;=[E,E]=0 \\
@@ -2212,13 +2333,13 @@ v_2=\begin{pmatrix}0\\0\\1\end{pmatrix}.
 <p>The operator <span class="math inline">H</span> has a few names, depending on the context. In mathematics it is known as the Cartan element, in Quantum Physics it is called the diagonal or measuring operator, and in focusing on the ladder analogy, it is called the level-counting or number operator. In any case, the operator <span class="math inline">H</span> plays the role of a <strong>weight generator</strong>: we apply it to any basis element and we get back the same basis element multiplied by a weight. In other words, all basis elements <span class="math inline">E,H,F</span> are eigenvectors of the operator <span class="math inline">H</span>, with eigenvalues <span class="math inline">2,0,-2</span>, respectively.</p>
 </section>
 </section>
-<section id="irreducible-representations" class="level2" data-number="11.18">
-<h2 data-number="11.18" class="anchored" data-anchor-id="irreducible-representations"><span class="header-section-number">11.18</span> irreducible representations</h2>
+<section id="irreducible-representations" class="level2" data-number="11.23">
+<h2 data-number="11.23" class="anchored" data-anchor-id="irreducible-representations"><span class="header-section-number">11.23</span> irreducible representations</h2>
 <p>We have now seen three representations of <span class="math inline">\mathfrak{sl}(2)</span>: the 1D trivial representation, the 2D standard representation, and the 3D adjoint representation. These are not just isolated examples. They are the first three irreducible representations of <span class="math inline">\mathfrak{sl}(2)</span>. Irreducible means that the representation cannot be decomposed into smaller invariant pieces. In the ladder picture, this means the ladder is connected from bottom to top by the actions of <span class="math inline">E</span> and <span class="math inline">F</span>. If it were possible to decompose the representation into smaller subspaces, this would mean that the ladder would be split into 2 or more parts, not mutually accessible by applying the step operators.</p>
 <p>To make sense of an n-dimensional irreducible representation, we look for a tool that helps us organize the n-dimensional space into neat, independent subspaces. The operator <span class="math inline">H</span> is such a tool. To explain why, we need to talk about <strong>weights</strong>.</p>
 </section>
-<section id="weights" class="level2" data-number="11.19">
-<h2 data-number="11.19" class="anchored" data-anchor-id="weights"><span class="header-section-number">11.19</span> weights</h2>
+<section id="weights" class="level2" data-number="11.24">
+<h2 data-number="11.24" class="anchored" data-anchor-id="weights"><span class="header-section-number">11.24</span> weights</h2>
 <p>Let’s write down the representation of <span class="math inline">H</span> for the standard and the adjoint representations:</p>
 <p><span class="math display">
 \rho_\text{std}(H) =
@@ -2270,19 +2391,19 @@ H(Ev) &amp;= HE\cdot v \\
 &amp;= (\lambda+2)Ev
 \end{align*}</span></p>
 <p>We found that the weight of the rung above <span class="math inline">v</span> is <span class="math inline">\lambda+2</span>. A similar calculation works for the rung below <span class="math inline">v</span>, namely <span class="math inline">Fv</span>:</p>
-<p><span class="math display">\begin{align}
+<p><span class="math display">\begin{align*}
 H(Fv) &amp;= HF\cdot v \\
-&amp;= \left( EF + \underbrace{[H,F]}_{HF-FH} \right)\cdot v \\
+&amp;= \left( FH + \underbrace{[H,F]}_{HF-FH} \right)\cdot v \\
 &amp;= F(Hv) - 2Fv \\
-&amp; = \lambda F v + 2Fv \\
+&amp; = \lambda F v - 2Fv \\
 &amp;= (\lambda-2)Fv
-\end{align}</span></p>
+\end{align*}</span></p>
 <p>The weight of the rung below <span class="math inline">v</span> is <span class="math inline">\lambda -2</span>.</p>
 <p>The diagram belows shows the general ladder structure, and the weights between neighboring rungs of the ladder.</p>
 <img src="sl2_files/mediabag/27228a95d7d4d05e62264cbd7faeea1abb761fa4.svg" class="img-fluid" style="width:100.0%">
 </section>
-<section id="ladder-coefficients" class="level2" data-number="11.20">
-<h2 data-number="11.20" class="anchored" data-anchor-id="ladder-coefficients"><span class="header-section-number">11.20</span> ladder coefficients</h2>
+<section id="ladder-coefficients" class="level2" data-number="11.25">
+<h2 data-number="11.25" class="anchored" data-anchor-id="ladder-coefficients"><span class="header-section-number">11.25</span> ladder coefficients</h2>
 <p>Now that we know how the weights of neighboring rungs of the ladder relate to each other, the very last thing is to learn how the operations <span class="math inline">E</span> and <span class="math inline">F</span> morph a state into a higher or lower one.</p>
 <p>Let’s assume an n-dimensional space, where <span class="math inline">v_0</span> is the highest rung of the ladder, that is, by stepping one more step up we “fall off it”: <span class="math inline">Ev_0=0</span>. Likewise, <span class="math inline">v_{n-1}</span> is the lowest rung, and stepping down from it also gives us zero: <span class="math inline">Fv_{n-1}=0</span>. Finally, let’s call <span class="math inline">\lambda</span> the weight of the highest rung <span class="math inline">v_0</span>. That is to say:</p>
 <ul>
@@ -2349,8 +2470,8 @@ c_k = k(\lambda - k + 1).
 Ev_k = k(\lambda - k + 1) v_{k-1}
 </span></p>
 </section>
-<section id="weight-values" class="level2" data-number="11.21">
-<h2 data-number="11.21" class="anchored" data-anchor-id="weight-values"><span class="header-section-number">11.21</span> weight values</h2>
+<section id="weight-values" class="level2" data-number="11.26">
+<h2 data-number="11.26" class="anchored" data-anchor-id="weight-values"><span class="header-section-number">11.26</span> weight values</h2>
 <p>From the results above, we can not only determine that the weights of neighboring basis vectors differ by <span class="math inline">2</span>, but we can actually determine their values. Let’s see how.</p>
 <p>Assume an irreducible representation of dimension <span class="math inline">n+1</span>, whose basis vectors are:</p>
 <p><span class="math display">
@@ -2370,7 +2491,7 @@ Fv_n=0 \longrightarrow v_{n+1} = 0.
 </span></p>
 <p>We also know that The operator <span class="math inline">E</span>, applied to this zero vector <span class="math inline">v_{n+1}</span> gives, according to the relationship we already found before,</p>
 <p><span class="math display">
-E v_{n+1} = c_{n+1}v_n \longrightarrow E 0 = c_{n+1}v_n
+E v_{n+1} = c_{n+1}v_n \longrightarrow E\cdot 0 = c_{n+1}v_n
 </span></p>
 <p>But we know that <span class="math inline">v_n</span> is not zero, so <span class="math inline">c_{n+1}</span> must be:</p>
 <p><span class="math display">
@@ -2404,11 +2525,11 @@ c_{n+1} = (n+1)(\lambda - n) = 0 \longrightarrow \lambda=n
 \end{align*}</span></li>
 </ul>
 </section>
-<section id="conclusion" class="level2" data-number="11.22">
-<h2 data-number="11.22" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">11.22</span> conclusion</h2>
+<section id="conclusion" class="level2" data-number="11.27">
+<h2 data-number="11.27" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">11.27</span> conclusion</h2>
 <p>This has been a very long chapter, it’s time to wrap it up.</p>
 <p>From first principles, we derived the <span class="math inline">mathfrak{sl}(2)</span> algebra, which is derived from the SL(2) group. We got to know its basis elements <span class="math inline">E,H,F</span> and how they interact through the Lie bracket. We then developed concrete realizations of the algebra, when the basis elements are treated as linear operators that act on n-dimensional vector spaces. We did that for the trivial, standard and adjoint representations, and then we generalized the ladder picture for any finite-dimensional irreducible representation.</p>
-<p>The next chapters will show the relevance of the <span class="math inline">mathfrak{sl}(2)</span> algebra is various important application in Physics. Our hard work will pay off handsomely.</p>
+<p>The next chapters will show the relevance of the <span class="math inline">\mathfrak{sl}(2)</span> algebra in various important applications in Physics. Our hard work will pay off handsomely.</p>
 
 
 </section>
@@ -2476,14 +2597,13 @@ window._ojs.runtime.interpretFromScriptTags();
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

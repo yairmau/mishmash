@@ -2,16 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.7.31">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>10&nbsp; basic properties – mishmash</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -22,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -42,10 +74,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-84bb7a51fcc1ae1268a7e2af559d4b30.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-a588049bcf6ba0aff1d03aeee07a0105.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-75d35b8b933727816098ee1d621b2fac.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-2c63ad6a8cffefe8536d13eabcc001d1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -114,7 +146,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -156,8 +188,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../archive/logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="../archive/logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <img src="../archive/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="../">mishmash</a> 
@@ -335,6 +366,7 @@ window.Quarto = {
    
   <ul>
   <li><a href="#detexpaexptexttra" id="toc-detexpaexptexttra" class="nav-link active" data-scroll-target="#detexpaexptexttra"><span class="header-section-number">10.1</span> <span class="math inline">\det(\exp(A))=\exp(\text{tr}(A))</span></a></li>
+  <li><a href="#conjugation" id="toc-conjugation" class="nav-link" data-scroll-target="#conjugation"><span class="header-section-number">10.2</span> conjugation</a></li>
   </ul>
 </nav>
     </div>
@@ -343,7 +375,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lie_algebra/basic_properties.html">lie algebra</a></li><li class="breadcrumb-item"><a href="../lie_algebra/basic_properties.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">basic properties</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">basic properties</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/yairmau/mishmash/blob/main/lie_algebra/basic_properties.ipynb"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">basic properties</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button" data-quarto-source-url="https://github.com/yairmau/mishmash/blob/main/lie_algebra/basic_properties.ipynb">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -411,6 +443,224 @@ P^{-1}\exp(A)P = 1 + D + \frac{D^2}{2!} + \frac{D^3}{3!} = \exp(D)
 \det(\exp(A)) = \exp(\text{tr}(A))
 </span></p>
 <p>and that concludes the proof. <span class="math inline">\blacksquare</span></p>
+</section>
+<section id="conjugation" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="conjugation"><span class="header-section-number">10.2</span> conjugation</h2>
+<p>I’d like to thank Adam Frank for his blog post on <a href="https://www.axiomtutor.com/new-blog?offset=1725466035734">axiomtutor.com</a> for helping me grasp intuitively the concept of conjugation.</p>
+<p>Conjugation represents the idea that one operation can be seen from two different points of view. I’ll start with a concrete example.</p>
+<p>Say that <span class="math inline">k</span> represents a reflection across the <span class="math inline">x</span>-axis, and <span class="math inline">g</span> represents a counter-clockwise rotation by an arbitrary angle <span class="math inline">\theta</span>. See below these to operations applied on a heart shape.</p>
+<div id="a0037068" class="cell" data-execution_count="45">
+<details class="code-fold">
+<summary>import libraries</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">from</span> matplotlib.patches <span class="im">import</span> Arc, RegularPolygon</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="im">from</span> numpy <span class="im">import</span> radians <span class="im">as</span> rad</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="710dd904" class="cell" data-execution_count="46">
+<details class="code-fold">
+<summary>define useful functions</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">def</span> drawCirc(ax,radius,centX,centY,angle_,theta2_,color_<span class="op">=</span><span class="st">'black'</span>,linewidth<span class="op">=</span><span class="dv">3</span>):</span>
+<span id="cb2-2"><a href="#cb2-2"></a>    <span class="co">#========Line</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>    arc <span class="op">=</span> Arc([centX,centY],radius,radius,angle<span class="op">=</span>angle_,</span>
+<span id="cb2-4"><a href="#cb2-4"></a>          theta1<span class="op">=</span><span class="dv">0</span>,theta2<span class="op">=</span>theta2_,capstyle<span class="op">=</span><span class="st">'round'</span>,linestyle<span class="op">=</span><span class="st">'-'</span>,lw<span class="op">=</span>linewidth,color<span class="op">=</span>color_)</span>
+<span id="cb2-5"><a href="#cb2-5"></a>    ax.add_patch(arc)</span>
+<span id="cb2-6"><a href="#cb2-6"></a></span>
+<span id="cb2-7"><a href="#cb2-7"></a></span>
+<span id="cb2-8"><a href="#cb2-8"></a>    <span class="co">#========Create the arrow head</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>    endX<span class="op">=</span>centX<span class="op">+</span>(radius<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span>np.cos(rad(theta2_<span class="op">+</span>angle_)) <span class="co">#Do trig to determine end position</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>    endY<span class="op">=</span>centY<span class="op">+</span>(radius<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span>np.sin(rad(theta2_<span class="op">+</span>angle_))</span>
+<span id="cb2-11"><a href="#cb2-11"></a>    </span>
+<span id="cb2-12"><a href="#cb2-12"></a>    ax.add_patch(</span>
+<span id="cb2-13"><a href="#cb2-13"></a>        RegularPolygon(</span>
+<span id="cb2-14"><a href="#cb2-14"></a>            (endX, endY),</span>
+<span id="cb2-15"><a href="#cb2-15"></a>            numVertices<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb2-16"><a href="#cb2-16"></a>            radius<span class="op">=</span>radius<span class="op">/</span><span class="dv">5</span>,</span>
+<span id="cb2-17"><a href="#cb2-17"></a>            orientation<span class="op">=</span>rad(angle_ <span class="op">+</span> theta2_),</span>
+<span id="cb2-18"><a href="#cb2-18"></a>            color<span class="op">=</span>color_</span>
+<span id="cb2-19"><a href="#cb2-19"></a>        )</span>
+<span id="cb2-20"><a href="#cb2-20"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="ecaa1af6" class="cell" data-execution_count="47">
+<details class="code-fold">
+<summary>define transformations</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>red <span class="op">=</span> <span class="st">'xkcd:vermillion'</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>blue <span class="op">=</span> <span class="st">'xkcd:cerulean'</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>np.pi, <span class="dv">100</span>)</span>
+<span id="cb3-4"><a href="#cb3-4"></a>x <span class="op">=</span> <span class="dv">16</span><span class="op">*</span> (np.sin(t)) <span class="op">**</span> <span class="dv">3</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>y <span class="op">=</span> <span class="dv">13</span><span class="op">*</span> np.cos(t) <span class="op">-</span> <span class="dv">5</span> <span class="op">*</span> np.cos(<span class="dv">2</span><span class="op">*</span>t) <span class="op">-</span> <span class="dv">2</span> <span class="op">*</span> np.cos(<span class="dv">3</span><span class="op">*</span>t) <span class="op">-</span> np.cos(<span class="dv">4</span><span class="op">*</span>t)</span>
+<span id="cb3-6"><a href="#cb3-6"></a>heart <span class="op">=</span> np.array([x, y])</span>
+<span id="cb3-7"><a href="#cb3-7"></a>flip_x <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>]])</span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="kw">def</span> rotate(theta):</span>
+<span id="cb3-9"><a href="#cb3-9"></a>    <span class="cf">return</span> np.array([[np.cos(theta), <span class="op">-</span>np.sin(theta)], [np.sin(theta), np.cos(theta)]])</span>
+<span id="cb3-10"><a href="#cb3-10"></a>heart_x <span class="op">=</span> flip_x <span class="op">@</span> heart</span>
+<span id="cb3-11"><a href="#cb3-11"></a>theta <span class="op">=</span> np.atan(<span class="fl">0.5</span>)</span>
+<span id="cb3-12"><a href="#cb3-12"></a>heart_minus_theta <span class="op">=</span> rotate(<span class="op">-</span>theta) <span class="op">@</span> heart</span>
+<span id="cb3-13"><a href="#cb3-13"></a>heart_minus_theta_flipped <span class="op">=</span> flip_x <span class="op">@</span> heart_minus_theta</span>
+<span id="cb3-14"><a href="#cb3-14"></a>heart_minus_theta_flipped_plus_theta <span class="op">=</span> rotate(theta) <span class="op">@</span> heart_minus_theta_flipped</span>
+<span id="cb3-15"><a href="#cb3-15"></a>x_oblique_axis <span class="op">=</span> np.array([<span class="op">-</span><span class="dv">25</span>, <span class="dv">25</span>])</span>
+<span id="cb3-16"><a href="#cb3-16"></a>y_oblique_axis <span class="op">=</span> <span class="fl">0.5</span> <span class="op">*</span> x_oblique_axis</span>
+<span id="cb3-17"><a href="#cb3-17"></a>oblique_axis <span class="op">=</span> np.array([x_oblique_axis, y_oblique_axis])</span>
+<span id="cb3-18"><a href="#cb3-18"></a>oblique_axis_minus_theta <span class="op">=</span> rotate(<span class="op">-</span>theta) <span class="op">@</span> oblique_axis</span>
+<span id="cb3-19"><a href="#cb3-19"></a>oblique_axis_minus_theta_plus_theta <span class="op">=</span> rotate(theta) <span class="op">@</span> oblique_axis_minus_theta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="f9aa90c7" class="cell" data-execution_count="48">
+<details class="code-fold">
+<summary>plot k and g applied to a heart shape</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, sharey<span class="op">=</span><span class="va">True</span>, figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb4-2"><a href="#cb4-2"></a>ax[<span class="dv">0</span>].plot(heart[<span class="dv">0</span>], heart[<span class="dv">1</span>], color<span class="op">=</span>red)</span>
+<span id="cb4-3"><a href="#cb4-3"></a>ax[<span class="dv">0</span>].axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb4-4"><a href="#cb4-4"></a>ax[<span class="dv">0</span>].axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb4-5"><a href="#cb4-5"></a>ax[<span class="dv">0</span>].set_aspect(<span class="st">'equal'</span>)</span>
+<span id="cb4-6"><a href="#cb4-6"></a>ax[<span class="dv">0</span>].<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">'x'</span>, ylabel<span class="op">=</span><span class="st">'y'</span>, title<span class="op">=</span><span class="st">'heart'</span>, xlim<span class="op">=</span>x_oblique_axis, ylim<span class="op">=</span>x_oblique_axis)</span>
+<span id="cb4-7"><a href="#cb4-7"></a></span>
+<span id="cb4-8"><a href="#cb4-8"></a>ax[<span class="dv">1</span>].plot(heart_x[<span class="dv">0</span>], heart_x[<span class="dv">1</span>], color<span class="op">=</span>red)</span>
+<span id="cb4-9"><a href="#cb4-9"></a>ax[<span class="dv">1</span>].axhline(<span class="dv">0</span>, color<span class="op">=</span>blue, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb4-10"><a href="#cb4-10"></a>ax[<span class="dv">1</span>].axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb4-11"><a href="#cb4-11"></a>ax[<span class="dv">1</span>].set_aspect(<span class="st">'equal'</span>)</span>
+<span id="cb4-12"><a href="#cb4-12"></a>ax[<span class="dv">1</span>].<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">'x'</span>, ylabel<span class="op">=</span><span class="st">'y'</span>, title<span class="op">=</span><span class="st">'k: reflection across x-axis'</span>, xlim<span class="op">=</span>x_oblique_axis, ylim<span class="op">=</span>x_oblique_axis)</span>
+<span id="cb4-13"><a href="#cb4-13"></a></span>
+<span id="cb4-14"><a href="#cb4-14"></a>heart_15 <span class="op">=</span> rotate(np.pi<span class="op">/</span><span class="dv">12</span>) <span class="op">@</span> heart</span>
+<span id="cb4-15"><a href="#cb4-15"></a>ax[<span class="dv">2</span>].plot(heart_15[<span class="dv">0</span>], heart_15[<span class="dv">1</span>], color<span class="op">=</span>red)</span>
+<span id="cb4-16"><a href="#cb4-16"></a>ax[<span class="dv">2</span>].axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb4-17"><a href="#cb4-17"></a>ax[<span class="dv">2</span>].axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb4-18"><a href="#cb4-18"></a>ax[<span class="dv">2</span>].set_aspect(<span class="st">'equal'</span>)</span>
+<span id="cb4-19"><a href="#cb4-19"></a>ax[<span class="dv">2</span>].<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">'x'</span>, ylabel<span class="op">=</span><span class="st">'y'</span>, title<span class="op">=</span><span class="vs">r'g: ccw rotation by </span><span class="dv">$</span><span class="ch">\t</span><span class="vs">heta</span><span class="dv">$</span><span class="vs">'</span>, xlim<span class="op">=</span>x_oblique_axis, ylim<span class="op">=</span>x_oblique_axis)</span>
+<span id="cb4-20"><a href="#cb4-20"></a>drawCirc(ax[<span class="dv">2</span>],radius<span class="op">=</span><span class="dv">10</span>,centX<span class="op">=</span><span class="dv">0</span>,centY<span class="op">=</span><span class="dv">0</span>,angle_<span class="op">=</span><span class="dv">270</span>,theta2_<span class="op">=</span><span class="dv">150</span>, color_<span class="op">=</span>blue)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="basic_properties_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Because we are dealing with operations on a 2d plane, both <span class="math inline">k</span> and <span class="math inline">g</span> can be represented as <span class="math inline">2\times2</span> matrices:</p>
+<p><span class="math display">
+k =
+\begin{pmatrix}
+1 &amp; 0 \\
+0 &amp; -1
+\end{pmatrix}
+\quad\text{and}\quad
+g =
+\begin{pmatrix}
+\cos(\theta) &amp; -\sin(\theta) \\
+\sin(\theta) &amp; \cos(\theta)
+\end{pmatrix}
+</span></p>
+<p>What if we want to make a reflection of the heart shape across a different axis? In the graph below, the first panel on the left shows a reflection axis that is rotated by an angle <span class="math inline">\theta</span> from the <span class="math inline">x</span>-axis. With a little ingenuity, I don’t need to define a new reflection operation. Instead, I can use the existing reflection operation <span class="math inline">k</span> and the rotation operation <span class="math inline">g</span> to achieve the same effect.</p>
+<div id="55a4f1f9" class="cell" data-execution_count="49">
+<details class="code-fold">
+<summary>conjugation of k and g applied to a heart shape</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">4</span>, sharey<span class="op">=</span><span class="va">True</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">3</span>))</span>
+<span id="cb5-2"><a href="#cb5-2"></a>ax[<span class="dv">0</span>].plot(heart[<span class="dv">0</span>], heart[<span class="dv">1</span>], color<span class="op">=</span>red)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>ax[<span class="dv">0</span>].plot(oblique_axis[<span class="dv">0</span>], oblique_axis[<span class="dv">1</span>], color<span class="op">=</span>blue, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb5-4"><a href="#cb5-4"></a>ax[<span class="dv">0</span>].axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb5-5"><a href="#cb5-5"></a>ax[<span class="dv">0</span>].axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb5-6"><a href="#cb5-6"></a>ax[<span class="dv">0</span>].set_aspect(<span class="st">'equal'</span>)</span>
+<span id="cb5-7"><a href="#cb5-7"></a>ax[<span class="dv">0</span>].<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">'x'</span>, ylabel<span class="op">=</span><span class="st">'y'</span>, title<span class="op">=</span><span class="st">'heart'</span>, xlim<span class="op">=</span>x_oblique_axis, ylim<span class="op">=</span>x_oblique_axis)</span>
+<span id="cb5-8"><a href="#cb5-8"></a></span>
+<span id="cb5-9"><a href="#cb5-9"></a>ax[<span class="dv">1</span>].plot(heart_minus_theta[<span class="dv">0</span>], heart_minus_theta[<span class="dv">1</span>], color<span class="op">=</span>red)</span>
+<span id="cb5-10"><a href="#cb5-10"></a>ax[<span class="dv">1</span>].axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb5-11"><a href="#cb5-11"></a>ax[<span class="dv">1</span>].axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb5-12"><a href="#cb5-12"></a>ax[<span class="dv">1</span>].plot(oblique_axis_minus_theta[<span class="dv">0</span>], oblique_axis_minus_theta[<span class="dv">1</span>], color<span class="op">=</span>blue, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb5-13"><a href="#cb5-13"></a>ax[<span class="dv">1</span>].set_aspect(<span class="st">'equal'</span>)</span>
+<span id="cb5-14"><a href="#cb5-14"></a>ax[<span class="dv">1</span>].<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">'x'</span>, ylabel<span class="op">=</span><span class="st">'y'</span>, title<span class="op">=</span><span class="vs">r'1: apply </span><span class="dv">$</span><span class="vs">g</span><span class="dv">^</span><span class="vs">{-1}</span><span class="dv">$</span><span class="vs">'</span> <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span> <span class="op">+</span> <span class="vs">r'rotate </span><span class="dv">$</span><span class="vs">-</span><span class="ch">\t</span><span class="vs">heta</span><span class="dv">$</span><span class="vs">'</span>, xlim<span class="op">=</span>x_oblique_axis, ylim<span class="op">=</span>x_oblique_axis)</span>
+<span id="cb5-15"><a href="#cb5-15"></a></span>
+<span id="cb5-16"><a href="#cb5-16"></a>ax[<span class="dv">2</span>].plot(heart_minus_theta_flipped[<span class="dv">0</span>], heart_minus_theta_flipped[<span class="dv">1</span>], color<span class="op">=</span>red)</span>
+<span id="cb5-17"><a href="#cb5-17"></a>ax[<span class="dv">2</span>].axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb5-18"><a href="#cb5-18"></a>ax[<span class="dv">2</span>].axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb5-19"><a href="#cb5-19"></a>ax[<span class="dv">2</span>].plot(oblique_axis_minus_theta[<span class="dv">0</span>], oblique_axis_minus_theta[<span class="dv">1</span>], color<span class="op">=</span>blue, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb5-20"><a href="#cb5-20"></a>ax[<span class="dv">2</span>].<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">'x'</span>, ylabel<span class="op">=</span><span class="st">'y'</span>, title<span class="op">=</span><span class="vs">r'2: apply </span><span class="dv">$</span><span class="vs">k</span><span class="dv">$</span><span class="vs">'</span> <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span> <span class="op">+</span> <span class="vs">r'flip across x axis'</span>, xlim<span class="op">=</span>x_oblique_axis, ylim<span class="op">=</span>x_oblique_axis)</span>
+<span id="cb5-21"><a href="#cb5-21"></a>ax[<span class="dv">2</span>].set_aspect(<span class="st">'equal'</span>)</span>
+<span id="cb5-22"><a href="#cb5-22"></a></span>
+<span id="cb5-23"><a href="#cb5-23"></a>ax[<span class="dv">3</span>].plot(heart_minus_theta_flipped_plus_theta[<span class="dv">0</span>], heart_minus_theta_flipped_plus_theta[<span class="dv">1</span>], color<span class="op">=</span>red)</span>
+<span id="cb5-24"><a href="#cb5-24"></a>ax[<span class="dv">3</span>].plot(heart[<span class="dv">0</span>], heart[<span class="dv">1</span>], color<span class="op">=</span>red, alpha<span class="op">=</span><span class="fl">0.2</span>, ls<span class="op">=</span><span class="st">":"</span>)</span>
+<span id="cb5-25"><a href="#cb5-25"></a>ax[<span class="dv">3</span>].axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb5-26"><a href="#cb5-26"></a>ax[<span class="dv">3</span>].axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb5-27"><a href="#cb5-27"></a>ax[<span class="dv">3</span>].plot(oblique_axis_minus_theta_plus_theta[<span class="dv">0</span>], oblique_axis_minus_theta_plus_theta[<span class="dv">1</span>], color<span class="op">=</span>blue, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb5-28"><a href="#cb5-28"></a>ax[<span class="dv">3</span>].<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">'x'</span>, ylabel<span class="op">=</span><span class="st">'y'</span>, title<span class="op">=</span><span class="vs">r'3: apply </span><span class="dv">$</span><span class="vs">g</span><span class="dv">$</span><span class="vs">'</span> <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span> <span class="op">+</span> <span class="vs">r'rotate </span><span class="dv">$</span><span class="ch">\t</span><span class="vs">heta</span><span class="dv">$</span><span class="vs">'</span>, xlim<span class="op">=</span>x_oblique_axis, ylim<span class="op">=</span>x_oblique_axis)</span>
+<span id="cb5-29"><a href="#cb5-29"></a>ax[<span class="dv">3</span>].set_aspect(<span class="st">'equal'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="basic_properties_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol type="1">
+<li>We rotate the whole plane by an angle <span class="math inline">-\theta</span>, which rotates the reflection axis (blue) to coincide with the <span class="math inline">x</span>-axis (2nd panel). This is equivalent to applying the inverse of the rotation operation <span class="math inline">g^{-1}</span> to the heart shape.</li>
+<li>Then we reflect the (rotated) heart shape across the <span class="math inline">x</span>-axis (3rd panel). This is simply applying the reflection operation <span class="math inline">k</span> to the rotated heart shape.</li>
+<li>Finally, we rotate the whole plane back by an angle <span class="math inline">\theta</span> (4th panel). This is equivalent to applying the rotation operation <span class="math inline">g</span> to the reflected heart shape. You can check the result by comparing the solid red curve with the original heart shape shown with a dotted line.</li>
+</ol>
+<p>To sum up: apply <span class="math inline">g^{-1}</span>, then <span class="math inline">k</span>, then <span class="math inline">g</span>. Let’s call the resulting operation <span class="math inline">k'</span>, which is said to be a conjugate of <span class="math inline">k</span> by <span class="math inline">g</span>:</p>
+<p><span class="math display">
+k' = g k g^{-1}.
+</span></p>
+<p>Now let’s see the same this from a slightly different perspective. If <span class="math inline">k</span> means reflecting across the <span class="math inline">x</span>-axis, then <span class="math inline">k'</span> can also be interpreted as reflecting across the <span class="math inline">x</span>-axis, but in a rotated coordinate system. See below, the usual axes <span class="math inline">x</span> and <span class="math inline">y</span> are used in the panel on the left, while a rotated coordinate system by <span class="math inline">\theta</span> is used in the panel on the right.</p>
+<div id="32dae23b" class="cell" data-execution_count="50">
+<details class="code-fold">
+<summary>conjugation of k and g applied to a heart shape</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, sharey<span class="op">=</span><span class="va">True</span>, figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">3</span>))</span>
+<span id="cb6-2"><a href="#cb6-2"></a></span>
+<span id="cb6-3"><a href="#cb6-3"></a>ax[<span class="dv">0</span>].plot(heart[<span class="dv">0</span>], heart[<span class="dv">1</span>], color<span class="op">=</span>red)</span>
+<span id="cb6-4"><a href="#cb6-4"></a>ax[<span class="dv">0</span>].plot(heart_x[<span class="dv">0</span>], heart_x[<span class="dv">1</span>], color<span class="op">=</span>red, alpha<span class="op">=</span><span class="fl">0.2</span>)</span>
+<span id="cb6-5"><a href="#cb6-5"></a>ax[<span class="dv">0</span>].axhline(<span class="dv">0</span>, color<span class="op">=</span>blue, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb6-6"><a href="#cb6-6"></a>ax[<span class="dv">0</span>].set_aspect(<span class="st">'equal'</span>)</span>
+<span id="cb6-7"><a href="#cb6-7"></a>ax[<span class="dv">0</span>].<span class="bu">set</span>(title<span class="op">=</span><span class="st">'usual coordinate system'</span>, xlim<span class="op">=</span>x_oblique_axis, ylim<span class="op">=</span>x_oblique_axis, xticks<span class="op">=</span>[], yticks<span class="op">=</span>[])</span>
+<span id="cb6-8"><a href="#cb6-8"></a>ax[<span class="dv">0</span>].annotate(<span class="st">""</span>, xy<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">0</span>), xytext<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">0</span>), fontsize<span class="op">=</span><span class="dv">10</span>, color<span class="op">=</span><span class="st">"black"</span>, arrowprops<span class="op">=</span><span class="bu">dict</span>(arrowstyle<span class="op">=</span><span class="st">"-&gt;"</span>, facecolor<span class="op">=</span><span class="st">'black'</span>, lw<span class="op">=</span><span class="dv">4</span>, shrinkA<span class="op">=</span><span class="dv">0</span>, shrinkB<span class="op">=</span><span class="dv">0</span>),)</span>
+<span id="cb6-9"><a href="#cb6-9"></a>ax[<span class="dv">0</span>].annotate(<span class="st">""</span>, xy<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">20</span>), xytext<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">0</span>), fontsize<span class="op">=</span><span class="dv">10</span>, color<span class="op">=</span><span class="st">"black"</span>, arrowprops<span class="op">=</span><span class="bu">dict</span>(arrowstyle<span class="op">=</span><span class="st">"-&gt;"</span>, facecolor<span class="op">=</span><span class="st">'black'</span>, lw<span class="op">=</span><span class="dv">4</span>, shrinkA<span class="op">=</span><span class="dv">0</span>, shrinkB<span class="op">=</span><span class="dv">0</span>),)</span>
+<span id="cb6-10"><a href="#cb6-10"></a>ax[<span class="dv">0</span>].text(<span class="dv">20</span>, <span class="dv">1</span>, <span class="vs">r'</span><span class="dv">$</span><span class="vs">x</span><span class="dv">$</span><span class="vs">'</span>, fontsize<span class="op">=</span><span class="dv">16</span>, color<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb6-11"><a href="#cb6-11"></a>ax[<span class="dv">0</span>].text(<span class="dv">1</span>, <span class="dv">20</span>, <span class="vs">r'</span><span class="dv">$</span><span class="vs">y</span><span class="dv">$</span><span class="vs">'</span>, fontsize<span class="op">=</span><span class="dv">16</span>, color<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb6-12"><a href="#cb6-12"></a></span>
+<span id="cb6-13"><a href="#cb6-13"></a>ex <span class="op">=</span> np.array([[<span class="dv">20</span>,<span class="dv">0</span>]])</span>
+<span id="cb6-14"><a href="#cb6-14"></a>x_prime <span class="op">=</span> rotate(theta) <span class="op">@</span> ex.T</span>
+<span id="cb6-15"><a href="#cb6-15"></a>why <span class="op">=</span> np.array([[<span class="dv">0</span>,<span class="dv">20</span>]])</span>
+<span id="cb6-16"><a href="#cb6-16"></a>y_prime <span class="op">=</span> rotate(theta) <span class="op">@</span> why.T</span>
+<span id="cb6-17"><a href="#cb6-17"></a></span>
+<span id="cb6-18"><a href="#cb6-18"></a>ax[<span class="dv">1</span>].plot(heart[<span class="dv">0</span>], heart[<span class="dv">1</span>], color<span class="op">=</span>red)</span>
+<span id="cb6-19"><a href="#cb6-19"></a>ax[<span class="dv">1</span>].plot(heart_minus_theta_flipped_plus_theta[<span class="dv">0</span>], heart_minus_theta_flipped_plus_theta[<span class="dv">1</span>], color<span class="op">=</span>red, alpha<span class="op">=</span><span class="fl">0.2</span>)</span>
+<span id="cb6-20"><a href="#cb6-20"></a>ax[<span class="dv">1</span>].plot(oblique_axis[<span class="dv">0</span>], oblique_axis[<span class="dv">1</span>], color<span class="op">=</span>blue, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb6-21"><a href="#cb6-21"></a>ax[<span class="dv">1</span>].set_aspect(<span class="st">'equal'</span>)</span>
+<span id="cb6-22"><a href="#cb6-22"></a>ax[<span class="dv">1</span>].<span class="bu">set</span>(title<span class="op">=</span><span class="st">'rotated coordinate system'</span>, xlim<span class="op">=</span>x_oblique_axis, ylim<span class="op">=</span>x_oblique_axis, xticks<span class="op">=</span>[], yticks<span class="op">=</span>[])</span>
+<span id="cb6-23"><a href="#cb6-23"></a>ax[<span class="dv">1</span>].annotate(<span class="st">""</span>, xy<span class="op">=</span>x_prime, xytext<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">0</span>), fontsize<span class="op">=</span><span class="dv">10</span>, color<span class="op">=</span><span class="st">"black"</span>, arrowprops<span class="op">=</span><span class="bu">dict</span>(arrowstyle<span class="op">=</span><span class="st">"-&gt;"</span>, facecolor<span class="op">=</span><span class="st">'black'</span>, lw<span class="op">=</span><span class="dv">4</span>, shrinkA<span class="op">=</span><span class="dv">0</span>, shrinkB<span class="op">=</span><span class="dv">0</span>),)</span>
+<span id="cb6-24"><a href="#cb6-24"></a>ax[<span class="dv">1</span>].annotate(<span class="st">""</span>, xy<span class="op">=</span>y_prime, xytext<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">0</span>), fontsize<span class="op">=</span><span class="dv">10</span>, color<span class="op">=</span><span class="st">"black"</span>, arrowprops<span class="op">=</span><span class="bu">dict</span>(arrowstyle<span class="op">=</span><span class="st">"-&gt;"</span>, facecolor<span class="op">=</span><span class="st">'black'</span>, lw<span class="op">=</span><span class="dv">4</span>, shrinkA<span class="op">=</span><span class="dv">0</span>, shrinkB<span class="op">=</span><span class="dv">0</span>),)</span>
+<span id="cb6-25"><a href="#cb6-25"></a>ax[<span class="dv">1</span>].text(<span class="dv">15</span>, <span class="dv">10</span>, <span class="vs">r"</span><span class="dv">$</span><span class="vs">x'</span><span class="dv">$</span><span class="vs">"</span>, fontsize<span class="op">=</span><span class="dv">16</span>, color<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb6-26"><a href="#cb6-26"></a>ax[<span class="dv">1</span>].text(<span class="op">-</span><span class="dv">7</span>, <span class="dv">18</span>, <span class="vs">r"</span><span class="dv">$</span><span class="vs">y'</span><span class="dv">$</span><span class="vs">"</span>, fontsize<span class="op">=</span><span class="dv">16</span>, color<span class="op">=</span><span class="st">"black"</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="basic_properties_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The rotated coordinate system is defined by unit vectors <span class="math inline">x'</span> and <span class="math inline">y'</span> which are exactly the column vectors of the rotation matrix <span class="math inline">g</span>!</p>
+<p>So, another way to interpret the conjugation <span class="math inline">k' = g k g^{-1}</span> is that it represents the same operation <span class="math inline">k</span> (reflection across the <span class="math inline">x</span>-axis), but in a rotated coordinate system defined by <span class="math inline">g</span>.</p>
+<p>The idea of conjugation is very general and can be applied to any operation, not just reflections. The one requirement is that the operation <span class="math inline">g</span> must be invertible, so that we can apply <span class="math inline">g^{-1}</span> to reverse the effect of <span class="math inline">g</span>.</p>
+<p>Conjugation by <span class="math inline">g</span> preserves many properties of the operation <span class="math inline">k</span>.</p>
+<ul>
+<li>The determinant of <span class="math inline">k'</span> is the same as the determinant of <span class="math inline">k</span>.</li>
+<li>The trace of <span class="math inline">k'</span> is the same as the trace of <span class="math inline">k</span>.</li>
+<li>The eigenvalues of <span class="math inline">k'</span> are the same as the eigenvalues of <span class="math inline">k</span>.</li>
+<li>The conjugation of a bracket of two operations is the same as the bracket of the conjugated operations: <span class="math display">\begin{align*}
+[k, l]' &amp;= g [k, l] g^{-1} \\
+&amp;= g (kl - lk) g^{-1} \\
+&amp;= gklg^{-1} - glkg^{-1} \\
+&amp;= gkg^{-1}glg^{-1} - glg^{-1}gkg^{-1} \\
+&amp;= (gkg^{-1})(glg^{-1}) - (glg^{-1})(gkg^{-1}) \\
+&amp;= [gkg^{-1}, glg^{-1}] \\
+&amp;= [k', l']
+\end{align*}</span></li>
+</ul>
 
 
 </section>
@@ -467,14 +717,13 @@ P^{-1}\exp(A)P = 1 + D + \frac{D^2}{2!} + \frac{D^3}{3!} = \exp(D)
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

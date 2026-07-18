@@ -2,16 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.7.31">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>9&nbsp; Legendre transformations visualized – mishmash</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -77,10 +74,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-84bb7a51fcc1ae1268a7e2af559d4b30.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-a588049bcf6ba0aff1d03aeee07a0105.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-75d35b8b933727816098ee1d621b2fac.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-2c63ad6a8cffefe8536d13eabcc001d1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -151,7 +148,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -193,8 +190,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../archive/logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="../archive/logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <img src="../archive/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="../">mishmash</a> 
@@ -443,14 +439,14 @@ p = \frac{df}{dx}.
 <div id="4c7d5af9" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>import libraries</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="b95c1f49" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>define useful functions</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">def</span> f(x):</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">def</span> f(x):</span>
 <span id="cb2-2"><a href="#cb2-2"></a>    <span class="cf">return</span> x<span class="op">**</span><span class="dv">2</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="kw">def</span> f_inverse(p):</span>
 <span id="cb2-4"><a href="#cb2-4"></a>    <span class="cf">return</span> (p<span class="op">/</span><span class="dv">2</span>)<span class="op">**</span><span class="dv">2</span></span>
@@ -465,13 +461,13 @@ p = \frac{df}{dx}.
 <span id="cb2-13"><a href="#cb2-13"></a><span class="kw">def</span> tangent_line(x, x0):</span>
 <span id="cb2-14"><a href="#cb2-14"></a>    <span class="cf">return</span> f_prime(x0) <span class="op">*</span> (x <span class="op">-</span> x0) <span class="op">+</span> f(x0)</span>
 <span id="cb2-15"><a href="#cb2-15"></a><span class="kw">def</span> tangent_line2(x, x0):</span>
-<span id="cb2-16"><a href="#cb2-16"></a>    <span class="cf">return</span> f_prime2(x0) <span class="op">*</span> (x <span class="op">-</span> x0) <span class="op">+</span> f2(x0)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-16"><a href="#cb2-16"></a>    <span class="cf">return</span> f_prime2(x0) <span class="op">*</span> (x <span class="op">-</span> x0) <span class="op">+</span> f2(x0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="86761029" class="cell" data-execution_count="22">
 <details class="code-fold">
 <summary>plot</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>fig, axx <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">8</span>))</span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>fig, axx <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">8</span>))</span>
 <span id="cb3-2"><a href="#cb3-2"></a></span>
 <span id="cb3-3"><a href="#cb3-3"></a>ax <span class="op">=</span> axx.flatten()</span>
 <span id="cb3-4"><a href="#cb3-4"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">100</span>)</span>
@@ -544,7 +540,7 @@ p = \frac{df}{dx}.
 <span id="cb3-71"><a href="#cb3-71"></a>         fontweight<span class="op">=</span><span class="st">"bold"</span>)</span>
 <span id="cb3-72"><a href="#cb3-72"></a>ax[<span class="dv">3</span>].text(<span class="fl">0.03</span>, <span class="fl">0.97</span>, <span class="vs">r"d"</span>, transform<span class="op">=</span>ax[<span class="dv">3</span>].transAxes, </span>
 <span id="cb3-73"><a href="#cb3-73"></a>         horizontalalignment<span class="op">=</span><span class="st">'left'</span>, verticalalignment<span class="op">=</span><span class="st">'top'</span>,</span>
-<span id="cb3-74"><a href="#cb3-74"></a>         fontweight<span class="op">=</span><span class="st">"bold"</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-74"><a href="#cb3-74"></a>         fontweight<span class="op">=</span><span class="st">"bold"</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -608,7 +604,7 @@ g_2(p) &amp;= f_2(x(p)) \\
 <div id="ac4ed309" class="cell" data-execution_count="24">
 <details class="code-fold">
 <summary>plot</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>fig, axx <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">8</span>))</span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>fig, axx <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">8</span>))</span>
 <span id="cb4-2"><a href="#cb4-2"></a></span>
 <span id="cb4-3"><a href="#cb4-3"></a>ax <span class="op">=</span> axx.flatten()</span>
 <span id="cb4-4"><a href="#cb4-4"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">100</span>)</span>
@@ -673,7 +669,7 @@ g_2(p) &amp;= f_2(x(p)) \\
 <span id="cb4-63"><a href="#cb4-63"></a>         fontweight<span class="op">=</span><span class="st">"bold"</span>)</span>
 <span id="cb4-64"><a href="#cb4-64"></a>ax[<span class="dv">3</span>].text(<span class="fl">0.03</span>, <span class="fl">0.97</span>, <span class="vs">r"d"</span>, transform<span class="op">=</span>ax[<span class="dv">3</span>].transAxes, </span>
 <span id="cb4-65"><a href="#cb4-65"></a>         horizontalalignment<span class="op">=</span><span class="st">'left'</span>, verticalalignment<span class="op">=</span><span class="st">'top'</span>,</span>
-<span id="cb4-66"><a href="#cb4-66"></a>         fontweight<span class="op">=</span><span class="st">"bold"</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-66"><a href="#cb4-66"></a>         fontweight<span class="op">=</span><span class="st">"bold"</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -706,7 +702,7 @@ y = px - g.
 <div id="c77e0a79" class="cell" data-execution_count="27">
 <details class="code-fold">
 <summary>plot</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
 <span id="cb5-2"><a href="#cb5-2"></a></span>
 <span id="cb5-3"><a href="#cb5-3"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">100</span>)</span>
 <span id="cb5-4"><a href="#cb5-4"></a></span>
@@ -734,7 +730,7 @@ y = px - g.
 <span id="cb5-26"><a href="#cb5-26"></a>            yticks<span class="op">=</span>np.arange(<span class="op">-</span><span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">1</span>),</span>
 <span id="cb5-27"><a href="#cb5-27"></a>            title<span class="op">=</span><span class="vs">r"</span><span class="dv">$</span><span class="vs">g</span><span class="kw">(</span><span class="vs">p</span><span class="kw">)</span><span class="dv">$</span><span class="vs"> as the negative y-intercept of the tangent line"</span></span>
 <span id="cb5-28"><a href="#cb5-28"></a>            )</span>
-<span id="cb5-29"><a href="#cb5-29"></a>ax.set_xlabel(<span class="st">'$x$'</span>, loc<span class="op">=</span><span class="st">'right'</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-29"><a href="#cb5-29"></a>ax.set_xlabel(<span class="st">'$x$'</span>, loc<span class="op">=</span><span class="st">'right'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -792,7 +788,7 @@ f(x) &amp;= p\cdot x - g(p(x)) \\
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="2" data-source-offset="-1"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 1;"><span id="cb6-2"><a href="#cb6-2"></a>blue_color <span class="op">=</span> <span class="st">"#0343df"</span></span>
+<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="2" data-source-offset="-1"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 1;"><span id="cb6-2"><a href="#cb6-2"></a>blue_color <span class="op">=</span> <span class="st">"#0343df"</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a>red_color <span class="op">=</span> <span class="st">"#e50000"</span></span>
 <span id="cb6-4"><a href="#cb6-4"></a></span>
 <span id="cb6-5"><a href="#cb6-5"></a><span class="co">// 1. Define the slider without a label to keep it tight</span></span>
@@ -806,7 +802,7 @@ f(x) &amp;= p\cdot x - g(p(x)) \\
 <span id="cb6-13"><a href="#cb6-13"></a><span class="co">// This puts "Slope p" right next to the number box</span></span>
 <span id="cb6-14"><a href="#cb6-14"></a><span class="fu">html</span><span class="vs">`&lt;div style="display: flex; align-items: center; gap: 10px; font-weight: bold; font-family: sans-serif; margin-bottom: 15px;"&gt;</span></span>
 <span id="cb6-15"><a href="#cb6-15"></a><span class="vs">  &lt;span&gt;x₀&lt;/span&gt; </span><span class="sc">${</span>viewof x0<span class="sc">}</span></span>
-<span id="cb6-16"><a href="#cb6-16"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="vs">&lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -838,7 +834,7 @@ f(x) &amp;= p\cdot x - g(p(x)) \\
 </div>
 <details class="code-fold hidden">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="18" data-source-offset="-460"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 17;"><span id="cb7-18"><a href="#cb7-18"></a>p1 <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> x0</span>
+<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="18" data-source-offset="-460"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 17;"><span id="cb7-18"><a href="#cb7-18"></a>p1 <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> x0</span>
 <span id="cb7-19"><a href="#cb7-19"></a>g <span class="op">=</span> p1 <span class="op">*</span> x0 <span class="op">-</span> (x0 <span class="op">**</span> <span class="dv">2</span>)</span>
 <span id="cb7-20"><a href="#cb7-20"></a>angle_degrees <span class="op">=</span> <span class="op">-</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">atan</span>(p1<span class="op">*</span>(<span class="dv">3</span><span class="op">/</span><span class="dv">16</span>)<span class="op">*</span>(<span class="dv">400</span><span class="op">/</span><span class="dv">600</span>)) <span class="op">*</span> (<span class="dv">180</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span>)</span>
 <span id="cb7-21"><a href="#cb7-21"></a></span>
@@ -926,7 +922,7 @@ f(x) &amp;= p\cdot x - g(p(x)) \\
 <span id="cb7-103"><a href="#cb7-103"></a>    })<span class="op">,</span></span>
 <span id="cb7-104"><a href="#cb7-104"></a></span>
 <span id="cb7-105"><a href="#cb7-105"></a>  ]</span>
-<span id="cb7-106"><a href="#cb7-106"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-106"><a href="#cb7-106"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -984,7 +980,7 @@ g(p) = f(x) - p\cdot x.
 <div id="2152d323" class="cell" data-execution_count="108">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">5</span>))</span>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">5</span>))</span>
 <span id="cb8-2"><a href="#cb8-2"></a>fig.subplots_adjust(left<span class="op">=</span><span class="fl">0.10</span>, right<span class="op">=</span><span class="fl">0.90</span>, top<span class="op">=</span><span class="fl">0.95</span>, bottom<span class="op">=</span><span class="fl">0.10</span>,</span>
 <span id="cb8-3"><a href="#cb8-3"></a>          hspace<span class="op">=</span><span class="fl">0.20</span>, wspace<span class="op">=</span><span class="fl">0.60</span>)</span>
 <span id="cb8-4"><a href="#cb8-4"></a></span>
@@ -1027,7 +1023,7 @@ g(p) = f(x) - p\cdot x.
 <span id="cb8-41"><a href="#cb8-41"></a>ax[<span class="dv">1</span>,<span class="dv">0</span>].set_title(<span class="st">"Original function $f(x)$"</span>, y<span class="op">=</span><span class="fl">0.8</span>)</span>
 <span id="cb8-42"><a href="#cb8-42"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].set_title(<span class="st">"Legendre transform</span><span class="ch">\n</span><span class="st">(Thermodynamics)"</span>, y<span class="op">=</span><span class="fl">0.8</span>)</span>
 <span id="cb8-43"><a href="#cb8-43"></a>ax[<span class="dv">1</span>,<span class="dv">0</span>].set_xlabel(<span class="st">"$x$"</span>)</span>
-<span id="cb8-44"><a href="#cb8-44"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].set_xlabel(<span class="st">"$p$"</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-44"><a href="#cb8-44"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].set_xlabel(<span class="st">"$p$"</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -1049,7 +1045,7 @@ f(x) + g(p) = p \cdot x.
 <div id="fc83d7c2" class="cell" data-execution_count="140">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
 <span id="cb9-2"><a href="#cb9-2"></a>plt.text(<span class="fl">0.2</span>, <span class="fl">0.5</span>, <span class="vs">r"</span><span class="dv">$</span><span class="vs">f</span><span class="kw">(</span><span class="vs">x</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span>,</span>
 <span id="cb9-3"><a href="#cb9-3"></a>         size<span class="op">=</span><span class="dv">20</span>, rotation<span class="op">=</span><span class="dv">0</span>,</span>
 <span id="cb9-4"><a href="#cb9-4"></a>         ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"center"</span>,</span>
@@ -1092,7 +1088,7 @@ f(x) + g(p) = p \cdot x.
 <span id="cb9-41"><a href="#cb9-41"></a>        ha<span class="op">=</span><span class="st">"center"</span>)</span>
 <span id="cb9-42"><a href="#cb9-42"></a>ax.text(<span class="fl">0.5</span>, <span class="fl">0.2</span>, <span class="vs">r"</span><span class="dv">$</span><span class="vs">x=</span><span class="dv">\d</span><span class="vs">frac{dg}{dp}</span><span class="dv">$</span><span class="vs">"</span><span class="op">+</span><span class="st">"</span><span class="ch">\n</span><span class="st">"</span><span class="op">+</span><span class="vs">r"</span><span class="dv">$</span><span class="vs">f</span><span class="kw">(</span><span class="vs">x</span><span class="kw">)</span><span class="vs"> = px - g</span><span class="kw">(</span><span class="vs">p</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span>,</span>
 <span id="cb9-43"><a href="#cb9-43"></a>        ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"top"</span>)</span>
-<span id="cb9-44"><a href="#cb9-44"></a>ax.axis(<span class="st">'off'</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-44"><a href="#cb9-44"></a>ax.axis(<span class="st">'off'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -1124,7 +1120,7 @@ The <em>Legendre transformation</em> of the function <span class="math inline">f
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="3" data-source-offset="-58"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 2;"><span id="cb10-3"><a href="#cb10-3"></a>viewof p <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">4</span>]<span class="op">,</span> {</span>
+<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="3" data-source-offset="-58"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 2;"><span id="cb10-3"><a href="#cb10-3"></a>viewof p <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">4</span>]<span class="op">,</span> {</span>
 <span id="cb10-4"><a href="#cb10-4"></a>  <span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> </span>
 <span id="cb10-5"><a href="#cb10-5"></a>  <span class="dt">value</span><span class="op">:</span> <span class="fl">2.5</span><span class="op">,</span></span>
 <span id="cb10-6"><a href="#cb10-6"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">250</span></span>
@@ -1134,7 +1130,7 @@ The <em>Legendre transformation</em> of the function <span class="math inline">f
 <span id="cb10-10"><a href="#cb10-10"></a><span class="co">// This puts "Slope p" right next to the number box</span></span>
 <span id="cb10-11"><a href="#cb10-11"></a><span class="fu">html</span><span class="vs">`&lt;div style="display: flex; align-items: center; gap: 10px; font-weight: bold; font-family: sans-serif; margin-bottom: 15px;"&gt;</span></span>
 <span id="cb10-12"><a href="#cb10-12"></a><span class="vs">  &lt;span&gt;Slope p&lt;/span&gt; </span><span class="sc">${</span>viewof p<span class="sc">}</span></span>
-<span id="cb10-13"><a href="#cb10-13"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-13"><a href="#cb10-13"></a><span class="vs">&lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -1152,7 +1148,7 @@ The <em>Legendre transformation</em> of the function <span class="math inline">f
 </div>
 <details class="code-fold hidden">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="15" data-source-offset="-417"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 14;"><span id="cb11-15"><a href="#cb11-15"></a>xo <span class="op">=</span> p <span class="op">/</span> <span class="dv">2</span></span>
+<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="15" data-source-offset="-417"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 14;"><span id="cb11-15"><a href="#cb11-15"></a>xo <span class="op">=</span> p <span class="op">/</span> <span class="dv">2</span></span>
 <span id="cb11-16"><a href="#cb11-16"></a></span>
 <span id="cb11-17"><a href="#cb11-17"></a><span class="co">// 3. Define the plot</span></span>
 <span id="cb11-18"><a href="#cb11-18"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
@@ -1241,7 +1237,7 @@ The <em>Legendre transformation</em> of the function <span class="math inline">f
 <span id="cb11-101"><a href="#cb11-101"></a>      <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">16</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span><span class="op">,</span> <span class="dt">dx</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span> </span>
 <span id="cb11-102"><a href="#cb11-102"></a>    })<span class="op">,</span></span>
 <span id="cb11-103"><a href="#cb11-103"></a>  ]</span>
-<span id="cb11-104"><a href="#cb11-104"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb11-104"><a href="#cb11-104"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -1308,7 +1304,7 @@ y = px - g.
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="3" data-source-offset="-58"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 2;"><span id="cb12-3"><a href="#cb12-3"></a>viewof p2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">7</span>]<span class="op">,</span> {</span>
+<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="3" data-source-offset="-58"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 2;"><span id="cb12-3"><a href="#cb12-3"></a>viewof p2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">7</span>]<span class="op">,</span> {</span>
 <span id="cb12-4"><a href="#cb12-4"></a>  <span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> </span>
 <span id="cb12-5"><a href="#cb12-5"></a>  <span class="dt">value</span><span class="op">:</span> <span class="fl">2.5</span><span class="op">,</span></span>
 <span id="cb12-6"><a href="#cb12-6"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">250</span></span>
@@ -1318,7 +1314,7 @@ y = px - g.
 <span id="cb12-10"><a href="#cb12-10"></a><span class="co">// This puts "Slope p" right next to the number box</span></span>
 <span id="cb12-11"><a href="#cb12-11"></a><span class="fu">html</span><span class="vs">`&lt;div style="display: flex; align-items: center; gap: 10px; font-weight: bold; font-family: sans-serif; margin-bottom: 15px;"&gt;</span></span>
 <span id="cb12-12"><a href="#cb12-12"></a><span class="vs">  &lt;span&gt;Slope p&lt;/span&gt; </span><span class="sc">${</span>viewof p2<span class="sc">}</span></span>
-<span id="cb12-13"><a href="#cb12-13"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-13"><a href="#cb12-13"></a><span class="vs">&lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -1336,7 +1332,7 @@ y = px - g.
 </div>
 <details class="code-fold hidden">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb13" data-startfrom="14" data-source-offset="-418"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 13;"><span id="cb13-14"><a href="#cb13-14"></a>x_naught <span class="op">=</span> p2 <span class="op">/</span> <span class="dv">2</span></span>
+<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="14" data-source-offset="-418"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 13;"><span id="cb13-14"><a href="#cb13-14"></a>x_naught <span class="op">=</span> p2 <span class="op">/</span> <span class="dv">2</span></span>
 <span id="cb13-15"><a href="#cb13-15"></a>gee <span class="op">=</span> p2 <span class="op">*</span> x_naught <span class="op">-</span> (x_naught <span class="op">**</span> <span class="dv">2</span>)</span>
 <span id="cb13-16"><a href="#cb13-16"></a></span>
 <span id="cb13-17"><a href="#cb13-17"></a><span class="co">// 3. Define the plot</span></span>
@@ -1403,7 +1399,7 @@ y = px - g.
 <span id="cb13-78"><a href="#cb13-78"></a>    })<span class="op">,</span></span>
 <span id="cb13-79"><a href="#cb13-79"></a></span>
 <span id="cb13-80"><a href="#cb13-80"></a>  ]</span>
-<span id="cb13-81"><a href="#cb13-81"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-81"><a href="#cb13-81"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -1514,14 +1510,13 @@ window._ojs.runtime.interpretFromScriptTags();
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
