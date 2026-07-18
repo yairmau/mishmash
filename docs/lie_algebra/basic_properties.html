@@ -448,7 +448,7 @@ P^{-1}\exp(A)P = 1 + D + \frac{D^2}{2!} + \frac{D^3}{3!} = \exp(D)
 <h2 data-number="10.2" class="anchored" data-anchor-id="conjugation"><span class="header-section-number">10.2</span> conjugation</h2>
 <p>I’d like to thank Adam Frank for his blog post on <a href="https://www.axiomtutor.com/new-blog?offset=1725466035734">axiomtutor.com</a> for helping me grasp intuitively the concept of conjugation.</p>
 <p>Conjugation represents the idea that one operation can be seen from two different points of view. I’ll start with a concrete example.</p>
-<p>Say that <span class="math inline">k</span> represents a reflection across the <span class="math inline">x</span>-axis, and <span class="math inline">g</span> represents a counter-clockwise rotation by an arbitrary angle <span class="math inline">\theta</span>. See below these to operations applied on a heart shape.</p>
+<p>Say that <span class="math inline">k</span> represents a reflection across the <span class="math inline">x</span>-axis, and <span class="math inline">g</span> represents a counter-clockwise rotation by an arbitrary angle <span class="math inline">\theta</span>. See below these two operations applied on a heart shape.</p>
 <div id="a0037068" class="cell" data-execution_count="45">
 <details class="code-fold">
 <summary>import libraries</summary>
@@ -604,7 +604,7 @@ g =
 <p><span class="math display">
 k' = g k g^{-1}.
 </span></p>
-<p>Now let’s see the same this from a slightly different perspective. If <span class="math inline">k</span> means reflecting across the <span class="math inline">x</span>-axis, then <span class="math inline">k'</span> can also be interpreted as reflecting across the <span class="math inline">x</span>-axis, but in a rotated coordinate system. See below, the usual axes <span class="math inline">x</span> and <span class="math inline">y</span> are used in the panel on the left, while a rotated coordinate system by <span class="math inline">\theta</span> is used in the panel on the right.</p>
+<p>Now let’s see the same thing from a slightly different perspective. If <span class="math inline">k</span> means reflecting across the <span class="math inline">x</span>-axis, then <span class="math inline">k'</span> can also be interpreted as reflecting across the <span class="math inline">x</span>-axis, but in a rotated coordinate system. See below, the usual axes <span class="math inline">x</span> and <span class="math inline">y</span> are used in the panel on the left, while a rotated coordinate system by <span class="math inline">\theta</span> is used in the panel on the right.</p>
 <div id="32dae23b" class="cell" data-execution_count="50">
 <details class="code-fold">
 <summary>conjugation of k and g applied to a heart shape</summary>
@@ -646,11 +646,16 @@ k' = g k g^{-1}.
 <p>The rotated coordinate system is defined by unit vectors <span class="math inline">x'</span> and <span class="math inline">y'</span> which are exactly the column vectors of the rotation matrix <span class="math inline">g</span>!</p>
 <p>So, another way to interpret the conjugation <span class="math inline">k' = g k g^{-1}</span> is that it represents the same operation <span class="math inline">k</span> (reflection across the <span class="math inline">x</span>-axis), but in a rotated coordinate system defined by <span class="math inline">g</span>.</p>
 <p>The idea of conjugation is very general and can be applied to any operation, not just reflections. The one requirement is that the operation <span class="math inline">g</span> must be invertible, so that we can apply <span class="math inline">g^{-1}</span> to reverse the effect of <span class="math inline">g</span>.</p>
+<p>The underlying principle behind this generality is the “change-of-basis” formula. If <span class="math inline">M</span> is the matrix of an operation <span class="math inline">k</span> in a given basis, and <span class="math inline">g</span> is an invertible matrix whose column vectors define a new basis, then</p>
+<p><span class="math display">
+g^{-1}Mg
+</span></p>
+<p>is the matrix of the same operator written in the basis whose vectors are the columns of <span class="math inline">g</span>.</p>
 <p>Conjugation by <span class="math inline">g</span> preserves many properties of the operation <span class="math inline">k</span>.</p>
 <ul>
 <li>The determinant of <span class="math inline">k'</span> is the same as the determinant of <span class="math inline">k</span>.</li>
 <li>The trace of <span class="math inline">k'</span> is the same as the trace of <span class="math inline">k</span>.</li>
-<li>The eigenvalues of <span class="math inline">k'</span> are the same as the eigenvalues of <span class="math inline">k</span>.</li>
+<li>The eigenvalues of <span class="math inline">k'</span> are the same as the eigenvalues of <span class="math inline">k</span>. (The eigenvectors are rotated by <span class="math inline">g</span>).</li>
 <li>The conjugation of a bracket of two operations is the same as the bracket of the conjugated operations: <span class="math display">\begin{align*}
 [k, l]' &amp;= g [k, l] g^{-1} \\
 &amp;= g (kl - lk) g^{-1} \\

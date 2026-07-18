@@ -1933,7 +1933,11 @@ g[Y,Z]g^{-1} = [gYg^{-1}, gZg^{-1}].
 </span></p>
 <p>We also note that at <span class="math inline">t=0</span>, <span class="math inline">\hat{Y}(0) = e^{0X}Ye^{-0X}=Y</span> and <span class="math inline">\hat{Z}(0) = e^{0X}Ze^{-0X} = Z</span>. Then continuing with the derivative of the right-hand side, we have:</p>
 <p><span class="math display">\begin{align*}
-\frac{d}{dt} \left[ gYg^{-1}, gZg^{-1} \right]_{t=0} &amp;= [X,Y]Z + Y[X,Z] - [X,Z]Y - Z[X,Y] \\
+\frac{d}{dt} \left[ gYg^{-1}, gZg^{-1} \right]_{t=0}
+&amp;= \left[ \tfrac{d}{dt}(\hat{Y}(t))\hat{Z}(t) + \hat{Y}(t)\tfrac{d}{dt}(\hat{Z}(t)) \right]_{t=0} \\
+&amp;- \left[ \tfrac{d}{dt}(\hat{Z}(t))\hat{Y}(t) + \hat{Z}(t)\tfrac{d}{dt}(\hat{Y}(t)) \right]_{t=0} \\
+&amp;= [X,Y]Z + Y[X,Z] \\
+&amp;- [X,Z]Y - Z[X,Y] \\
 &amp;= [[X,Y],Z] + [Y,[X,Z]]
 \end{align*}</span></p>
 <p>Now let’s equate the two derivatives we computed. We have:</p>
