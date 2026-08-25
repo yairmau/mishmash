@@ -19,6 +19,7 @@ book:
         - active_inference/intro-active-inference.qmd
         - active_inference/bayes-inference-easy.ipynb
         - active_inference/bayes-inference-intractable.ipynb
+        - active_inference/not-too-simple.ipynb
         - active_inference/simplex.ipynb
     - part: "thermodynamics"
       chapters:
@@ -48,6 +49,7 @@ format:
     theme:
       - flatly
       - custom.scss
+    css: styles.css
     fontsize: 1.2em
     highlight-style: kate-custom.theme #kate #solarized # kate # tango # breeze # ayu # monokai # breezedark # espresso
     include-in-header:

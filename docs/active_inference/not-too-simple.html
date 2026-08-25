@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>13&nbsp; start here – mishmash</title>
+<title>7&nbsp; simpler but not too simple – mishmash</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -33,8 +68,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../group_theory/wolfram-jupyter-test.html" rel="next">
-<link href="../lie_algebra/sl2.html" rel="prev">
+<link href="../active_inference/simplex.html" rel="next">
+<link href="../active_inference/bayes-inference-intractable.html" rel="prev">
 <link href="../archive/logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -142,7 +177,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../group_theory/start_here.html">group theory</a></li><li class="breadcrumb-item"><a href="../group_theory/start_here.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">start here</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../active_inference/intro-active-inference.html">active inference</a></li><li class="breadcrumb-item"><a href="../active_inference/not-too-simple.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">simpler but not too simple</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -206,13 +241,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">active inference</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../active_inference/intro-active-inference.html" class="sidebar-item-text sidebar-link">
@@ -233,7 +268,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../active_inference/not-too-simple.html" class="sidebar-item-text sidebar-link">
+  <a href="../active_inference/not-too-simple.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">simpler but not too simple</span></span></a>
   </div>
 </li>
@@ -293,16 +328,16 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
  <span class="menu-text">group theory</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../group_theory/start_here.html" class="sidebar-item-text sidebar-link active">
+  <a href="../group_theory/start_here.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">start here</span></span></a>
   </div>
 </li>
@@ -341,21 +376,21 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#a-concrete-example" id="toc-a-concrete-example" class="nav-link active" data-scroll-target="#a-concrete-example"><span class="header-section-number">13.1</span> a concrete example</a></li>
-  <li><a href="#the-formal-definition" id="toc-the-formal-definition" class="nav-link" data-scroll-target="#the-formal-definition"><span class="header-section-number">13.2</span> the formal definition</a></li>
-  <li><a href="#finite-groups" id="toc-finite-groups" class="nav-link" data-scroll-target="#finite-groups"><span class="header-section-number">13.3</span> finite groups</a></li>
-  <li><a href="#infinite-groups" id="toc-infinite-groups" class="nav-link" data-scroll-target="#infinite-groups"><span class="header-section-number">13.4</span> infinite groups</a></li>
-  <li><a href="#discrete-groups" id="toc-discrete-groups" class="nav-link" data-scroll-target="#discrete-groups"><span class="header-section-number">13.5</span> discrete groups</a></li>
-  <li><a href="#continuous-groups" id="toc-continuous-groups" class="nav-link" data-scroll-target="#continuous-groups"><span class="header-section-number">13.6</span> continuous groups</a></li>
+  <li><a href="#systems-states-and-fluctuations" id="toc-systems-states-and-fluctuations" class="nav-link active" data-scroll-target="#systems-states-and-fluctuations"><span class="header-section-number">7.1</span> Systems, states and fluctuations</a>
+  <ul class="collapse">
+  <li><a href="#equation-1" id="toc-equation-1" class="nav-link" data-scroll-target="#equation-1"><span class="header-section-number">7.1.1</span> equation 1</a></li>
+  <li><a href="#equation-2" id="toc-equation-2" class="nav-link" data-scroll-target="#equation-2"><span class="header-section-number">7.1.2</span> equation 2</a></li>
+  <li><a href="#equations-3-and-4" id="toc-equations-3-and-4" class="nav-link" data-scroll-target="#equations-3-and-4"><span class="header-section-number">7.1.3</span> equations 3 and 4</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../group_theory/start_here.html">group theory</a></li><li class="breadcrumb-item"><a href="../group_theory/start_here.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">start here</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../active_inference/intro-active-inference.html">active inference</a></li><li class="breadcrumb-item"><a href="../active_inference/not-too-simple.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">simpler but not too simple</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">start here</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/yairmau/mishmash/blob/main/group_theory/start_here.ipynb"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">simpler but not too simple</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button" data-quarto-source-url="https://github.com/yairmau/mishmash/blob/main/active_inference/not-too-simple.ipynb">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -372,180 +407,153 @@ window.Quarto = {
 </header>
 
 
-<section id="a-concrete-example" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="a-concrete-example"><span class="header-section-number">13.1</span> a concrete example</h2>
-<p>I think it is always best to start with a concrete example, and only later generalize to the abstract definition.</p>
-<p>You and I are looking at a blank rectangular sheet of paper on a table. If you look away, I could to a few things with it, and when you look back, you wouldn’t be able to tell the difference.</p>
+<p>The following are some notes taken while trying to understand the paper:</p>
+<blockquote class="blockquote">
+<p><strong>The free energy principle made simpler but not too simple</strong><br>
+by Karl Friston, Lancelot Da Costa, Noor Sajid, Conor Heins, Kai Ueltzhöffer, Grigorios A. Pavliotis, Thomas Parr</p>
+</blockquote>
+<div class="curved-paper">
+<p><img src="./content/simpler1.png" class="img-fluid"></p>
+</div>
+<p>Download the paper <a href="./content/The free energy principle made simpler but not too simple.pdf">here</a>.</p>
+<section id="systems-states-and-fluctuations" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="systems-states-and-fluctuations"><span class="header-section-number">7.1</span> Systems, states and fluctuations</h2>
+<section id="equation-1" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="equation-1"><span class="header-section-number">7.1.1</span> equation 1</h3>
+<p><span class="math display">\begin{align*}
+\dot{x}(\tau) &amp;= f(x) + \omega(\tau) \\
+p(\omega\mid x)&amp;= \mathcal{N}(\omega; 0,2\Gamma) \Rightarrow p(\dot{x}\mid x) = \mathcal{N}(\dot{x};f, 2\Gamma) \\
+p(x) &amp;= ?
+\end{align*}</span></p>
+<p>Explanation:</p>
 <ul>
-<li>I could rotate the paper 180 degrees around its center, without lifting it off the table. Let’s call this operation <span class="math inline">r</span>, for “rotation”.</li>
-<li>I could flip the paper over along a horizontal line that runs through its center, so that the top becomes the bottom and vice versa. Let’s call this operation <span class="math inline">h</span>, for “horizontal flip”.</li>
-<li>I could flip the paper over along a vertical line that runs through its center, so that the left side becomes the right side and vice versa. Let’s call this operation <span class="math inline">v</span>, for “vertical flip”.</li>
-<li>I should mention an obvious manipulation, that would be do nothing. I could leave the paper as it is. Let’s call this operation <span class="math inline">e</span>. There is no reason to use the symbol <span class="math inline">e</span>, that’s what everybody agreed to use. The standard name for “do nothing” is “identity”.</li>
+<li><span class="math inline">x</span>. The vector of state variables, stacked as a column vector.</li>
+<li><span class="math inline">\tau</span>. Specific time at which something is evaluated</li>
+<li><span class="math inline">f(x)</span>. The (deterministic) flow, can be pictured as a vector field in the phase space.</li>
+<li><span class="math inline">\omega</span>. Random fluctuations</li>
+<li><span class="math inline">p(\omega\mid x)</span>. The probability density of a given random fluctuation, given that we know the value of the state vector.</li>
+<li><span class="math inline">\mathcal{N}(\omega; 0,2\Gamma)</span>. The probability density above turns out not to depend on <span class="math inline">x</span>, because the authors wanted so, but they could have chosen otherwise. In any case, the probability density looks like a gaussian (normal) distribution (over the variable <span class="math inline">\omega</span>), whose mean is zero and covariance is <span class="math inline">2\Gamma</span>.</li>
+<li><span class="math inline">p(\dot{x}\mid x) = \mathcal{N}(\dot{x};f, 2\Gamma)</span>. If this is not obvious from what came before (it wasn’t to me!), consider the following. If <span class="math inline">\omega</span> is a random variable, we are free to define a new random variable <span class="math inline">y=f+\omega</span>: we just shifted <span class="math inline">\omega</span> by <span class="math inline">f</span>, and gave it a name. What will be the mean and covariance of this new random variable <span class="math inline">y</span>? <span class="math display">\begin{align*}
+\mathbb{E}[y] &amp;= \mathbb{E}[f + \omega] = f + \mathbb{E}[\omega] = f + 0 = f \\
+\text{Cov}(y) &amp;= \text{Cov}(f+\omega) = \text{Cov}(\omega) = 2\Gamma
+\end{align*}</span> That’s it! The only thing now is to realize that the new random variable <span class="math inline">y</span> is really <span class="math inline">\dot{x}</span>. One could wonder why is it ok to treat <span class="math inline">f(x)</span> as it were a constant when we calculated the mean and covariance. This is kosher because <span class="math inline">p(\dot{x}\mid x)</span> is conditioning on <span class="math inline">x</span>, so <span class="math inline">f(x)</span> is simply a fixed vector.</li>
+<li><span class="math inline">p(x) = ?</span> The authors are asking: what can we say about the density over states? The absence of a time argument here is deliberate, it’s a first hint that the density we’ll eventually care about is a steady-state one.</li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
+</section>
+<section id="equation-2" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="equation-2"><span class="header-section-number">7.1.2</span> equation 2</h3>
+<p><span class="math display">
+\dot{p}(x, \tau) = \nabla \cdot (\Gamma \nabla - f(x))p(x,\tau)
+</span></p>
+<p>This is the Fokker-Planck equation associated with the Langevin equation given in the first row of equation (1). This equation descibes how the probability density evolves over time.</p>
+<p>Let’s try to justify how the Fokker-Planck equation originates. Think of <span class="math inline">p(x,\tau)</span> as a “fluid” of probability mass flowing through state space as time passes. The fluid-like behavior comes from the fact that the total probability is conserved (it is 1), just like a fluid that is able to move from here to there, but not disappear. We can describe the probability density with a continuity equation, just like we usually do for fluids, masses, charges, etc:</p>
+<p><span class="math display">
+\dot{p}(x,\tau) = -\nabla \cdot J(x,\tau)
+</span></p>
+<p>In the continuity equation above, <span class="math inline">J</span> is a probability current. This current can be split into two components:</p>
+<ul>
+<li><strong>Advection</strong>: the deterministic flow <span class="math inline">f(x)</span> carries the probability mass along with it, just like a water current carries leaves floating on the water surface. The drift of <span class="math inline">p</span> will be higher where the <span class="math inline">p</span> density is higher, and lower where <span class="math inline">p</span> is more sparse. This gives <span class="math inline">J_{\text{drift}}=f(x)p(x,\tau)</span>.</li>
+<li><strong>Diffusion</strong>: the random fluctuations <span class="math inline">\omega(\tau)</span> spread probability mass out, just like dye diffusing in still water. Fick’s law says that the diffusive flux is proportional to the (negative) gradient of concentration. Picture in your mind a cloud of perfume hanging in the air. The gradient of perfume concentration points to the center of the cloud, in the direction of increasing concentration. Fick’s law says that the diffusive flux points in the opposite direction of the gradient (in this example, outward), and that makes sense. The higher the concentration difference between two points, the larger the flux, and that also makes sense. Of course, if there is no concentration difference between two points, then there won’t be any flux. This give the following equation: <span class="math inline">J_{\text{diff}}=-\Gamma\nabla p(x,\tau)</span>. The <span class="math inline">\Gamma</span> in this equation is the very same <span class="math inline">\Gamma</span> from the random-fluctuations covariance in equation (1). It plays the role of a diffusion coefficient: the higher the value of <span class="math inline">\Gamma</span>, the faster the diffusive flux will be. The assumption that random fluctuations are state-independent makes the <span class="math inline">\Gamma</span> be to the left of the <span class="math inline">\nabla</span> operator; if they weren’t, then we would have instead <span class="math inline">\nabla (\Gamma p(x,\tau))</span>.</li>
+</ul>
+<p>Putting these two contributions together, we have</p>
+<p><span class="math display">\begin{align*}
+J(x,\tau) &amp;= J_{\text{drift}} + J_{\text{diff}} \\
+&amp; = f(x)p(x,\tau) -\Gamma\nabla p(x,\tau)
+\end{align*}</span></p>
+<p>Finally, we can plug <span class="math inline">J</span> into the continuity equation:</p>
+<p><span class="math display">\begin{align*}
+\dot{p}(x,\tau) &amp;= -\nabla \cdot J(x,\tau) \\
+&amp;= -\nabla \cdot (f(x)p(x,\tau) -\Gamma\nabla p(x,\tau)) \\
+&amp;= \nabla \cdot (\Gamma \nabla - f(x))p(x,\tau)
+\end{align*}</span></p>
+<p>Note that in the last line we factor out <span class="math inline">p</span> and rearranged the terms a bit.</p>
+<p>Let’s do a sanity check:</p>
+<ul>
+<li>If <span class="math inline">\Gamma=0</span> (i.e., there is no noise in the system), the Fokker-Planck equation becomes a deterministic drift: <span class="math inline">\dot{p} = -\nabla \cdot f(x)p</span>.</li>
+<li>If <span class="math inline">f(x)=0</span> (there is no flow), the F-P equation becomes simply <span class="math inline">\dot{p}=\nabla \cdot(\Gamma\nabla p)</span>, which is the <em>anisotropic</em> heat equation. We would get the isotropic heat equation <span class="math inline">(\dot{p}=\Gamma\nabla^2 p</span> if the covariance matrix <span class="math inline">\Gamma</span> was a scalar multiple of the identity matrix (in general it isn’t).</li>
+</ul>
+<p>Note: One can perform a Kramers-Moyal expansion, which is a more rigorous way of deriving the Fokker-Planck equation. The final form we got here is dependent on the assumption that the noise is gaussian. If it weren’t, we would get extra terms in the F-P equation.</p>
+</section>
+<section id="equations-3-and-4" class="level3" data-number="7.1.3">
+<h3 data-number="7.1.3" class="anchored" data-anchor-id="equations-3-and-4"><span class="header-section-number">7.1.3</span> equations 3 and 4</h3>
+<p>Equation 3: <span class="math display">\begin{align*}
+\mathcal{A}(x[\tau]) &amp;= - \ln p(x[\tau] \mid x_0) \\
+&amp;= \frac{\tau}{2} \ln \left| (4\pi)^n \Gamma\right| + \int_{0}^\tau dt \mathcal{L}(x,\dot{x}) \\
+\mathcal{L}(x,\dot{x}) &amp;= \frac{1}{2}\left[ (\dot{x}-f)\cdot \frac{1}{2\Gamma}(\dot{x}-f) + \nabla\cdot f \right]
+\end{align*}</span></p>
+<p>Equation 4: <span class="math display">\begin{align*}
+\bm{x}[\tau] &amp;= \arg \min_{x[\tau]} \mathcal{A}(x[\tau]) \\
+&amp;\Leftrightarrow \delta_x \mathcal{A}(\bm{x}[\tau]) = 0 \\
+&amp;\Leftrightarrow \dot{\bm{x}}(\tau) = f(x)
+\end{align*}</span></p>
+<div id="a71debc6" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="6f1d2676" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># 2d nonlinear function of x and y</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">def</span> f(x, y):</span>
+<span id="cb2-3"><a href="#cb2-3"></a>    <span class="cf">return</span> np.sin(x) <span class="op">*</span> np.cos(y) <span class="op">+</span> <span class="fl">0.1</span> <span class="op">*</span> (x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> y<span class="op">**</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="b660dbda" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">100</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a>y <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">100</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a>X, Y <span class="op">=</span> np.meshgrid(x, y)</span>
+<span id="cb3-4"><a href="#cb3-4"></a>Z <span class="op">=</span> f(X, Y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="062de9aa" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># numerically compute hessian element f_xx, f_xy, f_yx, f_yy</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>eps <span class="op">=</span> <span class="fl">1e-5</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>f_xx <span class="op">=</span> (f(X<span class="op">+</span>eps, Y) <span class="op">-</span> <span class="dv">2</span><span class="op">*</span>f(X, Y) <span class="op">+</span> f(X<span class="op">-</span>eps, Y)) <span class="op">/</span> (eps<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb4-4"><a href="#cb4-4"></a>f_yy <span class="op">=</span> (f(X, Y<span class="op">+</span>eps) <span class="op">-</span> <span class="dv">2</span><span class="op">*</span>f(X, Y) <span class="op">+</span> f(X, Y<span class="op">-</span>eps)) <span class="op">/</span> (eps<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb4-5"><a href="#cb4-5"></a>f_xy <span class="op">=</span> (f(X<span class="op">+</span>eps, Y<span class="op">+</span>eps) <span class="op">-</span> f(X<span class="op">+</span>eps, Y<span class="op">-</span>eps) <span class="op">-</span> f(X<span class="op">-</span>eps, Y<span class="op">+</span>eps) <span class="op">+</span> f(X<span class="op">-</span>eps, Y<span class="op">-</span>eps)) <span class="op">/</span> (<span class="dv">4</span><span class="op">*</span>eps<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb4-6"><a href="#cb4-6"></a>f_yx <span class="op">=</span> f_xy  <span class="co"># mixed partials are equal</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[8]</span><span class="ansi-green-fg">, line 2</span>
+<span class="ansi-green-fg">      1</span> <span style="font-style:italic;color:rgb(95,135,135)"># numerically compute hessian element f_xx, f_xy, f_yx, f_yy</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> hessian_elements = hessian(f, X, Y)
+<span class="ansi-green-fg">      3</span> f_xx = hessian_elements[<span class="ansi-green-fg">0</span>, <span class="ansi-green-fg">0</span>]
+<span class="ansi-green-fg">      4</span> f_xy = hessian_elements[<span class="ansi-green-fg">0</span>, <span class="ansi-green-fg">1</span>]
+<span class="ansi-green-fg">      5</span> f_yx = hessian_elements[<span class="ansi-green-fg">1</span>, <span class="ansi-green-fg">0</span>]
+
+<span class="ansi-red-fg">TypeError</span>: hessian() takes 2 positional arguments but 3 were given</pre>
+</div>
+</div>
+</div>
+<div id="b13dc3de" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># plot f(x,y) over a grid of x and y values, use viridis colormap, and add a colorbar</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a></span>
+<span id="cb5-3"><a href="#cb5-3"></a>plt.imshow(Z, extent<span class="op">=</span>[<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>], origin<span class="op">=</span><span class="st">'lower'</span>, cmap<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb5-4"><a href="#cb5-4"></a>plt.colorbar()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
 <figure class="figure">
-<p><img src="S4_rectangle.svg" class="img-fluid figure-img"></p>
-<figcaption>Source: <a href="https://web.math.utk.edu/~dcartwr1/iaawa/section-sym.html" class="uri">https://web.math.utk.edu/~dcartwr1/iaawa/section-sym.html</a></figcaption>
+<p><img src="not-too-simple_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
-<p>The four operations are shown in the image above, where the four corners of the rectangle are labeled to indicate which operation transforms the rectangle in which way.</p>
-<p>All these four operations act on an object (the rectangle), and leave it unchanged. They are the <strong>symmetries</strong> of the object.</p>
-<p>While you’re looking away, I could decide to perform two operations in sequence. For example, I could first perform a horizontal flip (<span class="math inline">h</span>) and then a rotation (<span class="math inline">r</span>). The result would clearly leave the rectangle unchanged from your point of view. If you look carefully at the image above, you’ll find out that the composition of these two operations is equivalent to a single operation, which is performing a vertical flip (<span class="math inline">v</span>).</p>
-<p>I can then ask the question: what if I try all possible compositions of these four operations?</p>
-<div class="custom-table" style="width: 250px; margin: 0 auto;">
-<table class="caption-top table">
-<caption>The group table for the symmetries of a rectangle</caption>
-<thead>
-<tr class="header">
-<th></th>
-<th><span class="math inline">e</span></th>
-<th><span class="math inline">r</span></th>
-<th><span class="math inline">h</span></th>
-<th><span class="math inline">v</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>e</strong></td>
-<td><span class="math inline">e</span></td>
-<td><span class="math inline">r</span></td>
-<td><span class="math inline">h</span></td>
-<td><span class="math inline">v</span></td>
-</tr>
-<tr class="even">
-<td><strong>r</strong></td>
-<td><span class="math inline">r</span></td>
-<td><span class="math inline">e</span></td>
-<td><span class="math inline">v</span></td>
-<td><span class="math inline">h</span></td>
-</tr>
-<tr class="odd">
-<td><strong>h</strong></td>
-<td><span class="math inline">h</span></td>
-<td><span class="math inline">v</span></td>
-<td><span class="math inline">e</span></td>
-<td><span class="math inline">r</span></td>
-</tr>
-<tr class="even">
-<td><strong>v</strong></td>
-<td><span class="math inline">v</span></td>
-<td><span class="math inline">h</span></td>
-<td><span class="math inline">r</span></td>
-<td><span class="math inline">e</span></td>
-</tr>
-</tbody>
-</table>
 </div>
-<style>
-/* Center the caption text below the centered table */
-.custom-table figcaption, .custom-table caption {
-  text-align: center;
-}
+</div>
 
-/* Target all cells in the header row */
-.custom-table table thead tr th {
-  background-color: #e0e0e0;
-}
 
-/* Strip the background from the very first cell in the header row */
-.custom-table table thead tr th:first-child {
-  background-color: transparent;
-}
-
-/* Target the first column in the body */
-.custom-table table tbody tr td:first-child {
-  background-color: #f0f0f0;
-}
-</style>
-<p>The table above is called a <strong>group table</strong>, or a <strong>Cayley table</strong>, or a <strong>multiplication table</strong>. It should be read as follows: the first operation to be executed is the one listed on the column header, and the second operation is the one listed on the row header. The cell at the intersection of the row and column gives the result of performing those two operations in sequence. For example, take the column “<span class="math inline">r</span>” and the row “<span class="math inline">h</span>”. We write their composition as “<span class="math inline">h * r</span>”, where the convetion is that operations are performed from right to left. This is similar to the way we read functions in mathematics: if we have two functions <span class="math inline">f</span> and <span class="math inline">g</span>, we write their composition as <span class="math inline">f \circ g</span>, which means “apply <span class="math inline">g</span>, and then <span class="math inline">f</span>”.</p>
-<p>From this table we can note a few things:</p>
-<ol type="1">
-<li>For any two operations in the table, the result of their composition is also an operation in the table. This is called <strong>closure</strong>.</li>
-<li>The order in which we perform three or more operations does not matter. In other words, for any three operations <span class="math inline">a</span>, <span class="math inline">b</span>, and <span class="math inline">c</span>, the result of <span class="math inline">(a * b) * c</span> is the same as <span class="math inline">a * (b * c)</span>. Let’s verify this with an example from the table: if we take the operations <span class="math inline">r</span>, <span class="math inline">h</span>, and <span class="math inline">v</span>, then <span class="math inline">(r * h) * v = v * v = e</span>, and <span class="math inline">r * (h * v) = r * r = e</span>. Since both results are equal, the operation is <strong>associative</strong>.</li>
-<li>There exists an <strong>identity</strong> element in the table, which is the operation that leaves everything unchanged when performed. In this case, it’s the <span class="math inline">e</span> operation.</li>
-<li>For each operation in the table, there exists another operation that, when performed after it, results in the identity element. For example, performing a rotation (<span class="math inline">r</span>) followed by another rotation (<span class="math inline">r</span>) results in the identity (<span class="math inline">e</span>). Every element in the table has an <strong>inverse</strong>.</li>
-</ol>
 </section>
-<section id="the-formal-definition" class="level2" data-number="13.2">
-<h2 data-number="13.2" class="anchored" data-anchor-id="the-formal-definition"><span class="header-section-number">13.2</span> the formal definition</h2>
-<p>Now that we are familiar with a concrete example of a group (the symmetries of a rectangle), we can state the formal definition of a group.</p>
-<p>A <strong>group</strong> is a set <span class="math inline">G</span> together with a binary operation <span class="math inline">*</span> (called the group operation, or simply a multiplication) that combines any two elements <span class="math inline">a</span> and <span class="math inline">b</span> in <span class="math inline">G</span> to form another element in <span class="math inline">G</span>, denoted <span class="math inline">a * b</span>, such that the following four conditions are satisfied:</p>
-<ol type="1">
-<li><strong>Closure</strong>: For all <span class="math inline">a</span>, <span class="math inline">b</span> in <span class="math inline">G</span>, the result of the operation <span class="math inline">a * b</span> is also in <span class="math inline">G</span>.</li>
-<li><strong>Associativity</strong>: For all <span class="math inline">a</span>, <span class="math inline">b</span>, <span class="math inline">c</span> in <span class="math inline">G</span>, <span class="math inline">(a * b) * c = a * (b * c)</span>.</li>
-<li><strong>Identity</strong>: There exists an element <span class="math inline">e</span> in <span class="math inline">G</span> such that for every element a in <span class="math inline">G</span>, <span class="math inline">e * a = a * e = a</span>. This element <span class="math inline">e</span> is called the <strong>identity</strong> of the group.</li>
-<li><strong>Inverse</strong>: For each element a in <span class="math inline">G</span>, there exists an element <span class="math inline">b</span> in <span class="math inline">G</span> such that <span class="math inline">a * b = b * a = e</span>, where <span class="math inline">e</span> is the identity element. The element <span class="math inline">b</span> is called the <strong>inverse</strong> of <span class="math inline">a</span> and is usually denoted as <span class="math inline">a^{-1}</span>.</li>
-</ol>
-</section>
-<section id="finite-groups" class="level2" data-number="13.3">
-<h2 data-number="13.3" class="anchored" data-anchor-id="finite-groups"><span class="header-section-number">13.3</span> finite groups</h2>
-<p>The example of the symmetries of a rectangle is a finite group because it has a finite number of elements (in this case, 4 elements: e, r, h, v). Its formal name is the “Klein four-group”, or <span class="math inline">V_4</span>. Other intuitive examples of finite groups are:</p>
-<ul>
-<li><p>The symmetries of an equilateral triangle. Its elements are the identity, three rotations, and three reflections, making a total of 6 elements. This group is known as the “dihedral group of order 6”, or <span class="math inline">D_3</span>.</p></li>
-<li><p>The set of integers modulo <span class="math inline">n</span>, denoted by <span class="math inline">\mathbb{Z}/n\mathbb{Z}</span>, with the operation of addition modulo <span class="math inline">n</span>. This group has <span class="math inline">n</span> elements: <span class="math inline">\{0, 1, 2, \ldots, n-1\}</span>. The most common example of this type of group is what we use in clock arithmetic, where the numbers wrap around after reaching the maximum value. In that case, the elements are the hours on a clock (0 through 11 for a 12-hour clock), and the operation is addition modulo 12.</p></li>
-<li><p>The simplest non-trivial group is the “cyclic group of order 2”, or <span class="math inline">C_2</span>, which consists of two elements: the identity and one other element that is its own inverse. Examples in real life include the flip of a coin (heads or tails) or the state of a light switch (on or off). Interestingly, this same group can describe the multiplication of the numbers 1 and -1 (1 would be the identity and -1 would be the non-identity element).</p>
-<div class="custom-table" style="width: 250px; margin: 0 auto;">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th></th>
-<th><span class="math inline">e</span></th>
-<th><span class="math inline">a</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">e</span></td>
-<td><span class="math inline">e</span></td>
-<td><span class="math inline">a</span></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">a</span></td>
-<td><span class="math inline">a</span></td>
-<td><span class="math inline">e</span></td>
-</tr>
-</tbody>
-</table>
-</div></li>
-</ul>
-<style>
-/* Center the caption text below the centered table */
-.custom-table figcaption, .custom-table caption {
-  text-align: center;
-}
-
-/* Target all cells in the header row */
-.custom-table table thead tr th {
-  background-color: #e0e0e0;
-}
-
-/* Strip the background from the very first cell in the header row */
-.custom-table table thead tr th:first-child {
-  background-color: transparent;
-}
-
-/* Target the first column in the body */
-.custom-table table tbody tr td:first-child {
-  background-color: #f0f0f0;
-}
-</style>
-</section>
-<section id="infinite-groups" class="level2" data-number="13.4">
-<h2 data-number="13.4" class="anchored" data-anchor-id="infinite-groups"><span class="header-section-number">13.4</span> infinite groups</h2>
-<p>In contrast to finite groups, infinite groups have an infinite number of elements. A classic example of an infinite group is the set of all integers, denoted by ℤ, with the operation of addition. This group is called the “infinite cyclic group” or <span class="math inline">C_\infty</span>. The addition of any two integers always results in another integer, demonstrating the closure property. The identity element in this group is 0, and the inverse of any integer <span class="math inline">n</span> is <span class="math inline">-n</span>. As for the associative property, the condition <span class="math inline">(a + b) + c = a + (b + c)</span> holds for all integers <span class="math inline">a</span>, <span class="math inline">b</span>, and <span class="math inline">c</span>.</p>
-<p>Another example is the set of all real numbers, denoted by ℝ, with the operation of addition. This group is also infinite and is known as the “additive group of real numbers”.</p>
-</section>
-<section id="discrete-groups" class="level2" data-number="13.5">
-<h2 data-number="13.5" class="anchored" data-anchor-id="discrete-groups"><span class="header-section-number">13.5</span> discrete groups</h2>
-<p>In a discrete group, the elements are isolated from one another. There is a distinct “gap” between any two elements; you cannot smoothly slide from one element to the next.</p>
-<p>All finite groups are discrete groups because their elements are isolated and there is a clear gap between them. Some infinite groups are also discrete, such as the group of integers with addition, where each integer is separated from the next by a gap of 1. However, not all infinite groups are discrete; for example, the group of real numbers with addition is not discrete because there are no gaps between the elements.</p>
-</section>
-<section id="continuous-groups" class="level2" data-number="13.6">
-<h2 data-number="13.6" class="anchored" data-anchor-id="continuous-groups"><span class="header-section-number">13.6</span> continuous groups</h2>
-<p>In a continuous group, the elements form a continuous space (a manifold). You can make infinitely small, smooth adjustments to move from one element to a neighboring element. Continuous groups are always infinite.</p>
-<p>A classic example of a continuous group is the set of all real numbers with the operation of addition, which we already discussed as the “additive group of real numbers”. Another example is the group of rotations in three-dimensional space, known as the “special orthogonal group” or <span class="math inline">SO(3)</span>. This is the symmetry group of a sphere. This group consists of all rotations about the origin in 3D space, and the group operation is the composition of rotations. The elements of this group form a continuous surface (a manifold), and you can make infinitely small changes to a rotation to get a neighboring rotation. I do realize that the concept of a manifold is weird at the moment, and we will discuss it in more detail when we talk about Lie groups.</p>
-
-
 </section>
 
 </main> <!-- /main -->
@@ -1002,13 +1010,13 @@ window.Quarto = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../lie_algebra/sl2.html" class="pagination-link" aria-label="Lie algebra sl(2)">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Lie algebra sl(2)</span></span>
+      <a href="../active_inference/bayes-inference-intractable.html" class="pagination-link" aria-label="intractable bayesian inference">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">intractable bayesian inference</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../group_theory/wolfram-jupyter-test.html" class="pagination-link" aria-label="mathematica test">
-        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">mathematica test</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../active_inference/simplex.html" class="pagination-link" aria-label="simplex">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">simplex</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9&nbsp; Legendre transformations visualized – mishmash</title>
+<title>10&nbsp; Legendre transformations visualized – mishmash</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -74,10 +77,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-a588049bcf6ba0aff1d03aeee07a0105.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e3574cce5e3fde4ed97df547c7360872.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-2c63ad6a8cffefe8536d13eabcc001d1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-75d35b8b933727816098ee1d621b2fac.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -148,7 +151,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -164,6 +167,7 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar floating slimcontent quarto-light">
@@ -175,7 +179,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../thermodynamics/intro-thermodynamics.html">thermodynamics</a></li><li class="breadcrumb-item"><a href="../thermodynamics/legendre_transform.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Legendre transformations visualized</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../thermodynamics/intro-thermodynamics.html">thermodynamics</a></li><li class="breadcrumb-item"><a href="../thermodynamics/legendre_transform.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Legendre transformations visualized</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -190,7 +194,8 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../archive/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../archive/logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../archive/logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="../">mishmash</a> 
@@ -265,8 +270,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../active_inference/not-too-simple.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">simpler but not too simple</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../active_inference/simplex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">simplex</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">simplex</span></span></a>
   </div>
 </li>
       </ul>
@@ -283,13 +294,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../thermodynamics/intro-thermodynamics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">intro to thermodynamics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">intro to thermodynamics</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../thermodynamics/legendre_transform.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Legendre transformations visualized</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Legendre transformations visualized</span></span></a>
   </div>
 </li>
       </ul>
@@ -306,13 +317,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lie_algebra/basic_properties.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">basic properties</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">basic properties</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lie_algebra/sl2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Lie algebra sl(2)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Lie algebra sl(2)</span></span></a>
   </div>
 </li>
       </ul>
@@ -329,13 +340,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../group_theory/start_here.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">start here</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">start here</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../group_theory/wolfram-jupyter-test.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">mathematica test</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">mathematica test</span></span></a>
   </div>
 </li>
       </ul>
@@ -352,7 +363,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../intro-differential-geometry.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">intro to differential geometry</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">intro to differential geometry</span></span></a>
   </div>
 </li>
       </ul>
@@ -367,21 +378,21 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation"><span class="header-section-number">9.1</span> motivation</a></li>
-  <li><a href="#a-practical-example-that-doesnt-work" id="toc-a-practical-example-that-doesnt-work" class="nav-link" data-scroll-target="#a-practical-example-that-doesnt-work"><span class="header-section-number">9.2</span> a practical example that doesn’t work</a></li>
-  <li><a href="#y-intercept-not-slope" id="toc-y-intercept-not-slope" class="nav-link" data-scroll-target="#y-intercept-not-slope"><span class="header-section-number">9.3</span> y-intercept, not slope</a></li>
-  <li><a href="#duality-relationship" id="toc-duality-relationship" class="nav-link" data-scroll-target="#duality-relationship"><span class="header-section-number">9.4</span> duality relationship</a></li>
-  <li><a href="#derivation-according-to-v.i.-arnold" id="toc-derivation-according-to-v.i.-arnold" class="nav-link" data-scroll-target="#derivation-according-to-v.i.-arnold"><span class="header-section-number">9.5</span> derivation according to V.I. Arnold</a></li>
-  <li><a href="#sources" id="toc-sources" class="nav-link" data-scroll-target="#sources"><span class="header-section-number">9.6</span> sources</a></li>
+  <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation"><span class="header-section-number">10.1</span> motivation</a></li>
+  <li><a href="#a-practical-example-that-doesnt-work" id="toc-a-practical-example-that-doesnt-work" class="nav-link" data-scroll-target="#a-practical-example-that-doesnt-work"><span class="header-section-number">10.2</span> a practical example that doesn’t work</a></li>
+  <li><a href="#y-intercept-not-slope" id="toc-y-intercept-not-slope" class="nav-link" data-scroll-target="#y-intercept-not-slope"><span class="header-section-number">10.3</span> y-intercept, not slope</a></li>
+  <li><a href="#duality-relationship" id="toc-duality-relationship" class="nav-link" data-scroll-target="#duality-relationship"><span class="header-section-number">10.4</span> duality relationship</a></li>
+  <li><a href="#derivation-according-to-v.i.-arnold" id="toc-derivation-according-to-v.i.-arnold" class="nav-link" data-scroll-target="#derivation-according-to-v.i.-arnold"><span class="header-section-number">10.5</span> derivation according to V.I. Arnold</a></li>
+  <li><a href="#sources" id="toc-sources" class="nav-link" data-scroll-target="#sources"><span class="header-section-number">10.6</span> sources</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../thermodynamics/intro-thermodynamics.html">thermodynamics</a></li><li class="breadcrumb-item"><a href="../thermodynamics/legendre_transform.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Legendre transformations visualized</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../thermodynamics/intro-thermodynamics.html">thermodynamics</a></li><li class="breadcrumb-item"><a href="../thermodynamics/legendre_transform.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Legendre transformations visualized</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Legendre transformations visualized</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button" data-quarto-source-url="https://github.com/yairmau/mishmash/blob/main/thermodynamics/legendre_transform.ipynb">View Source</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Legendre transformations visualized</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button" data-quarto-source-url="https://github.com/yairmau/mishmash/blob/main/thermodynamics/legendre_transform.ipynb">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -398,8 +409,8 @@ window.Quarto = {
 </header>
 
 
-<section id="motivation" class="level2 page-columns page-full" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="motivation"><span class="header-section-number">9.1</span> motivation</h2>
+<section id="motivation" class="level2 page-columns page-full" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="motivation"><span class="header-section-number">10.1</span> motivation</h2>
 <p>It is hard to give good motivations for the Legendre transform without going into the physics of thermodynamics or classical mechanics. I’ll do that in another post. I’ll try to give here a mathematical motivation, which is to say, let’s clearly state what is the problem we would like to solve.</p>
 <p>Suppose we have a function <span class="math inline">f(x)</span>. We can compute its derivative <span class="math inline">p = \frac{df}{dx}</span>. Can we express <strong>the same information</strong> contained in <span class="math inline">f(x)</span> through a new function <span class="math inline">g(p)</span>? What do I mean by “the same information”?</p>
 <p><strong>Involution</strong><br>
@@ -415,7 +426,7 @@ The independent variable of <span class="math inline">g</span> is <span class="m
 <img src="legendre_transform_files/figure-html/fig-convex-concave-output-1.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-convex-concave-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.1: Comparison of Convex and Concave functions.
+Figure&nbsp;10.1: Comparison of Convex and Concave functions.
 </figcaption>
 </figure>
 </div>
@@ -424,8 +435,8 @@ Figure&nbsp;9.1: Comparison of Convex and Concave functions.
 The original function <span class="math inline">f(x)</span> <strong>has to be strictly convex</strong> (or concave) for the Legendre transform to be defined. Convexity (concavity) means that the second derivative is positive (negative). A geometric way to understand convexity is that if we draw a line between any two points of the graph of <span class="math inline">f(x)</span>, the line lies always above (or below) the graph. If this requirement is not satisfied, the mapping between <span class="math inline">x</span> and <span class="math inline">p</span> is no longer one-to-one, meaning we can no longer uniquely reconstruct the original function <span class="math inline">f(x)</span> from <span class="math inline">g(p)</span>. We used the word “strictly” because a convex function can have flat segments (zero second derivative) which break the one-to-one mapping, because several values of <span class="math inline">x</span> correspond to the same value of <span class="math inline">p</span>. The word strictly means that the second derivative is never zero.</p>
 <p>The challenge, then, is to find a mathematical operation that satisfies all three criteria: it must be an involution, it must swap the variable with the derivative, and it must rely on the unique curvature of the function.</p>
 </section>
-<section id="a-practical-example-that-doesnt-work" class="level2 page-columns page-full" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="a-practical-example-that-doesnt-work"><span class="header-section-number">9.2</span> a practical example that doesn’t work</h2>
+<section id="a-practical-example-that-doesnt-work" class="level2 page-columns page-full" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="a-practical-example-that-doesnt-work"><span class="header-section-number">10.2</span> a practical example that doesn’t work</h2>
 <p>I am following the arguments laid out by Dan Kosakowski in his YouTube video, <a href="https://youtu.be/P2HZelQm7Lw?si=vBaUeWywBtDsBIZq" target="_blank">A Simple yet Powerful Math Trick</a>.</p>
 <p>We start with a function <span class="math inline">f(x)</span>. For this practical example we’ll choose a parabola. In panel <strong>a</strong> below, we plot the function</p>
 <p><span class="math display">
@@ -439,14 +450,14 @@ p = \frac{df}{dx}.
 <div id="4c7d5af9" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>import libraries</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div id="b95c1f49" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>define useful functions</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">def</span> f(x):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">def</span> f(x):</span>
 <span id="cb2-2"><a href="#cb2-2"></a>    <span class="cf">return</span> x<span class="op">**</span><span class="dv">2</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="kw">def</span> f_inverse(p):</span>
 <span id="cb2-4"><a href="#cb2-4"></a>    <span class="cf">return</span> (p<span class="op">/</span><span class="dv">2</span>)<span class="op">**</span><span class="dv">2</span></span>
@@ -461,13 +472,13 @@ p = \frac{df}{dx}.
 <span id="cb2-13"><a href="#cb2-13"></a><span class="kw">def</span> tangent_line(x, x0):</span>
 <span id="cb2-14"><a href="#cb2-14"></a>    <span class="cf">return</span> f_prime(x0) <span class="op">*</span> (x <span class="op">-</span> x0) <span class="op">+</span> f(x0)</span>
 <span id="cb2-15"><a href="#cb2-15"></a><span class="kw">def</span> tangent_line2(x, x0):</span>
-<span id="cb2-16"><a href="#cb2-16"></a>    <span class="cf">return</span> f_prime2(x0) <span class="op">*</span> (x <span class="op">-</span> x0) <span class="op">+</span> f2(x0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-16"><a href="#cb2-16"></a>    <span class="cf">return</span> f_prime2(x0) <span class="op">*</span> (x <span class="op">-</span> x0) <span class="op">+</span> f2(x0)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div id="86761029" class="cell" data-execution_count="22">
 <details class="code-fold">
 <summary>plot</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>fig, axx <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">8</span>))</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>fig, axx <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">8</span>))</span>
 <span id="cb3-2"><a href="#cb3-2"></a></span>
 <span id="cb3-3"><a href="#cb3-3"></a>ax <span class="op">=</span> axx.flatten()</span>
 <span id="cb3-4"><a href="#cb3-4"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">100</span>)</span>
@@ -540,7 +551,7 @@ p = \frac{df}{dx}.
 <span id="cb3-71"><a href="#cb3-71"></a>         fontweight<span class="op">=</span><span class="st">"bold"</span>)</span>
 <span id="cb3-72"><a href="#cb3-72"></a>ax[<span class="dv">3</span>].text(<span class="fl">0.03</span>, <span class="fl">0.97</span>, <span class="vs">r"d"</span>, transform<span class="op">=</span>ax[<span class="dv">3</span>].transAxes, </span>
 <span id="cb3-73"><a href="#cb3-73"></a>         horizontalalignment<span class="op">=</span><span class="st">'left'</span>, verticalalignment<span class="op">=</span><span class="st">'top'</span>,</span>
-<span id="cb3-74"><a href="#cb3-74"></a>         fontweight<span class="op">=</span><span class="st">"bold"</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-74"><a href="#cb3-74"></a>         fontweight<span class="op">=</span><span class="st">"bold"</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -568,7 +579,7 @@ x(p) = \frac{p}{2}
 <img src="legendre_transform_files/figure-html/fig-nonconvex-output-1.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-nonconvex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.2: A non-convex function can have multiple points with the same slope.
+Figure&nbsp;10.2: A non-convex function can have multiple points with the same slope.
 </figcaption>
 </figure>
 </div>
@@ -604,7 +615,7 @@ g_2(p) &amp;= f_2(x(p)) \\
 <div id="ac4ed309" class="cell" data-execution_count="24">
 <details class="code-fold">
 <summary>plot</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>fig, axx <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">8</span>))</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>fig, axx <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">8</span>))</span>
 <span id="cb4-2"><a href="#cb4-2"></a></span>
 <span id="cb4-3"><a href="#cb4-3"></a>ax <span class="op">=</span> axx.flatten()</span>
 <span id="cb4-4"><a href="#cb4-4"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">100</span>)</span>
@@ -669,7 +680,7 @@ g_2(p) &amp;= f_2(x(p)) \\
 <span id="cb4-63"><a href="#cb4-63"></a>         fontweight<span class="op">=</span><span class="st">"bold"</span>)</span>
 <span id="cb4-64"><a href="#cb4-64"></a>ax[<span class="dv">3</span>].text(<span class="fl">0.03</span>, <span class="fl">0.97</span>, <span class="vs">r"d"</span>, transform<span class="op">=</span>ax[<span class="dv">3</span>].transAxes, </span>
 <span id="cb4-65"><a href="#cb4-65"></a>         horizontalalignment<span class="op">=</span><span class="st">'left'</span>, verticalalignment<span class="op">=</span><span class="st">'top'</span>,</span>
-<span id="cb4-66"><a href="#cb4-66"></a>         fontweight<span class="op">=</span><span class="st">"bold"</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-66"><a href="#cb4-66"></a>         fontweight<span class="op">=</span><span class="st">"bold"</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -691,8 +702,8 @@ f_2(x) = g_2(p(x)) = g_2(2x) = \left(\frac{2x}{2}\right)^2 = x^2,
 </span></p>
 <p>which is not the shifted parabola we started with.</p>
 </section>
-<section id="y-intercept-not-slope" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="y-intercept-not-slope"><span class="header-section-number">9.3</span> y-intercept, not slope</h2>
+<section id="y-intercept-not-slope" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="y-intercept-not-slope"><span class="header-section-number">10.3</span> y-intercept, not slope</h2>
 <p>We learned that defining the function <span class="math inline">g(p)=f(x(p))</span> does not work. Instead, let’s define <span class="math inline">g(p)</span> as the negative-y-intercept of the tangent line. The choice of a negative sign will be justified later.</p>
 <p>How to find <span class="math inline">g(p)</span>? We start with the equation for the tangent line of <span class="math inline">f(x)</span>:</p>
 <p><span class="math display">
@@ -702,7 +713,7 @@ y = px - g.
 <div id="c77e0a79" class="cell" data-execution_count="27">
 <details class="code-fold">
 <summary>plot</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
 <span id="cb5-2"><a href="#cb5-2"></a></span>
 <span id="cb5-3"><a href="#cb5-3"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">100</span>)</span>
 <span id="cb5-4"><a href="#cb5-4"></a></span>
@@ -730,7 +741,7 @@ y = px - g.
 <span id="cb5-26"><a href="#cb5-26"></a>            yticks<span class="op">=</span>np.arange(<span class="op">-</span><span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">1</span>),</span>
 <span id="cb5-27"><a href="#cb5-27"></a>            title<span class="op">=</span><span class="vs">r"</span><span class="dv">$</span><span class="vs">g</span><span class="kw">(</span><span class="vs">p</span><span class="kw">)</span><span class="dv">$</span><span class="vs"> as the negative y-intercept of the tangent line"</span></span>
 <span id="cb5-28"><a href="#cb5-28"></a>            )</span>
-<span id="cb5-29"><a href="#cb5-29"></a>ax.set_xlabel(<span class="st">'$x$'</span>, loc<span class="op">=</span><span class="st">'right'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-29"><a href="#cb5-29"></a>ax.set_xlabel(<span class="st">'$x$'</span>, loc<span class="op">=</span><span class="st">'right'</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -788,7 +799,7 @@ f(x) &amp;= p\cdot x - g(p(x)) \\
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="2" data-source-offset="-1"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 1;"><span id="cb6-2"><a href="#cb6-2"></a>blue_color <span class="op">=</span> <span class="st">"#0343df"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="2" data-source-offset="-1"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 1;"><span id="cb6-2"><a href="#cb6-2"></a>blue_color <span class="op">=</span> <span class="st">"#0343df"</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a>red_color <span class="op">=</span> <span class="st">"#e50000"</span></span>
 <span id="cb6-4"><a href="#cb6-4"></a></span>
 <span id="cb6-5"><a href="#cb6-5"></a><span class="co">// 1. Define the slider without a label to keep it tight</span></span>
@@ -802,7 +813,7 @@ f(x) &amp;= p\cdot x - g(p(x)) \\
 <span id="cb6-13"><a href="#cb6-13"></a><span class="co">// This puts "Slope p" right next to the number box</span></span>
 <span id="cb6-14"><a href="#cb6-14"></a><span class="fu">html</span><span class="vs">`&lt;div style="display: flex; align-items: center; gap: 10px; font-weight: bold; font-family: sans-serif; margin-bottom: 15px;"&gt;</span></span>
 <span id="cb6-15"><a href="#cb6-15"></a><span class="vs">  &lt;span&gt;x₀&lt;/span&gt; </span><span class="sc">${</span>viewof x0<span class="sc">}</span></span>
-<span id="cb6-16"><a href="#cb6-16"></a><span class="vs">&lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -834,7 +845,7 @@ f(x) &amp;= p\cdot x - g(p(x)) \\
 </div>
 <details class="code-fold hidden">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="18" data-source-offset="-460"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 17;"><span id="cb7-18"><a href="#cb7-18"></a>p1 <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> x0</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="18" data-source-offset="-460"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 17;"><span id="cb7-18"><a href="#cb7-18"></a>p1 <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> x0</span>
 <span id="cb7-19"><a href="#cb7-19"></a>g <span class="op">=</span> p1 <span class="op">*</span> x0 <span class="op">-</span> (x0 <span class="op">**</span> <span class="dv">2</span>)</span>
 <span id="cb7-20"><a href="#cb7-20"></a>angle_degrees <span class="op">=</span> <span class="op">-</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">atan</span>(p1<span class="op">*</span>(<span class="dv">3</span><span class="op">/</span><span class="dv">16</span>)<span class="op">*</span>(<span class="dv">400</span><span class="op">/</span><span class="dv">600</span>)) <span class="op">*</span> (<span class="dv">180</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span>)</span>
 <span id="cb7-21"><a href="#cb7-21"></a></span>
@@ -922,7 +933,7 @@ f(x) &amp;= p\cdot x - g(p(x)) \\
 <span id="cb7-103"><a href="#cb7-103"></a>    })<span class="op">,</span></span>
 <span id="cb7-104"><a href="#cb7-104"></a></span>
 <span id="cb7-105"><a href="#cb7-105"></a>  ]</span>
-<span id="cb7-106"><a href="#cb7-106"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-106"><a href="#cb7-106"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -955,8 +966,8 @@ f(x) &amp;= p\cdot x - g(p(x)) \\
 </div>
 </div>
 </section>
-<section id="duality-relationship" class="level2 page-columns page-full" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="duality-relationship"><span class="header-section-number">9.4</span> duality relationship</h2>
+<section id="duality-relationship" class="level2 page-columns page-full" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="duality-relationship"><span class="header-section-number">10.4</span> duality relationship</h2>
 <div id="cell-fig-envelope" class="cell page-columns page-full" data-execution_count="139">
 
 <div class="no-row-height column-margin column-container"><div class="cell-output cell-output-display">
@@ -966,7 +977,7 @@ f(x) &amp;= p\cdot x - g(p(x)) \\
 <img src="legendre_transform_files/figure-html/fig-envelope-output-1.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-envelope-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.3: the envelope of tangent lines to a convex function.
+Figure&nbsp;10.3: the envelope of tangent lines to a convex function.
 </figcaption>
 </figure>
 </div>
@@ -980,7 +991,7 @@ g(p) = f(x) - p\cdot x.
 <div id="2152d323" class="cell" data-execution_count="108">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">5</span>))</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">5</span>))</span>
 <span id="cb8-2"><a href="#cb8-2"></a>fig.subplots_adjust(left<span class="op">=</span><span class="fl">0.10</span>, right<span class="op">=</span><span class="fl">0.90</span>, top<span class="op">=</span><span class="fl">0.95</span>, bottom<span class="op">=</span><span class="fl">0.10</span>,</span>
 <span id="cb8-3"><a href="#cb8-3"></a>          hspace<span class="op">=</span><span class="fl">0.20</span>, wspace<span class="op">=</span><span class="fl">0.60</span>)</span>
 <span id="cb8-4"><a href="#cb8-4"></a></span>
@@ -1023,7 +1034,7 @@ g(p) = f(x) - p\cdot x.
 <span id="cb8-41"><a href="#cb8-41"></a>ax[<span class="dv">1</span>,<span class="dv">0</span>].set_title(<span class="st">"Original function $f(x)$"</span>, y<span class="op">=</span><span class="fl">0.8</span>)</span>
 <span id="cb8-42"><a href="#cb8-42"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].set_title(<span class="st">"Legendre transform</span><span class="ch">\n</span><span class="st">(Thermodynamics)"</span>, y<span class="op">=</span><span class="fl">0.8</span>)</span>
 <span id="cb8-43"><a href="#cb8-43"></a>ax[<span class="dv">1</span>,<span class="dv">0</span>].set_xlabel(<span class="st">"$x$"</span>)</span>
-<span id="cb8-44"><a href="#cb8-44"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].set_xlabel(<span class="st">"$p$"</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-44"><a href="#cb8-44"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].set_xlabel(<span class="st">"$p$"</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -1045,7 +1056,7 @@ f(x) + g(p) = p \cdot x.
 <div id="fc83d7c2" class="cell" data-execution_count="140">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
 <span id="cb9-2"><a href="#cb9-2"></a>plt.text(<span class="fl">0.2</span>, <span class="fl">0.5</span>, <span class="vs">r"</span><span class="dv">$</span><span class="vs">f</span><span class="kw">(</span><span class="vs">x</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span>,</span>
 <span id="cb9-3"><a href="#cb9-3"></a>         size<span class="op">=</span><span class="dv">20</span>, rotation<span class="op">=</span><span class="dv">0</span>,</span>
 <span id="cb9-4"><a href="#cb9-4"></a>         ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"center"</span>,</span>
@@ -1088,7 +1099,7 @@ f(x) + g(p) = p \cdot x.
 <span id="cb9-41"><a href="#cb9-41"></a>        ha<span class="op">=</span><span class="st">"center"</span>)</span>
 <span id="cb9-42"><a href="#cb9-42"></a>ax.text(<span class="fl">0.5</span>, <span class="fl">0.2</span>, <span class="vs">r"</span><span class="dv">$</span><span class="vs">x=</span><span class="dv">\d</span><span class="vs">frac{dg}{dp}</span><span class="dv">$</span><span class="vs">"</span><span class="op">+</span><span class="st">"</span><span class="ch">\n</span><span class="st">"</span><span class="op">+</span><span class="vs">r"</span><span class="dv">$</span><span class="vs">f</span><span class="kw">(</span><span class="vs">x</span><span class="kw">)</span><span class="vs"> = px - g</span><span class="kw">(</span><span class="vs">p</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span>,</span>
 <span id="cb9-43"><a href="#cb9-43"></a>        ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"top"</span>)</span>
-<span id="cb9-44"><a href="#cb9-44"></a>ax.axis(<span class="st">'off'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-44"><a href="#cb9-44"></a>ax.axis(<span class="st">'off'</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -1099,8 +1110,8 @@ f(x) + g(p) = p \cdot x.
 </div>
 </div>
 </section>
-<section id="derivation-according-to-v.i.-arnold" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="derivation-according-to-v.i.-arnold"><span class="header-section-number">9.5</span> derivation according to V.I. Arnold</h2>
+<section id="derivation-according-to-v.i.-arnold" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="derivation-according-to-v.i.-arnold"><span class="header-section-number">10.5</span> derivation according to V.I. Arnold</h2>
 <p>We will follow now V.I. Arnold’s arguments from his book <a href="https://www.ceremade.dauphine.fr/~fejoz/Enseignement/ds2021/Arnold_1989_MMCM.pdf">Mathematical Methods of Classical Mechanics</a>, 2nd edition, pages 61 to 64.</p>
 <p>The geometric intution is great, but the text is nothing but obtuse, in my opinion. I’ll put here Arnold’s text and comment on it, with words, images and interactive widgets.</p>
 <blockquote class="blockquote">
@@ -1120,7 +1131,7 @@ The <em>Legendre transformation</em> of the function <span class="math inline">f
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="3" data-source-offset="-58"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 2;"><span id="cb10-3"><a href="#cb10-3"></a>viewof p <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">4</span>]<span class="op">,</span> {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="3" data-source-offset="-58"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 2;"><span id="cb10-3"><a href="#cb10-3"></a>viewof p <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">4</span>]<span class="op">,</span> {</span>
 <span id="cb10-4"><a href="#cb10-4"></a>  <span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> </span>
 <span id="cb10-5"><a href="#cb10-5"></a>  <span class="dt">value</span><span class="op">:</span> <span class="fl">2.5</span><span class="op">,</span></span>
 <span id="cb10-6"><a href="#cb10-6"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">250</span></span>
@@ -1130,7 +1141,7 @@ The <em>Legendre transformation</em> of the function <span class="math inline">f
 <span id="cb10-10"><a href="#cb10-10"></a><span class="co">// This puts "Slope p" right next to the number box</span></span>
 <span id="cb10-11"><a href="#cb10-11"></a><span class="fu">html</span><span class="vs">`&lt;div style="display: flex; align-items: center; gap: 10px; font-weight: bold; font-family: sans-serif; margin-bottom: 15px;"&gt;</span></span>
 <span id="cb10-12"><a href="#cb10-12"></a><span class="vs">  &lt;span&gt;Slope p&lt;/span&gt; </span><span class="sc">${</span>viewof p<span class="sc">}</span></span>
-<span id="cb10-13"><a href="#cb10-13"></a><span class="vs">&lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-13"><a href="#cb10-13"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -1148,7 +1159,7 @@ The <em>Legendre transformation</em> of the function <span class="math inline">f
 </div>
 <details class="code-fold hidden">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="15" data-source-offset="-417"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 14;"><span id="cb11-15"><a href="#cb11-15"></a>xo <span class="op">=</span> p <span class="op">/</span> <span class="dv">2</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="15" data-source-offset="-417"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 14;"><span id="cb11-15"><a href="#cb11-15"></a>xo <span class="op">=</span> p <span class="op">/</span> <span class="dv">2</span></span>
 <span id="cb11-16"><a href="#cb11-16"></a></span>
 <span id="cb11-17"><a href="#cb11-17"></a><span class="co">// 3. Define the plot</span></span>
 <span id="cb11-18"><a href="#cb11-18"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
@@ -1237,7 +1248,7 @@ The <em>Legendre transformation</em> of the function <span class="math inline">f
 <span id="cb11-101"><a href="#cb11-101"></a>      <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">16</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span><span class="op">,</span> <span class="dt">dx</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span> </span>
 <span id="cb11-102"><a href="#cb11-102"></a>    })<span class="op">,</span></span>
 <span id="cb11-103"><a href="#cb11-103"></a>  ]</span>
-<span id="cb11-104"><a href="#cb11-104"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-104"><a href="#cb11-104"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -1304,7 +1315,7 @@ y = px - g.
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="3" data-source-offset="-58"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 2;"><span id="cb12-3"><a href="#cb12-3"></a>viewof p2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">7</span>]<span class="op">,</span> {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="3" data-source-offset="-58"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 2;"><span id="cb12-3"><a href="#cb12-3"></a>viewof p2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">7</span>]<span class="op">,</span> {</span>
 <span id="cb12-4"><a href="#cb12-4"></a>  <span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> </span>
 <span id="cb12-5"><a href="#cb12-5"></a>  <span class="dt">value</span><span class="op">:</span> <span class="fl">2.5</span><span class="op">,</span></span>
 <span id="cb12-6"><a href="#cb12-6"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">250</span></span>
@@ -1314,7 +1325,7 @@ y = px - g.
 <span id="cb12-10"><a href="#cb12-10"></a><span class="co">// This puts "Slope p" right next to the number box</span></span>
 <span id="cb12-11"><a href="#cb12-11"></a><span class="fu">html</span><span class="vs">`&lt;div style="display: flex; align-items: center; gap: 10px; font-weight: bold; font-family: sans-serif; margin-bottom: 15px;"&gt;</span></span>
 <span id="cb12-12"><a href="#cb12-12"></a><span class="vs">  &lt;span&gt;Slope p&lt;/span&gt; </span><span class="sc">${</span>viewof p2<span class="sc">}</span></span>
-<span id="cb12-13"><a href="#cb12-13"></a><span class="vs">&lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-13"><a href="#cb12-13"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -1332,7 +1343,7 @@ y = px - g.
 </div>
 <details class="code-fold hidden">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="14" data-source-offset="-418"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 13;"><span id="cb13-14"><a href="#cb13-14"></a>x_naught <span class="op">=</span> p2 <span class="op">/</span> <span class="dv">2</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb13" data-startfrom="14" data-source-offset="-418"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 13;"><span id="cb13-14"><a href="#cb13-14"></a>x_naught <span class="op">=</span> p2 <span class="op">/</span> <span class="dv">2</span></span>
 <span id="cb13-15"><a href="#cb13-15"></a>gee <span class="op">=</span> p2 <span class="op">*</span> x_naught <span class="op">-</span> (x_naught <span class="op">**</span> <span class="dv">2</span>)</span>
 <span id="cb13-16"><a href="#cb13-16"></a></span>
 <span id="cb13-17"><a href="#cb13-17"></a><span class="co">// 3. Define the plot</span></span>
@@ -1399,7 +1410,7 @@ y = px - g.
 <span id="cb13-78"><a href="#cb13-78"></a>    })<span class="op">,</span></span>
 <span id="cb13-79"><a href="#cb13-79"></a></span>
 <span id="cb13-80"><a href="#cb13-80"></a>  ]</span>
-<span id="cb13-81"><a href="#cb13-81"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-81"><a href="#cb13-81"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -1431,8 +1442,8 @@ f(x) = \max_p (px - g(p)).
 </span></p>
 <p>This completes Arnold’s proof of the involutivity of the Legendre transformation.</p>
 </section>
-<section id="sources" class="level2" data-number="9.6">
-<h2 data-number="9.6" class="anchored" data-anchor-id="sources"><span class="header-section-number">9.6</span> sources</h2>
+<section id="sources" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="sources"><span class="header-section-number">10.6</span> sources</h2>
 <p>This post was inspired by Dan Kosakowski’s youtube video, <a href="https://youtu.be/P2HZelQm7Lw?si=vBaUeWywBtDsBIZq" target="_blank">A Simple yet Powerful Math Trick</a>. It blew my mind. After that I had no other option but doing a deep dive into the Legendre transformation. Follow his youtube channel, <a href="https://www.youtube.com/@AbideByReason" target="_blank">Abide by Reason</a>, it’s very good.</p>
 <p>In studying the Legendre transformation I found the following resources helpful:</p>
 <ul>
@@ -1510,13 +1521,14 @@ window._ojs.runtime.interpretFromScriptTags();
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -1912,12 +1924,12 @@ window._ojs.runtime.interpretFromScriptTags();
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../thermodynamics/intro-thermodynamics.html" class="pagination-link" aria-label="intro to thermodynamics">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">intro to thermodynamics</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">intro to thermodynamics</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../lie_algebra/basic_properties.html" class="pagination-link" aria-label="basic properties">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">basic properties</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">basic properties</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
