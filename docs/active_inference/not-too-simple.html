@@ -421,11 +421,12 @@ by Karl Friston, Lancelot Da Costa, Noor Sajid, Conor Heins, Kai Ueltzhöffer, G
 <section id="equation-1" class="level3" data-number="7.1.1">
 <h3 data-number="7.1.1" class="anchored" data-anchor-id="equation-1"><span class="header-section-number">7.1.1</span> equation 1</h3>
 <p><span class="math display">\begin{align*}
-\dot{x}(\tau) &amp;= f(x) + \omega(\tau) \\
-p(\omega\mid x)&amp;= \mathcal{N}(\omega; 0,2\Gamma) \Rightarrow p(\dot{x}\mid x) = \mathcal{N}(\dot{x};f, 2\Gamma) \\
-p(x) &amp;= ?
+\dot{x}(\tau) &amp;= f(x) + \omega(\tau) \tag{1a} \\
+p(\omega\mid x)&amp;= \mathcal{N}(\omega; 0,2\Gamma) \Rightarrow p(\dot{x}\mid x) = \mathcal{N}(\dot{x};f, 2\Gamma) \tag{1b} \\
+p(x) &amp;= ? \tag{1c}
 \end{align*}</span></p>
 <p>Explanation:</p>
+<p>Equation (1a) is a Langevin equation, that is, it’s a mathematical formula used to describe how a system changes over time when it experiences both regular forces and random, fluctuating forces.</p>
 <ul>
 <li><span class="math inline">x</span>. The vector of state variables, stacked as a column vector.</li>
 <li><span class="math inline">\tau</span>. Specific time at which something is evaluated</li>
@@ -443,9 +444,9 @@ p(x) &amp;= ?
 <section id="equation-2" class="level3" data-number="7.1.2">
 <h3 data-number="7.1.2" class="anchored" data-anchor-id="equation-2"><span class="header-section-number">7.1.2</span> equation 2</h3>
 <p><span class="math display">
-\dot{p}(x, \tau) = \nabla \cdot (\Gamma \nabla - f(x))p(x,\tau)
+\dot{p}(x, \tau) = \nabla \cdot (\Gamma \nabla - f(x))p(x,\tau) \tag{2}
 </span></p>
-<p>This is the Fokker-Planck equation associated with the Langevin equation given in the first row of equation (1). This equation descibes how the probability density evolves over time.</p>
+<p>This is the Fokker-Planck equation associated with the Langevin equation (1a). This equation descibes how the probability density evolves over time.</p>
 <p>Let’s try to justify how the Fokker-Planck equation originates. Think of <span class="math inline">p(x,\tau)</span> as a “fluid” of probability mass flowing through state space as time passes. The fluid-like behavior comes from the fact that the total probability is conserved (it is 1), just like a fluid that is able to move from here to there, but not disappear. We can describe the probability density with a continuity equation, just like we usually do for fluids, masses, charges, etc:</p>
 <p><span class="math display">
 \dot{p}(x,\tau) = -\nabla \cdot J(x,\tau)
@@ -453,7 +454,7 @@ p(x) &amp;= ?
 <p>In the continuity equation above, <span class="math inline">J</span> is a probability current. This current can be split into two components:</p>
 <ul>
 <li><strong>Advection</strong>: the deterministic flow <span class="math inline">f(x)</span> carries the probability mass along with it, just like a water current carries leaves floating on the water surface. The drift of <span class="math inline">p</span> will be higher where the <span class="math inline">p</span> density is higher, and lower where <span class="math inline">p</span> is more sparse. This gives <span class="math inline">J_{\text{drift}}=f(x)p(x,\tau)</span>.</li>
-<li><strong>Diffusion</strong>: the random fluctuations <span class="math inline">\omega(\tau)</span> spread probability mass out, just like dye diffusing in still water. Fick’s law says that the diffusive flux is proportional to the (negative) gradient of concentration. Picture in your mind a cloud of perfume hanging in the air. The gradient of perfume concentration points to the center of the cloud, in the direction of increasing concentration. Fick’s law says that the diffusive flux points in the opposite direction of the gradient (in this example, outward), and that makes sense. The higher the concentration difference between two points, the larger the flux, and that also makes sense. Of course, if there is no concentration difference between two points, then there won’t be any flux. This give the following equation: <span class="math inline">J_{\text{diff}}=-\Gamma\nabla p(x,\tau)</span>. The <span class="math inline">\Gamma</span> in this equation is the very same <span class="math inline">\Gamma</span> from the random-fluctuations covariance in equation (1). It plays the role of a diffusion coefficient: the higher the value of <span class="math inline">\Gamma</span>, the faster the diffusive flux will be. The assumption that random fluctuations are state-independent makes the <span class="math inline">\Gamma</span> be to the left of the <span class="math inline">\nabla</span> operator; if they weren’t, then we would have instead <span class="math inline">\nabla (\Gamma p(x,\tau))</span>.</li>
+<li><strong>Diffusion</strong>: the random fluctuations <span class="math inline">\omega(\tau)</span> spread probability mass out, just like dye diffusing in still water. Fick’s law says that the diffusive flux is proportional to the (negative) gradient of concentration. Picture in your mind a cloud of perfume hanging in the air. The gradient of perfume concentration points to the center of the cloud, in the direction of increasing concentration. Fick’s law says that the diffusive flux points in the opposite direction of the gradient (in this example, outward), and that makes sense. The higher the concentration difference between two points, the larger the flux, and that also makes sense. Of course, if there is no concentration difference between two points, then there won’t be any flux. This gives the following equation: <span class="math inline">J_{\text{diff}}=-\Gamma\nabla p(x,\tau)</span>. The <span class="math inline">\Gamma</span> in this equation is the very same <span class="math inline">\Gamma</span> from the random-fluctuations covariance in equation (1). It plays the role of a diffusion coefficient: the higher the value of <span class="math inline">\Gamma</span>, the faster the diffusive flux will be. The assumption that random fluctuations are state-independent makes the <span class="math inline">\Gamma</span> be to the left of the <span class="math inline">\nabla</span> operator; if they weren’t, then we would have instead <span class="math inline">\nabla (\Gamma p(x,\tau))</span>.</li>
 </ul>
 <p>Putting these two contributions together, we have</p>
 <p><span class="math display">\begin{align*}
@@ -477,15 +478,21 @@ J(x,\tau) &amp;= J_{\text{drift}} + J_{\text{diff}} \\
 <section id="equations-3-and-4" class="level3" data-number="7.1.3">
 <h3 data-number="7.1.3" class="anchored" data-anchor-id="equations-3-and-4"><span class="header-section-number">7.1.3</span> equations 3 and 4</h3>
 <p>Equation 3: <span class="math display">\begin{align*}
-\mathcal{A}(x[\tau]) &amp;= - \ln p(x[\tau] \mid x_0) \\
-&amp;= \frac{\tau}{2} \ln \left| (4\pi)^n \Gamma\right| + \int_{0}^\tau dt \mathcal{L}(x,\dot{x}) \\
-\mathcal{L}(x,\dot{x}) &amp;= \frac{1}{2}\left[ (\dot{x}-f)\cdot \frac{1}{2\Gamma}(\dot{x}-f) + \nabla\cdot f \right]
+\mathcal{A}(x[\tau]) &amp;= - \ln p(x[\tau] \mid x_0) \tag{3a} \\
+&amp;= \frac{\tau}{2} \ln \left| (4\pi)^n \Gamma\right| + \int_{0}^\tau dt \mathcal{L}(x,\dot{x}) \tag{3b} \\
+\mathcal{L}(x,\dot{x}) &amp;= \frac{1}{2}\left[ (\dot{x}-f)\cdot \frac{1}{2\Gamma}(\dot{x}-f) + \nabla\cdot f \right] \tag{3c}
 \end{align*}</span></p>
 <p>Equation 4: <span class="math display">\begin{align*}
-\bm{x}[\tau] &amp;= \arg \min_{x[\tau]} \mathcal{A}(x[\tau]) \\
-&amp;\Leftrightarrow \delta_x \mathcal{A}(\bm{x}[\tau]) = 0 \\
-&amp;\Leftrightarrow \dot{\bm{x}}(\tau) = f(x)
+\bm{x}[\tau] &amp;= \arg \min_{x[\tau]} \mathcal{A}(x[\tau]) \tag{4a} \\
+&amp;\Leftrightarrow \delta_x \mathcal{A}(\bm{x}[\tau]) = 0 \tag{4b} \\
+&amp;\Leftrightarrow \dot{\bm{x}}(\tau) = f(x) \tag{4c}
 \end{align*}</span></p>
+<p>Explanations:</p>
+<ul>
+<li><span class="math inline">\mathcal{A}</span>. This is the action that we learn about in classical mechanics. Nature supposedly follows whatever path that makes the action extreme (either a maximum or a minimum).</li>
+<li><span class="math inline">x[\tau]</span>. Attention! The square brackets denote a <em>path</em>, these are all the values that <span class="math inline">x</span> assumed between time zero and <span class="math inline">\tau</span>. This is not the same as <span class="math inline">x(\tau)</span>, which is just <span class="math inline">x</span> evaluated at a single instant in time.</li>
+<li></li>
+</ul>
 <div id="a71debc6" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
