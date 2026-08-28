@@ -570,6 +570,8 @@ p(\dot{x}\mid x) = \mathcal{N}(\dot{x};f, 2\Gamma)
 \mathcal{N}(Y;\mu,\Sigma) =
 \frac{1}{\sqrt{(2\pi)^n |\Sigma|}} \exp\left( -\frac{1}{2}(Y-\mu)^T\Sigma^{-1}(Y-\mu) \right)
 </span></p>
+<p>The part that comes before the exponent is not special in any way. This is simply a normalizing constant that ensures that when we integrate the probability density over all its variables we get a total probability of one.</p>
+<p>The part that comes inside the exponent is a quadratic form. This measures how far <span class="math inline">Y</span> is from the mean <span class="math inline">\mu</span>, but the “distance” is warped by the inverse matrix of <span class="math inline">\Sigma</span></p>
 </section>
 </section>
 <section id="equation-4" class="level3" data-number="8.1.4">
