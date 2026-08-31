@@ -515,7 +515,80 @@ p(X,Z|Y=y) = p(X|Y=y) p(Z|Y=y)
 </section>
 <section id="mass-spring-analogy" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="mass-spring-analogy"><span class="header-section-number">7.2</span> mass-spring analogy</h2>
+<p>We will explore the meaning of the precision matrix, starting from an analogy between random variables and a mass-spring system. Consider a generating process that produces probability densities for five variables: <span class="math inline">x_1</span> through <span class="math inline">x_5</span>. These variables are abstracted as masses, see the image below. The generating process contains direct influences of one variable on the other, and those are represented as springs connecting between the masses. The stronger the influence of one variable on another, the higher will be the spring constant <span class="math inline">k</span>, also called the spring stiffness. Just as a shorthand, let’s say that the number of loops in the spring correspond to its stiffness <span class="math inline">k</span>, in some arbitrary unit system. For example, the spring that links <span class="math inline">x_1</span> to <span class="math inline">x_2</span> has one loop only, so <span class="math inline">k_{12}=1</span>, while the spring that links <span class="math inline">x_2</span> to <span class="math inline">x_3</span> has four loops, so <span class="math inline">k_{23}=4</span>. Of course, the spring that links mass <span class="math inline">i</span> to mass <span class="math inline">j</span> is the same as the one that links <span class="math inline">j</span> to <span class="math inline">i</span>, so we have that <span class="math inline">k_{ij}=k_{ji}</span>. Finally, some of the masses are connected to walls, which are considered to be fixed.</p>
 <img src="covariance-and-precision_files/mediabag/2412a1948c4bcd2e014c8056c1666ab84186cd1f.svg" class="img-fluid" style="width:100.0%">
+<p>In the image above, each mass is at its resting position, so no effective forces act on any of the masses. Let’s call the variables <span class="math inline">x_1,\ldots,x_5</span> the displacement from the rest position.</p>
+<p>When the masses move around, energy can be stored in the springs. The potential energy in the spring that links masses <span class="math inline">i</span> and <span class="math inline">j</span> is</p>
+<p><span class="math display">
+U(i,j) = U(j,i) = \frac{1}{2} k_{ij} (x_i - x_j)^2
+</span></p>
+<p>If a mass <span class="math inline">i</span> is connected to a wall through a spring, then we will call the potential energy of this spring</p>
+<p><span class="math display">
+U(i,0) = \frac{1}{2} k_{i0}(x_i-0)^2 = \frac{1}{2} k_{i0}x_i^2.
+</span></p>
+<p>Because walls are immovable, their displacement is always zero, and that makes the expression above depend only on <span class="math inline">x_i</span>.</p>
+<p>What is the expression for the potential energy of the whole system of masses and springs? In general terms, we can write the sum of all the potential energy stored in all the springs as</p>
+<p><span class="math display">
+U(x_1,x_2,x_3,x_4,x_5) = \frac{1}{2} \sum_{i=0}^N \sum_{j=0}^i k_{ij}(x_i-x_j)^2
+</span></p>
+<p>The sum over the index <span class="math inline">j</span> goes up to <span class="math inline">i</span> so we don’t double-count.</p>
+<p>As an exercise, let’s compute the total potential energy for the system in the image above.</p>
+<p><span class="math display">\begin{align*}
+2 U(x_1,x_2,x_3,x_4,x_5) =&amp;\, k_{10}x_1^2 +k_{40}x_4^2 + k_{50}x_5^2 + \\
+&amp;\, k_{12}(x_1-x_2)^2 + k_{14}(x_1-x_4)^2 + \\
+&amp;\, k_{23}(x_2-x_3)^2 + k_{24}(x_2-x_4)^2 + k_{25}(x_2-x_5)^2
+\end{align*}</span></p>
+<p>Note that the one-half factor was transfered to the right-hand side as a <span class="math inline">2</span>, for simplicity’s sake. At the end of the calculation we’ll put it back on the right side.</p>
+<p>We can expand all the parentheses and group by terms:</p>
+<p><span class="math display">\begin{align*}
+2U(x_1,x_2,x_3,x_4,x_5) =&amp;\, k_{10}x_1^2 +k_{40}x_4^2 + k_{50}x_5^2 + \\
+&amp;\, k_{12}x_1^2 + k_{12}x_2^2 - 2 k_{12}x_1x_2 + \\
+&amp;\, k_{14}x_1^2 + k_{14}x_4^2 - 2 k_{14}x_1x_4 + \\
+&amp;\, k_{23}x_2^2 + k_{23}x_3^2 - 2 k_{23}x_2x_3 + \\
+&amp;\, k_{24}x_2^2 + k_{24}x_4^2 - 2 k_{24}x_2x_4 + \\
+&amp;\, k_{25}x_2^2 + k_{25}x_5^2 - 2 k_{25}x_2x_5 + \\
+=&amp; \\
+&amp;\, \begin{rcases}
+x_1^2(\underbrace{k_{10}+k_{12}+k_{14}}_{K_1}) + \\
+x_2^2(\underbrace{k_{12}+k_{23}+k_{24}+k_{25}}_{K_2}) + \\
+x_3^2(\underbrace{k_{23}}_{K_3}) + \\
+x_4^2(\underbrace{k_{40}+k_{14}+k_{24}}_{K_4}) + \\
+x_5^2(\underbrace{k_{50}+k_{25}}_{K_5}) +
+\end{rcases} \text{pure terms} \\
+&amp;\, \begin{rcases}
+-2k_{12}x_1x_2 -2k_{14}x_1x_4 + \\
+-2k_{23}x_2x_3 -2 k_{24}x_2x_4 + \\
+-2 k_{25}x_2x_5
+\end{rcases} \text{mixed terms}
+\end{align*}</span></p>
+<p>For convenience, we called <span class="math inline">K_i</span> the sum of all spring constants that connect mass <span class="math inline">i</span> to other masses (or wall).</p>
+<p>We now realize that this whole mess can be written in matrix form!</p>
+<p><span class="math display">
+U=\frac{1}{2}
+\begin{pmatrix}
+x_1&amp;x_2&amp;x_3&amp;x_4&amp;x_5
+\end{pmatrix}
+\begin{pmatrix}
+K_1 &amp; -k_{12} &amp; 0 &amp; -k_{14} &amp; 0 \\
+-k_{12} &amp; K_2 &amp; -k_{23} &amp; -k_{24} &amp; -k_{25} \\
+0 &amp; -k_{23} &amp; K_3 &amp; 0 &amp; 0 \\
+-k_{14} &amp; -k_{24} &amp; 0 &amp; K_4 &amp; 0 \\
+0 &amp; -k_{25} &amp; 0 &amp; 0 &amp; K_5
+\end{pmatrix}
+\begin{pmatrix}
+x_1\\x_2\\x_3\\x_4\\x_5
+\end{pmatrix}
+</span></p>
+<p>Let’s call <span class="math inline">\Lambda</span> the matrix in the middle. This is called the <strong>precision matrix</strong>, and we’ll discuss its relevance to probability densities in a little while. The rules for building this matrix can be summarized quite simply:</p>
+<ul>
+<li>The diagonal terms <span class="math inline">\Lambda_{ii}</span> are the sum of all spring constants that connect mass <span class="math inline">i</span> to any other mass or wall.</li>
+<li>The off-diagonal terms <span class="math inline">\Lambda_{ij}</span> are the negative spring constant connecting mass <span class="math inline">i</span> to mass <span class="math inline">j</span>.</li>
+</ul>
+<p>Notice what the zero entries in the precision matrix mean. Whenever we see a zero in the component <span class="math inline">\Lambda_{ij}</span>, we can be certain that there is no direct link between <span class="math inline">x_i</span> and <span class="math inline">x_j</span>!</p>
+<p>Calling <span class="math inline">x</span> the column vector composed of all variables <span class="math inline">x_1</span> through <span class="math inline">x_5</span>, we can write the total potential energy of the system as</p>
+<p><span class="math display">
+U_{\text{total}} = \frac{1}{2}x^T \Lambda x.
+</span></p>
 
 
 </section>

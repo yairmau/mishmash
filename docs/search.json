@@ -230,6 +230,17 @@
     ]
   },
   {
+    "objectID": "active_inference/covariance-and-precision.html#mass-spring-analogy",
+    "href": "active_inference/covariance-and-precision.html#mass-spring-analogy",
+    "title": "7  covariance and precision",
+    "section": "7.2 mass-spring analogy",
+    "text": "7.2 mass-spring analogy\nWe will explore the meaning of the precision matrix, starting from an analogy between random variables and a mass-spring system. Consider a generating process that produces probability densities for five variables: x_1 through x_5. These variables are abstracted as masses, see the image below. The generating process contains direct influences of one variable on the other, and those are represented as springs connecting between the masses. The stronger the influence of one variable on another, the higher will be the spring constant k, also called the spring stiffness. Just as a shorthand, let’s say that the number of loops in the spring correspond to its stiffness k, in some arbitrary unit system. For example, the spring that links x_1 to x_2 has one loop only, so k_{12}=1, while the spring that links x_2 to x_3 has four loops, so k_{23}=4. Of course, the spring that links mass i to mass j is the same as the one that links j to i, so we have that k_{ij}=k_{ji}. Finally, some of the masses are connected to walls, which are considered to be fixed.\n\nIn the image above, each mass is at its resting position, so no effective forces act on any of the masses. Let’s call the variables x_1,\\ldots,x_5 the displacement from the rest position.\nWhen the masses move around, energy can be stored in the springs. The potential energy in the spring that links masses i and j is\n\nU(i,j) = U(j,i) = \\frac{1}{2} k_{ij} (x_i - x_j)^2\n\nIf a mass i is connected to a wall through a spring, then we will call the potential energy of this spring\n\nU(i,0) = \\frac{1}{2} k_{i0}(x_i-0)^2 = \\frac{1}{2} k_{i0}x_i^2.\n\nBecause walls are immovable, their displacement is always zero, and that makes the expression above depend only on x_i.\nWhat is the expression for the potential energy of the whole system of masses and springs? In general terms, we can write the sum of all the potential energy stored in all the springs as\n\nU(x_1,x_2,x_3,x_4,x_5) = \\frac{1}{2} \\sum_{i=0}^N \\sum_{j=0}^i k_{ij}(x_i-x_j)^2\n\nThe sum over the index j goes up to i so we don’t double-count.\nAs an exercise, let’s compute the total potential energy for the system in the image above.\n\\begin{align*}\n2 U(x_1,x_2,x_3,x_4,x_5) =&\\, k_{10}x_1^2 +k_{40}x_4^2 + k_{50}x_5^2 + \\\\\n&\\, k_{12}(x_1-x_2)^2 + k_{14}(x_1-x_4)^2 + \\\\\n&\\, k_{23}(x_2-x_3)^2 + k_{24}(x_2-x_4)^2 + k_{25}(x_2-x_5)^2\n\\end{align*}\nNote that the one-half factor was transfered to the right-hand side as a 2, for simplicity’s sake. At the end of the calculation we’ll put it back on the right side.\nWe can expand all the parentheses and group by terms:\n\\begin{align*}\n2U(x_1,x_2,x_3,x_4,x_5) =&\\, k_{10}x_1^2 +k_{40}x_4^2 + k_{50}x_5^2 + \\\\\n&\\, k_{12}x_1^2 + k_{12}x_2^2 - 2 k_{12}x_1x_2 + \\\\\n&\\, k_{14}x_1^2 + k_{14}x_4^2 - 2 k_{14}x_1x_4 + \\\\\n&\\, k_{23}x_2^2 + k_{23}x_3^2 - 2 k_{23}x_2x_3 + \\\\\n&\\, k_{24}x_2^2 + k_{24}x_4^2 - 2 k_{24}x_2x_4 + \\\\\n&\\, k_{25}x_2^2 + k_{25}x_5^2 - 2 k_{25}x_2x_5 + \\\\\n=& \\\\\n&\\, \\begin{rcases}\nx_1^2(\\underbrace{k_{10}+k_{12}+k_{14}}_{K_1}) + \\\\\nx_2^2(\\underbrace{k_{12}+k_{23}+k_{24}+k_{25}}_{K_2}) + \\\\\nx_3^2(\\underbrace{k_{23}}_{K_3}) + \\\\\nx_4^2(\\underbrace{k_{40}+k_{14}+k_{24}}_{K_4}) + \\\\\nx_5^2(\\underbrace{k_{50}+k_{25}}_{K_5}) +\n\\end{rcases} \\text{pure terms} \\\\\n&\\, \\begin{rcases}\n-2k_{12}x_1x_2 -2k_{14}x_1x_4 + \\\\\n-2k_{23}x_2x_3 -2 k_{24}x_2x_4 + \\\\\n-2 k_{25}x_2x_5\n\\end{rcases} \\text{mixed terms}\n\\end{align*}\nFor convenience, we called K_i the sum of all spring constants that connect mass i to other masses (or wall).\nWe now realize that this whole mess can be written in matrix form!\n\nU=\\frac{1}{2}\n\\begin{pmatrix}\nx_1&x_2&x_3&x_4&x_5\n\\end{pmatrix}\n\\begin{pmatrix}\nK_1 & -k_{12} & 0 & -k_{14} & 0 \\\\\n-k_{12} & K_2 & -k_{23} & -k_{24} & -k_{25} \\\\\n0 & -k_{23} & K_3 & 0 & 0 \\\\\n-k_{14} & -k_{24} & 0 & K_4 & 0 \\\\\n0 & -k_{25} & 0 & 0 & K_5\n\\end{pmatrix}\n\\begin{pmatrix}\nx_1\\\\x_2\\\\x_3\\\\x_4\\\\x_5\n\\end{pmatrix}\n\nLet’s call \\Lambda the matrix in the middle. This is called the precision matrix, and we’ll discuss its relevance to probability densities in a little while. The rules for building this matrix can be summarized quite simply:\n\nThe diagonal terms \\Lambda_{ii} are the sum of all spring constants that connect mass i to any other mass or wall.\nThe off-diagonal terms \\Lambda_{ij} are the negative spring constant connecting mass i to mass j.\n\nNotice what the zero entries in the precision matrix mean. Whenever we see a zero in the component \\Lambda_{ij}, we can be certain that there is no direct link between x_i and x_j!\nCalling x the column vector composed of all variables x_1 through x_5, we can write the total potential energy of the system as\n\nU_{\\text{total}} = \\frac{1}{2}x^T \\Lambda x.",
+    "crumbs": [
+      "active inference",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>covariance and precision</span>"
+    ]
+  },
+  {
     "objectID": "active_inference/not-too-simple.html",
     "href": "active_inference/not-too-simple.html",
     "title": "8  simpler but not too simple",
@@ -755,17 +766,6 @@
     "crumbs": [
       "differential geometry",
       "<span class='chapter-number'>16</span>  <span class='chapter-title'>intro to differential geometry</span>"
-    ]
-  },
-  {
-    "objectID": "active_inference/covariance-and-precision.html#mass-spring-analogy",
-    "href": "active_inference/covariance-and-precision.html#mass-spring-analogy",
-    "title": "7  covariance and precision",
-    "section": "7.2 mass-spring analogy",
-    "text": "7.2 mass-spring analogy",
-    "crumbs": [
-      "active inference",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>covariance and precision</span>"
     ]
   }
 ]
