@@ -584,11 +584,11 @@ x_1\\x_2\\x_3\\x_4\\x_5
 <li>The diagonal terms <span class="math inline">\Lambda_{ii}</span> are the sum of all spring constants that connect mass <span class="math inline">i</span> to any other mass or wall.</li>
 <li>The off-diagonal terms <span class="math inline">\Lambda_{ij}</span> are the negative spring constant connecting mass <span class="math inline">i</span> to mass <span class="math inline">j</span>.</li>
 </ul>
-<p>Notice what the zero entries in the precision matrix mean. Whenever we see a zero in the component <span class="math inline">\Lambda_{ij}</span>, we can be certain that there is no direct link between <span class="math inline">x_i</span> and <span class="math inline">x_j</span>!</p>
 <p>Calling <span class="math inline">x</span> the column vector composed of all variables <span class="math inline">x_1</span> through <span class="math inline">x_5</span>, we can write the total potential energy of the system as</p>
 <p><span class="math display">
 U_{\text{total}} = \frac{1}{2}x^T \Lambda x.
 </span></p>
+<p>Notice what the zero entries in the precision matrix mean. Whenever we see a zero in the component <span class="math inline">\Lambda_{ij}</span>, we can be certain that there is no direct link between <span class="math inline">x_i</span> and <span class="math inline">x_j</span>! This is eerily similar to the <a href="./covariance-and-precision.html#conditional-independence-theorem">conditional independence theorem</a> we proved above. We will want to claim not only that “there is no spring connecting the two masses”, but that in fact the variables represented by these masses are conditionally independent. What we need now is to derive the probability density of our mass-spring system.</p>
 
 
 </section>
