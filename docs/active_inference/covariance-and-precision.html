@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -350,6 +385,8 @@ window.Quarto = {
   <ul>
   <li><a href="#conditional-independence-theorem" id="toc-conditional-independence-theorem" class="nav-link active" data-scroll-target="#conditional-independence-theorem"><span class="header-section-number">7.1</span> conditional independence theorem</a></li>
   <li><a href="#mass-spring-analogy" id="toc-mass-spring-analogy" class="nav-link" data-scroll-target="#mass-spring-analogy"><span class="header-section-number">7.2</span> mass-spring analogy</a></li>
+  <li><a href="#probability-density-from-boltzmann-distribution" id="toc-probability-density-from-boltzmann-distribution" class="nav-link" data-scroll-target="#probability-density-from-boltzmann-distribution"><span class="header-section-number">7.3</span> probability density from Boltzmann distribution</a></li>
+  <li><a href="#covariance-matrix" id="toc-covariance-matrix" class="nav-link" data-scroll-target="#covariance-matrix"><span class="header-section-number">7.4</span> covariance matrix</a></li>
   </ul>
 </nav>
     </div>
@@ -358,7 +395,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../active_inference/intro-active-inference.html">active inference</a></li><li class="breadcrumb-item"><a href="../active_inference/covariance-and-precision.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">covariance and precision</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">covariance and precision</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/yairmau/mishmash/blob/main/active_inference/covariance-and-precision.ipynb"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">covariance and precision</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button" data-quarto-source-url="https://github.com/yairmau/mishmash/blob/main/active_inference/covariance-and-precision.ipynb">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -549,11 +586,11 @@ U(x_1,x_2,x_3,x_4,x_5) = \frac{1}{2} \sum_{i=0}^N \sum_{j=0}^i k_{ij}(x_i-x_j)^2
 &amp;\, k_{25}x_2^2 + k_{25}x_5^2 - 2 k_{25}x_2x_5 + \\
 =&amp; \\
 &amp;\, \begin{rcases}
-x_1^2(\underbrace{k_{10}+k_{12}+k_{14}}_{K_1}) + \\
-x_2^2(\underbrace{k_{12}+k_{23}+k_{24}+k_{25}}_{K_2}) + \\
-x_3^2(\underbrace{k_{23}}_{K_3}) + \\
-x_4^2(\underbrace{k_{40}+k_{14}+k_{24}}_{K_4}) + \\
-x_5^2(\underbrace{k_{50}+k_{25}}_{K_5}) +
+x_1^2(\underbrace{k_{10}+k_{12}+k_{14}}_{\kappa_1}) + \\
+x_2^2(\underbrace{k_{12}+k_{23}+k_{24}+k_{25}}_{\kappa_2}) + \\
+x_3^2(\underbrace{k_{23}}_{\kappa_3}) + \\
+x_4^2(\underbrace{k_{40}+k_{14}+k_{24}}_{\kappa_4}) + \\
+x_5^2(\underbrace{k_{50}+k_{25}}_{\kappa_5}) +
 \end{rcases} \text{pure terms} \\
 &amp;\, \begin{rcases}
 -2k_{12}x_1x_2 -2k_{14}x_1x_4 + \\
@@ -561,7 +598,7 @@ x_5^2(\underbrace{k_{50}+k_{25}}_{K_5}) +
 -2 k_{25}x_2x_5
 \end{rcases} \text{mixed terms}
 \end{align*}</span></p>
-<p>For convenience, we called <span class="math inline">K_i</span> the sum of all spring constants that connect mass <span class="math inline">i</span> to other masses (or wall).</p>
+<p>For convenience, we called <span class="math inline">\kappa_i</span> the sum of all spring constants that connect mass <span class="math inline">i</span> to other masses (or wall).</p>
 <p>We now realize that this whole mess can be written in matrix form!</p>
 <p><span class="math display">
 U=\frac{1}{2}
@@ -569,26 +606,139 @@ U=\frac{1}{2}
 x_1&amp;x_2&amp;x_3&amp;x_4&amp;x_5
 \end{pmatrix}
 \begin{pmatrix}
-K_1 &amp; -k_{12} &amp; 0 &amp; -k_{14} &amp; 0 \\
--k_{12} &amp; K_2 &amp; -k_{23} &amp; -k_{24} &amp; -k_{25} \\
-0 &amp; -k_{23} &amp; K_3 &amp; 0 &amp; 0 \\
--k_{14} &amp; -k_{24} &amp; 0 &amp; K_4 &amp; 0 \\
-0 &amp; -k_{25} &amp; 0 &amp; 0 &amp; K_5
+\kappa_1 &amp; -k_{12} &amp; 0 &amp; -k_{14} &amp; 0 \\
+-k_{12} &amp; \kappa_2 &amp; -k_{23} &amp; -k_{24} &amp; -k_{25} \\
+0 &amp; -k_{23} &amp; \kappa_3 &amp; 0 &amp; 0 \\
+-k_{14} &amp; -k_{24} &amp; 0 &amp; \kappa_4 &amp; 0 \\
+0 &amp; -k_{25} &amp; 0 &amp; 0 &amp; \kappa_5
 \end{pmatrix}
 \begin{pmatrix}
 x_1\\x_2\\x_3\\x_4\\x_5
 \end{pmatrix}
 </span></p>
-<p>Let’s call <span class="math inline">\Lambda</span> the matrix in the middle. This is called the <strong>precision matrix</strong>, and we’ll discuss its relevance to probability densities in a little while. The rules for building this matrix can be summarized quite simply:</p>
+<p>Let’s call <span class="math inline">K</span> the matrix in the middle. This is called the <strong>stiffness matrix</strong>, and we’ll discuss its relevance to probability densities in a little while. The rules for building this matrix can be summarized quite simply:</p>
 <ul>
-<li>The diagonal terms <span class="math inline">\Lambda_{ii}</span> are the sum of all spring constants that connect mass <span class="math inline">i</span> to any other mass or wall.</li>
-<li>The off-diagonal terms <span class="math inline">\Lambda_{ij}</span> are the negative spring constant connecting mass <span class="math inline">i</span> to mass <span class="math inline">j</span>.</li>
+<li>The diagonal terms <span class="math inline">K_{ii}</span> are the sum of all spring constants that connect mass <span class="math inline">i</span> to any other mass or wall.</li>
+<li>The off-diagonal terms <span class="math inline">K_{ij}</span> are the negative spring constant connecting mass <span class="math inline">i</span> to mass <span class="math inline">j</span>.</li>
 </ul>
 <p>Calling <span class="math inline">x</span> the column vector composed of all variables <span class="math inline">x_1</span> through <span class="math inline">x_5</span>, we can write the total potential energy of the system as</p>
 <p><span class="math display">
-U_{\text{total}} = \frac{1}{2}x^T \Lambda x.
+U_{\text{total}} = \frac{1}{2}x^T K x.
 </span></p>
-<p>Notice what the zero entries in the precision matrix mean. Whenever we see a zero in the component <span class="math inline">\Lambda_{ij}</span>, we can be certain that there is no direct link between <span class="math inline">x_i</span> and <span class="math inline">x_j</span>! This is eerily similar to the <a href="./covariance-and-precision.html#conditional-independence-theorem">conditional independence theorem</a> we proved above. We will want to claim not only that “there is no spring connecting the two masses”, but that in fact the variables represented by these masses are conditionally independent. What we need now is to derive the probability density of our mass-spring system.</p>
+<p>It is useful to visualize the total potential energy as a function of the state variables. We are limited in the number of dimensions we can see, so I chose to focus on this part of the mass-spring system.</p>
+<img src="covariance-and-precision_files/mediabag/f9291bf9d6c8487d1fd7d941e5b8f9445dfcd2e6.svg" class="img-fluid" style="width:100.0%">
+<p><br> Taking <span class="math inline">k_{10}=1.7</span> and <span class="math inline">k_{12}=0.7</span> gives the following potential energy surface:</p>
+<img src="covariance-and-precision_files/mediabag/03682d8b1383453b226aab51cc81a217d3799712.svg" class="img-fluid" style="width:100.0%">
+<p>Notice what the zero entries in the stiffness matrix mean. Whenever we see a zero in the component <span class="math inline">K_{ij}</span>, we can be certain that there is no direct link between <span class="math inline">x_i</span> and <span class="math inline">x_j</span>! This is eerily similar to the <a href="./covariance-and-precision.html#conditional-independence-theorem">conditional independence theorem</a> we proved above. We will want to claim not only that “there is no spring connecting the two masses”, but that in fact the variables represented by these masses are conditionally independent. What we need now is to derive the probability density of our mass-spring system.</p>
+</section>
+<section id="probability-density-from-boltzmann-distribution" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="probability-density-from-boltzmann-distribution"><span class="header-section-number">7.3</span> probability density from Boltzmann distribution</h2>
+<p>We expand the mass-spring analogy, and bring randomness into the picture. Suppose the mass-spring system is in contact with a very large heat reservoir of temperature <span class="math inline">T</span>. Concretely, you can simply imagine that the system is embeded in the atmosphere, and the air particles bump into the masses and make them jiggle a little bit. These tiny bumps will make the system leave its rest state (<span class="math inline">x=0</span>) and now the masses have tiny displacements <span class="math inline">x</span>. As we’ve seen above, a system with a displacement state <span class="math inline">x</span> has total energy <span class="math inline">U_{\text{total}} = \frac{1}{2}x^T K x</span>.</p>
+<p>The question now is: What is the probability of finding this system at a specific displacement configuration <span class="math inline">x</span>?</p>
+<p>Boltzmann’s distribution is the answer to this question:</p>
+<p><span class="math display">
+p(x) = \frac{1}{Z} \exp\left( -\frac{U(x)}{k_B T} \right).
+</span></p>
+<p>The important part is this: Zero displacement <span class="math inline">x=0</span> is at the bottom of the energy well (U(x)=0), and is the most probable state. The higher the mass-spring system is up the potential energy well, the lower will be the probability of finding the system there. This is because it is unlikely that random collisions between air particles and the masses will cause the system to deviate so much from its resting position. Now let’s discuss two other things we see in the equation.</p>
+<ul>
+<li><span class="math inline">Z</span> is a normalization constant, called partition function. Its role is to guarantee that integrating <span class="math inline">p(x)</span> over all values of <span class="math inline">x</span> gives 1.</li>
+<li><span class="math inline">k_B T</span> is the temperature rescaled by Boltzmann’s constant. If the temperature is increased, finding the system further from its resting position will become more probable, because the air particles that bump into the masses are more energetic. If we lower the temperature towards zero, the air particles will hardly have any energy to transfer to the masses, and only states really close to <span class="math inline">x=0</span> will be expected to be found.</li>
+</ul>
+<p>Let’s substitute the expression we found for <span class="math inline">U(x)</span> into Boltzmann’s distribution:</p>
+<p><span class="math display">\begin{align*}
+p(x) &amp;= \frac{1}{Z} \exp\left( -\frac{U(x)}{k_B T} \right) \\
+&amp;= \frac{1}{Z} \exp\left( -\frac{1}{2}\frac{x^T K x}{k_B T} \right).
+\end{align*}</span></p>
+<p>Let’s compare the above with the expression we worked with in the proof of the conditional independence theorem:</p>
+<p><span class="math display">
+p(x) \propto \exp\left( -\frac{1}{2}x^T \Lambda x \right)
+</span></p>
+<p>In order to close that gap and make these two expressions identical, we define the precision matrix <span class="math inline">\Lambda</span> as</p>
+<p><span class="math display">
+\Lambda = \frac{K}{k_B T}.
+</span></p>
+<p>The precision matrix <span class="math inline">\Lambda</span> is a statistical object, and it reports the ratio between the fixed stiffness matrix and the thermal energy. The precision can be tuned up or down by adjusting the strength of the random noise, independently from the underlying structure of interactions between the variables <span class="math inline">x_i</span>.</p>
+<p>Now that the loop is closed, we can make a previous claim a lot stronger. We said before that</p>
+<blockquote class="blockquote">
+<p>Whenever we see a zero in the component <span class="math inline">K_{ij}</span> of the stiffness matrix, we can be certain that there is no direct link between <span class="math inline">x_i</span> and <span class="math inline">x_j</span>.</p>
+</blockquote>
+<p>Now that stiffness is connected to precision, we can go beyond that:</p>
+<blockquote class="blockquote">
+<p>Whenever we see a zero in the component <span class="math inline">\Lambda_{ij}</span> of the precision matrix, we can be certain that there is no direct link between <span class="math inline">x_i</span> and <span class="math inline">x_j</span>, and according to the theorem we proved before, this means that <span class="math inline">x_i</span> is independent from <span class="math inline">x_j</span>, conditioning on all other variables.</p>
+</blockquote>
+</section>
+<section id="covariance-matrix" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="covariance-matrix"><span class="header-section-number">7.4</span> covariance matrix</h2>
+<p>Suppose I take hold of mass <span class="math inline">1</span> in the mass-spring diagram above, and periodically jiggle it back and forth. After a little while, the whole system will be jiggling. If I track the position of all masses through time, will all nodes respond equally from my jiggling of mass number <span class="math inline">1</span>? If I had to guess, I’d say that masses <span class="math inline">2</span> and <span class="math inline">4</span> would respond most strongly, because they are directly connected to <span class="math inline">1</span>. The movement of masses <span class="math inline">3</span> and <span class="math inline">5</span> would be expected to be more weakly connected to the movement of mass <span class="math inline">1</span>, because there are more intermediate links between them.</p>
+<p>We can quantify how the displacement of each mass co-varies with that of others by computing the <strong>covariance matrix</strong> <span class="math inline">\Sigma</span>. This is given by the inverse of the precision matrix:</p>
+<p><span class="math display">
+\Sigma = \Lambda^{-1}.
+</span></p>
+<p>Let’s do a numerical example. Assume that all springs in the diagram shown above have stiffness <span class="math inline">1</span>, and assume that for a given choice of temperature units, the factor <span class="math inline">k_B T=1</span>. We show below the precision matrix <span class="math inline">\Lambda</span>, together with the numerically computed covariance matrix <span class="math inline">\Sigma</span>:</p>
+<p><span class="math display">
+\Lambda =
+\begin{pmatrix*}[r]
+3 &amp; -1 &amp; 0 &amp; -1 &amp; 0 \\
+-1 &amp; 4 &amp; -1 &amp; -1 &amp; -1 \\
+0 &amp; -1 &amp; 1 &amp; 0 &amp; 0 \\
+-1 &amp; -1 &amp; 0 &amp; 3 &amp; 0 \\
+0 &amp; -1 &amp; 0 &amp; 0 &amp; 2
+\end{pmatrix*} \\[0.5cm]
+\Sigma = \frac{1}{24}
+\begin{pmatrix*}[r]
+13 &amp;  8 &amp;  8 &amp;  7 &amp;  4 \\
+8 &amp; 16 &amp; 16 &amp;  8 &amp;  8 \\
+8 &amp; 16 &amp; 40 &amp;  8 &amp;  8 \\
+7 &amp;  8 &amp;  8 &amp; 13 &amp;  4 \\
+4 &amp;  8 &amp;  8 &amp;  4 &amp; 16
+\end{pmatrix*}
+</span></p>
+<div id="f10d358f" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>this is how I computed Sigma</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2"></a>Lambda <span class="op">=</span> np.array(</span>
+<span id="cb1-3"><a href="#cb1-3"></a>    [[ <span class="dv">3</span>, <span class="op">-</span><span class="dv">1</span>,  <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>,  <span class="dv">0</span>],</span>
+<span id="cb1-4"><a href="#cb1-4"></a>     [<span class="op">-</span><span class="dv">1</span>,  <span class="dv">4</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>],</span>
+<span id="cb1-5"><a href="#cb1-5"></a>     [ <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>,  <span class="dv">1</span>,  <span class="dv">0</span>,  <span class="dv">0</span>],</span>
+<span id="cb1-6"><a href="#cb1-6"></a>     [<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>,  <span class="dv">0</span>,  <span class="dv">3</span>,  <span class="dv">0</span>],</span>
+<span id="cb1-7"><a href="#cb1-7"></a>     [ <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>,  <span class="dv">0</span>,  <span class="dv">0</span>,  <span class="dv">2</span>]]</span>
+<span id="cb1-8"><a href="#cb1-8"></a>)</span>
+<span id="cb1-9"><a href="#cb1-9"></a>Sigma <span class="op">=</span> np.linalg.inv(Lambda)</span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="bu">print</span>(Sigma)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="5adc5951" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>np.linalg.det(Lambda)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>np.float64(24.000000000000014)</code></pre>
+</div>
+</div>
+<p>A few things about the covariance matrix:</p>
+<ul>
+<li>The diagonal terms in <span class="math inline">\Sigma</span> are the variances of each variable.</li>
+<li>Since <span class="math inline">\Lambda</span> is a symmetric matrix, so is <span class="math inline">\Sigma</span> symmetric.<br>
+Proof:
+<ol type="1">
+<li>We start with <span class="math inline">\Lambda^T=\Lambda</span> (symmetric).</li>
+<li>Note the following:<br>
+<span class="math inline">(\Lambda \Lambda^{-1})^T=I^T=I</span></li>
+<li>We expand the left-hand side using the product rule for transpositions:<br>
+<span class="math inline">(\Lambda^{-1})^T\Lambda^T = I</span></li>
+<li>We replace <span class="math inline">\Lambda^T</span> with <span class="math inline">\Lambda</span> (point 1.):<br>
+<span class="math inline">(\Lambda^{-1})^T\Lambda = I</span></li>
+<li>Right-multiply by <span class="math inline">\Lambda^{-1}</span>:<br>
+<span class="math inline">(\Lambda^{-1})^T= \Lambda^{-1}</span></li>
+<li>We called <span class="math inline">\Sigma = \Lambda^{-1}</span>, so:<br>
+<span class="math inline">\Sigma^T=\Sigma</span>. <span class="math inline">\qquad\blacksquare</span></li>
+</ol></li>
+<li>The denominator <span class="math inline">24</span> in the expression for <span class="math inline">\Sigma</span> is simply the determinant of <span class="math inline">\Lambda</span>.</li>
+</ul>
+<p>Looking at the first row (or first column), we learn that the covariance between <span class="math inline">1</span> and <span class="math inline">3</span> is the same as the covariance between <span class="math inline">1</span> and <span class="math inline">2</span>, although there are two links in the first pair and only one link in the second pair. On second thought, this makes sense, because mass <span class="math inline">3</span> is solely impacted by <span class="math inline">2</span>, so whatever happens to <span class="math inline">2</span> will be transfered to it. This is interesting, we have to take care and not simply assume that more links between two nodes translate directly into lower covariance. There are also two links between <span class="math inline">1</span> and <span class="math inline">5</span>, but the covariance between then is much lower that that of <span class="math inline">1</span> and <span class="math inline">3</span>. Why? I would assume that this is because <span class="math inline">5</span> is also connected to the wall, so it is not as unencumbered as <span class="math inline">3</span>.</p>
+<p>An important fact about the covariance matrix is that it is <strong>dense</strong>, meaning that, differently from the precision matrix, we find no zero components in it. This is because there is always a path connecting any two masses in our network, so jiggling any one mass will invariably be felt everywhere.</p>
 
 
 </section>
