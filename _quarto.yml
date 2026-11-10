@@ -30,6 +30,8 @@ book:
       chapters: 
         - lie_algebra/basic_properties.ipynb
         - lie_algebra/sl2.ipynb
+        - lie_algebra/real_forms_of_sl2.ipynb
+        - lie_algebra/su2_and_spinors.ipynb
     - part: "group theory"
       chapters:
         - group_theory/start_here.ipynb
@@ -39,9 +41,7 @@ book:
         - intro-differential-geometry.qmd
   sidebar:
     collapse-level: 1
-    tools:
-      - icon: house-fill
-        href: https://yairmau.com/
+    header: "[← Back to yairmau.com](https://yairmau.com/){.back-home}"
     logo: archive/logo.png
   search: true
 
