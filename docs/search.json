@@ -703,102 +703,256 @@
     ]
   },
   {
+    "objectID": "lie_algebra/real_forms_of_sl2.html",
+    "href": "lie_algebra/real_forms_of_sl2.html",
+    "title": "14  real forms of sl(2)",
+    "section": "",
+    "text": "14.1 the space we’re carving from\nWe built \\mathfrak{sl}(2,\\mathbb{C}) as the space of traceless 2\\times2 complex matrices, spanned by E, H, F with complex coefficients. That is a generous space — three complex dimensions, which is six real dimensions. Often we do not want all of it. When we talk about rotations, or about spin, we want a smaller, real piece: three real dimensions carved out of the six. This chapter is about what that means and how to do it. There are two natural ways to make the cut, and they produce two genuinely different algebras — \\mathfrak{sl}(2,\\mathbb{R}) and \\mathfrak{su}(2) — even though both are three-dimensional and both live inside the same \\mathfrak{sl}(2,\\mathbb{C}). The difference between them turns out to be exactly the difference between a boost and a rotation, between a hyperbola and a circle.\nRecall that a general element of \\mathfrak{sl}(2,\\mathbb{C}) is\nX = a E + b H + c F, \\qquad a, b, c \\in \\mathbb{C}.\nEach complex coefficient is really two real numbers, so as a real vector space this is six-dimensional. We want to keep a three-dimensional real slice of it. But — and this is the point that is easy to miss — we are not free to keep any three-dimensional real slice. We need the slice to still be a Lie algebra, which means it has to be closed under the bracket: bracketing two elements of the slice, using only real coefficients, must land us back inside the slice.\nMost slices fail this. Take, for instance, the real span of \\{E, F, iH\\}. It is a perfectly good three-real-dimensional subspace, but it is not closed: [E,F] = H, and H is not a real combination of E, F, and iH (it is real and diagonal, while iH is imaginary and diagonal — there is no way to build H from those three with real coefficients). Bracketing threw us out of the slice.\nA slice that is closed under the bracket, and that regenerates all of \\mathfrak{sl}(2,\\mathbb{C}) once we allow complex coefficients again, is called a real form. Concisely: a real form L is a real, bracket-closed subalgebra with\n\\mathfrak{sl}(2,\\mathbb{C}) = L \\oplus iL\nas real vector spaces. The “L” gives you three real dimensions, the “iL” gives you the other three, and together they fill out the six. A real form is one self-contained real “half” of the complex algebra.\nSo the question of this chapter is concrete: which real three-dimensional slices of \\mathfrak{sl}(2,\\mathbb{C}) are bracket-closed? It turns out that, up to isomorphism, there are exactly two. Let’s find them.",
+    "crumbs": [
+      "lie algebra",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>real forms of sl(2)</span>"
+    ]
+  },
+  {
+    "objectID": "lie_algebra/real_forms_of_sl2.html#the-split-real-form-mathfraksl2mathbbr",
+    "href": "lie_algebra/real_forms_of_sl2.html#the-split-real-form-mathfraksl2mathbbr",
+    "title": "14  real forms of sl(2)",
+    "section": "14.2 the split real form: \\mathfrak{sl}(2,\\mathbb{R})",
+    "text": "14.2 the split real form: \\mathfrak{sl}(2,\\mathbb{R})\nThe most obvious slice is the one you would try first: just demand that the coefficients a, b, c be real. This is the real span of E, H, F:\n\n\\mathfrak{sl}(2,\\mathbb{R}) = \\operatorname{span}_{\\mathbb{R}}\\{E, H, F\\}.\n\nIs it closed under the bracket? Yes, and for a reason that requires no computation: the structure constants of E, H, F are all real,\n\n[H,E] = 2E, \\qquad [H,F] = -2F, \\qquad [E,F] = H,\n\nso a real combination of these generators brackets to a real combination. Closure is automatic. As matrices, this slice is exactly the traceless 2\\times2 real matrices, and the group you get by exponentiating them is SL(2,\\mathbb{R}): the real, determinant-one, area-preserving transformations of the plane — the very maps we started this whole story with.\nThis is called the split real form. Hold onto the word “split”; the next section will show what is splitting.",
+    "crumbs": [
+      "lie algebra",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>real forms of sl(2)</span>"
+    ]
+  },
+  {
+    "objectID": "lie_algebra/real_forms_of_sl2.html#the-compact-real-form-mathfraksu2",
+    "href": "lie_algebra/real_forms_of_sl2.html#the-compact-real-form-mathfraksu2",
+    "title": "14  real forms of sl(2)",
+    "section": "14.3 the compact real form: \\mathfrak{su}(2)",
+    "text": "14.3 the compact real form: \\mathfrak{su}(2)\nThere is a second slice, and it is the one physics cares about. We met it in the spin chapter: the traceless anti-Hermitian matrices, \\mathfrak{su}(2). Let’s build it from E, H, F directly and watch what is different.\nA basis for this slice is\n\nu_1 = i(E+F), \\qquad u_2 = E - F, \\qquad u_3 = iH,\n\nor, as matrices,\n\nu_1 = \\begin{pmatrix} 0 & i \\\\ i & 0 \\end{pmatrix}, \\qquad\nu_2 = \\begin{pmatrix} 0 & 1 \\\\ -1 & 0 \\end{pmatrix}, \\qquad\nu_3 = \\begin{pmatrix} i & 0 \\\\ 0 & -i \\end{pmatrix}.\n\nEach is traceless and satisfies u^\\dagger = -u (anti-Hermitian), so this is \\mathfrak{su}(2). And here is the crucial observation: we needed factors of i to build it. Two of the three generators, u_1 and u_3, are imaginary combinations of E, H, F. That is why \\mathfrak{su}(2) is a different slice from \\mathfrak{sl}(2,\\mathbb{R}), even though both are three real dimensions inside the same complex space. The word “real” in “real form” was never about the matrix entries — those are complex here — it is about only taking real combinations of these particular generators.\nThe slice is bracket-closed. If we use the normalized generators T_j = -\\tfrac{i}{2}\\sigma_j (which span the same real space), the brackets come out as the rotation structure constants we keep running into,\n\n[T_i, T_j] = \\epsilon_{ijk}\\, T_k,\n\nwith real constants \\epsilon_{ijk}, so real combinations stay real. Exponentiating gives SU(2), the special unitary group. This is called the compact real form — and now let’s see why the two forms deserve genuinely different names.",
+    "crumbs": [
+      "lie algebra",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>real forms of sl(2)</span>"
+    ]
+  },
+  {
+    "objectID": "lie_algebra/real_forms_of_sl2.html#the-same-algebra-no.",
+    "href": "lie_algebra/real_forms_of_sl2.html#the-same-algebra-no.",
+    "title": "14  real forms of sl(2)",
+    "section": "14.4 the same algebra? no.",
+    "text": "14.4 the same algebra? no.\nBoth \\mathfrak{sl}(2,\\mathbb{R}) and \\mathfrak{su}(2) are three-dimensional real Lie algebras sitting inside \\mathfrak{sl}(2,\\mathbb{C}). It is tempting to think they must therefore be “the same algebra in disguise.” They are not. There is no way to match one to the other by a change of real basis — they are genuinely distinct — and the cleanest way to see it is to ask what happens when you exponentiate a generator.\nFor a traceless 2\\times2 matrix, the Cayley–Hamilton theorem gives a small miracle: X^2 = -\\det(X)\\, I. So the single number \\det(X) controls everything. If \\det(X) &gt; 0, then X^2 = -(\\text{positive}) I behaves like i, and exponentiating gives circles — bounded, periodic motion that returns to where it started. If \\det(X) &lt; 0, then X^2 = +(\\text{positive}) I, and exponentiating gives hyperbolas — unbounded motion that runs off to infinity.\nWatch this play out. In \\mathfrak{sl}(2,\\mathbb{R}), the generator E - F has \\det = 1 &gt; 0, and indeed\n\ne^{\\theta(E-F)} = \\cos\\theta\\, I + \\sin\\theta\\,(E-F)\n\nis an ordinary rotation, periodic with period 2\\pi. But the generator H has \\det = -1 &lt; 0, and\n\ne^{tH} = \\cosh t\\, I + \\sinh t\\, H = \\begin{pmatrix} e^{t} & 0 \\\\ 0 & e^{-t} \\end{pmatrix}\n\nstretches one axis and shrinks the other, running off to infinity as t grows. So \\mathfrak{sl}(2,\\mathbb{R}) contains one rotation direction and two stretching (boost) directions. That is the “split”: the group has both bounded and unbounded parts.\nNow look at \\mathfrak{su}(2). Every one of its generators has positive determinant — \\det(u_1) = \\det(u_2) = \\det(u_3) = 1 — so every direction exponentiates to a circle. SU(2) is all rotations, no boosts; nothing runs off to infinity. This is what compact means: the group is a bounded, closed set (topologically SU(2) is a 3-sphere).\nThe rigorous invariant behind this intuition is the trace form \\langle X, Y\\rangle = \\operatorname{tr}(XY) (proportional to the Killing form). Square each basis generator and read off the sign of the trace. The comparison is striking, because the two forms are built from almost the same ingredients:\n\n\\begin{array}{lll}\n\\mathfrak{sl}(2,\\mathbb{R}): & \\{\\,H,\\ E+F,\\ E-F\\,\\} & \\operatorname{tr}(X^2) = +2,\\ +2,\\ -2 \\\\[4pt]\n\\mathfrak{su}(2): & \\{\\,iH,\\ i(E+F),\\ E-F\\,\\} & \\operatorname{tr}(X^2) = -2,\\ -2,\\ -2\n\\end{array}\n\nThe two lists differ in exactly one respect: \\mathfrak{su}(2) takes the two positive-trace directions of \\mathfrak{sl}(2,\\mathbb{R}) — namely H and E+F — and multiplies them by i. Since \\operatorname{tr}\\big((iX)^2\\big) = -\\operatorname{tr}(X^2), that factor of i flips each +2 into a -2. The one direction both forms share, E - F, was already negative — it is the rotation, the compact direction that needs no fixing.\nSo the trace form of \\mathfrak{sl}(2,\\mathbb{R}) is indefinite, with signature (2,1) — two plus signs, one minus — while the trace form of \\mathfrak{su}(2) is negative definite, signature (0,3). A change of real basis can never turn an indefinite form into a definite one (the number of plus and minus signs is an invariant), so no isomorphism between the two real forms can exist. They are different algebras, full stop.\nAnd the physics is sitting right there in the sign counts. A negative-definite form with three compact directions is \\mathfrak{so}(3): rotations of ordinary three-dimensional space, three of them, in the xy, yz, zx planes. An indefinite (2,1) form with one compact and two non-compact directions is \\mathfrak{so}(2,1): the symmetries of a space with one time and two space dimensions — one rotation (in the spatial plane) and two boosts (mixing time with each space axis). So the two real forms are\n\n\\mathfrak{su}(2) \\;\\cong\\; \\mathfrak{so}(3) \\qquad\\text{and}\\qquad \\mathfrak{sl}(2,\\mathbb{R}) \\;\\cong\\; \\mathfrak{so}(2,1),\n\nand the whole compact-versus-split distinction is the distinction between the geometry of a sphere and the geometry of spacetime.",
+    "crumbs": [
+      "lie algebra",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>real forms of sl(2)</span>"
+    ]
+  },
+  {
+    "objectID": "lie_algebra/real_forms_of_sl2.html#what-picks-out-each-slice",
+    "href": "lie_algebra/real_forms_of_sl2.html#what-picks-out-each-slice",
+    "title": "14  real forms of sl(2)",
+    "section": "14.5 what picks out each slice",
+    "text": "14.5 what picks out each slice\nThere is a tidy way to characterize each real form intrinsically, rather than by writing down a basis — and it explains why there are exactly two. Each real form is the set of matrices left fixed by a certain operation on \\mathfrak{sl}(2,\\mathbb{C}).\nConsider two operations. The first is ordinary complex conjugation of the entries, X \\mapsto \\bar{X}. Its fixed points — the matrices equal to their own conjugate — are the ones with real entries, which is exactly \\mathfrak{sl}(2,\\mathbb{R}). The second is the negative conjugate-transpose, X \\mapsto -X^\\dagger. Its fixed points are the matrices with -X^\\dagger = X, the anti-Hermitian ones, which is exactly \\mathfrak{su}(2).\n\n\\mathfrak{sl}(2,\\mathbb{R}) = \\{\\, X : \\bar{X} = X \\,\\}, \\qquad\n\\mathfrak{su}(2) = \\{\\, X : -X^\\dagger = X \\,\\}.\n\nBoth operations are antilinear (they conjugate the i’s) and both square to the identity — they are involutions. Every real form of a complex Lie algebra arises as the fixed points of such an involution, and for \\mathfrak{sl}(2,\\mathbb{C}) these two are, up to isomorphism, all there are. So the two forms are not an arbitrary pair we happened to find; they are the complete list, each cut out by a natural involution.",
+    "crumbs": [
+      "lie algebra",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>real forms of sl(2)</span>"
+    ]
+  },
+  {
+    "objectID": "lie_algebra/real_forms_of_sl2.html#complexification-the-way-back",
+    "href": "lie_algebra/real_forms_of_sl2.html#complexification-the-way-back",
+    "title": "14  real forms of sl(2)",
+    "section": "14.6 complexification: the way back",
+    "text": "14.6 complexification: the way back\nThe defining property of a real form is that you can climb back up from it. Allow complex coefficients again — this is called complexifying — and either form regenerates all of \\mathfrak{sl}(2,\\mathbb{C}):\n\n\\mathfrak{sl}(2,\\mathbb{C}) = \\mathfrak{sl}(2,\\mathbb{R}) \\oplus i\\,\\mathfrak{sl}(2,\\mathbb{R}) = \\mathfrak{su}(2) \\oplus i\\,\\mathfrak{su}(2).\n\nBoth real forms are skeletons of the same complex body; they are just two different ways of choosing which half is “real.”\nThe second splitting has a beautiful physical reading. The elements of \\mathfrak{su}(2) are anti-Hermitian, so the elements of i\\,\\mathfrak{su}(2) are Hermitian. Thus\n\n\\mathfrak{sl}(2,\\mathbb{C}) = \\underbrace{\\mathfrak{su}(2)}_{\\text{anti-Hermitian}} \\oplus \\underbrace{i\\,\\mathfrak{su}(2)}_{\\text{Hermitian}} = \\underbrace{(\\text{rotations})}_{\\text{compact}} \\oplus \\underbrace{(\\text{boosts})}_{\\text{non-compact}}.\n\nRotations plus boosts is the Lorentz algebra: as a real six-dimensional Lie algebra, \\mathfrak{sl}(2,\\mathbb{C}) is \\mathfrak{so}(1,3), the symmetries of four-dimensional spacetime. Taking the compact real form \\mathfrak{su}(2) is, in this light, the act of keeping only the rotations and discarding the boosts. That is exactly what we did, without saying so, when we motivated \\mathfrak{su}(2) from probability conservation in the spin chapter: unitarity kept the compact, bounded directions and threw the boosts away.",
+    "crumbs": [
+      "lie algebra",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>real forms of sl(2)</span>"
+    ]
+  },
+  {
+    "objectID": "lie_algebra/real_forms_of_sl2.html#where-this-goes",
+    "href": "lie_algebra/real_forms_of_sl2.html#where-this-goes",
+    "title": "14  real forms of sl(2)",
+    "section": "14.7 where this goes",
+    "text": "14.7 where this goes\nWe started with one complex algebra and found it has two real skeletons. One of them, \\mathfrak{su}(2) \\cong \\mathfrak{so}(3), is the compact form, the home of rotations and spin; we have already used it to build spinors, and in the next chapter we will pin down precisely how SU(2) sits over the rotation group SO(3) as a double cover — and get the cross product of classical mechanics as a parting gift. The other, \\mathfrak{sl}(2,\\mathbb{R}) \\cong \\mathfrak{so}(2,1), is the split form, the home of boosts and hyperbolic geometry, and it has its own long story: it is the symmetry algebra of the hyperbolic plane and of 2+1-dimensional relativity. Same three letters, E, H, F — but which combinations you are allowed to take, and which of them you multiply by i, decides whether you are doing geometry on a sphere or on a hyperboloid.",
+    "crumbs": [
+      "lie algebra",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>real forms of sl(2)</span>"
+    ]
+  },
+  {
+    "objectID": "lie_algebra/su2_and_spinors.html",
+    "href": "lie_algebra/su2_and_spinors.html",
+    "title": "15  su(2) and spinors",
+    "section": "",
+    "text": "15.1 spin\nIn this chapter we will see how the mathematics behind the spin in quantum mechanics is deeply connected to the Lie algebra sl(2) that we have been studying. The idea is not to derive the physics of spin from scratch. Instead, we will take a few basic facts about spin as given, and watch how they force us — step by step — into exactly the machinery we already built.\nLet’s assume a spin-1/2 particle, such as an electron. The spin of the electron is a quantum property that can be measured along any axis in physical space. When we measure the spin along the vertical axis, we can only get one of two possible outcomes: “spin up” or “spin down”. These outcomes can be represented by column vectors:\nv_\\text{up} = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}, \\quad v_\\text{down} = \\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}.\nBefore we measure a particle’s spin, we can describe its state as a linear combination (a superposition) of the two possible outcomes:\nv = \\alpha v_\\text{up} + \\beta v_\\text{down}.\nHere \\alpha and \\beta are complex numbers, called amplitudes. The rule connecting them to measurement (the Born rule) is that the probability of measuring “up” is |\\alpha|^2 and the probability of measuring “down” is |\\beta|^2. Since the particle must come out as one or the other, these probabilities have to add up to one:\n|\\alpha|^2 + |\\beta|^2 = 1.\nSo a spin state is nothing more than a two-component complex vector of length one. Two remarks before we move on. First, the space is 2-dimensional because we are describing a two-state system — that “2” is a fact about the electron’s spin, not about any algebra. Keep an eye on it; it is not the same “2” that will show up in the size of our matrices, even though they are about to coincide. Second, “length one” here means length in the complex sense: \\lVert v \\rVert^2 = |\\alpha|^2 + |\\beta|^2, which is exactly v^\\dagger v, where v^\\dagger is the conjugate transpose (the bra \\langle v|). The complex conjugation is what makes this a real, non-negative number that we are entitled to call a total probability.",
+    "crumbs": [
+      "lie algebra",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>su(2) and spinors</span>"
+    ]
+  },
+  {
+    "objectID": "lie_algebra/su2_and_spinors.html#transforming-spin-states",
+    "href": "lie_algebra/su2_and_spinors.html#transforming-spin-states",
+    "title": "15  su(2) and spinors",
+    "section": "15.2 transforming spin states",
+    "text": "15.2 transforming spin states\nNow let’s ask the question that will drive the rest of the chapter: what can we do to a spin state? We can let it evolve in time, or rotate the measuring apparatus, or apply a magnetic field. Whatever the physical operation is, it acts on the state as some linear operator M:\n\nv \\;\\longmapsto\\; M v.\n\nBut not every M is allowed. Whatever the state turns into, it is still a state of the same particle, so it must still describe a valid set of probabilities — its total probability must still be one. In other words, M has to preserve the length of every state:\n\n\\lVert M v \\rVert = \\lVert v \\rVert \\quad \\text{for every } v.\n\nThis one physical requirement pins down what kind of operator M can be. Let’s write the length-preservation condition out using \\lVert w \\rVert^2 = w^\\dagger w:\n\n(Mv)^\\dagger (Mv) = v^\\dagger v\n\\quad\\Longrightarrow\\quad\nv^\\dagger \\big(M^\\dagger M\\big) v = v^\\dagger v.\n\nIf this holds for every vector v, the operator sandwiched in the middle must be the identity:\n\nM^\\dagger M = I.\n\nAn operator satisfying M^\\dagger M = I is called unitary — its conjugate transpose is its inverse. So the conclusion is clean and forced: the transformations of a spin state are exactly the unitary operators. The physical demand “conserve total probability” and the mathematical condition “unitary” are the very same statement, one wearing physics clothes and the other wearing linear-algebra clothes.\nThe set of all 2\\times 2 unitary matrices forms a group, written U(2). We are almost home — but not quite.",
+    "crumbs": [
+      "lie algebra",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>su(2) and spinors</span>"
+    ]
+  },
+  {
+    "objectID": "lie_algebra/su2_and_spinors.html#fixing-the-phase-from-u2-to-su2",
+    "href": "lie_algebra/su2_and_spinors.html#fixing-the-phase-from-u2-to-su2",
+    "title": "15  su(2) and spinors",
+    "section": "15.3 fixing the phase: from U(2) to SU(2)",
+    "text": "15.3 fixing the phase: from U(2) to SU(2)\nThere is one more physical fact to fold in, and it will cut U(2) down to the group we actually want.\nA global phase is invisible. If we multiply the entire state by a phase factor e^{i\\varphi}, sending v \\mapsto e^{i\\varphi} v, then every probability |\\alpha|^2, |\\beta|^2 is unchanged (the phase has modulus one), and so is every relative phase between components. No measurement can tell v from e^{i\\varphi} v. Physically, they are the same state.\nThis freedom lets us tidy up our transformations. A unitary matrix always has a determinant that is a pure phase — from M^\\dagger M = I we get |\\det M|^2 = 1, so \\det M = e^{i\\varphi} for some real \\varphi. Because an overall phase is physically meaningless, we are free to multiply M by a phase \\lambda (with |\\lambda| = 1) chosen so that the determinant becomes exactly one: we just need \\lambda^2 \\det M = 1, which we can always solve. The rescaled matrix is still unitary, and now it also has determinant one.\nSo, losing no physics, we may always represent a transformation by a matrix that is unitary and has determinant one. This is the special unitary group SU(2):\n\nSU(2) = \\left\\{\\, U \\;\\middle|\\; U^\\dagger U = I,\\ \\det U = 1 \\,\\right\\}.\n\nNotice the order of the argument, because it matters. Unitarity is the real physical constraint, coming from conservation of probability. Determinant one is a convenience, a way of using the invisible-phase freedom to pick a tidy representative. We did not impose it as a second physical law.\n(One honest caveat, which will grow into the whole point of the last section. Fixing the determinant to one does not use up all of the phase freedom: the phase \\lambda that does the job is determined only up to a sign, so U and -U both survive with determinant one. That leftover sign is not an accident, and it is where spinors get strange. Hold that thought.)",
+    "crumbs": [
+      "lie algebra",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>su(2) and spinors</span>"
+    ]
+  },
+  {
+    "objectID": "lie_algebra/su2_and_spinors.html#back-to-familiar-ground-su2-as-a-tangent-space",
+    "href": "lie_algebra/su2_and_spinors.html#back-to-familiar-ground-su2-as-a-tangent-space",
+    "title": "15  su(2) and spinors",
+    "section": "15.4 back to familiar ground: su(2) as a tangent space",
+    "text": "15.4 back to familiar ground: su(2) as a tangent space\nHere is the payoff for all the machinery we built earlier. We have arrived at SU(2), a group defined by two conditions — determinant one and unitary — and we already know how to handle “determinant one,” and we know exactly how to trade a constraint on a group for a constraint on its algebra: differentiate at the identity.\nWrite a transformation close to the identity as U = e^{tX}, where X lives in the tangent space (the Lie algebra). We ask what each of our two conditions demands of X.\nDeterminant one. Using the identity \\det(e^{tX}) = e^{t\\,\\operatorname{tr} X} that we proved earlier, the condition \\det U = 1 for all t becomes\n\ne^{t\\,\\operatorname{tr} X} = 1 \\quad\\Longrightarrow\\quad \\operatorname{tr} X = 0.\n\nThis is the very same computation that gave us traceless matrices for \\mathfrak{sl}(2). Nothing new.\nUnitary. Differentiate U^\\dagger U = I with respect to t and evaluate at t = 0. Using \\frac{d}{dt}U = X e^{tX} (so \\dot U|_0 = X) and \\frac{d}{dt}U^\\dagger = X^\\dagger e^{tX^\\dagger} (so \\dot U^\\dagger|_0 = X^\\dagger),\n\n\\frac{d}{dt}\\big(U^\\dagger U\\big)_{t=0} = \\dot U^\\dagger|_0\\, \\underbrace{U|_0}_{I} + \\underbrace{U^\\dagger|_0}_{I}\\, \\dot U|_0 = X^\\dagger + X = 0.\n\nSo the condition is\n\nX^\\dagger = -X,\n\nwhich says X is anti-Hermitian.\nPut the two together: the Lie algebra of SU(2) consists of matrices that are traceless and anti-Hermitian. This is \\mathfrak{su}(2), and — as we discussed when we studied real forms — it is exactly the compact real form of the \\mathfrak{sl}(2,\\mathbb{C}) we have been developing all along. We did not build a new object. Physics reached into \\mathfrak{sl}(2,\\mathbb{C}) and selected this particular real slice, the same way unitarity selected it before.\nAnd notice the machine fired twice, identically: a multiplicative constraint on the group (“product equals identity”) linearized into an additive constraint on the algebra (“sum equals zero”). Determinant one became trace zero; unitary became anti-Hermitian. Same trick, same page in the playbook.\nBecause \\mathfrak{su}(2) is a real form of \\mathfrak{sl}(2,\\mathbb{C}), everything we developed transfers: the bracket, the structure constants, the ladder operators, and above all the classification of representations. The two-component state v we started this chapter with is just the standard (2-dimensional) representation. The other representations are the other spins — and by the dimension count we already derived, the representation of dimension 2j+1 is spin j. Spin-\\tfrac12 is the 2-dimensional one, spin-1 the 3-dimensional one, spin-2 the 5-dimensional one, and so on. The “2” from the electron was only ever the smallest room in a building we had already mapped.",
+    "crumbs": [
+      "lie algebra",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>su(2) and spinors</span>"
+    ]
+  },
+  {
+    "objectID": "lie_algebra/su2_and_spinors.html#the-generators-of-su2",
+    "href": "lie_algebra/su2_and_spinors.html#the-generators-of-su2",
+    "title": "15  su(2) and spinors",
+    "section": "15.5 the generators of su(2)",
+    "text": "15.5 the generators of su(2)\nLet’s write down a concrete basis, because we will need it in a moment. The traditional choice starts from the Pauli matrices:\n\n\\sigma_1 = \\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}, \\qquad\n\\sigma_2 = \\begin{pmatrix} 0 & -i \\\\ i & 0 \\end{pmatrix}, \\qquad\n\\sigma_3 = \\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix}.\n\nThese are Hermitian and traceless, so they are not themselves in \\mathfrak{su}(2) (whose elements are anti-Hermitian). But multiply each by -i/2 and you land inside the algebra. Define\n\nT_j = -\\tfrac{i}{2}\\,\\sigma_j,\n\nwhich are traceless and anti-Hermitian, as required. Their brackets reproduce the structure constants we have seen before, using [\\sigma_i, \\sigma_j] = 2i\\,\\epsilon_{ijk}\\sigma_k:\n\n[T_i, T_j] = \\left(-\\tfrac{i}{2}\\right)^2 [\\sigma_i, \\sigma_j] = -\\tfrac14\\big(2i\\,\\epsilon_{ijk}\\sigma_k\\big) = \\epsilon_{ijk}\\, T_k.\n\nIf you want to see how these sit inside the E, H, F world we built earlier, just multiply out: iH, E - F, and i(E+F) are precisely i\\sigma_3, i\\sigma_2, and i\\sigma_1 — the same three combinations we identified as the real form when we first met \\mathfrak{su}(2). Nothing here is new; it is our old basis in physics notation.\nOne connection worth making explicit, since it closes a loop from the previous chapters. Physicists rarely carry the anti-Hermitian T_j around. They prefer the Hermitian operators S_j = \\tfrac12 \\sigma_j, because those are observables — their eigenvalues \\pm\\tfrac12 are the actual measured values of spin along an axis, and observables must be Hermitian to have real eigenvalues. The algebra generator and the observable differ by exactly the factor we kept running into: T_j = -i\\, S_j. The anti-Hermitian object generates the transformation; the Hermitian object is the thing you measure; the i is the bridge between them.",
+    "crumbs": [
+      "lie algebra",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>su(2) and spinors</span>"
+    ]
+  },
+  {
+    "objectID": "lie_algebra/su2_and_spinors.html#spinors",
+    "href": "lie_algebra/su2_and_spinors.html#spinors",
+    "title": "15  su(2) and spinors",
+    "section": "15.6 spinors",
+    "text": "15.6 spinors\nWe now have everything we need to explain the object that gives this chapter its name.\nA spinor is a two-component complex vector — a state like our v — that transforms under SU(2) in the standard representation. That definition sounds harmless. What makes spinors genuinely different from ordinary vectors, or from a classical arrow representing angular momentum, is how they respond to rotations of physical space.\nIt turns out that a rotation of physical space by an angle \\theta about a unit axis \\hat{n} is represented on spinors by the SU(2) matrix\n\nU(\\theta, \\hat{n}) = \\exp\\!\\left(-\\,i\\,\\frac{\\theta}{2}\\,\\hat{n}\\cdot\\vec\\sigma\\right).\n\nWe will derive this correspondence — where it comes from, and why there is a factor of \\tfrac12 sitting in the exponent — in the next chapter, when we work out the precise relationship between SU(2) and the rotation group SO(3). For now, take it as given and let’s see what it does, because the consequence is immediate and striking.\nUsing (\\hat{n}\\cdot\\vec\\sigma)^2 = I, the exponential collapses to a clean closed form (the same way e^{i\\alpha} splits into sine and cosine):\n\nU(\\theta, \\hat{n}) = \\cos\\!\\frac{\\theta}{2}\\, I \\;-\\; i \\sin\\!\\frac{\\theta}{2}\\,(\\hat{n}\\cdot\\vec\\sigma).\n\nNow rotate all the way around, \\theta = 2\\pi — a full turn, which classically brings everything back exactly to where it started:\n\nU(2\\pi, \\hat{n}) = \\cos\\pi\\, I - i\\sin\\pi\\,(\\hat{n}\\cdot\\vec\\sigma) = -I.\n\nThe spinor does not come back to itself. A full 360^\\circ rotation of space sends v \\mapsto -v. You have to go around twice, a full 720^\\circ, to truly return:\n\nU(4\\pi, \\hat{n}) = \\cos 2\\pi\\, I - i\\sin 2\\pi\\,(\\hat{n}\\cdot\\vec\\sigma) = +I.\n\nThat minus sign after one turn is the signature of a spinor, and it is where the leftover sign from the “fixing the phase” section comes home to roost — U and -U really are different, and a 2\\pi rotation is exactly the operation that swaps them. The half-angle \\theta/2 in the exponent is the fingerprint of this: physical rotations are being represented in SU(2) at “half speed,” so one full physical turn is only a half turn in SU(2), landing on -I rather than I.\nThis is also the concrete reason we insisted on \\mathfrak{su}(2) rather than \\mathfrak{so}(3) back when we studied real forms. The minus sign cannot be seen by SO(3); the representations that pick it up — the half-integer spins — are representations of SU(2) that do not descend to honest representations of the rotation group. SU(2) is the natural home of spin precisely because it is large enough to carry these two-valued objects that SO(3) cannot.\nAnd this is not a mathematical curiosity with no consequences. The relative sign between a rotated and an unrotated spinor is measurable: in neutron interferometry experiments, a beam of spin-\\tfrac12 particles is split, one half is rotated by 2\\pi, and when the beams recombine they interfere destructively — direct physical evidence that a single turn really did multiply the state by -1.",
+    "crumbs": [
+      "lie algebra",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>su(2) and spinors</span>"
+    ]
+  },
+  {
+    "objectID": "lie_algebra/su2_and_spinors.html#where-this-is-going",
+    "href": "lie_algebra/su2_and_spinors.html#where-this-is-going",
+    "title": "15  su(2) and spinors",
+    "section": "15.7 where this is going",
+    "text": "15.7 where this is going\nWe took three physical facts — probability is conserved, the electron is a two-state system, and a global phase is invisible — and they marched us straight into SU(2) and its algebra \\mathfrak{su}(2), the compact real form of the \\mathfrak{sl}(2,\\mathbb{C}) we had already built. The representations turned out to be the spins, and the standard representation turned out to house these strange two-valued spinors.\nThe one thing we borrowed on credit was the rotation formula U(\\theta,\\hat n) = \\exp(-i\\,\\tfrac{\\theta}{2}\\,\\hat n\\cdot\\vec\\sigma). Paying that debt — understanding why a rotation of 3-dimensional space acts on spinors this way, why the factor of \\tfrac12 appears, and how SU(2) sits over SO(3) as a double cover — is the subject of the next chapter. As a bonus, that same relationship will hand us, almost for free, the origin of the cross product from classical mechanics.\nIn quantum mechanichs, measurements are represented by linear operators, and the outcomes of measurements are represented by the eigenvectors of these operators:\n\nS_z v_\\text{up} = \\frac{\\hbar}{2} \\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} = \\frac{\\hbar}{2} \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}\n\nand\n\nS_z v_\\text{down} = \\frac{\\hbar}{2} \\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix} \\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix} = \\frac{\\hbar}{2} \\begin{pmatrix} 0 \\\\ -1 \\end{pmatrix}.\n\n. The spin along the vertical axis is represented by the operator\n\nS_z = \\frac{\\hbar}{2} \\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix}.\n\nTo represent the measurement of spin of a particle represented by the state vector v, we apply the operator S_z to v. The result is a new vector that represents the outcome of the measurement:\n\nS_z v = \\frac{\\hbar}{2} \\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix} \\begin{pmatrix} \\alpha \\\\ \\beta \\end{pmatrix} = \\frac{\\hbar}{2} \\begin{pmatrix} \\alpha \\\\ -\\beta \\end{pmatrix}.",
+    "crumbs": [
+      "lie algebra",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>su(2) and spinors</span>"
+    ]
+  },
+  {
     "objectID": "group_theory/start_here.html",
     "href": "group_theory/start_here.html",
-    "title": "14  start here",
+    "title": "16  start here",
     "section": "",
-    "text": "14.1 a concrete example\nI think it is always best to start with a concrete example, and only later generalize to the abstract definition.\nYou and I are looking at a blank rectangular sheet of paper on a table. If you look away, I could to a few things with it, and when you look back, you wouldn’t be able to tell the difference.\nThe four operations are shown in the image above, where the four corners of the rectangle are labeled to indicate which operation transforms the rectangle in which way.\nAll these four operations act on an object (the rectangle), and leave it unchanged. They are the symmetries of the object.\nWhile you’re looking away, I could decide to perform two operations in sequence. For example, I could first perform a horizontal flip (h) and then a rotation (r). The result would clearly leave the rectangle unchanged from your point of view. If you look carefully at the image above, you’ll find out that the composition of these two operations is equivalent to a single operation, which is performing a vertical flip (v).\nI can then ask the question: what if I try all possible compositions of these four operations?\nThe table above is called a group table, or a Cayley table, or a multiplication table. It should be read as follows: the first operation to be executed is the one listed on the column header, and the second operation is the one listed on the row header. The cell at the intersection of the row and column gives the result of performing those two operations in sequence. For example, take the column “r” and the row “h”. We write their composition as “h * r”, where the convetion is that operations are performed from right to left. This is similar to the way we read functions in mathematics: if we have two functions f and g, we write their composition as f \\circ g, which means “apply g, and then f”.\nFrom this table we can note a few things:",
+    "text": "16.1 a concrete example\nI think it is always best to start with a concrete example, and only later generalize to the abstract definition.\nYou and I are looking at a blank rectangular sheet of paper on a table. If you look away, I could to a few things with it, and when you look back, you wouldn’t be able to tell the difference.\nThe four operations are shown in the image above, where the four corners of the rectangle are labeled to indicate which operation transforms the rectangle in which way.\nAll these four operations act on an object (the rectangle), and leave it unchanged. They are the symmetries of the object.\nWhile you’re looking away, I could decide to perform two operations in sequence. For example, I could first perform a horizontal flip (h) and then a rotation (r). The result would clearly leave the rectangle unchanged from your point of view. If you look carefully at the image above, you’ll find out that the composition of these two operations is equivalent to a single operation, which is performing a vertical flip (v).\nI can then ask the question: what if I try all possible compositions of these four operations?\nThe table above is called a group table, or a Cayley table, or a multiplication table. It should be read as follows: the first operation to be executed is the one listed on the column header, and the second operation is the one listed on the row header. The cell at the intersection of the row and column gives the result of performing those two operations in sequence. For example, take the column “r” and the row “h”. We write their composition as “h * r”, where the convetion is that operations are performed from right to left. This is similar to the way we read functions in mathematics: if we have two functions f and g, we write their composition as f \\circ g, which means “apply g, and then f”.\nFrom this table we can note a few things:",
     "crumbs": [
       "group theory",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>start here</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>start here</span>"
     ]
   },
   {
     "objectID": "group_theory/start_here.html#a-concrete-example",
     "href": "group_theory/start_here.html#a-concrete-example",
-    "title": "14  start here",
+    "title": "16  start here",
     "section": "",
     "text": "I could rotate the paper 180 degrees around its center, without lifting it off the table. Let’s call this operation r, for “rotation”.\nI could flip the paper over along a horizontal line that runs through its center, so that the top becomes the bottom and vice versa. Let’s call this operation h, for “horizontal flip”.\nI could flip the paper over along a vertical line that runs through its center, so that the left side becomes the right side and vice versa. Let’s call this operation v, for “vertical flip”.\nI should mention an obvious manipulation, that would be do nothing. I could leave the paper as it is. Let’s call this operation e. There is no reason to use the symbol e, that’s what everybody agreed to use. The standard name for “do nothing” is “identity”.\n\n\n\n\nSource: https://web.math.utk.edu/~dcartwr1/iaawa/section-sym.html\n\n\n\n\n\n\n\n\nThe group table for the symmetries of a rectangle\n\n\n\ne\nr\nh\nv\n\n\n\n\ne\ne\nr\nh\nv\n\n\nr\nr\ne\nv\nh\n\n\nh\nh\nv\ne\nr\n\n\nv\nv\nh\nr\ne\n\n\n\n\n\n\n\n\nFor any two operations in the table, the result of their composition is also an operation in the table. This is called closure.\nThe order in which we perform three or more operations does not matter. In other words, for any three operations a, b, and c, the result of (a * b) * c is the same as a * (b * c). Let’s verify this with an example from the table: if we take the operations r, h, and v, then (r * h) * v = v * v = e, and r * (h * v) = r * r = e. Since both results are equal, the operation is associative.\nThere exists an identity element in the table, which is the operation that leaves everything unchanged when performed. In this case, it’s the e operation.\nFor each operation in the table, there exists another operation that, when performed after it, results in the identity element. For example, performing a rotation (r) followed by another rotation (r) results in the identity (e). Every element in the table has an inverse.",
     "crumbs": [
       "group theory",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>start here</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>start here</span>"
     ]
   },
   {
     "objectID": "group_theory/start_here.html#the-formal-definition",
     "href": "group_theory/start_here.html#the-formal-definition",
-    "title": "14  start here",
-    "section": "14.2 the formal definition",
-    "text": "14.2 the formal definition\nNow that we are familiar with a concrete example of a group (the symmetries of a rectangle), we can state the formal definition of a group.\nA group is a set G together with a binary operation * (called the group operation, or simply a multiplication) that combines any two elements a and b in G to form another element in G, denoted a * b, such that the following four conditions are satisfied:\n\nClosure: For all a, b in G, the result of the operation a * b is also in G.\nAssociativity: For all a, b, c in G, (a * b) * c = a * (b * c).\nIdentity: There exists an element e in G such that for every element a in G, e * a = a * e = a. This element e is called the identity of the group.\nInverse: For each element a in G, there exists an element b in G such that a * b = b * a = e, where e is the identity element. The element b is called the inverse of a and is usually denoted as a^{-1}.",
+    "title": "16  start here",
+    "section": "16.2 the formal definition",
+    "text": "16.2 the formal definition\nNow that we are familiar with a concrete example of a group (the symmetries of a rectangle), we can state the formal definition of a group.\nA group is a set G together with a binary operation * (called the group operation, or simply a multiplication) that combines any two elements a and b in G to form another element in G, denoted a * b, such that the following four conditions are satisfied:\n\nClosure: For all a, b in G, the result of the operation a * b is also in G.\nAssociativity: For all a, b, c in G, (a * b) * c = a * (b * c).\nIdentity: There exists an element e in G such that for every element a in G, e * a = a * e = a. This element e is called the identity of the group.\nInverse: For each element a in G, there exists an element b in G such that a * b = b * a = e, where e is the identity element. The element b is called the inverse of a and is usually denoted as a^{-1}.",
     "crumbs": [
       "group theory",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>start here</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>start here</span>"
     ]
   },
   {
     "objectID": "group_theory/start_here.html#finite-groups",
     "href": "group_theory/start_here.html#finite-groups",
-    "title": "14  start here",
-    "section": "14.3 finite groups",
-    "text": "14.3 finite groups\nThe example of the symmetries of a rectangle is a finite group because it has a finite number of elements (in this case, 4 elements: e, r, h, v). Its formal name is the “Klein four-group”, or V_4. Other intuitive examples of finite groups are:\n\nThe symmetries of an equilateral triangle. Its elements are the identity, three rotations, and three reflections, making a total of 6 elements. This group is known as the “dihedral group of order 6”, or D_3.\nThe set of integers modulo n, denoted by \\mathbb{Z}/n\\mathbb{Z}, with the operation of addition modulo n. This group has n elements: \\{0, 1, 2, \\ldots, n-1\\}. The most common example of this type of group is what we use in clock arithmetic, where the numbers wrap around after reaching the maximum value. In that case, the elements are the hours on a clock (0 through 11 for a 12-hour clock), and the operation is addition modulo 12.\nThe simplest non-trivial group is the “cyclic group of order 2”, or C_2, which consists of two elements: the identity and one other element that is its own inverse. Examples in real life include the flip of a coin (heads or tails) or the state of a light switch (on or off). Interestingly, this same group can describe the multiplication of the numbers 1 and -1 (1 would be the identity and -1 would be the non-identity element).\n\n\n\n\n\ne\na\n\n\n\n\ne\ne\na\n\n\na\na\ne",
+    "title": "16  start here",
+    "section": "16.3 finite groups",
+    "text": "16.3 finite groups\nThe example of the symmetries of a rectangle is a finite group because it has a finite number of elements (in this case, 4 elements: e, r, h, v). Its formal name is the “Klein four-group”, or V_4. Other intuitive examples of finite groups are:\n\nThe symmetries of an equilateral triangle. Its elements are the identity, three rotations, and three reflections, making a total of 6 elements. This group is known as the “dihedral group of order 6”, or D_3.\nThe set of integers modulo n, denoted by \\mathbb{Z}/n\\mathbb{Z}, with the operation of addition modulo n. This group has n elements: \\{0, 1, 2, \\ldots, n-1\\}. The most common example of this type of group is what we use in clock arithmetic, where the numbers wrap around after reaching the maximum value. In that case, the elements are the hours on a clock (0 through 11 for a 12-hour clock), and the operation is addition modulo 12.\nThe simplest non-trivial group is the “cyclic group of order 2”, or C_2, which consists of two elements: the identity and one other element that is its own inverse. Examples in real life include the flip of a coin (heads or tails) or the state of a light switch (on or off). Interestingly, this same group can describe the multiplication of the numbers 1 and -1 (1 would be the identity and -1 would be the non-identity element).\n\n\n\n\n\ne\na\n\n\n\n\ne\ne\na\n\n\na\na\ne",
     "crumbs": [
       "group theory",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>start here</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>start here</span>"
     ]
   },
   {
     "objectID": "group_theory/start_here.html#infinite-groups",
     "href": "group_theory/start_here.html#infinite-groups",
-    "title": "14  start here",
-    "section": "14.4 infinite groups",
-    "text": "14.4 infinite groups\nIn contrast to finite groups, infinite groups have an infinite number of elements. A classic example of an infinite group is the set of all integers, denoted by ℤ, with the operation of addition. This group is called the “infinite cyclic group” or C_\\infty. The addition of any two integers always results in another integer, demonstrating the closure property. The identity element in this group is 0, and the inverse of any integer n is -n. As for the associative property, the condition (a + b) + c = a + (b + c) holds for all integers a, b, and c.\nAnother example is the set of all real numbers, denoted by ℝ, with the operation of addition. This group is also infinite and is known as the “additive group of real numbers”.",
+    "title": "16  start here",
+    "section": "16.4 infinite groups",
+    "text": "16.4 infinite groups\nIn contrast to finite groups, infinite groups have an infinite number of elements. A classic example of an infinite group is the set of all integers, denoted by ℤ, with the operation of addition. This group is called the “infinite cyclic group” or C_\\infty. The addition of any two integers always results in another integer, demonstrating the closure property. The identity element in this group is 0, and the inverse of any integer n is -n. As for the associative property, the condition (a + b) + c = a + (b + c) holds for all integers a, b, and c.\nAnother example is the set of all real numbers, denoted by ℝ, with the operation of addition. This group is also infinite and is known as the “additive group of real numbers”.",
     "crumbs": [
       "group theory",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>start here</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>start here</span>"
     ]
   },
   {
     "objectID": "group_theory/start_here.html#discrete-groups",
     "href": "group_theory/start_here.html#discrete-groups",
-    "title": "14  start here",
-    "section": "14.5 discrete groups",
-    "text": "14.5 discrete groups\nIn a discrete group, the elements are isolated from one another. There is a distinct “gap” between any two elements; you cannot smoothly slide from one element to the next.\nAll finite groups are discrete groups because their elements are isolated and there is a clear gap between them. Some infinite groups are also discrete, such as the group of integers with addition, where each integer is separated from the next by a gap of 1. However, not all infinite groups are discrete; for example, the group of real numbers with addition is not discrete because there are no gaps between the elements.",
+    "title": "16  start here",
+    "section": "16.5 discrete groups",
+    "text": "16.5 discrete groups\nIn a discrete group, the elements are isolated from one another. There is a distinct “gap” between any two elements; you cannot smoothly slide from one element to the next.\nAll finite groups are discrete groups because their elements are isolated and there is a clear gap between them. Some infinite groups are also discrete, such as the group of integers with addition, where each integer is separated from the next by a gap of 1. However, not all infinite groups are discrete; for example, the group of real numbers with addition is not discrete because there are no gaps between the elements.",
     "crumbs": [
       "group theory",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>start here</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>start here</span>"
     ]
   },
   {
     "objectID": "group_theory/start_here.html#continuous-groups",
     "href": "group_theory/start_here.html#continuous-groups",
-    "title": "14  start here",
-    "section": "14.6 continuous groups",
-    "text": "14.6 continuous groups\nIn a continuous group, the elements form a continuous space (a manifold). You can make infinitely small, smooth adjustments to move from one element to a neighboring element. Continuous groups are always infinite.\nA classic example of a continuous group is the set of all real numbers with the operation of addition, which we already discussed as the “additive group of real numbers”. Another example is the group of rotations in three-dimensional space, known as the “special orthogonal group” or SO(3). This is the symmetry group of a sphere. This group consists of all rotations about the origin in 3D space, and the group operation is the composition of rotations. The elements of this group form a continuous surface (a manifold), and you can make infinitely small changes to a rotation to get a neighboring rotation. I do realize that the concept of a manifold is weird at the moment, and we will discuss it in more detail when we talk about Lie groups.",
+    "title": "16  start here",
+    "section": "16.6 continuous groups",
+    "text": "16.6 continuous groups\nIn a continuous group, the elements form a continuous space (a manifold). You can make infinitely small, smooth adjustments to move from one element to a neighboring element. Continuous groups are always infinite.\nA classic example of a continuous group is the set of all real numbers with the operation of addition, which we already discussed as the “additive group of real numbers”. Another example is the group of rotations in three-dimensional space, known as the “special orthogonal group” or SO(3). This is the symmetry group of a sphere. This group consists of all rotations about the origin in 3D space, and the group operation is the composition of rotations. The elements of this group form a continuous surface (a manifold), and you can make infinitely small changes to a rotation to get a neighboring rotation. I do realize that the concept of a manifold is weird at the moment, and we will discuss it in more detail when we talk about Lie groups.",
     "crumbs": [
       "group theory",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>start here</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>start here</span>"
     ]
   },
   {
     "objectID": "group_theory/wolfram-jupyter-test.html",
     "href": "group_theory/wolfram-jupyter-test.html",
-    "title": "15  mathematica test",
+    "title": "17  mathematica test",
     "section": "",
-    "text": "15.1 plot test\nwill this work?\nCode\nPlot3D[\n    Sin[x y],\n    {x,-Pi,Pi},{y,-Pi,Pi}\n    ]\nCode\n{Slider[Dynamic[n], {0, 100, 1}], Dynamic[n]}",
+    "text": "17.1 plot test\nwill this work?\nCode\nPlot3D[\n    Sin[x y],\n    {x,-Pi,Pi},{y,-Pi,Pi}\n    ]\nCode\n{Slider[Dynamic[n], {0, 100, 1}], Dynamic[n]}",
     "crumbs": [
       "group theory",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>mathematica test</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>mathematica test</span>"
     ]
   },
   {
     "objectID": "intro-differential-geometry.html",
     "href": "intro-differential-geometry.html",
-    "title": "16  intro to differential geometry",
+    "title": "18  intro to differential geometry",
     "section": "",
     "text": "this page is under construction",
     "crumbs": [
       "differential geometry",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>intro to differential geometry</span>"
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>intro to differential geometry</span>"
     ]
   }
 ]

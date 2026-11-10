@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.31">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>15&nbsp; su(2) and spinors – mishmash</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../group_theory/start_here.html" rel="next">
+<link href="../lie_algebra/real_forms_of_sl2.html" rel="prev">
+<link href="../archive/logo.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-a588049bcf6ba0aff1d03aeee07a0105.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-93f6f7bf05cf03a0782a799cf914e8c8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KF3W04H104"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-KF3W04H104', { 'anonymize_ip': true});
+</script>
+<!-- <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css"> -->
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lie_algebra/basic_properties.html">lie algebra</a></li><li class="breadcrumb-item"><a href="../lie_algebra/su2_and_spinors.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">su(2) and spinors</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="quarto-sidebar-header"><div class="sidebar-header-item">
+<p><a href="https://yairmau.com/" class="back-home">← Back to yairmau.com</a></p>
+</div></div>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../archive/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">mishmash</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/yairmau/mishmash/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">About</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">causal inference</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../causal_inference/intro-causal-inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">introduction to causal inference</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../causal_inference/DAG_rules.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">DAG rules</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">active inference</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../active_inference/intro-active-inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">introduction to active inference</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../active_inference/bayes-inference-easy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">easy bayesian inference</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../active_inference/bayes-inference-intractable.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">intractable bayesian inference</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../active_inference/covariance-and-precision.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">covariance and precision</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../active_inference/not-too-simple.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">simpler but not too simple</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../active_inference/simplex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">simplex</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">thermodynamics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../thermodynamics/intro-thermodynamics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">intro to thermodynamics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../thermodynamics/legendre_transform.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Legendre transformations visualized</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">lie algebra</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lie_algebra/basic_properties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">basic properties</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lie_algebra/sl2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Lie algebra sl(2)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lie_algebra/real_forms_of_sl2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">real forms of sl(2)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lie_algebra/su2_and_spinors.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">su(2) and spinors</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">group theory</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../group_theory/start_here.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">start here</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../group_theory/wolfram-jupyter-test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">mathematica test</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">differential geometry</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../intro-differential-geometry.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">intro to differential geometry</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#spin" id="toc-spin" class="nav-link active" data-scroll-target="#spin"><span class="header-section-number">15.1</span> spin</a></li>
+  <li><a href="#transforming-spin-states" id="toc-transforming-spin-states" class="nav-link" data-scroll-target="#transforming-spin-states"><span class="header-section-number">15.2</span> transforming spin states</a></li>
+  <li><a href="#fixing-the-phase-from-u2-to-su2" id="toc-fixing-the-phase-from-u2-to-su2" class="nav-link" data-scroll-target="#fixing-the-phase-from-u2-to-su2"><span class="header-section-number">15.3</span> fixing the phase: from <span class="math inline">U(2)</span> to <span class="math inline">SU(2)</span></a></li>
+  <li><a href="#back-to-familiar-ground-su2-as-a-tangent-space" id="toc-back-to-familiar-ground-su2-as-a-tangent-space" class="nav-link" data-scroll-target="#back-to-familiar-ground-su2-as-a-tangent-space"><span class="header-section-number">15.4</span> back to familiar ground: <span class="math inline">su(2)</span> as a tangent space</a></li>
+  <li><a href="#the-generators-of-su2" id="toc-the-generators-of-su2" class="nav-link" data-scroll-target="#the-generators-of-su2"><span class="header-section-number">15.5</span> the generators of <span class="math inline">su(2)</span></a></li>
+  <li><a href="#spinors" id="toc-spinors" class="nav-link" data-scroll-target="#spinors"><span class="header-section-number">15.6</span> spinors</a></li>
+  <li><a href="#where-this-is-going" id="toc-where-this-is-going" class="nav-link" data-scroll-target="#where-this-is-going"><span class="header-section-number">15.7</span> where this is going</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../lie_algebra/basic_properties.html">lie algebra</a></li><li class="breadcrumb-item"><a href="../lie_algebra/su2_and_spinors.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">su(2) and spinors</span></a></li></ol></nav>
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">su(2) and spinors</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source" data-quarto-source-url="https://github.com/yairmau/mishmash/blob/main/lie_algebra/su2_and_spinors.ipynb"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>In this chapter we will see how the mathematics behind the spin in quantum mechanics is deeply connected to the Lie algebra sl(2) that we have been studying. The idea is not to derive the physics of spin from scratch. Instead, we will take a few basic facts about spin as given, and watch how they force us — step by step — into exactly the machinery we already built.</p>
+<section id="spin" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="spin"><span class="header-section-number">15.1</span> spin</h2>
+<p>Let’s assume a spin-1/2 particle, such as an electron. The spin of the electron is a quantum property that can be measured along any axis in physical space. When we measure the spin along the vertical axis, we can only get one of two possible outcomes: “spin up” or “spin down”. These outcomes can be represented by column vectors:</p>
+<p><span class="math display">
+v_\text{up} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \quad v_\text{down} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}.
+</span></p>
+<p>Before we measure a particle’s spin, we can describe its state as a linear combination (a superposition) of the two possible outcomes:</p>
+<p><span class="math display">
+v = \alpha v_\text{up} + \beta v_\text{down}.
+</span></p>
+<p>Here <span class="math inline">\alpha</span> and <span class="math inline">\beta</span> are <strong>complex</strong> numbers, called amplitudes. The rule connecting them to measurement (the Born rule) is that the probability of measuring “up” is <span class="math inline">|\alpha|^2</span> and the probability of measuring “down” is <span class="math inline">|\beta|^2</span>. Since the particle must come out as one or the other, these probabilities have to add up to one:</p>
+<p><span class="math display">
+|\alpha|^2 + |\beta|^2 = 1.
+</span></p>
+<p>So a spin state is nothing more than a two-component complex vector of length one. Two remarks before we move on. First, the space is <span class="math inline">2</span>-dimensional because we are describing a two-state system — that “2” is a fact about the electron’s spin, not about any algebra. Keep an eye on it; it is <em>not</em> the same “2” that will show up in the size of our matrices, even though they are about to coincide. Second, “length one” here means length in the complex sense: <span class="math inline">\lVert v \rVert^2 = |\alpha|^2 + |\beta|^2</span>, which is exactly <span class="math inline">v^\dagger v</span>, where <span class="math inline">v^\dagger</span> is the conjugate transpose (the <a href="../quantum/bra_ket.html">bra</a> <span class="math inline">\langle v|</span>). The complex conjugation is what makes this a real, non-negative number that we are entitled to call a total probability.</p>
+</section>
+<section id="transforming-spin-states" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="transforming-spin-states"><span class="header-section-number">15.2</span> transforming spin states</h2>
+<p>Now let’s ask the question that will drive the rest of the chapter: <strong>what can we do to a spin state?</strong> We can let it evolve in time, or rotate the measuring apparatus, or apply a magnetic field. Whatever the physical operation is, it acts on the state as some linear operator <span class="math inline">M</span>:</p>
+<p><span class="math display">
+v \;\longmapsto\; M v.
+</span></p>
+<p>But not every <span class="math inline">M</span> is allowed. Whatever the state turns into, it is still a state of the same particle, so it must <em>still</em> describe a valid set of probabilities — its total probability must still be one. In other words, <span class="math inline">M</span> has to preserve the length of every state:</p>
+<p><span class="math display">
+\lVert M v \rVert = \lVert v \rVert \quad \text{for every } v.
+</span></p>
+<p>This one physical requirement pins down what kind of operator <span class="math inline">M</span> can be. Let’s write the length-preservation condition out using <span class="math inline">\lVert w \rVert^2 = w^\dagger w</span>:</p>
+<p><span class="math display">
+(Mv)^\dagger (Mv) = v^\dagger v
+\quad\Longrightarrow\quad
+v^\dagger \big(M^\dagger M\big) v = v^\dagger v.
+</span></p>
+<p>If this holds for <em>every</em> vector <span class="math inline">v</span>, the operator sandwiched in the middle must be the identity:</p>
+<p><span class="math display">
+M^\dagger M = I.
+</span></p>
+<p>An operator satisfying <span class="math inline">M^\dagger M = I</span> is called <strong>unitary</strong> — its conjugate transpose is its inverse. So the conclusion is clean and forced: <em>the transformations of a spin state are exactly the unitary operators.</em> The physical demand “conserve total probability” and the mathematical condition “unitary” are the very same statement, one wearing physics clothes and the other wearing linear-algebra clothes.</p>
+<p>The set of all <span class="math inline">2\times 2</span> unitary matrices forms a group, written <span class="math inline">U(2)</span>. We are almost home — but not quite.</p>
+</section>
+<section id="fixing-the-phase-from-u2-to-su2" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="fixing-the-phase-from-u2-to-su2"><span class="header-section-number">15.3</span> fixing the phase: from <span class="math inline">U(2)</span> to <span class="math inline">SU(2)</span></h2>
+<p>There is one more physical fact to fold in, and it will cut <span class="math inline">U(2)</span> down to the group we actually want.</p>
+<p>A global phase is invisible. If we multiply the entire state by a phase factor <span class="math inline">e^{i\varphi}</span>, sending <span class="math inline">v \mapsto e^{i\varphi} v</span>, then every probability <span class="math inline">|\alpha|^2, |\beta|^2</span> is unchanged (the phase has modulus one), and so is every relative phase between components. No measurement can tell <span class="math inline">v</span> from <span class="math inline">e^{i\varphi} v</span>. Physically, they are the same state.</p>
+<p>This freedom lets us tidy up our transformations. A unitary matrix always has a determinant that is a pure phase — from <span class="math inline">M^\dagger M = I</span> we get <span class="math inline">|\det M|^2 = 1</span>, so <span class="math inline">\det M = e^{i\varphi}</span> for some real <span class="math inline">\varphi</span>. Because an overall phase is physically meaningless, we are free to multiply <span class="math inline">M</span> by a phase <span class="math inline">\lambda</span> (with <span class="math inline">|\lambda| = 1</span>) chosen so that the determinant becomes exactly one: we just need <span class="math inline">\lambda^2 \det M = 1</span>, which we can always solve. The rescaled matrix is still unitary, and now it also has determinant one.</p>
+<p>So, losing no physics, we may always represent a transformation by a matrix that is <strong>unitary and has determinant one</strong>. This is the special unitary group <span class="math inline">SU(2)</span>:</p>
+<p><span class="math display">
+SU(2) = \left\{\, U \;\middle|\; U^\dagger U = I,\ \det U = 1 \,\right\}.
+</span></p>
+<p>Notice the order of the argument, because it matters. Unitarity is the real physical constraint, coming from conservation of probability. Determinant one is a <em>convenience</em>, a way of using the invisible-phase freedom to pick a tidy representative. We did not impose it as a second physical law.</p>
+<p>(One honest caveat, which will grow into the whole point of the last section. Fixing the determinant to one does not use up <em>all</em> of the phase freedom: the phase <span class="math inline">\lambda</span> that does the job is determined only up to a sign, so <span class="math inline">U</span> and <span class="math inline">-U</span> both survive with determinant one. That leftover sign is not an accident, and it is where spinors get strange. Hold that thought.)</p>
+</section>
+<section id="back-to-familiar-ground-su2-as-a-tangent-space" class="level2" data-number="15.4">
+<h2 data-number="15.4" class="anchored" data-anchor-id="back-to-familiar-ground-su2-as-a-tangent-space"><span class="header-section-number">15.4</span> back to familiar ground: <span class="math inline">su(2)</span> as a tangent space</h2>
+<p>Here is the payoff for all the machinery we built earlier. We have arrived at <span class="math inline">SU(2)</span>, a group defined by two conditions — determinant one and unitary — and we already know how to handle “determinant one,” and we know exactly how to trade a constraint on a group for a constraint on its algebra: differentiate at the identity.</p>
+<p>Write a transformation close to the identity as <span class="math inline">U = e^{tX}</span>, where <span class="math inline">X</span> lives in the tangent space (the Lie algebra). We ask what each of our two conditions demands of <span class="math inline">X</span>.</p>
+<p><strong>Determinant one.</strong> Using the identity <span class="math inline">\det(e^{tX}) = e^{t\,\operatorname{tr} X}</span> that we proved <a href="../lie_algebra/basic_properties.html#detexp">earlier</a>, the condition <span class="math inline">\det U = 1</span> for all <span class="math inline">t</span> becomes</p>
+<p><span class="math display">
+e^{t\,\operatorname{tr} X} = 1 \quad\Longrightarrow\quad \operatorname{tr} X = 0.
+</span></p>
+<p>This is the very same computation that gave us traceless matrices for <span class="math inline">\mathfrak{sl}(2)</span>. Nothing new.</p>
+<p><strong>Unitary.</strong> Differentiate <span class="math inline">U^\dagger U = I</span> with respect to <span class="math inline">t</span> and evaluate at <span class="math inline">t = 0</span>. Using <span class="math inline">\frac{d}{dt}U = X e^{tX}</span> (so <span class="math inline">\dot U|_0 = X</span>) and <span class="math inline">\frac{d}{dt}U^\dagger = X^\dagger e^{tX^\dagger}</span> (so <span class="math inline">\dot U^\dagger|_0 = X^\dagger</span>),</p>
+<p><span class="math display">
+\frac{d}{dt}\big(U^\dagger U\big)_{t=0} = \dot U^\dagger|_0\, \underbrace{U|_0}_{I} + \underbrace{U^\dagger|_0}_{I}\, \dot U|_0 = X^\dagger + X = 0.
+</span></p>
+<p>So the condition is</p>
+<p><span class="math display">
+X^\dagger = -X,
+</span></p>
+<p>which says <span class="math inline">X</span> is <strong>anti-Hermitian</strong>.</p>
+<p>Put the two together: the Lie algebra of <span class="math inline">SU(2)</span> consists of matrices that are <strong>traceless and anti-Hermitian</strong>. This is <span class="math inline">\mathfrak{su}(2)</span>, and — as we discussed when we studied real forms — it is exactly the <a href="../lie_algebra/real_forms.html#su2">compact real form</a> of the <span class="math inline">\mathfrak{sl}(2,\mathbb{C})</span> we have been developing all along. We did not build a new object. Physics reached into <span class="math inline">\mathfrak{sl}(2,\mathbb{C})</span> and selected this particular real slice, the same way unitarity selected it before.</p>
+<p>And notice the machine fired twice, identically: a multiplicative constraint on the group (“product equals identity”) linearized into an additive constraint on the algebra (“sum equals zero”). Determinant one became trace zero; unitary became anti-Hermitian. Same trick, same page in the playbook.</p>
+<p>Because <span class="math inline">\mathfrak{su}(2)</span> is a real form of <span class="math inline">\mathfrak{sl}(2,\mathbb{C})</span>, <em>everything</em> we developed transfers: the bracket, the structure constants, the ladder operators, and above all the classification of representations. The two-component state <span class="math inline">v</span> we started this chapter with is just the standard (2-dimensional) representation. The other representations are the other spins — and by the dimension count we already derived, the representation of dimension <span class="math inline">2j+1</span> is spin <span class="math inline">j</span>. Spin-<span class="math inline">\tfrac12</span> is the <span class="math inline">2</span>-dimensional one, spin-<span class="math inline">1</span> the <span class="math inline">3</span>-dimensional one, spin-<span class="math inline">2</span> the <span class="math inline">5</span>-dimensional one, and so on. The “2” from the electron was only ever the smallest room in a building we had already mapped.</p>
+</section>
+<section id="the-generators-of-su2" class="level2" data-number="15.5">
+<h2 data-number="15.5" class="anchored" data-anchor-id="the-generators-of-su2"><span class="header-section-number">15.5</span> the generators of <span class="math inline">su(2)</span></h2>
+<p>Let’s write down a concrete basis, because we will need it in a moment. The traditional choice starts from the <strong>Pauli matrices</strong>:</p>
+<p><span class="math display">
+\sigma_1 = \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}, \qquad
+\sigma_2 = \begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \end{pmatrix}, \qquad
+\sigma_3 = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{pmatrix}.
+</span></p>
+<p>These are Hermitian and traceless, so they are <em>not</em> themselves in <span class="math inline">\mathfrak{su}(2)</span> (whose elements are anti-Hermitian). But multiply each by <span class="math inline">-i/2</span> and you land inside the algebra. Define</p>
+<p><span class="math display">
+T_j = -\tfrac{i}{2}\,\sigma_j,
+</span></p>
+<p>which are traceless and anti-Hermitian, as required. Their brackets reproduce the structure constants we have seen before, using <span class="math inline">[\sigma_i, \sigma_j] = 2i\,\epsilon_{ijk}\sigma_k</span>:</p>
+<p><span class="math display">
+[T_i, T_j] = \left(-\tfrac{i}{2}\right)^2 [\sigma_i, \sigma_j] = -\tfrac14\big(2i\,\epsilon_{ijk}\sigma_k\big) = \epsilon_{ijk}\, T_k.
+</span></p>
+<p>If you want to see how these sit inside the <span class="math inline">E, H, F</span> world we built earlier, just multiply out: <span class="math inline">iH</span>, <span class="math inline">E - F</span>, and <span class="math inline">i(E+F)</span> are precisely <span class="math inline">i\sigma_3</span>, <span class="math inline">i\sigma_2</span>, and <span class="math inline">i\sigma_1</span> — the same three combinations we identified as the real form when we first met <span class="math inline">\mathfrak{su}(2)</span>. Nothing here is new; it is our old basis in physics notation.</p>
+<p>One connection worth making explicit, since it closes a loop from the previous chapters. Physicists rarely carry the anti-Hermitian <span class="math inline">T_j</span> around. They prefer the <strong>Hermitian</strong> operators <span class="math inline">S_j = \tfrac12 \sigma_j</span>, because those are <em>observables</em> — their eigenvalues <span class="math inline">\pm\tfrac12</span> are the actual measured values of spin along an axis, and observables must be Hermitian to have real eigenvalues. The algebra generator and the observable differ by exactly the factor we kept running into: <span class="math inline">T_j = -i\, S_j</span>. The anti-Hermitian object generates the transformation; the Hermitian object is the thing you measure; the <span class="math inline">i</span> is the bridge between them.</p>
+</section>
+<section id="spinors" class="level2" data-number="15.6">
+<h2 data-number="15.6" class="anchored" data-anchor-id="spinors"><span class="header-section-number">15.6</span> spinors</h2>
+<p>We now have everything we need to explain the object that gives this chapter its name.</p>
+<p>A <strong>spinor</strong> is a two-component complex vector — a state like our <span class="math inline">v</span> — that transforms under <span class="math inline">SU(2)</span> in the standard representation. That definition sounds harmless. What makes spinors genuinely different from ordinary vectors, or from a classical arrow representing angular momentum, is how they respond to rotations of physical space.</p>
+<p>It turns out that a rotation of physical space by an angle <span class="math inline">\theta</span> about a unit axis <span class="math inline">\hat{n}</span> is represented on spinors by the <span class="math inline">SU(2)</span> matrix</p>
+<p><span class="math display">
+U(\theta, \hat{n}) = \exp\!\left(-\,i\,\frac{\theta}{2}\,\hat{n}\cdot\vec\sigma\right).
+</span></p>
+<p>We will <em>derive</em> this correspondence — where it comes from, and why there is a factor of <span class="math inline">\tfrac12</span> sitting in the exponent — in the next chapter, when we work out the precise relationship between <span class="math inline">SU(2)</span> and the rotation group <span class="math inline">SO(3)</span>. For now, take it as given and let’s see what it does, because the consequence is immediate and striking.</p>
+<p>Using <span class="math inline">(\hat{n}\cdot\vec\sigma)^2 = I</span>, the exponential collapses to a clean closed form (the same way <span class="math inline">e^{i\alpha}</span> splits into sine and cosine):</p>
+<p><span class="math display">
+U(\theta, \hat{n}) = \cos\!\frac{\theta}{2}\, I \;-\; i \sin\!\frac{\theta}{2}\,(\hat{n}\cdot\vec\sigma).
+</span></p>
+<p>Now rotate all the way around, <span class="math inline">\theta = 2\pi</span> — a full turn, which classically brings everything back exactly to where it started:</p>
+<p><span class="math display">
+U(2\pi, \hat{n}) = \cos\pi\, I - i\sin\pi\,(\hat{n}\cdot\vec\sigma) = -I.
+</span></p>
+<p>The spinor does <strong>not</strong> come back to itself. A full <span class="math inline">360^\circ</span> rotation of space sends <span class="math inline">v \mapsto -v</span>. You have to go around <strong>twice</strong>, a full <span class="math inline">720^\circ</span>, to truly return:</p>
+<p><span class="math display">
+U(4\pi, \hat{n}) = \cos 2\pi\, I - i\sin 2\pi\,(\hat{n}\cdot\vec\sigma) = +I.
+</span></p>
+<p>That minus sign after one turn is the signature of a spinor, and it is where the leftover sign from the “fixing the phase” section comes home to roost — <span class="math inline">U</span> and <span class="math inline">-U</span> really are different, and a <span class="math inline">2\pi</span> rotation is exactly the operation that swaps them. The half-angle <span class="math inline">\theta/2</span> in the exponent is the fingerprint of this: physical rotations are being represented in <span class="math inline">SU(2)</span> at “half speed,” so one full physical turn is only a half turn in <span class="math inline">SU(2)</span>, landing on <span class="math inline">-I</span> rather than <span class="math inline">I</span>.</p>
+<p>This is also the concrete reason we insisted on <span class="math inline">\mathfrak{su}(2)</span> rather than <span class="math inline">\mathfrak{so}(3)</span> back when we studied real forms. The minus sign cannot be seen by <span class="math inline">SO(3)</span>; the representations that pick it up — the half-integer spins — are representations of <span class="math inline">SU(2)</span> that do not descend to honest representations of the rotation group. <span class="math inline">SU(2)</span> is the natural home of spin precisely because it is large enough to carry these two-valued objects that <span class="math inline">SO(3)</span> cannot.</p>
+<p>And this is not a mathematical curiosity with no consequences. The relative sign between a rotated and an unrotated spinor is measurable: in neutron interferometry experiments, a beam of spin-<span class="math inline">\tfrac12</span> particles is split, one half is rotated by <span class="math inline">2\pi</span>, and when the beams recombine they interfere <em>destructively</em> — direct physical evidence that a single turn really did multiply the state by <span class="math inline">-1</span>.</p>
+</section>
+<section id="where-this-is-going" class="level2" data-number="15.7">
+<h2 data-number="15.7" class="anchored" data-anchor-id="where-this-is-going"><span class="header-section-number">15.7</span> where this is going</h2>
+<p>We took three physical facts — probability is conserved, the electron is a two-state system, and a global phase is invisible — and they marched us straight into <span class="math inline">SU(2)</span> and its algebra <span class="math inline">\mathfrak{su}(2)</span>, the compact real form of the <span class="math inline">\mathfrak{sl}(2,\mathbb{C})</span> we had already built. The representations turned out to be the spins, and the standard representation turned out to house these strange two-valued spinors.</p>
+<p>The one thing we borrowed on credit was the rotation formula <span class="math inline">U(\theta,\hat n) = \exp(-i\,\tfrac{\theta}{2}\,\hat n\cdot\vec\sigma)</span>. Paying that debt — understanding <em>why</em> a rotation of <span class="math inline">3</span>-dimensional space acts on spinors this way, why the factor of <span class="math inline">\tfrac12</span> appears, and how <span class="math inline">SU(2)</span> sits over <span class="math inline">SO(3)</span> as a double cover — is the subject of the next chapter. As a bonus, that same relationship will hand us, almost for free, the origin of the cross product from classical mechanics.</p>
+<p>In quantum mechanichs, measurements are represented by linear operators, and the outcomes of measurements are represented by the eigenvectors of these operators:</p>
+<p><span class="math display">
+S_z v_\text{up} = \frac{\hbar}{2} \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \frac{\hbar}{2} \begin{pmatrix} 1 \\ 0 \end{pmatrix}
+</span></p>
+<p>and</p>
+<p><span class="math display">
+S_z v_\text{down} = \frac{\hbar}{2} \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \frac{\hbar}{2} \begin{pmatrix} 0 \\ -1 \end{pmatrix}.
+</span></p>
+<p>. The spin along the vertical axis is represented by the operator</p>
+<p><span class="math display">
+S_z = \frac{\hbar}{2} \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{pmatrix}.
+</span></p>
+<p>To represent the measurement of spin of a particle represented by the state vector <span class="math inline">v</span>, we apply the operator <span class="math inline">S_z</span> to <span class="math inline">v</span>. The result is a new vector that represents the outcome of the measurement:</p>
+<p><span class="math display">
+S_z v = \frac{\hbar}{2} \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{pmatrix} \begin{pmatrix} \alpha \\ \beta \end{pmatrix} = \frac{\hbar}{2} \begin{pmatrix} \alpha \\ -\beta \end{pmatrix}.
+</span></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../lie_algebra/real_forms_of_sl2.html" class="pagination-link" aria-label="real forms of sl(2)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">real forms of sl(2)</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../group_theory/start_here.html" class="pagination-link" aria-label="start here">
+        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">start here</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
