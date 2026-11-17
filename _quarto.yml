@@ -7,7 +7,7 @@ book:
   author: "Yair Mau"
   repo-url: https://github.com/yairmau/mishmash/
   favicon: archive/logo.png
-  google-analytics: "G-KF3W04H104"
+  google-analytics: "G-43N4LS3BPR"
   chapters:
     - index.qmd
     - part: "causal inference"
